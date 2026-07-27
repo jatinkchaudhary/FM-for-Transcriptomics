@@ -1,5 +1,5 @@
 param(
-    [string]$HostName = "149.165.152.254",
+    [string]$HostName = "nvidea-h100-2-of-2.bio260281.projects.jetstream-cloud.org",
     [string]$RemoteDir = "/media/volume/AdditionalHeadroom/Txn_Jatin_studio_20260726",
     [int]$Port = 8000
 )

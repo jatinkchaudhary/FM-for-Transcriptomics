@@ -130,6 +130,11 @@ Open `http://127.0.0.1:8000/`. Result exploration works from the packaged
 registry. Live inference additionally requires compatible checkpoints and the
 external model code described below.
 
+The deployed H100 Studio is available at
+[`http://nvidea-h100-2-of-2.bio260281.projects.jetstream-cloud.org:8000/`](http://nvidea-h100-2-of-2.bio260281.projects.jetstream-cloud.org:8000/).
+Use the hostname rather than the raw public IP; some institutional web filters
+block uncategorized IP-address URLs even when the service itself is healthy.
+
 The service exposes:
 
 - `GET /api/health`
