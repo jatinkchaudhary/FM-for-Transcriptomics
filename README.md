@@ -147,6 +147,10 @@ The service exposes:
 The H100 runtime loads one decoder at a time and unloads the previous
 checkpoint when models are switched. Embedding-only models return an explicit
 unsupported response and `NaN`; the UI never substitutes a silent surrogate.
+Imputation requests accept up to 20,010 genes and 512 samples, subject to the
+25 MB HTTP body limit. The runtime processes samples in 32-sample GPU batches
+so larger requests, including the built-in 46-sample ARCHS4 example, keep
+predictable peak inference memory.
 
 ## Reproducing the study
 

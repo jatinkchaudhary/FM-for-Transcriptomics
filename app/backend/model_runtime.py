@@ -20,6 +20,9 @@ import torch.nn as nn
 
 
 MASK_TOKEN = -10.0
+MAX_REQUEST_GENES = 20010
+MAX_REQUEST_SAMPLES = 512
+INFERENCE_BATCH_SAMPLES = 32
 BULK_CONFIGS = {
     "BulkFormer_37M": {"dim": 128, "p_repeat": 1},
     "BulkFormer_50M": {"dim": 256, "p_repeat": 2},
@@ -252,15 +255,21 @@ class ModelRuntime:
         return name
 
     @staticmethod
-    def _validate_payload(payload: dict[str, Any]) -> tuple[list[str], list[str], np.ndarray, np.ndarray]:
+    def _validate_payload(
+        payload: dict[str, Any],
+    ) -> tuple[list[str], list[str], np.ndarray, np.ndarray]:
         genes = [str(value).strip().upper() for value in payload.get("genes", [])]
         samples = [str(value) for value in payload.get("samples", [])]
         matrix = payload.get("matrix")
         missing = payload.get("missing")
         if not genes or not samples:
             raise RequestError("genes and samples must be non-empty")
-        if len(genes) > 20010 or len(samples) > 32:
-            raise RequestError("request limit is 20,010 genes by 32 samples")
+        if len(genes) > MAX_REQUEST_GENES or len(samples) > MAX_REQUEST_SAMPLES:
+            raise RequestError(
+                f"request limit is {MAX_REQUEST_GENES:,} genes by "
+                f"{MAX_REQUEST_SAMPLES:,} samples; inference runs in "
+                f"{INFERENCE_BATCH_SAMPLES}-sample GPU batches"
+            )
         if len(set(genes)) != len(genes):
             raise RequestError("gene symbols must be unique")
         if not isinstance(matrix, list) or len(matrix) != len(genes):
@@ -298,6 +307,27 @@ class ModelRuntime:
         observed = values[~mask]
         return "raw" if observed.size and float(np.percentile(observed, 99)) > 30 else "log1p"
 
+    def _predict_aligned(self, name: str, aligned: np.ndarray) -> np.ndarray:
+        prediction = np.empty_like(aligned, dtype=np.float32)
+        for start in range(0, len(aligned), INFERENCE_BATCH_SAMPLES):
+            end = min(start + INFERENCE_BATCH_SAMPLES, len(aligned))
+            tensor = torch.from_numpy(aligned[start:end]).to(
+                self.device, non_blocking=True
+            )
+            with torch.inference_mode(), torch.autocast(
+                device_type=self.device.type,
+                dtype=torch.bfloat16,
+                enabled=self.device.type == "cuda"
+                and not name.startswith("BulkFormer_"),
+            ):
+                if name.startswith("BulkFormer_"):
+                    chunk = self.model(tensor, mask_prob=0.15, output_expr=True)
+                else:
+                    chunk = self.model(tensor)
+            prediction[start:end] = chunk.float().cpu().numpy()
+            del tensor, chunk
+        return prediction
+
     def impute(self, payload: dict[str, Any]) -> dict[str, Any]:
         genes, samples, values, missing = self._validate_payload(payload)
         with self.lock:
@@ -320,17 +350,7 @@ class ModelRuntime:
             if not matched:
                 raise RequestError("none of the submitted genes are in the selected model vocabulary")
 
-            tensor = torch.from_numpy(aligned).to(self.device, non_blocking=True)
-            with torch.inference_mode(), torch.autocast(
-                device_type="cuda",
-                dtype=torch.bfloat16,
-                enabled=not name.startswith("BulkFormer_"),
-            ):
-                if name.startswith("BulkFormer_"):
-                    prediction = self.model(tensor, mask_prob=0.15, output_expr=True)
-                else:
-                    prediction = self.model(tensor)
-            prediction = prediction.float().cpu().numpy()
+            prediction = self._predict_aligned(name, aligned)
             completed = values.astype(float).tolist()
             confidence = np.ones_like(values, dtype=np.float32).tolist()
             for request_index, model_index in matched:
@@ -369,4 +389,5 @@ class ModelRuntime:
                 "unresolved_genes": unresolved,
                 "warnings": warnings,
                 "device": torch.cuda.get_device_name(0),
+                "inference_batch_samples": INFERENCE_BATCH_SAMPLES,
             }
