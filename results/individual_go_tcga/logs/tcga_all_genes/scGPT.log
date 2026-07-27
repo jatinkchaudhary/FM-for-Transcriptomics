@@ -1,0 +1,395 @@
+COMMAND=["/media/volume/TrainingData/home_data/benchmarking_run/.venv/bin/python", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/references/gene-embedding-benchmarks/src/gene_level_benchmark/gene_level_benchmarks.py", "--subfolder", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT", "--cv-fold1-pkl", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/references/gene-embedding-benchmarks/data/data_splits/gene_level_benchmark/go_folds_splits/go_cv_fold1_dict_all.pkl", "--cv-fold2-pkl", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/references/gene-embedding-benchmarks/data/data_splits/gene_level_benchmark/go_folds_splits/go_cv_fold2_dict_all.pkl", "--cv-fold3-pkl", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/references/gene-embedding-benchmarks/data/data_splits/gene_level_benchmark/go_folds_splits/go_cv_fold3_dict_all.pkl", "--holdout-pkl", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/references/gene-embedding-benchmarks/data/data_splits/gene_level_benchmark/go_folds_splits/go_holdout_dict_all.pkl", "-d", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/raw/tcga_all_genes"]
+GO:0006325,Unique genes before filter: 2263
+Unique genes in embed: 1829
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7951
+Holdout AUPRC: 0.6164
+Holdout PR@10: 0.8000
+Holdout Duration: 2.87s
+GO:0006402,Unique genes before filter: 1030
+Unique genes in embed: 868
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8343
+Holdout AUPRC: 0.3584
+Holdout PR@10: 0.4000
+Holdout Duration: 0.49s
+GO:0000381,Unique genes before filter: 493
+Unique genes in embed: 420
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=10.0:
+Holdout AUC: 0.8996
+Holdout AUPRC: 0.5032
+Holdout PR@10: 0.4000
+Holdout Duration: 0.11s
+GO:0045089,Unique genes before filter: 1727
+Unique genes in embed: 1484
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7387
+Holdout AUPRC: 0.4283
+Holdout PR@10: 0.9000
+Holdout Duration: 1.84s
+GO:0043488,Unique genes before filter: 1417
+Unique genes in embed: 1215
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7335
+Holdout AUPRC: 0.2977
+Holdout PR@10: 0.3000
+Holdout Duration: 1.21s
+GO:0045787,Unique genes before filter: 1769
+Unique genes in embed: 1512
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.6935
+Holdout AUPRC: 0.3383
+Holdout PR@10: 0.8000
+Holdout Duration: 2.32s
+GO:0050890,Unique genes before filter: 1761
+Unique genes in embed: 1527
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.6875
+Holdout AUPRC: 0.2495
+Holdout PR@10: 0.4000
+Holdout Duration: 2.38s
+GO:0007399,Unique genes before filter: 2700
+Unique genes in embed: 2283
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7525
+Holdout AUPRC: 0.7210
+Holdout PR@10: 0.8000
+Holdout Duration: 4.84s
+GO:0060828,Unique genes before filter: 1704
+Unique genes in embed: 1480
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7041
+Holdout AUPRC: 0.2214
+Holdout PR@10: 0.4000
+Holdout Duration: 1.87s
+GO:0006493,Unique genes before filter: 863
+Unique genes in embed: 745
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7946
+Holdout AUPRC: 0.4132
+Holdout PR@10: 0.5000
+Holdout Duration: 0.42s
+GO:0007605,Unique genes before filter: 1444
+Unique genes in embed: 1272
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.6777
+Holdout AUPRC: 0.2832
+Holdout PR@10: 0.4000
+Holdout Duration: 1.57s
+GO:0016236,Unique genes before filter: 1668
+Unique genes in embed: 1326
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8062
+Holdout AUPRC: 0.3931
+Holdout PR@10: 0.7000
+Holdout Duration: 1.23s
+GO:0010506,Unique genes before filter: 1764
+Unique genes in embed: 1453
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7763
+Holdout AUPRC: 0.3480
+Holdout PR@10: 0.4000
+Holdout Duration: 1.77s
+GO:0042476,Unique genes before filter: 1039
+Unique genes in embed: 849
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=10.0:
+Holdout AUC: 0.7602
+Holdout AUPRC: 0.4488
+Holdout PR@10: 0.5000
+Holdout Duration: 0.54s
+GO:0050679,Unique genes before filter: 1657
+Unique genes in embed: 1402
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.7597
+Holdout AUPRC: 0.2477
+Holdout PR@10: 0.2000
+Holdout Duration: 1.91s
+GO:0006631,Unique genes before filter: 1752
+Unique genes in embed: 1459
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.7980
+Holdout AUPRC: 0.4245
+Holdout PR@10: 0.8000
+Holdout Duration: 2.15s
+GO:0007283,Unique genes before filter: 1984
+Unique genes in embed: 1556
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7387
+Holdout AUPRC: 0.4992
+Holdout PR@10: 0.8000
+Holdout Duration: 2.24s
+GO:0001654,Unique genes before filter: 1820
+Unique genes in embed: 1498
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8064
+Holdout AUPRC: 0.5658
+Holdout PR@10: 0.9000
+Holdout Duration: 2.00s
+GO:0051310,Unique genes before filter: 696
+Unique genes in embed: 583
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8707
+Holdout AUPRC: 0.5338
+Holdout PR@10: 0.6000
+Holdout Duration: 0.21s
+GO:0001578,Unique genes before filter: 1048
+Unique genes in embed: 862
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8414
+Holdout AUPRC: 0.7167
+Holdout PR@10: 1.0000
+Holdout Duration: 0.55s
+GO:0007601,Unique genes before filter: 1677
+Unique genes in embed: 1460
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8068
+Holdout AUPRC: 0.5950
+Holdout PR@10: 1.0000
+Holdout Duration: 1.58s
+GO:0006400,Unique genes before filter: 784
+Unique genes in embed: 668
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.9315
+Holdout AUPRC: 0.6666
+Holdout PR@10: 0.6000
+Holdout Duration: 0.22s
+GO:0031297,Unique genes before filter: 414
+Unique genes in embed: 362
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.8892
+Holdout AUPRC: 0.3744
+Holdout PR@10: 0.3000
+Holdout Duration: 0.07s
+GO:0008584,Unique genes before filter: 1276
+Unique genes in embed: 1025
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.7372
+Holdout AUPRC: 0.3871
+Holdout PR@10: 0.7000
+Holdout Duration: 1.02s
+GO:2000781,Unique genes before filter: 643
+Unique genes in embed: 557
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.8312
+Holdout AUPRC: 0.3776
+Holdout PR@10: 0.4000
+Holdout Duration: 0.17s
+GO:0045814,Unique genes before filter: 1391
+Unique genes in embed: 1130
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7796
+Holdout AUPRC: 0.3618
+Holdout PR@10: 0.5000
+Holdout Duration: 0.92s
+GO:0050731,Unique genes before filter: 1030
+Unique genes in embed: 850
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.6608
+Holdout AUPRC: 0.2213
+Holdout PR@10: 0.4000
+Holdout Duration: 0.60s
+GO:0001666,Unique genes before filter: 1731
+Unique genes in embed: 1483
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.7514
+Holdout AUPRC: 0.4121
+Holdout PR@10: 0.6000
+Holdout Duration: 2.17s
+GO:0034341,Unique genes before filter: 933
+Unique genes in embed: 814
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=10.0:
+Holdout AUC: 0.6735
+Holdout AUPRC: 0.1543
+Holdout PR@10: 0.1000
+Holdout Duration: 0.48s
+GO:0070555,Unique genes before filter: 880
+Unique genes in embed: 760
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.8085
+Holdout AUPRC: 0.4160
+Holdout PR@10: 0.5000
+Holdout Duration: 0.50s
+GO:0008202,Unique genes before filter: 1702
+Unique genes in embed: 1419
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.8450
+Holdout AUPRC: 0.4249
+Holdout PR@10: 0.6000
+Holdout Duration: 1.95s
+GO:0046034,Unique genes before filter: 968
+Unique genes in embed: 813
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.6455
+Holdout AUPRC: 0.1909
+Holdout PR@10: 0.4000
+Holdout Duration: 0.60s
+GO:0031398,Unique genes before filter: 951
+Unique genes in embed: 794
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.5816
+Holdout AUPRC: 0.1451
+Holdout PR@10: 0.3000
+Holdout Duration: 0.57s
+GO:0006813,Unique genes before filter: 1611
+Unique genes in embed: 1374
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.8161
+Holdout AUPRC: 0.3879
+Holdout PR@10: 0.3000
+Holdout Duration: 1.81s
+GO:0042593,Unique genes before filter: 1658
+Unique genes in embed: 1387
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.6483
+Holdout AUPRC: 0.1614
+Holdout PR@10: 0.2000
+Holdout Duration: 1.89s
+GO:0097190,Unique genes before filter: 1753
+Unique genes in embed: 1468
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7169
+Holdout AUPRC: 0.2652
+Holdout PR@10: 0.4000
+Holdout Duration: 1.91s
+GO:0097191,Unique genes before filter: 1004
+Unique genes in embed: 852
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7485
+Holdout AUPRC: 0.2599
+Holdout PR@10: 0.4000
+Holdout Duration: 0.57s
+GO:0001938,Unique genes before filter: 784
+Unique genes in embed: 663
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.7679
+Holdout AUPRC: 0.3424
+Holdout PR@10: 0.3000
+Holdout Duration: 0.36s
+GO:1901224,Unique genes before filter: 537
+Unique genes in embed: 477
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=10.0:
+Holdout AUC: 0.8066
+Holdout AUPRC: 0.5127
+Holdout PR@10: 0.6000
+Holdout Duration: 0.14s
+GO:0050796,Unique genes before filter: 1514
+Unique genes in embed: 1277
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7068
+Holdout AUPRC: 0.3629
+Holdout PR@10: 0.6000
+Holdout Duration: 1.33s
+GO:0001649,Unique genes before filter: 1224
+Unique genes in embed: 976
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.7785
+Holdout AUPRC: 0.4419
+Holdout PR@10: 0.6000
+Holdout Duration: 0.72s
+GO:0051865,Unique genes before filter: 608
+Unique genes in embed: 516
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.6341
+Holdout AUPRC: 0.2857
+Holdout PR@10: 0.4000
+Holdout Duration: 0.18s
+GO:0042632,Unique genes before filter: 775
+Unique genes in embed: 649
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8969
+Holdout AUPRC: 0.6593
+Holdout PR@10: 0.7000
+Holdout Duration: 0.28s
+GO:0000724,Unique genes before filter: 1021
+Unique genes in embed: 882
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8358
+Holdout AUPRC: 0.4745
+Holdout PR@10: 0.7000
+Holdout Duration: 0.55s
+GO:0050680,Unique genes before filter: 1197
+Unique genes in embed: 1007
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.6214
+Holdout AUPRC: 0.1476
+Holdout PR@10: 0.2000
+Holdout Duration: 0.89s
+GO:0061844,Unique genes before filter: 1074
+Unique genes in embed: 881
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=10.0:
+Holdout AUC: 0.9818
+Holdout AUPRC: 0.7015
+Holdout PR@10: 0.3000
+Holdout Duration: 0.31s
+GO:0006888,Unique genes before filter: 1039
+Unique genes in embed: 881
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8762
+Holdout AUPRC: 0.6221
+Holdout PR@10: 0.8000
+Holdout Duration: 0.41s
+GO:0000086,Unique genes before filter: 414
+Unique genes in embed: 349
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.8459
+Holdout AUPRC: 0.3279
+Holdout PR@10: 0.3000
+Holdout Duration: 0.06s
+GO:0006693,Unique genes before filter: 344
+Unique genes in embed: 279
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.7833
+Holdout AUPRC: 0.5648
+Holdout PR@10: 0.4000
+Holdout Duration: 0.04s
+GO:0090303,Unique genes before filter: 537
+Unique genes in embed: 468
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.8019
+Holdout AUPRC: 0.4537
+Holdout PR@10: 0.6000
+Holdout Duration: 0.15s
+GO:0007189,Unique genes before filter: 1417
+Unique genes in embed: 1235
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8392
+Holdout AUPRC: 0.4161
+Holdout PR@10: 0.6000
+Holdout Duration: 0.97s
+GO:0001837,Unique genes before filter: 731
+Unique genes in embed: 585
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8655
+Holdout AUPRC: 0.5533
+Holdout PR@10: 0.6000
+Holdout Duration: 0.17s
+GO:2001244,Unique genes before filter: 528
+Unique genes in embed: 459
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=0.1:
+Holdout AUC: 0.8387
+Holdout AUPRC: 0.4390
+Holdout PR@10: 0.4000
+Holdout Duration: 0.14s
+GO:0006487,Unique genes before filter: 652
+Unique genes in embed: 551
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=10.0:
+Holdout AUC: 0.9028
+Holdout AUPRC: 0.7158
+Holdout PR@10: 0.7000
+Holdout Duration: 0.19s
+GO:0006879,Unique genes before filter: 581
+Unique genes in embed: 499
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8158
+Holdout AUPRC: 0.3970
+Holdout PR@10: 0.4000
+Holdout Duration: 0.16s
+GO:0035987,Unique genes before filter: 405
+Unique genes in embed: 320
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_all_genes/scGPT with best C=1.0:
+Holdout AUC: 0.8684
+Holdout AUPRC: 0.4555
+Holdout PR@10: 0.4000
+Holdout Duration: 0.05s
+Saved fold results to /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/raw/tcga_all_genes/scGPT_fold_results.pkl
+Saved holdout results to /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/raw/tcga_all_genes/scGPT_holdout_results.pkl

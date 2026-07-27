@@ -1,0 +1,395 @@
+COMMAND=["/media/volume/TrainingData/home_data/benchmarking_run/.venv/bin/python", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/references/gene-embedding-benchmarks/src/gene_level_benchmark/gene_level_benchmarks.py", "--subfolder", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior", "--cv-fold1-pkl", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/references/gene-embedding-benchmarks/data/data_splits/gene_level_benchmark/go_folds_splits/go_cv_fold1_dict_all.pkl", "--cv-fold2-pkl", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/references/gene-embedding-benchmarks/data/data_splits/gene_level_benchmark/go_folds_splits/go_cv_fold2_dict_all.pkl", "--cv-fold3-pkl", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/references/gene-embedding-benchmarks/data/data_splits/gene_level_benchmark/go_folds_splits/go_cv_fold3_dict_all.pkl", "--holdout-pkl", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/references/gene-embedding-benchmarks/data/data_splits/gene_level_benchmark/go_folds_splits/go_holdout_dict_all.pkl", "-d", "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/raw/tcga_strict_intersection"]
+GO:0006325,Unique genes before filter: 2263
+Unique genes in embed: 1243
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.8754
+Holdout AUPRC: 0.7295
+Holdout PR@10: 1.0000
+Holdout Duration: 1.09s
+GO:0006402,Unique genes before filter: 1030
+Unique genes in embed: 614
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.9420
+Holdout AUPRC: 0.7718
+Holdout PR@10: 0.9000
+Holdout Duration: 0.11s
+GO:0000381,Unique genes before filter: 493
+Unique genes in embed: 306
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.8696
+Holdout AUPRC: 0.7771
+Holdout PR@10: 0.5000
+Holdout Duration: 0.04s
+GO:0045089,Unique genes before filter: 1727
+Unique genes in embed: 987
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.7744
+Holdout AUPRC: 0.4245
+Holdout PR@10: 0.7000
+Holdout Duration: 0.64s
+GO:0043488,Unique genes before filter: 1417
+Unique genes in embed: 877
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.8685
+Holdout AUPRC: 0.5620
+Holdout PR@10: 0.8000
+Holdout Duration: 0.39s
+GO:0045787,Unique genes before filter: 1769
+Unique genes in embed: 1048
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7411
+Holdout AUPRC: 0.2763
+Holdout PR@10: 0.3000
+Holdout Duration: 0.81s
+GO:0050890,Unique genes before filter: 1761
+Unique genes in embed: 1113
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=0.1:
+Holdout AUC: 0.7286
+Holdout AUPRC: 0.2420
+Holdout PR@10: 0.3000
+Holdout Duration: 1.08s
+GO:0007399,Unique genes before filter: 2700
+Unique genes in embed: 1595
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7756
+Holdout AUPRC: 0.7959
+Holdout PR@10: 1.0000
+Holdout Duration: 1.95s
+GO:0060828,Unique genes before filter: 1704
+Unique genes in embed: 981
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.8259
+Holdout AUPRC: 0.3866
+Holdout PR@10: 0.5000
+Holdout Duration: 0.64s
+GO:0006493,Unique genes before filter: 863
+Unique genes in embed: 515
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 1.0000
+Holdout AUPRC: 1.0000
+Holdout PR@10: 1.0000
+Holdout Duration: 0.08s
+GO:0007605,Unique genes before filter: 1444
+Unique genes in embed: 869
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.8432
+Holdout AUPRC: 0.4724
+Holdout PR@10: 0.6000
+Holdout Duration: 0.43s
+GO:0016236,Unique genes before filter: 1668
+Unique genes in embed: 915
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.9133
+Holdout AUPRC: 0.6230
+Holdout PR@10: 0.7000
+Holdout Duration: 0.43s
+GO:0010506,Unique genes before filter: 1764
+Unique genes in embed: 1025
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=100.0:
+Holdout AUC: 0.7148
+Holdout AUPRC: 0.2934
+Holdout PR@10: 0.4000
+Holdout Duration: 0.75s
+GO:0042476,Unique genes before filter: 1039
+Unique genes in embed: 598
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.7288
+Holdout AUPRC: 0.5983
+Holdout PR@10: 0.8000
+Holdout Duration: 0.15s
+GO:0050679,Unique genes before filter: 1657
+Unique genes in embed: 1009
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7463
+Holdout AUPRC: 0.2299
+Holdout PR@10: 0.2000
+Holdout Duration: 0.69s
+GO:0006631,Unique genes before filter: 1752
+Unique genes in embed: 1051
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.8965
+Holdout AUPRC: 0.6705
+Holdout PR@10: 0.9000
+Holdout Duration: 0.49s
+GO:0007283,Unique genes before filter: 1984
+Unique genes in embed: 1061
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.6834
+Holdout AUPRC: 0.3922
+Holdout PR@10: 0.8000
+Holdout Duration: 0.87s
+GO:0001654,Unique genes before filter: 1820
+Unique genes in embed: 1057
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7779
+Holdout AUPRC: 0.5460
+Holdout PR@10: 0.8000
+Holdout Duration: 0.80s
+GO:0051310,Unique genes before filter: 696
+Unique genes in embed: 409
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.9451
+Holdout AUPRC: 0.6100
+Holdout PR@10: 0.6000
+Holdout Duration: 0.07s
+GO:0001578,Unique genes before filter: 1048
+Unique genes in embed: 617
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.8801
+Holdout AUPRC: 0.5648
+Holdout PR@10: 0.6000
+Holdout Duration: 0.12s
+GO:0007601,Unique genes before filter: 1677
+Unique genes in embed: 1044
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.8085
+Holdout AUPRC: 0.4892
+Holdout PR@10: 0.7000
+Holdout Duration: 0.72s
+GO:0006400,Unique genes before filter: 784
+Unique genes in embed: 488
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.8961
+Holdout AUPRC: 0.7242
+Holdout PR@10: 0.6000
+Holdout Duration: 0.08s
+GO:0031297,Unique genes before filter: 414
+Unique genes in embed: 246
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.9836
+Holdout AUPRC: 0.7556
+Holdout PR@10: 0.3000
+Holdout Duration: 0.03s
+GO:0008584,Unique genes before filter: 1276
+Unique genes in embed: 708
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=100.0:
+Holdout AUC: 0.8101
+Holdout AUPRC: 0.5132
+Holdout PR@10: 0.6000
+Holdout Duration: 0.24s
+GO:2000781,Unique genes before filter: 643
+Unique genes in embed: 361
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.7679
+Holdout AUPRC: 0.5402
+Holdout PR@10: 0.4000
+Holdout Duration: 0.06s
+GO:0045814,Unique genes before filter: 1391
+Unique genes in embed: 841
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.9097
+Holdout AUPRC: 0.6048
+Holdout PR@10: 0.6000
+Holdout Duration: 0.28s
+GO:0050731,Unique genes before filter: 1030
+Unique genes in embed: 612
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7777
+Holdout AUPRC: 0.3894
+Holdout PR@10: 0.4000
+Holdout Duration: 0.18s
+GO:0001666,Unique genes before filter: 1731
+Unique genes in embed: 990
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7618
+Holdout AUPRC: 0.3323
+Holdout PR@10: 0.5000
+Holdout Duration: 0.75s
+GO:0034341,Unique genes before filter: 933
+Unique genes in embed: 539
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7880
+Holdout AUPRC: 0.4074
+Holdout PR@10: 0.3000
+Holdout Duration: 0.14s
+GO:0070555,Unique genes before filter: 880
+Unique genes in embed: 511
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.7965
+Holdout AUPRC: 0.5035
+Holdout PR@10: 0.6000
+Holdout Duration: 0.14s
+GO:0008202,Unique genes before filter: 1702
+Unique genes in embed: 1008
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7922
+Holdout AUPRC: 0.5810
+Holdout PR@10: 1.0000
+Holdout Duration: 0.60s
+GO:0046034,Unique genes before filter: 968
+Unique genes in embed: 581
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.9750
+Holdout AUPRC: 0.8460
+Holdout PR@10: 0.7000
+Holdout Duration: 0.14s
+GO:0031398,Unique genes before filter: 951
+Unique genes in embed: 568
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=100.0:
+Holdout AUC: 0.7339
+Holdout AUPRC: 0.4852
+Holdout PR@10: 0.5000
+Holdout Duration: 0.17s
+GO:0006813,Unique genes before filter: 1611
+Unique genes in embed: 1002
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.9731
+Holdout AUPRC: 0.9449
+Holdout PR@10: 1.0000
+Holdout Duration: 0.30s
+GO:0042593,Unique genes before filter: 1658
+Unique genes in embed: 977
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.6735
+Holdout AUPRC: 0.3140
+Holdout PR@10: 0.5000
+Holdout Duration: 0.65s
+GO:0097190,Unique genes before filter: 1753
+Unique genes in embed: 993
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7571
+Holdout AUPRC: 0.2681
+Holdout PR@10: 0.3000
+Holdout Duration: 0.69s
+GO:0097191,Unique genes before filter: 1004
+Unique genes in embed: 575
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.8324
+Holdout AUPRC: 0.4716
+Holdout PR@10: 0.5000
+Holdout Duration: 0.16s
+GO:0001938,Unique genes before filter: 784
+Unique genes in embed: 484
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7584
+Holdout AUPRC: 0.2454
+Holdout PR@10: 0.3000
+Holdout Duration: 0.12s
+GO:1901224,Unique genes before filter: 537
+Unique genes in embed: 339
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=100.0:
+Holdout AUC: 0.6953
+Holdout AUPRC: 0.5658
+Holdout PR@10: 0.5000
+Holdout Duration: 0.06s
+GO:0050796,Unique genes before filter: 1514
+Unique genes in embed: 905
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.7228
+Holdout AUPRC: 0.4120
+Holdout PR@10: 0.6000
+Holdout Duration: 0.40s
+GO:0001649,Unique genes before filter: 1224
+Unique genes in embed: 684
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.8681
+Holdout AUPRC: 0.4205
+Holdout PR@10: 0.4000
+Holdout Duration: 0.25s
+GO:0051865,Unique genes before filter: 608
+Unique genes in embed: 365
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.9471
+Holdout AUPRC: 0.7774
+Holdout PR@10: 0.5000
+Holdout Duration: 0.06s
+GO:0042632,Unique genes before filter: 775
+Unique genes in embed: 440
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.8719
+Holdout AUPRC: 0.5814
+Holdout PR@10: 0.5000
+Holdout Duration: 0.11s
+GO:0000724,Unique genes before filter: 1021
+Unique genes in embed: 585
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.9019
+Holdout AUPRC: 0.7495
+Holdout PR@10: 0.7000
+Holdout Duration: 0.15s
+GO:0050680,Unique genes before filter: 1197
+Unique genes in embed: 716
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.5828
+Holdout AUPRC: 0.1745
+Holdout PR@10: 0.2000
+Holdout Duration: 0.30s
+GO:0061844,Unique genes before filter: 1074
+Unique genes in embed: 609
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.9728
+Holdout AUPRC: 0.7381
+Holdout PR@10: 0.2000
+Holdout Duration: 0.10s
+GO:0006888,Unique genes before filter: 1039
+Unique genes in embed: 614
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.8938
+Holdout AUPRC: 0.6972
+Holdout PR@10: 0.5000
+Holdout Duration: 0.14s
+GO:0000086,Unique genes before filter: 414
+Unique genes in embed: 255
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.9246
+Holdout AUPRC: 0.6025
+Holdout PR@10: 0.5000
+Holdout Duration: 0.03s
+GO:0006693,Unique genes before filter: 344
+Unique genes in embed: 194
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.9898
+Holdout AUPRC: 0.8875
+Holdout PR@10: 0.4000
+Holdout Duration: 0.02s
+GO:0090303,Unique genes before filter: 537
+Unique genes in embed: 308
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.7700
+Holdout AUPRC: 0.3903
+Holdout PR@10: 0.3000
+Holdout Duration: 0.05s
+GO:0007189,Unique genes before filter: 1417
+Unique genes in embed: 825
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=10.0:
+Holdout AUC: 0.9577
+Holdout AUPRC: 0.9464
+Holdout PR@10: 1.0000
+Holdout Duration: 0.20s
+GO:0001837,Unique genes before filter: 731
+Unique genes in embed: 386
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.8712
+Holdout AUPRC: 0.6061
+Holdout PR@10: 0.5000
+Holdout Duration: 0.08s
+GO:2001244,Unique genes before filter: 528
+Unique genes in embed: 321
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.6632
+Holdout AUPRC: 0.1683
+Holdout PR@10: 0.2000
+Holdout Duration: 0.06s
+GO:0006487,Unique genes before filter: 652
+Unique genes in embed: 389
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=100.0:
+Holdout AUC: 0.9753
+Holdout AUPRC: 0.9010
+Holdout PR@10: 0.7000
+Holdout Duration: 0.06s
+GO:0006879,Unique genes before filter: 581
+Unique genes in embed: 362
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.6883
+Holdout AUPRC: 0.2595
+Holdout PR@10: 0.1000
+Holdout Duration: 0.07s
+GO:0035987,Unique genes before filter: 405
+Unique genes in embed: 224
+Holdout performance for /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/tcga_strict_intersection/ESM2_PCA512_prior with best C=1.0:
+Holdout AUC: 0.9871
+Holdout AUPRC: 0.8042
+Holdout PR@10: 0.4000
+Holdout Duration: 0.03s
+Saved fold results to /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/raw/tcga_strict_intersection/ESM2_PCA512_prior_fold_results.pkl
+Saved holdout results to /media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/raw/tcga_strict_intersection/ESM2_PCA512_prior_holdout_results.pkl

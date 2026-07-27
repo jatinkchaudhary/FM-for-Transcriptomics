@@ -1,0 +1,55 @@
+[official-go] tcga_all_genes:BulkFormer_37M ok rc=0 elapsed=2.0 min
+[official-go] tcga_all_genes:BulkFormer_50M ok rc=0 elapsed=3.0 min
+[official-go] tcga_strict_intersection:BRIDGE ok rc=0 elapsed=3.0 min
+[official-go] tcga_all_genes:Txn_Jatin_contextual ok rc=0 elapsed=5.7 min
+[official-go] tcga_all_genes:BulkFormer_93M ok rc=0 elapsed=5.7 min
+[official-go] tcga_all_genes:Txn_Jatin ok rc=0 elapsed=5.8 min
+[official-go] tcga_all_genes:ESM2_PCA512_prior ok rc=0 elapsed=6.0 min
+[official-go] tcga_strict_intersection:BulkFormer_127M ok rc=0 elapsed=3.4 min
+[official-go] tcga_all_genes:BRIDGE ok rc=0 elapsed=6.4 min
+[official-go] tcga_strict_intersection:BulkFormer_37M ok rc=0 elapsed=1.0 min
+[official-go] tcga_all_genes:BulkFormer_127M ok rc=0 elapsed=7.1 min
+[official-go] tcga_all_genes:BulkFormer_147M ok rc=0 elapsed=7.1 min
+[official-go] tcga_strict_intersection:BulkFormer_50M ok rc=0 elapsed=1.4 min
+[official-go] tcga_all_genes:scGPT ok rc=0 elapsed=7.4 min
+[official-go] tcga_strict_intersection:BulkFormer_147M ok rc=0 elapsed=3.3 min
+[official-go] tcga_strict_intersection:BulkFormer_93M ok rc=0 elapsed=2.6 min
+[official-go] tcga_strict_intersection:ESM2_PCA512_prior ok rc=0 elapsed=2.7 min
+[official-go] tcga_strict_intersection:Txn_Jatin ok rc=0 elapsed=2.8 min
+[official-go] tcga_strict_intersection:Txn_Jatin_contextual ok rc=0 elapsed=2.5 min
+[official-go] tcga_strict_intersection:scGPT ok rc=0 elapsed=3.2 min
+[official-go] tcga_all_genes:Geneformer ok rc=0 elapsed=11.0 min
+[official-go] tcga_strict_intersection:Geneformer ok rc=0 elapsed=4.9 min
+[official-go] tcga_strict_intersection:ESM3 ok rc=0 elapsed=7.6 min
+[official-go] tcga_all_genes:ESM3 ok rc=0 elapsed=16.9 min
+{
+  "benchmark_commit": "d1320026a2a4ee033d49517f91e2d1c2ccc8df1e",
+  "benchmark_repository": "ylaboratory/gene-embedding-benchmarks",
+  "completed_utc": "2026-07-27T07:13:39Z",
+  "model_count": 12,
+  "models": [
+    "BRIDGE",
+    "BulkFormer_127M",
+    "BulkFormer_147M",
+    "BulkFormer_37M",
+    "BulkFormer_50M",
+    "BulkFormer_93M",
+    "ESM2_PCA512_prior",
+    "ESM3",
+    "Geneformer",
+    "Txn_Jatin",
+    "Txn_Jatin_contextual",
+    "scGPT"
+  ],
+  "official_go_terms": 56,
+  "prepared_manifest": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_tcga_github_d132002_20260727_v2/prepared_embeddings/prepared_manifest.json",
+  "prepared_manifest_sha256": "3eb9e6eb631415a7da37d1bfbabb5b4b89c4f561911157fe5cf07331f8a59e9b",
+  "protocol": "Official per-GO-term nested CV and holdout SVC: C in [0.1,1,10,100,1000], class_weight=balanced, AUROC-selected C, official fixed folds, AUROC/AUPRC/PR@10",
+  "scopes": {
+    "tcga_all_genes": "Each model's native embedding rows restricted to processed TCGA genes",
+    "tcga_strict_intersection": "Identical TCGA and official-reference genes across all 12 models"
+  },
+  "score_rows": 1344,
+  "strict_intersection_genes": 9568,
+  "workers": 12
+}
