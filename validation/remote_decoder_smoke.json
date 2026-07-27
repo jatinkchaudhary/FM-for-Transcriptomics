@@ -1,0 +1,74 @@
+[
+  {
+    "model": "Txn_Jatin",
+    "status": 200,
+    "seconds": 2.29,
+    "finite_missing_outputs": 12,
+    "matched_genes": 50,
+    "model_gene_count": 16055,
+    "warning": "Only 50/16,055 model genes were supplied. This sparse-panel request is outside the 15% masking training regime."
+  },
+  {
+    "model": "Txn_Jatin_OSDR_LoRA",
+    "status": 200,
+    "seconds": 0.73,
+    "finite_missing_outputs": 12,
+    "matched_genes": 50,
+    "model_gene_count": 16055,
+    "warning": "Only 50/16,055 model genes were supplied. This sparse-panel request is outside the 15% masking training regime."
+  },
+  {
+    "model": "BRIDGE",
+    "status": 200,
+    "seconds": 0.97,
+    "finite_missing_outputs": 12,
+    "matched_genes": 50,
+    "model_gene_count": 15165,
+    "warning": "Only 50/15,165 model genes were supplied. This sparse-panel request is outside the 15% masking training regime."
+  },
+  {
+    "model": "BulkFormer_37M",
+    "status": 200,
+    "seconds": 10.45,
+    "finite_missing_outputs": 12,
+    "matched_genes": 50,
+    "model_gene_count": 20010,
+    "warning": "Only 50/20,010 model genes were supplied. This sparse-panel request is outside the 15% masking training regime."
+  },
+  {
+    "model": "BulkFormer_50M",
+    "status": 200,
+    "seconds": 1.02,
+    "finite_missing_outputs": 12,
+    "matched_genes": 50,
+    "model_gene_count": 20010,
+    "warning": "Only 50/20,010 model genes were supplied. This sparse-panel request is outside the 15% masking training regime."
+  },
+  {
+    "model": "BulkFormer_93M",
+    "status": 200,
+    "seconds": 1.87,
+    "finite_missing_outputs": 12,
+    "matched_genes": 50,
+    "model_gene_count": 20010,
+    "warning": "Only 50/20,010 model genes were supplied. This sparse-panel request is outside the 15% masking training regime."
+  },
+  {
+    "model": "BulkFormer_127M",
+    "status": 200,
+    "seconds": 2.41,
+    "finite_missing_outputs": 12,
+    "matched_genes": 50,
+    "model_gene_count": 20010,
+    "warning": "Only 50/20,010 model genes were supplied. This sparse-panel request is outside the 15% masking training regime."
+  },
+  {
+    "model": "BulkFormer_147M",
+    "status": 200,
+    "seconds": 2.7,
+    "finite_missing_outputs": 12,
+    "matched_genes": 50,
+    "model_gene_count": 20010,
+    "warning": "Only 50/20,010 model genes were supplied. This sparse-panel request is outside the 15% masking training regime."
+  }
+]

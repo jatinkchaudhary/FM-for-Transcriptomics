@@ -1,0 +1,956 @@
+{
+  "seed": 20260726,
+  "files": [
+    {
+      "file": "tcga_random_panel_01_50genes.csv",
+      "truth_file": "tcga_random_panel_01_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "d0571992-9837-4f26-ba4c-346e59dff792",
+        "589dda89-b968-4f26-b3c7-5371dfdb8a90",
+        "1936f1a9-66bc-4e48-8189-f0e3a67a5593",
+        "4b99dab3-9393-4c29-a093-67878c3cdbf1",
+        "e4f49b9c-faed-4f15-a79c-79664e2c03b6",
+        "8263ab47-6cd7-4460-a692-982a88a12ada",
+        "d3badb09-df1e-488e-ade9-97f1925b5649",
+        "621b0997-70e5-415b-8d8c-1e5f90d0d4aa"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_02_50genes.csv",
+      "truth_file": "tcga_random_panel_02_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "39e5a93f-7474-44f8-974a-7ce44f909002",
+        "62e7008b-f4ca-40e3-88b3-7354ba2585ac",
+        "bbf261ac-5cb3-425e-b12a-b236aafde297",
+        "3361d7bc-344b-44b2-97bd-ac0dc79b221f",
+        "ed4e33b6-e610-40f6-a9cb-68d27b24b7ea",
+        "441e6227-4fa3-4891-92ec-8a6f93a02ec6",
+        "46933fec-1800-4da5-814c-30cce4ae2fb5",
+        "302b01b1-2e13-4e84-b6fa-eb1a0e69b77c"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_03_50genes.csv",
+      "truth_file": "tcga_random_panel_03_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "aedc877a-f4b9-4657-b5c9-b7768b5751c9",
+        "86ed5b38-ea85-43c1-a4bf-a8b6dbdf6425",
+        "04024f75-7405-4ccc-8976-91d0a3035b3a",
+        "7b5b2b7a-8b22-4e41-9faa-ffa3c7fa727b",
+        "63f5b69e-2307-4be6-98e4-b0f57b6394d0",
+        "a4ed7fd8-e220-46e6-90f7-3b208dbf4e05",
+        "84e36620-ae1e-4221-84c9-3a6f1d11606d",
+        "f43b97fd-8953-4a5e-bafb-eb572145abe3"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_04_50genes.csv",
+      "truth_file": "tcga_random_panel_04_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "af5402f0-30d1-4fab-9d41-3b25bc28fc20",
+        "f9c280f7-4975-4970-806d-2cf4b94ccf74",
+        "7909042c-47f9-4f3a-9591-71f8856a571d",
+        "6e6328d3-251d-4b16-8990-2b43623a99c5",
+        "0b829610-f28e-418e-b79d-d3351e13e1fe",
+        "469c052c-d2c8-4626-af1c-7276653168fe",
+        "7efb7266-28ee-41d3-912a-b0f67135216f",
+        "02669516-0c84-46b4-9ff1-ab147ff1ddcc"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_05_50genes.csv",
+      "truth_file": "tcga_random_panel_05_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "7ffac92b-a35c-4283-882c-806a2e28a963",
+        "75dce2b2-d301-4e8a-ae5a-b9065275e492",
+        "da84f488-af86-4472-bf87-063a9137e1db",
+        "b9bdb9d3-4d2b-4a53-9804-d0511174e553",
+        "422ef158-74dd-4a5e-88a6-5b0da33004d1",
+        "b6a0d742-e7bc-4d67-8014-675e62f1ddd0",
+        "7b27b23a-d94c-4a9e-bf22-d8209a4bc6ef",
+        "e5393dc3-65d0-4d65-bb75-2fed770af595"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_06_50genes.csv",
+      "truth_file": "tcga_random_panel_06_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "3728cb73-4a8a-4392-8140-f027ad876cf2",
+        "4f2d30e4-0c50-49ae-b791-926e28a1f5f0",
+        "40ad8a2a-abd2-4701-b984-4afa4c27c260",
+        "6d0c282d-43d7-44fb-94e6-25771385e326",
+        "6bff99d4-8131-4e5f-8bc8-57bb4675d580",
+        "148c1368-6302-4daf-b389-2c92f5da0529",
+        "83eb5df9-30fa-4c4f-a062-5ffe6d7f2c3d",
+        "79938db5-9981-4a06-b4b7-5ee3555165d9"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_07_50genes.csv",
+      "truth_file": "tcga_random_panel_07_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "131c2ec9-8fe3-4b83-b638-c8c9df564509",
+        "6170ecbe-9ede-4afe-b020-655a903d96aa",
+        "0427af63-b665-4c57-874b-65222c200bfe",
+        "b0b5b05d-f782-449d-94cf-8fd74a4bd30c",
+        "497349a9-7f70-4dba-8b56-a3c890c3f161",
+        "f43cfd22-5e58-4369-9ea0-a0b6cc63a7db",
+        "bfbe5707-5610-46af-97cd-3fd43dc492de",
+        "9998fd9d-b7a9-4a9d-b572-19a30a6ff775"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_08_50genes.csv",
+      "truth_file": "tcga_random_panel_08_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "f9cd1c16-3be3-415c-8d7b-9249c3b1c7fa",
+        "7b9b6f5f-bd99-421a-a22c-d3fbe110ee73",
+        "68881256-49b8-4a19-87a9-afac4f1841d2",
+        "cbfb8ffe-ae83-4a16-aaa6-f21ea893cb8d",
+        "7493bcbc-658d-4789-a25c-9a990dcd44b8",
+        "170aa982-33f1-41d0-b0f0-2585d6e8f906",
+        "0ed77a2e-a2c9-4557-8ba3-2c8bade9b792",
+        "defe5fb5-4dd8-4fc7-9cce-534bb5190357"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_09_50genes.csv",
+      "truth_file": "tcga_random_panel_09_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "ce53c8d2-5655-4fde-b134-1ef5a269e569",
+        "edc9bf50-9542-433d-af38-283b4e77f17b",
+        "79f97f73-b650-49cf-8654-53038a6c0de7",
+        "2ddc83c1-35f0-4060-95d5-dbfe479642f3",
+        "8603da6b-3bb9-4fff-b409-c5af2afd53b3",
+        "9fcf3bdd-e137-4f93-83f4-24b883ca62c3",
+        "a5407526-9c45-427b-abcc-65d6e1f87158",
+        "7671d2c4-d6da-46d5-8ef0-baab496456d2"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_10_50genes.csv",
+      "truth_file": "tcga_random_panel_10_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "60477322-5657-495a-8ce3-4f806acd3dcb",
+        "bb761704-bced-4fd6-9a90-187595b1d005",
+        "508c6166-6095-4133-a42a-79d75b0c0e31",
+        "4c2a4d47-67dd-4c12-8f3b-1c55eb6fd00e",
+        "c8d806cf-3298-4072-b800-19e9faa14f5c",
+        "5c245ac1-a5d7-4c07-8b74-fafba8fc9e5d",
+        "4089d037-ab25-47a6-be68-19742473cbc6",
+        "99ad8f7e-a32c-4fbc-af00-8765d524cd73"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_11_50genes.csv",
+      "truth_file": "tcga_random_panel_11_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "5d9c87af-9ac3-42a7-a0c3-84a490957188",
+        "911a72ec-dcb3-4454-8f22-7bd4f9d29b21",
+        "2f2cc9dc-1d0a-4302-b674-02d56c259ff3",
+        "0889a6ea-a12a-4cc9-bec5-3103a3cdbba3",
+        "80902247-a485-4374-836b-4b67db4c4981",
+        "49ddcd56-df4a-4136-a743-c21bb6bfd8a6",
+        "69df044b-cac2-46e9-b28a-e3264c48b468",
+        "14e565dd-f3cd-4d99-9d11-d7b9b5165ea1"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_12_50genes.csv",
+      "truth_file": "tcga_random_panel_12_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "6d0df9bf-69d6-447f-b2d9-76391e95d61d",
+        "6fb6e0b6-d575-470b-aa14-7e49c26a36c8",
+        "293f11c8-1d40-4ff1-84be-ca82847e1c20",
+        "8ced7ce3-86ec-4bc8-afce-8fcfb06d8be4",
+        "d19fa0dd-5832-46a8-a7a0-142075684a55",
+        "04778fc1-a821-4029-a383-d88e711f3bee",
+        "8af84f63-5974-4e14-b818-73eb8678eaab",
+        "422ef158-74dd-4a5e-88a6-5b0da33004d1"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_13_50genes.csv",
+      "truth_file": "tcga_random_panel_13_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "2c81c69f-e08a-4586-b3f9-33d4af417d1f",
+        "01851b83-f8c4-4108-99c9-248fe29e39e9",
+        "a51aca71-6bfd-4c02-86e2-cb8a1da7595d",
+        "fed5e108-cb1a-45b8-88e8-c5ea6a6bd61a",
+        "a03c9de0-7526-4942-8a7a-5fe03ea191f6",
+        "313f5ae9-bbea-41d6-82d5-9242b2610d91",
+        "555bdfe8-80bb-46db-80f1-421038f5c2b4",
+        "fb449c0c-d752-4110-a41a-c46aa29617ea"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_14_50genes.csv",
+      "truth_file": "tcga_random_panel_14_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "ada4ae4b-1959-49a1-b3db-59675ba2ade0",
+        "acf622b2-9d9f-45c4-992d-28165321a955",
+        "17b87e41-8f42-48d8-90f8-d2c9b8553481",
+        "7b738087-65b1-4c6e-94c4-d0ba6bb17098",
+        "6661360a-3532-4876-a994-580d1bba454e",
+        "1b98fd3e-d3e3-4ecc-9fe3-02600177efed",
+        "1c6cb4d2-e5af-42ce-a2cc-9b2610cccd6e",
+        "2670a02b-5a81-45b7-8b6c-f94b21bd2aa1"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_15_50genes.csv",
+      "truth_file": "tcga_random_panel_15_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "94cab1e2-dcd6-43b7-b359-75b0c4a485ba",
+        "90aecade-b0c5-4fc9-b5c5-d6a5493fb017",
+        "466888ef-7b80-471e-822c-bf355ef474b8",
+        "dfb021ae-9736-4497-b1a2-f647fdf281c3",
+        "918d78c9-e35a-4eaf-ae1a-29d7696a9df3",
+        "481fa807-fe38-42ee-bd7b-617066f616d6",
+        "573241d2-e298-426a-84a0-2c3889bae923",
+        "3d075fc4-5a01-47ce-bef0-a77acf71061d"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_16_50genes.csv",
+      "truth_file": "tcga_random_panel_16_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "3fe22d67-6af5-4778-945b-3ce2607277f7",
+        "343f1771-4a3d-4a03-9eb0-319dada0b373",
+        "bca264e4-3883-409f-ad4e-f56f81c7c93e",
+        "f8a0a7cf-0444-4039-a255-6d31bcf748ac",
+        "6590155e-5fe1-460a-8ed3-a4d8516d55b2",
+        "dad6be14-a519-478d-9f53-122417453a0e",
+        "fe7c2cdd-7c3f-4d76-ad78-2a676116f464",
+        "d305b0b8-efa5-40f9-b4f9-7ff6557c3674"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_17_50genes.csv",
+      "truth_file": "tcga_random_panel_17_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "4c9005a5-2cca-4cc3-9a6d-09eb76d780ab",
+        "6f0c63cb-fffb-4305-9e1a-ccb9ff5ea2cc",
+        "2b519fff-dd2a-458e-ac2b-573167aeb7f2",
+        "d9979174-ee0c-42bb-b928-a4f642845db7",
+        "a5019d98-9b20-464f-b702-6109f86d8ece",
+        "6e7ab4c9-511c-419d-954b-86057808646e",
+        "a9b5ab37-10c2-4fb6-9c4e-3fcd5ea26526",
+        "c4d6825d-8b46-41c5-8902-7919da14ffb9"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_18_50genes.csv",
+      "truth_file": "tcga_random_panel_18_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "4cce67eb-0cb7-4c8f-a81e-0e521c2b0168",
+        "52433ea4-d6cc-4d21-a1af-d62c3e9c5d77",
+        "951f2356-17f4-4f4f-a8ec-855c7e93dce1",
+        "6008907a-31ee-4080-919e-1d1a0dd5ec25",
+        "67bdcff7-5af1-4f24-8eac-f47c133c9398",
+        "9d8077b2-bae2-478d-bacc-fd1e5c6e61e7",
+        "02a11397-2a9b-4dba-8c6a-6b9f0aa24372",
+        "0e0df72c-33c0-4e4f-939c-a4d45a6e1ea3"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_19_50genes.csv",
+      "truth_file": "tcga_random_panel_19_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "393a1776-5f0b-4411-8266-5687be14dbfc",
+        "1e1397c5-ba22-4d9b-b39d-36158650fe9c",
+        "f19f38a0-9e3b-4d6d-be42-62671c5a7f63",
+        "bb69e798-8c83-4c12-b622-3155e1972e6f",
+        "502fcba1-9d3c-4117-86fb-70a26c090692",
+        "7b188e2a-4a56-49f9-b527-cd61a646f6c7",
+        "040e6555-b1a3-43ca-ae2b-a972fc01fa19",
+        "d560a960-803c-4d1a-a404-d094f9faa44a"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_20_50genes.csv",
+      "truth_file": "tcga_random_panel_20_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "f81cd722-db09-40ee-9ac1-a0571f43dc30",
+        "67eceef4-f870-47a0-82d8-b39aa3282bd3",
+        "b59e21e2-af42-41ff-9423-0b3b0af05ccd",
+        "ffeede9a-d9a9-4836-8c56-39f12a5fde0e",
+        "eeb522fe-ab63-4e1f-b2cf-de74af6b64f2",
+        "26fc2982-0376-40d8-8829-50a6d8c71b85",
+        "da84f488-af86-4472-bf87-063a9137e1db",
+        "775f63d2-d752-4d68-abc1-129fce5c3301"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_21_50genes.csv",
+      "truth_file": "tcga_random_panel_21_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "e4bb1f41-bf42-43f3-aba5-98f3a02a7e03",
+        "d91f4d1a-4628-446c-a696-8839c8f62d90",
+        "62084ce4-545f-432f-b321-e26f078ca2a7",
+        "4ef93d93-a6c6-4137-944c-6092e4ff7ae9",
+        "342bcdf8-2b01-45b8-9bb7-48f151345ac2",
+        "852435f1-d6c4-4efa-8c27-ab27245640df",
+        "e94ef671-995d-452b-bcbe-993e5b437a68",
+        "a8fa9282-6695-477a-8202-73882cdfa8f7"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_22_50genes.csv",
+      "truth_file": "tcga_random_panel_22_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "0344d3bb-8bb2-459e-bc1f-ba31c7470d08",
+        "e855de31-6adc-423f-9295-3064f2449f35",
+        "915b0047-c8c4-4a4d-951c-8e5619cc89ec",
+        "76bcf698-d2da-42de-b33c-c5deb721c643",
+        "3841a099-bf19-4891-9b12-5db1d699e922",
+        "0e6fc8f1-34ca-4f3b-9d71-5a867e5efb07",
+        "8f1fa5b0-7b8b-41ae-9ba4-9bce8776e5a8",
+        "8f5bb09d-e15a-4938-aad1-85c1b2d79af9"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_23_50genes.csv",
+      "truth_file": "tcga_random_panel_23_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "895b7107-2c08-4106-b119-6fbb597392da",
+        "584eef35-12c2-4aac-be09-175a9f9c5dfc",
+        "bdb74506-8766-42e1-922e-e03da4637a70",
+        "11396f70-0482-493b-b64f-60ce00c58837",
+        "b8f8504c-1d5e-48b3-a54f-88250da4264f",
+        "2716fe1d-01ab-43b1-9f3b-cbc1ce9c7cbc",
+        "bd820f5e-c8fd-4af5-b81c-2c51715cd759",
+        "cc640c34-516e-4cd8-a32c-d6f9b856696d"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_24_50genes.csv",
+      "truth_file": "tcga_random_panel_24_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "3bfbdcb6-1e9a-43e9-9015-d55b279dc559",
+        "c15e9ead-0373-486e-a99b-26b96bd3ccc4",
+        "03891509-3109-450d-8564-77b024a6128e",
+        "d898d021-e82b-42e6-b82e-28c187136674",
+        "822bf4fe-8d43-47c8-9906-5d38c4a21f27",
+        "6307d48e-e6c0-4d18-87b0-804fd4cc554c",
+        "20b5fc73-c12f-465a-87d6-5a5e062d58f3",
+        "416defdf-a4f7-4305-97ff-d3b3ebce672f"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_25_50genes.csv",
+      "truth_file": "tcga_random_panel_25_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "23ac8b84-f000-45ea-ad35-a46323d3670a",
+        "28ab7cb4-b27e-407f-b999-b411ecd263c2",
+        "8e4576b0-ae52-47fa-b4a0-eaaed1fefcd2",
+        "85feefbe-6aad-430b-a882-c71e4a5d1e07",
+        "9db8b103-5f3a-439b-993c-14879744c30a",
+        "5422b305-6411-4a01-b371-dc74c9e351e4",
+        "0019c951-16c5-48d0-85c8-58d96b12d330",
+        "1cb0d51d-def6-40ec-9c5f-4a98315b0382"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_26_50genes.csv",
+      "truth_file": "tcga_random_panel_26_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "bebca0ac-b673-4d1b-bc34-31806d1b6dff",
+        "f822b8ac-5682-4ae1-8250-9f204fa540ea",
+        "d43f1743-577e-4661-8b4b-30fecf950652",
+        "8ebf5653-96f8-4adc-a251-d8c059d699b0",
+        "ab3475d0-e057-4512-8c01-a5383359a1ad",
+        "3de35a77-f963-45ff-bfad-a5f24dda75ef",
+        "ac98f8d2-fdc4-4925-8fce-7e86d7b89dec",
+        "82e982fc-138a-48f8-8127-fb20caa019a2"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_27_50genes.csv",
+      "truth_file": "tcga_random_panel_27_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "808d3c9f-b9df-4b77-8a42-fbb82786d282",
+        "b4835808-46fa-4b6c-a933-92acc9908319",
+        "f1525d22-a7b0-48b6-ab6e-737b5ebb1a39",
+        "6f7f6a7c-94a4-4a30-b768-b8d23d1d9b7f",
+        "bbb17751-e367-45a2-b561-9607d02d03c3",
+        "9bf51961-c60a-43df-87eb-a64dae9e4e10",
+        "6bff99d4-8131-4e5f-8bc8-57bb4675d580",
+        "4db2d4c0-19d2-4464-97e4-2a3140994a4f"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_28_50genes.csv",
+      "truth_file": "tcga_random_panel_28_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "93288581-37b8-4e24-83ce-d1668ffe7a5f",
+        "fc2da737-fbd3-49b5-9cb6-077044119d0c",
+        "5223fb98-dd63-4c20-a7c0-02e0b13ccb33",
+        "207ea988-6795-460c-bfeb-382d8c758f31",
+        "8d5a94c8-b3d9-4991-8ce9-f7aa9189938c",
+        "577f10d0-c9a2-47c3-aa2f-b1bd5bd86d90",
+        "1078f9da-8238-45d4-ac09-a4b5d3b75743",
+        "3eb2d652-73f5-41c0-bf73-f40e85e1ecae"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_29_50genes.csv",
+      "truth_file": "tcga_random_panel_29_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "db4f787e-1275-4bdd-ba39-eafb8e3121fd",
+        "6b95a5c7-0b98-4f90-a8b2-22490d2cc0ce",
+        "e8871fd9-41a0-4c1f-b44c-ea7beea35ebe",
+        "06ca30ec-156b-4f5e-9466-4563296a589d",
+        "f5cb8623-1932-48a9-b2d3-e769b76a6f9a",
+        "420d3651-43b4-4345-88dc-8973fb6a40b6",
+        "6f2cbdf8-24b9-4b9c-9a73-4e872852e6ac",
+        "dd6ec250-8d4d-4129-9664-7451c1760f4b"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_30_50genes.csv",
+      "truth_file": "tcga_random_panel_30_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "fb5fc040-9f48-4eb6-89b3-9c0407222201",
+        "3b850000-76d1-4070-8bed-52add20750d0",
+        "b2b395be-bc12-416a-9ade-aa8194a84d28",
+        "98ca487a-a503-459a-8665-11a3caf8bce5",
+        "fad07753-c9c6-4eba-8f43-09740bff6d69",
+        "254bed99-398d-4c34-a804-67516d257e70",
+        "9c622d7a-d739-4d5d-824a-923414f13f6f",
+        "bab81011-81b1-4fa4-bda1-fddec99245f5"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_31_50genes.csv",
+      "truth_file": "tcga_random_panel_31_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "e37ffff5-f795-4ca9-b46b-f59344db48af",
+        "f7cb60c9-cede-46db-9266-b1437cd06a48",
+        "fecd341d-a370-4092-be40-e07fc44500e5",
+        "bb9e4d64-ffbc-40b6-a3e5-d05aa7a51717",
+        "d52fa71c-9f59-407e-8481-d0ac47ba88b2",
+        "c04d9806-d86b-4afd-9481-89037aa621d1",
+        "4d986c3f-bde2-4e66-836d-30b701d0781c",
+        "db225ac9-c998-42ad-9181-a075ec0f7c47"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_32_50genes.csv",
+      "truth_file": "tcga_random_panel_32_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "fcb1b40a-85c0-498c-881e-7161edcf39e6",
+        "de5e449b-bc57-4836-89e4-73a3ba24abdf",
+        "edc7b71d-a551-463e-a76a-dc135373cb43",
+        "bea60bf8-1f0d-40df-a4c5-cc7b91b1a26f",
+        "b9ac77d6-9a1b-443d-8ef5-e8ef2e3008dd",
+        "06227b3b-56d0-4657-bb37-8f56a3dc15f7",
+        "3cd897bd-893e-4497-b9a5-56141816cff4",
+        "593e91b8-cbcd-4dbf-95ed-9dce881a430b"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_33_50genes.csv",
+      "truth_file": "tcga_random_panel_33_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "ac8b8255-d058-4a35-9aa3-7b541e6ece12",
+        "f31f1008-cde3-4ca6-8864-8b1e7efbb856",
+        "3253f315-5ea3-44fc-899f-f9e8f5b6fa96",
+        "aa2ab118-b3cc-4452-a29c-104f80f16f8d",
+        "efcf7073-faf4-4965-9e86-49b44788620e",
+        "52d91ece-345c-4c5d-800a-121955b93c66",
+        "1cf56202-05e5-41ad-9f27-3519bee045f4",
+        "3e8cff80-ed17-479c-8327-ca8e71ee7482"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_34_50genes.csv",
+      "truth_file": "tcga_random_panel_34_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "26c96b62-02b6-4108-9a2d-bec3d880db2a",
+        "ad62355a-f287-49b2-84a9-64c0f5847c20",
+        "fd493a63-08fb-4076-8b3c-f443dc4bcb0b",
+        "2b2ee0d4-4834-47a8-8362-6e95d83919ad",
+        "de26de4a-c738-4a8b-a44a-0eab208c0db2",
+        "4981d1f3-2824-4cd0-81b8-e12a9727a248",
+        "db3b76cb-5f0d-4df2-b42b-3e66e102b286",
+        "023a3ce5-f2e6-46cc-a6a9-011145a1e808"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_35_50genes.csv",
+      "truth_file": "tcga_random_panel_35_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "dbe79158-b616-4c7b-94d7-5f127b3013ff",
+        "afdc80d5-1388-4a92-9807-5575a0209e91",
+        "f9cd1c16-3be3-415c-8d7b-9249c3b1c7fa",
+        "1c74a1ed-8000-4dc0-970f-03831ca5e167",
+        "efdfc201-4aa3-49cb-ae6b-e5746bb7244e",
+        "e2445ad6-2a6a-4ec3-84d8-93cc3c180a58",
+        "f1c96d98-c614-4a8e-8035-bb3bd0f665f6",
+        "d9b6b523-00de-4638-a3f3-8de841fb7183"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_36_50genes.csv",
+      "truth_file": "tcga_random_panel_36_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "641c4e5d-4880-4f5e-9d1e-702cab91a6b4",
+        "cd002ab8-a52b-4d20-9089-11b3e1dbaeb7",
+        "1c6cb4d2-e5af-42ce-a2cc-9b2610cccd6e",
+        "50e8fce6-5775-41d6-bcaa-73773db999e2",
+        "12e9affd-cc06-49d9-b485-47e7034be973",
+        "b81a66ea-a3c8-44da-8a34-0f61805ae6d9",
+        "515f8866-8744-44d8-9e4b-0e734d0c201b",
+        "4c2a67aa-54ef-405d-a498-45c1790380da"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_37_50genes.csv",
+      "truth_file": "tcga_random_panel_37_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "515aa64c-316b-497e-b877-7ab0c89a58bd",
+        "ca34be5f-799c-4df4-af91-ec8a9e958d6c",
+        "780617e8-6a28-4774-b1e6-3135e1932327",
+        "14e565dd-f3cd-4d99-9d11-d7b9b5165ea1",
+        "508c6166-6095-4133-a42a-79d75b0c0e31",
+        "e63161c7-b824-4056-8eae-682861e88edb",
+        "f1acda6d-314c-446b-bac1-d59491b04f5e",
+        "6a2325f0-0fe8-4fab-8af3-ab89e8aa47f0"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_38_50genes.csv",
+      "truth_file": "tcga_random_panel_38_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "6d0c282d-43d7-44fb-94e6-25771385e326",
+        "71ea0cc0-d979-4efd-a670-1e8e8a329aca",
+        "c73b76ac-c4fd-4896-b4cf-f73074040a34",
+        "736fca14-66fb-481a-985e-7253f75243a8",
+        "573241d2-e298-426a-84a0-2c3889bae923",
+        "bae501f3-c0ba-4646-8027-0623869176f4",
+        "895b7107-2c08-4106-b119-6fbb597392da",
+        "ca8dc4e0-e8d2-4574-b3a0-74b058bd2b96"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_39_50genes.csv",
+      "truth_file": "tcga_random_panel_39_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "0019c951-16c5-48d0-85c8-58d96b12d330",
+        "254bed99-398d-4c34-a804-67516d257e70",
+        "e3339500-9481-4a24-a3b8-65b86dabc920",
+        "c69d9c36-61e3-4985-b17b-b64bd7ed3821",
+        "6590155e-5fe1-460a-8ed3-a4d8516d55b2",
+        "852435f1-d6c4-4efa-8c27-ab27245640df",
+        "976e2956-36c4-4451-94bc-19a9e7bb861c",
+        "409aef9c-9085-4e66-a304-fc2aaabaf0d7"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_40_50genes.csv",
+      "truth_file": "tcga_random_panel_40_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "6508912f-5f91-43e6-8e63-9233bf3e81eb",
+        "bc6dcc74-df71-4444-bdc8-6d561ed42f64",
+        "8ffd5617-149a-479e-a7d3-81c49c067fee",
+        "45fe5e83-1e4a-4e0a-ac03-62ef32a90e77",
+        "befa225f-9fe9-412f-a503-449874cf52d8",
+        "452e9e11-5545-4e7a-abfb-2486e70206bd",
+        "3eadce70-ba3d-4806-b112-6ac83bc89dc4",
+        "f44064f2-9839-4e4f-9510-8a5dd0ee1e56"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_41_50genes.csv",
+      "truth_file": "tcga_random_panel_41_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "4b96ee43-874c-4fa6-b5ce-08caf37ef2e1",
+        "0d140db1-dc0d-431d-b389-846d05bbb827",
+        "b0fc63c9-c4aa-4206-8636-47245f510cff",
+        "96ae86b9-6d2a-4b13-9765-a0a5b71519c4",
+        "89d32b82-e00c-41f6-a8d3-3b9565be312c",
+        "cac6d56b-22df-46a8-b98f-f59fa9257f5e",
+        "6e46c824-acbb-4ef1-9b07-f952f89526dc",
+        "1aa289bb-8ac9-4e9e-be61-3164afbe06a2"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_42_50genes.csv",
+      "truth_file": "tcga_random_panel_42_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "19318058-604e-4c3b-a037-eab07708ff82",
+        "ba3ab6f6-109b-485c-b600-d6cf3edb4b28",
+        "192d2e5c-31a1-45aa-8bb5-b33e4f873077",
+        "77a13fe7-8524-41b6-b1b0-8f06d80f5cc4",
+        "d9126541-4eb3-48fc-88ed-2e0ecea0d9d4",
+        "d880fcce-ad8a-4402-911c-11129d2225df",
+        "4bf6ebc1-575d-49e4-9f66-068b537373c0",
+        "28aa7b6c-d5ec-4aa1-9c39-70d571efe6fb"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_43_50genes.csv",
+      "truth_file": "tcga_random_panel_43_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "be10214b-9a03-4556-b28b-5775028c782b",
+        "511ca25f-0b7f-4912-9b79-ed551721a420",
+        "e17426a8-cf69-4ed4-b54e-cc33cbadf095",
+        "bd820f5e-c8fd-4af5-b81c-2c51715cd759",
+        "0b829610-f28e-418e-b79d-d3351e13e1fe",
+        "d4330cf6-e37d-4761-89d0-0fd985615aae",
+        "255d2ed8-2b59-486a-bfe2-0ba938b9aeb6",
+        "cc13dbbd-b93d-4350-9bfe-b22bbce316fe"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_44_50genes.csv",
+      "truth_file": "tcga_random_panel_44_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "4297f902-2495-48fb-af36-31e61f727215",
+        "b9a7cd9a-ff3d-4862-a03b-71f60e42ddea",
+        "519039a7-141e-4367-a6eb-e9307136daf3",
+        "5cdfbd13-9630-48a5-9f3e-6b17658e877a",
+        "eec07dba-842e-4f12-b78b-b94b5718964a",
+        "ad18b7e0-57ec-41c5-99a1-0c9d8740e0f1",
+        "932ccb56-ad41-40a0-9ab3-21f490c60af5",
+        "85feefbe-6aad-430b-a882-c71e4a5d1e07"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_45_50genes.csv",
+      "truth_file": "tcga_random_panel_45_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "9845de96-d57a-4613-89db-6a6c4e2eca4b",
+        "e0999ea7-e0c9-487f-b8a7-3eda87ab8601",
+        "294e1d82-6193-4b6a-bf9c-7e5c874de5b4",
+        "e3339500-9481-4a24-a3b8-65b86dabc920",
+        "3361d7bc-344b-44b2-97bd-ac0dc79b221f",
+        "4297f902-2495-48fb-af36-31e61f727215",
+        "52151eca-7819-496e-bf31-4875b68d429d",
+        "2348b25a-1aaa-4554-b181-a431fcb7f5a0"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_46_50genes.csv",
+      "truth_file": "tcga_random_panel_46_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "396123b0-8914-42db-a9f3-4fdf987c5faf",
+        "4c5d65b1-0e25-4c82-9008-6ff9edabdc7b",
+        "d80334e2-0ee0-432a-aa78-3d6ca1f017e5",
+        "b7006975-82c2-4fcc-855d-5ef024ef3d4f",
+        "00fb6c2d-3abc-4d05-8506-e2d951543346",
+        "eeb25b36-1272-4092-848e-9807eaed9d4e",
+        "231aa983-3ef3-476b-bdb3-bab9d66f71e6",
+        "8a64b8f7-68e8-49bf-9579-f15fe28b75dc"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_47_50genes.csv",
+      "truth_file": "tcga_random_panel_47_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "bae11f13-84a4-4fe3-b9e4-9d48b74896af",
+        "d3986831-ba2a-4a25-8eb0-b074cbd7edac",
+        "b36ebb94-8ea7-4ce6-8d16-83af643fb2bf",
+        "0869efb9-b167-45af-8b2c-67433e39baad",
+        "895b7107-2c08-4106-b119-6fbb597392da",
+        "b00650c2-a3dc-49ac-9d84-785186aa8c4d",
+        "ba209e1e-87f1-47a9-a858-d60953ef4528",
+        "1f5bbb4e-9b0e-4953-a360-83fd7b6a2267"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_48_50genes.csv",
+      "truth_file": "tcga_random_panel_48_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "fb32f0b1-4fb7-43d5-8091-dc13a1f6d9e8",
+        "10d1a1f0-c89b-4b1e-93fa-7c6fd7f5bb8f",
+        "ac8b8255-d058-4a35-9aa3-7b541e6ece12",
+        "c68fded5-978b-4d7a-9077-89c2c6b35f47",
+        "254bed99-398d-4c34-a804-67516d257e70",
+        "6d4fc521-df92-4d04-8118-d363ac31bfa8",
+        "a95414b1-7b8a-41b0-bf44-0a283ffb57a7",
+        "ff5f8ada-17c5-497e-9182-63a05e3ab4c5"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_49_50genes.csv",
+      "truth_file": "tcga_random_panel_49_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "812eeeed-1222-4add-b6d1-f53ae2669218",
+        "731d5053-54b5-4ee5-8697-de22da1798ff",
+        "3b684369-ea5c-43e4-8a58-0d550b2ca1e5",
+        "2081a155-9d2d-41f6-b243-68a12e9b342a",
+        "f377c267-d5eb-4542-bd0d-e87f957f3154",
+        "87af5cf5-08e6-443b-a23b-6221f7433a65",
+        "92431faf-af89-4f25-be07-61ac770b9633",
+        "80902247-a485-4374-836b-4b67db4c4981"
+      ]
+    },
+    {
+      "file": "tcga_random_panel_50_50genes.csv",
+      "truth_file": "tcga_random_panel_50_truth.csv",
+      "genes": 50,
+      "samples": 8,
+      "masked_cells": 60,
+      "mask_fraction": 0.15,
+      "input_scale": "raw TPM",
+      "source_sample_ids": [
+        "4bd86df0-6768-4741-8d01-51fe34dd57fd",
+        "7acdca8d-6231-4077-b7ac-eec857c43092",
+        "41f4ae8d-e832-46e4-aa65-87ba050d39d3",
+        "2716fe1d-01ab-43b1-9f3b-cbc1ce9c7cbc",
+        "45bf52c6-b1a3-4f01-8345-a224fc195e18",
+        "3e2569b7-b145-4bda-9bdf-24105aefe42c",
+        "df452e00-a7e9-4045-83fb-623885a542d4",
+        "7d1231c0-6ff0-4ef0-98a3-3b77ed9298bc"
+      ]
+    }
+  ],
+  "scientific_scope": "Parser/API smoke tests. Fifty-gene panels expose less than 1% of each decoder vocabulary and are outside the 15% masking training regime."
+}

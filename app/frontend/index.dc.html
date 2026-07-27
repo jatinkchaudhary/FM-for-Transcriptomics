@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{font-family:'IBM Plex Sans',system-ui,sans-serif;color:var(--text,#14181d);background:var(--bg,#fbfbfa);-webkit-font-smoothing:antialiased;overflow:hidden}
+  a{color:var(--accent,#0f6f7a);text-decoration:none}
+  a:hover{text-decoration:underline}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:#c9d0d7;border-radius:6px;border:2px solid transparent;background-clip:content-box}
+  ::-webkit-scrollbar-track{background:transparent}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+  input[type=range]{accent-color:#0f6f7a}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media(max-width:760px){
+    body{overflow:auto}
+    .app-shell{display:block!important;height:auto!important;min-height:100vh}
+    .side-rail{width:100%!important;height:auto!important}
+    .side-rail>div:nth-child(2){display:grid!important;grid-template-columns:1fr 1fr;gap:14px!important;overflow:visible!important}
+    .main-shell{height:780px!important;min-height:780px}
+    .top-nav{overflow-x:auto;padding:0 8px!important}
+    .top-nav nav{min-width:max-content}
+    .main-content{min-height:720px}
+    .results-shell{grid-template-columns:1fr!important}
+    .results-nav{display:flex!important;gap:4px;overflow-x:auto!important;border-right:none!important;border-bottom:1px solid #e3e6ea}
+    .results-nav>div{display:none}
+    .results-nav>button{min-width:176px!important}
+    .results-body{min-height:620px}
+  }
+</style>
+</helmet>
+<template id="__bundler_thumbnail" data-bg-color="#0f6f7a">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0f6f7a"/>
+    <g transform="translate(360,220)">
+      <rect x="0" y="0" width="480" height="360" rx="16" fill="#0b565f"/>
+      <g>
+        <rect x="24" y="24" width="432" height="312" fill="url(#g)"/>
+        <rect x="140" y="120" width="60" height="40" fill="none" stroke="#e0a455" stroke-width="8"/>
+      </g>
+      <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#440154"/><stop offset=".5" stop-color="#22a884"/><stop offset="1" stop-color="#fde725"/></linearGradient></defs>
+    </g>
+    <text x="600" y="640" text-anchor="middle" font-family="monospace" font-size="34" fill="#ffffff" letter-spacing="2">ARCHS4 IMPUTATION STUDIO</text>
+  </svg>
+</template>
+<div class="app-shell" style="display:flex;height:100vh;width:100vw;background:{{ bg }};color:{{ text }}">
+
+  <!-- ================= LEFT RAIL ================= -->
+  <aside class="side-rail" style="width:262px;flex:none;background:{{ panel }};border-right:1px solid {{ border }};display:flex;flex-direction:column;height:100%">
+    <div style="padding:16px 16px 14px;border-bottom:1px solid {{ border }}">
+      <div style="display:flex;align-items:center;gap:9px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="{{ accent }}" stroke-width="1.7"/><path d="M2 9h20M2 15h20M9 2v20M15 2v20" stroke="{{ accent }}" stroke-width="1.1" opacity=".55"/><rect x="9" y="9" width="6" height="6" fill="{{ accent }}"/></svg>
+        <div>
+          <div style="font-size:13px;font-weight:700;letter-spacing:-.01em;line-height:1.22">ARCHS4 Imputation Studio</div>
+          <div class="mono" style="font-size:9.5px;color:{{ faint }};letter-spacing:.06em;margin-top:4px">v2 · Txn_Jatin · dim 512</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:18px">
+      <!-- data -->
+      <div>
+        <div class="mono" style="font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:{{ faint }};margin-bottom:8px">Data</div>
+        <label style="display:block;border:1px dashed {{ border2 }};border-radius:7px;padding:12px;text-align:center;cursor:pointer;font-size:11.5px;color:{{ muted }};background:{{ bg }}" onDrop="{{ onDrop }}" onDragOver="{{ onDragOver }}">
+          <input type="file" accept=".csv,.tsv,.txt" style="display:none" onChange="{{ onFile }}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="margin-bottom:4px"><path d="M12 15V4m0 0L8 8m4-4l4 4M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2" stroke="{{ muted }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><span style="color:{{ accent }};font-weight:600">Upload</span> or drop matrix</div>
+          <div class="mono" style="font-size:9px;color:{{ faint }};margin-top:3px">CSV · TSV · TXT · either orientation</div>
+        </label>
+        <button style="width:100%;margin-top:8px;padding:8px;border:1px solid {{ border2 }};background:{{ bg }};border-radius:6px;font-size:11.5px;font-weight:500;color:{{ text }};cursor:pointer;font-family:inherit" onClick="{{ loadSample }}">Load ARCHS4-style sample</button>
+        <button style="width:100%;margin-top:6px;padding:8px;border:1px solid {{ border2 }};background:{{ bg }};border-radius:6px;font-size:11.5px;font-weight:500;color:{{ text }};cursor:pointer;font-family:inherit" onClick="{{ loadRandomPanel }}">Load random 50-gene TCGA test</button>
+        <div class="mono" style="font-size:10px;color:{{ muted }};margin-top:9px;line-height:1.5">{{ dataLabel }}</div>
+      </div>
+
+      <!-- model -->
+      <div>
+        <div class="mono" style="font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:{{ faint }};margin-bottom:8px">Model</div>
+        <select style="width:100%;padding:8px 9px;border:1px solid {{ border2 }};background:{{ panel }};border-radius:6px;font-size:12px;color:{{ text }};font-family:inherit;cursor:pointer" value="{{ model }}" onChange="{{ onModel }}">
+          <sc-for list="{{ models }}" as="m" hint-placeholder-count="4">
+            <option value="{{ m.id }}">{{ m.label }}</option>
+          </sc-for>
+        </select>
+        <div class="mono" style="font-size:9.5px;color:{{ faint }};margin-top:6px;line-height:1.5">{{ modelNote }}</div>
+      </div>
+
+      <!-- normalization -->
+      <div>
+        <div class="mono" style="font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:{{ faint }};margin-bottom:8px">Normalization</div>
+        <div style="display:flex;gap:4px;background:{{ bg }};border:1px solid {{ border }};border-radius:7px;padding:3px">
+          <sc-for list="{{ norms }}" as="nrm" hint-placeholder-count="3">
+            <button style="{{ nrm.style }}" onClick="{{ nrm.set }}">{{ nrm.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- clamp -->
+      <div>
+        <div class="mono" style="font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:{{ faint }};margin-bottom:8px;display:flex;justify-content:space-between"><span>Color clamp (pctile)</span><span style="color:{{ muted }}">{{ clampLabel }}</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <input type="range" min="0" max="20" step="1" value="{{ clampLo }}" style="flex:1" onInput="{{ onClampLo }}">
+          <input type="range" min="80" max="100" step="1" value="{{ clampHi }}" style="flex:1" onInput="{{ onClampHi }}">
+        </div>
+        <div style="height:12px;border-radius:3px;margin-top:8px;background:{{ colormapCss }}"></div>
+      </div>
+
+      <!-- search -->
+      <div>
+        <div class="mono" style="font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:{{ faint }};margin-bottom:8px">Find gene / sample</div>
+        <input type="text" placeholder="TP53, EGFR, GSM…" value="{{ search }}" onInput="{{ onSearch }}" style="width:100%;padding:7px 9px;border:1px solid {{ border2 }};background:{{ panel }};border-radius:6px;font-size:11.5px;color:{{ text }};font-family:inherit" class="mono">
+      </div>
+    </div>
+
+    <div style="padding:14px 16px;border-top:1px solid {{ border }}">
+      <button style="width:100%;padding:11px;background:{{ runBg }};color:#fff;border:none;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px" onClick="{{ runImpute }}" disabled="{{ running }}">
+        <sc-if value="{{ running }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="animation:spin .8s linear infinite"><circle cx="12" cy="12" r="9" stroke="#ffffff55" stroke-width="3"/><path d="M12 3a9 9 0 019 9" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg></sc-if>
+        {{ runLabel }}
+      </button>
+      <div style="height:4px;background:{{ border }};border-radius:3px;margin-top:9px;overflow:hidden"><div style="height:100%;width:{{ progressPct }};background:{{ accent }};transition:width .15s"></div></div>
+      <div class="mono" style="font-size:9.5px;color:{{ faint }};margin-top:6px;text-align:center">{{ jobStatus }}</div>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <main class="main-shell" style="flex:1;display:flex;flex-direction:column;height:100%;min-width:0">
+    <!-- header / tabs -->
+    <header class="top-nav" style="flex:none;background:{{ panel }};border-bottom:1px solid {{ border }};display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:50px">
+      <nav style="display:flex;gap:2px;height:100%">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <button style="{{ t.style }}" onClick="{{ t.set }}">{{ t.label }}</button>
+        </sc-for>
+      </nav>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="{{ apiChipStyle }}" class="mono">{{ apiChip }}</div>
+        <button title="Toggle theme" style="width:32px;height:32px;border:1px solid {{ border2 }};background:{{ bg }};border-radius:6px;cursor:pointer;color:{{ muted }};display:flex;align-items:center;justify-content:center" onClick="{{ toggleTheme }}">
+          <span style="font-size:14px">{{ themeIcon }}</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- content -->
+    <div class="main-content" style="flex:1;overflow:auto;min-height:0">{{ tabContent }}</div>
+  </main>
+
+  <!-- tooltip -->
+  <sc-if value="{{ tip.on }}" hint-placeholder-val="{{ false }}">
+    <div class="mono" style="position:fixed;left:{{ tip.x }};top:{{ tip.y }};transform:translate(12px,12px);background:#14181d;color:#fff;border-radius:6px;padding:8px 10px;font-size:11px;line-height:1.5;pointer-events:none;z-index:50;box-shadow:0 6px 20px #0004;max-width:230px">
+      <div style="font-weight:600;color:#fff">{{ tip.gene }} · {{ tip.sample }}</div>
+      <div style="color:#9ec6c9">value {{ tip.val }} · {{ tip.kind }}</div>
+      <div style="color:{{ tip.confColor }}">{{ tip.conf }}</div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;downstreamView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Table&quot;,&quot;Bar charts&quot;,&quot;Knowledge graph&quot;],&quot;default&quot;:&quot;Knowledge graph&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Downstream visualization&quot;,&quot;label&quot;:&quot;Result view&quot;},&quot;enrichMetric&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;q-value (−log10)&quot;,&quot;Fold enrichment&quot;],&quot;default&quot;:&quot;Fold enrichment&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Downstream visualization&quot;,&quot;label&quot;:&quot;Enrichment bar metric&quot;},&quot;graphEdgeThreshold&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.5,&quot;max&quot;:0.98,&quot;step&quot;:0.02,&quot;default&quot;:0.8,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Downstream visualization&quot;,&quot;label&quot;:&quot;Similarity edge cutoff (|cosine|)&quot;},&quot;highlightSignificant&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Downstream visualization&quot;,&quot;label&quot;:&quot;Emphasize significant (q&lt;FDR)&quot;}}">
+const VIRIDIS=[[68,1,84],[65,68,135],[42,120,142],[34,168,132],[122,209,81],[253,231,37]];
+const MAKO=[[11,4,5],[59,48,89],[57,93,156],[52,151,169],[95,201,191],[222,245,229]];
+function lerp(a,b,t){return a+(b-a)*t;}
+function ramp(stops,t){t=Math.max(0,Math.min(1,t));const x=t*(stops.length-1);const i=Math.floor(x);const f=x-i;const a=stops[i],b=stops[Math.min(i+1,stops.length-1)];return[Math.round(lerp(a[0],b[0],f)),Math.round(lerp(a[1],b[1],f)),Math.round(lerp(a[2],b[2],f))];}
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function lgamma(x){const g=7,c=[0.99999999999980993,676.5203681218851,-1259.1392167224028,771.32342877765313,-176.61502916214059,12.507343278686905,-0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];if(x<0.5)return Math.log(Math.PI/Math.sin(Math.PI*x))-lgamma(1-x);x-=1;let a=c[0];const t=x+g+0.5;for(let i=1;i<g+2;i++)a+=c[i]/(x+i);return 0.5*Math.log(2*Math.PI)+(x+0.5)*Math.log(t)-t+Math.log(a);}
+function lchoose(n,k){if(k<0||k>n)return -Infinity;return lgamma(n+1)-lgamma(k+1)-lgamma(n-k+1);}
+// hypergeometric upper tail P(X>=k) : draw n from N with K successes
+function hyperUpper(k,N,K,n){let p=0;const kmax=Math.min(K,n);for(let i=k;i<=kmax;i++){p+=Math.exp(lchoose(K,i)+lchoose(N-K,n-i)-lchoose(N,n));}return Math.min(1,Math.max(0,p));}
+function bh(pvals){const idx=pvals.map((p,i)=>[p,i]).sort((a,b)=>a[0]-b[0]);const m=pvals.length;const q=new Array(m);let prev=1;for(let r=m-1;r>=0;r--){const [p,i]=idx[r];const val=Math.min(prev,p*m/(r+1));q[i]=val;prev=val;}return q;}
+function fmtE(x){if(x===0)return "0";if(x>=0.001&&x<1000)return x.toPrecision(3);return x.toExponential(2).replace('e','e');}
+function cosine(a,b){let d=0,na=0,nb=0;for(let i=0;i<a.length;i++){d+=a[i]*b[i];na+=a[i]*a[i];nb+=b[i]*b[i];}return na&&nb?d/(Math.sqrt(na)*Math.sqrt(nb)):0;}
+function auroc(scores,labels){const pos=[],neg=[];for(let i=0;i<scores.length;i++){(labels[i]?pos:neg).push(scores[i]);}if(!pos.length||!neg.length)return 0.5;let c=0;for(const p of pos)for(const n of neg){if(p>n)c++;else if(p===n)c+=0.5;}return c/(pos.length*neg.length);}
+
+const MODULES={
+  cell_cycle:['CCNB1','CCNA2','CDK1','CDC20','CCNE1','CDK2','CDK4','CDK6','CCND1','MCM2','MCM3','MCM4','MCM5','MCM6','MCM7','PCNA','CDC6','CDT1','ORC1','AURKA','AURKB','BUB1','BUB1B','PLK1','TTK','KIF11','CENPA','CENPE','MKI67','TOP2A','E2F1','RB1'],
+  p53:['TP53','MDM2','CDKN1A','BAX','BBC3','GADD45A','SESN1','SESN2','RRM2B','ZMAT3','CDKN2A','FAS'],
+  immune:['CD3D','CD8A','CD4','IL2','IFNG','GZMB','PRF1','CXCL9','CXCL10','STAT1','IRF1','HLA-A','HLA-B','CD74','B2M','TAP1','PSMB9','CCL5','GBP1','GBP2','CD274','LAG3'],
+  pi3k_akt:['PIK3CA','AKT1','AKT2','MTOR','PTEN','PDPK1','GSK3B','FOXO1','RPS6KB1','EIF4EBP1','PIK3R1','TSC2'],
+  apoptosis:['CASP3','CASP8','CASP9','BCL2','BCL2L1','BID','BAK1','APAF1','XIAP','CFLAR','CASP7','DIABLO'],
+  oxphos:['NDUFA1','NDUFB1','SDHA','SDHB','UQCRC1','COX5A','ATP5F1A','MT-CO1','MT-ND1','CYC1','NDUFS1','COX4I1','ATP5F1B','SDHC'],
+  emt:['VIM','CDH2','SNAI1','SNAI2','ZEB1','ZEB2','TWIST1','FN1','MMP2','MMP9','CDH1','TGFB1'],
+};
+const EXTRA=['EGFR','KRAS','BRAF','MYC','VEGFA','PTGS2','ERBB2','MET','ALK','NRAS','PIK3CB','FGFR1','FGFR2','IGF1R','KIT','PDGFRA','JAK2','SRC','ABL1','MAPK1','MAPK3','MAP2K1','RAF1','HRAS','SMAD4','APC','CTNNB1','NOTCH1','JAG1','HES1','WNT5A','LEF1','SOX2','POU5F1','NANOG','KLF4','GATA3','FOXA1','ESR1','AR','PGR','KRT8','KRT18','KRT19','EPCAM','MUC1','CEACAM5','ALB','TTR','APOA1','SERPINA1','HP','CRP','SAA1','FGA','FGB','FGG','GAPDH','ACTB','TUBB','TUBA1B','RPL13A','RPLP0','HPRT1','TBP','PPIA','YWHAZ','SDHA','UBC','GUSB','PGK1','ENO1','LDHA','PKM','HK2','SLC2A1','G6PD','IDH1','FASN','ACACA','SCD','SREBF1','PPARG','CEBPA','LEP','ADIPOQ','INS','GCG','SST','PDX1','NKX6-1','FOXO3','SIRT1','NFKB1','RELA','TNF','IL6','IL1B','IL10','TGFBR2','CCL2','CXCL8','CXCR4','SELE','VCAM1','ICAM1','NOS2','ARG1','MRC1','CD68','ITGAM','PTPRC','CD19','MS4A1','CD79A','IGHM','FOXP3','CTLA4','PDCD1','TIGIT','HAVCR2','ENTPD1'];
+
+class Component extends DCLogic{
+  state={tab:'input',model:'Txn_Jatin',norm:'raw',clampLo:1,clampHi:99,search:'',theme:'light',
+    running:false,progress:0,jobStatus:'Load a matrix to begin',hasImputed:false,
+    pinned:null,selection:new Set(),tip:{on:false},downTask:'GO-BP',fdr:0.05,minSize:5,
+    dataLabel:'No matrix loaded',viewRows:null,rowStart:0,cmpSync:0,apiStatus:'idle',
+    modelsMeta:null,registry:null,resultExperiment:'github_protocol'};
+  genes=[];samples=[];sampleClass=[];geneModule={};vals=[];miss=[];missCount=0;
+
+  componentDidMount(){
+    const q=new URLSearchParams(location.search);
+    this.apiUrl=q.has('api')?(q.get('api')||null):(location.protocol==='http:'||location.protocol==='https:'?location.origin:null);
+    this.loadSample();
+    if(this.apiUrl)this.loadRemoteMetadata();
+    window.addEventListener('resize',this._rz=()=>this.draw());
+    [60,200,500,900].forEach(t=>setTimeout(()=>this.draw(),t));
+  }
+  componentDidUpdate(pp,ps){
+    if(!ps)return;
+    if(ps.tab!==this.state.tab||ps.norm!==this.state.norm||ps.clampLo!==this.state.clampLo||ps.clampHi!==this.state.clampHi||ps.hasImputed!==this.state.hasImputed||ps.theme!==this.state.theme||ps.rowStart!==this.state.rowStart||ps.viewRows!==this.state.viewRows||ps.selection!==this.state.selection){this.draw();}
+  }
+
+  async loadRemoteMetadata(){
+    this.setState({apiStatus:'connecting'});
+    try{
+      const base=this.apiUrl.replace(/\/$/,'');
+      const [healthResponse,modelsResponse,experimentsResponse]=await Promise.all([
+        fetch(base+'/api/health'),fetch(base+'/api/models'),fetch(base+'/api/experiments')
+      ]);
+      if(!healthResponse.ok||!modelsResponse.ok||!experimentsResponse.ok)throw new Error('metadata endpoint unavailable');
+      const health=await healthResponse.json(),models=await modelsResponse.json(),registry=await experimentsResponse.json();
+      this.remoteHealth=health;
+      this.setState({apiStatus:'live',modelsMeta:models.models,registry});
+    }catch(error){
+      this.setState({apiStatus:'offline',jobStatus:'Remote API unavailable: '+error.message});
+    }
+  }
+
+  currentModelMeta(){
+    const rows=this.state.modelsMeta||[];
+    return rows.find(row=>row.id===this.state.model)||null;
+  }
+
+  // ---------- data ----------
+  loadSample(){
+    const rnd=mulberry32(42);
+    const modKeys=Object.keys(MODULES);
+    const moduleGenes=[];const geneModule={};
+    modKeys.forEach(k=>MODULES[k].forEach(g=>{if(!geneModule[g]){geneModule[g]=k;moduleGenes.push(g);}}));
+    const bg=[];EXTRA.forEach(g=>{if(!geneModule[g]){geneModule[g]='bg';bg.push(g);}});
+    const genes=moduleGenes.concat(bg).slice(0,240);
+    const classes=[['Tumor',13],['Adjacent-normal',12],['Cell-line',11],['Spaceflight',10]];
+    const samples=[];const sampleClass=[];let gsm=4820100;
+    classes.forEach(([cn,n])=>{for(let i=0;i<n;i++){samples.push('GSM'+(gsm++)+'_'+cn);sampleClass.push(cn);}});
+    // module activity per class
+    const act={
+      'Tumor':{cell_cycle:2.4,p53:0.5,immune:0.7,pi3k_akt:1.9,apoptosis:0.6,oxphos:1.0,emt:1.8},
+      'Adjacent-normal':{cell_cycle:0.6,p53:1.4,immune:1.2,pi3k_akt:0.9,apoptosis:1.3,oxphos:1.3,emt:0.7},
+      'Cell-line':{cell_cycle:2.0,p53:0.7,immune:0.3,pi3k_akt:1.6,apoptosis:0.8,oxphos:1.5,emt:1.2},
+      'Spaceflight':{cell_cycle:0.8,p53:1.1,immune:1.9,pi3k_akt:1.0,apoptosis:1.5,oxphos:0.6,emt:1.0},
+    };
+    const G=genes.length,S=samples.length;
+    const vals=[],miss=[];
+    for(let g=0;g<G;g++){
+      const mod=geneModule[genes[g]];const base=mod==='bg'?(2+rnd()*4):(3+rnd()*3);
+      const row=[],mrow=[];
+      for(let s=0;s<S;s++){
+        const f=mod==='bg'?1:(act[sampleClass[s]][mod]||1);
+        let tpm=base*f*Math.exp((rnd()-0.5)*0.5)*20;
+        row.push(tpm);
+        // dropout biased to low expression + random QC gaps
+        const pDrop=(mod==='bg'?0.14:0.06)+Math.max(0,(30-tpm))/300;
+        mrow.push(rnd()<pDrop?1:0);
+      }
+      vals.push(row);miss.push(mrow);
+    }
+    this.genes=genes;this.samples=samples;this.sampleClass=sampleClass;this.geneModule=geneModule;
+    this.vals=vals;this.miss=miss;this.imp=null;this.conf=null;this.impMask=null;
+    let mc=0,tot=G*S;for(let g=0;g<G;g++)for(let s=0;s<S;s++)if(miss[g][s])mc++;
+    this.missCount=mc;
+    this.setState({dataLabel:'sample_ARCHS4.tsv · '+G+' genes × '+S+' samples · '+(100*mc/tot).toFixed(1)+'% missing',hasImputed:false,jobStatus:'Ready · '+G+'×'+S+' loaded',selection:new Set(),pinned:null,rowStart:0,viewRows:null,progress:0});
+  }
+
+  onFile=e=>{const f=e.target.files[0];if(f)this.readFile(f);};
+  onDragOver=e=>{e.preventDefault();};
+  onDrop=e=>{e.preventDefault();const f=e.dataTransfer.files[0];if(f)this.readFile(f);};
+  readFile(f){const r=new FileReader();r.onload=()=>this.parseMatrix(r.result,f.name);r.readAsText(f);}
+  async loadRandomPanel(){
+    if(!this.apiUrl){this.setState({jobStatus:'Random TCGA tests are available from the connected study server.'});return;}
+    const index=1+Math.floor(Math.random()*50);
+    const name='tcga_random_panel_'+String(index).padStart(2,'0')+'_50genes.csv';
+    try{
+      const response=await fetch(this.apiUrl.replace(/\/$/,'')+'/test-data/random_50_gene_panels/'+name);
+      if(!response.ok)throw new Error('HTTP '+response.status);
+      this.parseMatrix(await response.text(),name);
+    }catch(error){this.setState({jobStatus:'Test-matrix load failed: '+error.message});}
+  }
+
+  parseMatrix(text,name){
+    const MISS=new Set(['','na','nan','null','none','.','-','n/a','nd']);
+    const lines=text.trim().split(/\r?\n/).filter(l=>l.length);
+    const delim=(lines[0].match(/\t/g)||[]).length>=(lines[0].match(/,/g)||[]).length?'\t':',';
+    const grid=lines.map(l=>l.split(delim));
+    const colLabels=grid[0].slice(1);
+    const rowLabels=grid.slice(1).map(r=>r[0]);
+    const HGNC=new Set();Object.values(MODULES).flat().forEach(g=>HGNC.add(g));EXTRA.forEach(g=>HGNC.add(g));
+    const hit=arr=>arr.filter(x=>HGNC.has((x||'').toUpperCase())).length;
+    let genesInRows=hit(rowLabels)>=hit(colLabels);
+    let genes=genesInRows?rowLabels:colLabels;
+    let samples=genesInRows?colLabels:rowLabels;
+    const G=genes.length,S=samples.length;const vals=[],miss=[];
+    for(let g=0;g<G;g++){const row=[],mrow=[];for(let s=0;s<S;s++){const raw=genesInRows?grid[g+1][s+1]:grid[s+1][g+1];const t=(raw==null?'':(''+raw)).trim();if(MISS.has(t.toLowerCase())){row.push(0);mrow.push(1);}else{const v=parseFloat(t);if(isNaN(v)){row.push(0);mrow.push(1);}else{row.push(v);mrow.push(0);}}}vals.push(row);mrow;miss.push(mrow);}
+    this.genes=genes;this.samples=samples;this.sampleClass=samples.map(()=>'—');this.geneModule={};genes.forEach(g=>this.geneModule[g]='bg');
+    this.vals=vals;this.miss=miss;this.imp=null;this.impMask=null;this.conf=null;
+    let mc=0;for(let g=0;g<G;g++)for(let s=0;s<S;s++)if(miss[g][s])mc++;this.missCount=mc;
+    this.setState({dataLabel:name+' · '+G+'×'+S+' · '+(100*mc/(G*S)).toFixed(1)+'% missing · '+(genesInRows?'genes in rows':'genes in columns (transposed)'),hasImputed:false,jobStatus:'Parsed '+G+'×'+S,selection:new Set(),pinned:null,rowStart:0,viewRows:null});
+  }
+
+  // ---------- normalization / display ----------
+  dispVal(g,s){const src=(this.state.hasImputed&&this.state.tab!=='input')?this.imp:this.vals;const isMiss=this.miss[g][s]&&!(this.state.hasImputed);let v=src[g][s];if(this.state.norm==='raw')return v;if(this.state.norm==='log1p')return Math.log1p(v);
+    // z-score per gene
+    const st=this.geneStats(g,src);return st.sd?(Math.log1p(v)-st.mean)/st.sd:0;}
+  geneStats(g,src){const key=g+'|'+this.state.norm+'|'+(src===this.imp?'i':'v');this._gs=this._gs||{};if(this._gs[key])return this._gs[key];const S=this.samples.length;let m=0,c=0;for(let s=0;s<S;s++){if(this.miss[g][s]&&src!==this.imp)continue;m+=Math.log1p(src[g][s]);c++;}m/=(c||1);let v=0;for(let s=0;s<S;s++){if(this.miss[g][s]&&src!==this.imp)continue;v+=(Math.log1p(src[g][s])-m)**2;}v=Math.sqrt(v/(c||1));const r={mean:m,sd:v};this._gs[key]=r;return r;}
+
+  colorDomain(src){const arr=[];const G=this.genes.length,S=this.samples.length;for(let g=0;g<G;g++)for(let s=0;s<S;s++){if(this.miss[g][s]&&src!==this.imp)continue;let v;if(this.state.norm==='raw')v=src[g][s];else if(this.state.norm==='log1p')v=Math.log1p(src[g][s]);else{const st=this.geneStats(g,src);v=st.sd?(Math.log1p(src[g][s])-st.mean)/st.sd:0;}arr.push(v);}arr.sort((a,b)=>a-b);const lo=arr[Math.floor(arr.length*this.state.clampLo/100)]??0;const hi=arr[Math.min(arr.length-1,Math.floor(arr.length*this.state.clampHi/100))]??1;return[lo,hi||1];}
+
+  // ---------- heatmap ----------
+  observe(el){if(!el||el.__obs)return;let raf=0;el.__obs=new ResizeObserver(()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;this.draw();});});el.__obs.observe(el);}
+  setHeat=el=>{this.heat=el;this.observe(el);if(el)requestAnimationFrame(()=>this.draw());};
+  setInp=el=>{this.inpC=el;this.observe(el);if(el)requestAnimationFrame(()=>this.draw());};
+  setImp=el=>{this.impC=el;this.observe(el);if(el)requestAnimationFrame(()=>this.draw());};
+
+  draw(){
+    if(this.state.tab==='input'&&this.heat)this.drawOne(this.heat,false);
+    if(this.state.tab==='impute'&&this.state.hasImputed){if(this.inpC)this.drawOne(this.inpC,false,true);if(this.impC)this.drawOne(this.impC,true);}
+  }
+  visRows(){const G=this.genes.length;const vr=this.state.viewRows||G;const start=Math.max(0,Math.min(this.state.rowStart,G-vr));return[start,Math.min(G,start+vr)];}
+  drawOne(cv,useImp,inputPane){
+    const dpr=window.devicePixelRatio||1;const rect=cv.getBoundingClientRect();if(!rect.width)return;
+    cv.width=rect.width*dpr;cv.height=rect.height*dpr;const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+    const W=rect.width,H=rect.height;ctx.clearRect(0,0,W,H);
+    const S=this.samples.length;const[r0,r1]=this.visRows();const nR=r1-r0;
+    const src=useImp?this.imp:this.vals;const stops=this.state.theme==='dark'?MAKO:VIRIDIS;
+    const[lo,hi]=this.colorDomain(src);this._dom=[lo,hi];
+    const cw=W/S,ch=H/nR;this._geom={cw,ch,r0,S,W,H};
+    for(let gi=r0;gi<r1;gi++){const y=(gi-r0)*ch;for(let s=0;s<S;s++){const x=s*cw;
+      const showMissing=this.miss[gi][s]&&!useImp&&(!inputPane||true);
+      if(this.miss[gi][s]&&!useImp){
+        // hatched missing
+        ctx.fillStyle=this.state.theme==='dark'?'#20262d':'#e9edf0';ctx.fillRect(x,y,cw+0.5,ch+0.5);
+        if(cw>3&&ch>3){ctx.strokeStyle=this.state.theme==='dark'?'#3a434d':'#c2ccd4';ctx.lineWidth=0.7;ctx.beginPath();for(let k=-ch;k<cw;k+=4){ctx.moveTo(x+k,y+ch);ctx.lineTo(x+k+ch,y);}ctx.stroke();}
+        continue;
+      }
+      let v;if(this.state.norm==='raw')v=src[gi][s];else if(this.state.norm==='log1p')v=Math.log1p(src[gi][s]);else{const st=this.geneStats(gi,src);v=st.sd?(Math.log1p(src[gi][s])-st.mean)/st.sd:0;}
+      const t=(v-lo)/((hi-lo)||1);const c=ramp(stops,t);ctx.fillStyle='rgb('+c[0]+','+c[1]+','+c[2]+')';ctx.fillRect(x,y,cw+0.5,ch+0.5);
+      if(useImp&&this.impMask&&this.impMask[gi][s]){ctx.strokeStyle='#e0a455';ctx.lineWidth=Math.min(2,Math.max(1,cw*0.12));ctx.strokeRect(x+0.8,y+0.8,cw-1.6,ch-1.6);if(cw>=9&&ch>=9){ctx.fillStyle='#1b1206';ctx.beginPath();const cx=x+cw/2,cy=y+ch/2,r=Math.min(cw,ch)*0.22;ctx.moveTo(cx,cy-r);ctx.lineTo(cx+r,cy);ctx.lineTo(cx,cy+r);ctx.lineTo(cx-r,cy);ctx.closePath();ctx.fillStyle='#c2740a';ctx.fill();}}
+    }}
+    // selection highlight
+    if(this.state.selection.size&&!inputPane){ctx.strokeStyle=this.state.theme==='dark'?'#39a9ae':'#0f6f7a';ctx.lineWidth=1.5;this.state.selection.forEach(gi=>{if(gi>=r0&&gi<r1){ctx.strokeRect(0.5,(gi-r0)*ch+0.5,W-1,ch-1);}});}
+    // search highlight
+    const q=this.state.search.trim().toUpperCase();if(q){for(let gi=r0;gi<r1;gi++){if(this.genes[gi].toUpperCase().includes(q)){ctx.strokeStyle='#fff';ctx.lineWidth=1.4;ctx.strokeRect(0.5,(gi-r0)*ch+0.5,W-1,ch-1);ctx.strokeStyle='#c2740a';ctx.lineWidth=1;ctx.strokeRect(1.2,(gi-r0)*ch+1.2,W-2.4,ch-2.4);}}for(let s=0;s<S;s++){if(this.samples[s].toUpperCase().includes(q)){ctx.strokeStyle='#c2740a';ctx.lineWidth=1.4;ctx.strokeRect(s*cw+0.5,0.5,cw-1,H-1);}}}
+  }
+
+  hitCell(cv,e){const rect=cv.getBoundingClientRect();const{cw,ch,r0,S}=this._geom||{};if(!cw)return null;const x=e.clientX-rect.left,y=e.clientY-rect.top;const s=Math.floor(x/cw),gi=r0+Math.floor(y/ch);if(s<0||s>=S||gi<0||gi>=this.genes.length)return null;return{gi,s};}
+  onHeatMove=e=>{const cv=e.currentTarget;const h=this.hitCell(cv,e);if(!h){if(this.state.tip.on)this.setState({tip:{on:false}});return;}
+    const{gi,s}=h;const raw=this.vals[gi][s];const isMiss=this.miss[gi][s];const imputed=this.state.hasImputed&&isMiss;
+    const val=imputed?this.imp[gi][s].toFixed(2):(isMiss?'—':raw.toFixed(2));
+    const kind=imputed?'imputed':(isMiss?'missing':'observed');
+    const conf=imputed?('confidence '+this.conf[gi][s].toFixed(2)):'';
+    this.setState({tip:{on:true,x:e.clientX+'px',y:e.clientY+'px',gene:this.genes[gi],sample:this.samples[s],val,kind,conf,confColor:'#e0a455'}});};
+  onHeatLeave=()=>this.setState({tip:{on:false}});
+  onHeatDown=e=>{const cv=e.currentTarget;const h=this.hitCell(cv,e);if(!h)return;this._brush={g0:h.gi,s0:h.s,cv};};
+  onHeatUp=e=>{if(!this._brush)return;const cv=this._brush.cv;const h=this.hitCell(cv,e);const b=this._brush;this._brush=null;if(!h)return;
+    if(h.gi===b.g0&&h.s===b.s){this.pin(b.g0);return;}
+    const lo=Math.min(b.g0,h.gi),hi=Math.max(b.g0,h.gi);const sel=new Set();for(let g=lo;g<=hi;g++)sel.add(g);this.setState({selection:sel});};
+  onHeatWheel=e=>{e.preventDefault();const G=this.genes.length;const cur=this.state.viewRows||G;if(e.ctrlKey||Math.abs(e.deltaY)>0){const factor=e.deltaY>0?1.15:0.87;let vr=Math.round(cur*factor);vr=Math.max(12,Math.min(G,vr));this.setState({viewRows:vr===G?null:vr});}};
+  pin(gi){const S=this.samples.length;const src=this.state.hasImputed?this.imp:this.vals;const profile=[];for(let s=0;s<S;s++)profile.push(src[gi][s]);
+    // nearest neighbours by correlation
+    const pv=this.genes.map((_,g)=>{const a=[],b=[];for(let s=0;s<S;s++){a.push(Math.log1p(src[gi][s]));b.push(Math.log1p(src[g][s]));}return[g,cosine(a,b)];}).filter(x=>x[0]!==gi).sort((a,b)=>b[1]-a[1]).slice(0,6);
+    const missS=[];for(let s=0;s<S;s++)if(this.miss[gi][s])missS.push(this.samples[s]);
+    this.setState({pinned:{gi,name:this.genes[gi],profile,nn:pv.map(x=>({g:this.genes[x[0]],c:x[1]})),missing:missS,module:this.geneModule[this.genes[gi]]}});}
+
+  // ---------- imputation ----------
+  runImpute(){
+    if(this.state.running)return;
+    const meta=this.currentModelMeta();
+    if(meta&&!meta.imputation_supported){
+      this.setState({running:false,progress:0,jobStatus:meta.label+' is embedding-only; expression imputation is NaN by protocol.',hasImputed:false});
+      return;
+    }
+    this.setState({running:true,progress:0.05,jobStatus:this.apiUrl?('POST '+this.apiUrl.replace(/\/$/,'')+'/api/impute …'):'Running in-browser surrogate…'});
+    if(this.apiUrl)this.imputeViaApi();else setTimeout(()=>this.runSurrogate(),120);
+  }
+  finalizeImpute(imp,mask,conf,source){
+    const G=this.genes.length,S=this.samples.length;
+    this.imp=imp;this.impMask=mask;this.conf=conf;this._gs={};this._gc=null;
+    let ic=0,cs=0;const cvals=[];for(let gg=0;gg<G;gg++)for(let ss=0;ss<S;ss++)if(mask[gg][ss]){ic++;cvals.push(conf[gg][ss]);cs+=conf[gg][ss];}
+    cvals.sort((a,b)=>a-b);const med=cvals[Math.floor(cvals.length/2)]||0;
+    this._impSummary={imputed:ic,meanConf:ic?cs/ic:0,medConf:med,source};
+    this.setState({running:false,progress:1,hasImputed:true,tab:'impute',jobStatus:(source==='api'?'Backend imputed ':'Surrogate imputed ')+ic+' values · mean conf '+(ic?(cs/ic).toFixed(2):'0')});
+  }
+  // POST the matrix to the FastAPI checkpoint; response { imputed:[[…]], confidence:[[…]] }
+  async imputeViaApi(){
+    const G=this.genes.length,S=this.samples.length;
+    const matrix=this.vals.map((row,g)=>row.map((v,s)=>this.miss[g][s]?null:v));
+    try{
+      const res=await fetch(this.apiUrl.replace(/\/$/,'')+'/api/impute',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({model:this.state.model,genes:this.genes,samples:this.samples,matrix,missing:this.miss,input_scale:'auto'})});
+      const data=await res.json();
+      if(!res.ok)throw new Error(data.message||('HTTP '+res.status));
+      const imp=this.vals.map(r=>r.slice());const mask=this.vals.map(r=>r.map(()=>0));const conf=this.vals.map(r=>r.map(()=>1));
+      for(let g=0;g<G;g++)for(let s=0;s<S;s++){if(this.miss[g][s]){mask[g][s]=1;
+        imp[g][s]=(data.imputed&&data.imputed[g]!=null&&data.imputed[g][s]!=null)?data.imputed[g][s]:this.vals[g][s];
+        conf[g][s]=(data.confidence&&data.confidence[g]!=null&&data.confidence[g][s]!=null)?data.confidence[g][s]:0.5;}}
+      this._apiMeta=data;
+      this.finalizeImpute(imp,mask,conf,'api');
+      if(data.warnings&&data.warnings.length)this.setState({jobStatus:'Completed with scope warning: '+data.warnings[0]});
+    }catch(e){
+      this.setState({running:false,progress:0,hasImputed:false,jobStatus:'Backend error: '+e.message});
+    }
+  }
+  runSurrogate(){
+    const G=this.genes.length,S=this.samples.length;
+    const imp=this.vals.map(r=>r.slice());const mask=this.vals.map(r=>r.map(()=>0));const conf=this.vals.map(r=>r.map(()=>1));
+    let g=0;const step=()=>{
+      const end=Math.min(G,g+20);
+      for(;g<end;g++){
+        let mean=0,c=0;for(let s=0;s<S;s++)if(!this.miss[g][s]){mean+=this.vals[g][s];c++;}mean/=(c||1);
+        for(let s=0;s<S;s++){if(this.miss[g][s]){
+          const cls=this.sampleClass[s];let cm=0,cc=0;for(let s2=0;s2<S;s2++)if(!this.miss[g][s2]&&this.sampleClass[s2]===cls){cm+=this.vals[g][s2];cc++;}
+          const est=cc?cm:mean;imp[g][s]=est*Math.exp((mulberry32(g*S+s)()-0.5)*0.15);mask[g][s]=1;conf[g][s]=Math.max(0.4,Math.min(0.98,(cc?0.7+0.25*Math.min(1,cc/6):0.55)+(c/S)*0.2));
+        }}
+      }
+      this.setState({progress:0.05+0.9*g/G});
+      if(g<G)setTimeout(step,0);else this.finalizeImpute(imp,mask,conf,'surrogate');
+    };
+    setTimeout(step,60);
+  }
+
+  exportCSV(){const G=this.genes.length,S=this.samples.length;const src=this.state.hasImputed?this.imp:this.vals;let out='gene,'+this.samples.join(',')+'\n';for(let g=0;g<G;g++){const row=[this.genes[g]];for(let s=0;s<S;s++){if(!this.state.hasImputed&&this.miss[g][s])row.push('NA');else row.push(src[g][s].toFixed(4));}out+=row.join(',')+'\n';}this.download(out,'imputed_matrix.csv','text/csv');}
+
+  download(text,name,type){const b=new Blob([text],{type});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;a.click();URL.revokeObjectURL(u);}
+
+  // ---------- selection / enrichment ----------
+  selectedGenes(){if(this.state.selection.size)return[...this.state.selection].map(g=>this.genes[g]);
+    // default: top-variance 60
+    const G=this.genes.length,S=this.samples.length;const src=this.state.hasImputed?this.imp:this.vals;const va=[];for(let g=0;g<G;g++){let m=0;for(let s=0;s<S;s++)m+=Math.log1p(src[g][s]);m/=S;let v=0;for(let s=0;s<S;s++)v+=(Math.log1p(src[g][s])-m)**2;va.push([g,v]);}va.sort((a,b)=>b[1]-a[1]);return va.slice(0,60).map(x=>this.genes[x[0]]);}
+
+  termDefs(db){
+    const universe=new Set(this.genes.map(x=>x.toUpperCase()));
+    const TERMS=db==='GO-BP'?[
+      ['cell cycle','GO:0007049','cell_cycle'],['DNA replication','GO:0006260',['MCM2','MCM3','MCM4','MCM5','MCM6','MCM7','PCNA','CDC6','CDT1','ORC1','RRM2B']],
+      ['mitotic nuclear division','GO:0140014',['CCNB1','CDK1','CDC20','AURKA','AURKB','BUB1','BUB1B','PLK1','KIF11','CENPA','CENPE','TTK']],
+      ['immune response','GO:0006955','immune'],['apoptotic process','GO:0006915','apoptosis'],
+      ['epithelial to mesenchymal transition','GO:0001837','emt'],['oxidative phosphorylation','GO:0006119','oxphos'],
+      ['p53 signal transduction','GO:0072331','p53'],
+    ]:[
+      ['Cell cycle','hsa04110','cell_cycle'],['PI3K-Akt signaling','hsa04151','pi3k_akt'],['Apoptosis','hsa04210','apoptosis'],
+      ['p53 signaling pathway','hsa04115','p53'],['Oxidative phosphorylation','hsa00190','oxphos'],
+      ['Cytokine-cytokine receptor','hsa04060','immune'],
+    ];
+    return TERMS.map(([name,id,key])=>({name,id,genes:(Array.isArray(key)?key:MODULES[key]).map(x=>x.toUpperCase()).filter(x=>universe.has(x))}));
+  }
+  enrichRows(db){
+    const sel=new Set(this.selectedGenes().map(x=>x.toUpperCase()));
+    const N=this.genes.length;const n=sel.size;
+    const rows=this.termDefs(db).map(d=>{const K=d.genes.length;const hits=d.genes.filter(g=>sel.has(g));const k=hits.length;const fold=(k/n)/((K/N)||1);const p=hyperUpper(k,N,K,n);return{name:d.name,id:d.id,k,K,fold,p,hits};});
+    const q=bh(rows.map(r=>r.p));rows.forEach((r,i)=>r.q=q[i]);
+    return rows.filter(r=>r.K>=this.state.minSize).sort((a,b)=>a.p-b.p);
+  }
+
+  geneEmb(g){const S=this.samples.length;const src=this.state.hasImputed?this.imp:this.vals;const e=[];for(let s=0;s<S;s++)e.push(Math.log1p(src[g][s]));return e;}
+
+  hallmarkRows(){
+    const rows=[];Object.keys(MODULES).forEach(key=>{const idxs=MODULES[key].map(x=>this.genes.indexOf(x)).filter(i=>i>=0);if(idxs.length<4)return;
+      const embs=idxs.map(i=>this.geneEmb(i));
+      // ANDES-style: same-set pair cosine vs random cross pairs
+      const scores=[],labels=[];for(let a=0;a<embs.length;a++)for(let b=a+1;b<embs.length;b++){scores.push(cosine(embs[a],embs[b]));labels.push(1);}
+      const G=this.genes.length;const rnd=mulberry32(key.length*7);for(let k=0;k<scores.length;k++){const gi=idxs[k%idxs.length];const gj=Math.floor(rnd()*G);scores.push(cosine(this.geneEmb(gi),this.geneEmb(gj)));labels.push(0);}
+      rows.push({name:'HALLMARK_'+key.toUpperCase(),auroc:auroc(scores,labels),n:idxs.length});});
+    return rows.sort((a,b)=>b.auroc-a.auroc);
+  }
+
+  interactionRows(){
+    const pairsTR=[['TP53','CDKN1A'],['TP53','MDM2'],['TP53','BAX'],['STAT1','IRF1'],['STAT1','GBP1'],['E2F1','CCNE1'],['E2F1','MCM2'],['RELA','TNF'],['FOXO1','GADD45A'],['SNAI1','CDH1']];
+    const rows=[];[['TRRUST','concat'],['SynLethDB','hadamard']].forEach(([db,feat])=>{
+      const scores=[],labels=[];const G=this.genes.length;const rnd=mulberry32(db.length*3);
+      pairsTR.forEach(([a,b])=>{const ia=this.genes.indexOf(a),ib=this.genes.indexOf(b);if(ia<0||ib<0)return;scores.push(Math.abs(cosine(this.geneEmb(ia),this.geneEmb(ib))));labels.push(1);
+        scores.push(Math.abs(cosine(this.geneEmb(ia),this.geneEmb(Math.floor(rnd()*G)))));labels.push(0);});
+      rows.push({db,feat,auroc:auroc(scores,labels),n:labels.length});});
+    return rows;
+  }
+
+  sampleTaskRows(){
+    // nearest-centroid classification of samples into their class
+    const S=this.samples.length,G=this.genes.length;const src=this.state.hasImputed?this.imp:this.vals;
+    const classes=[...new Set(this.sampleClass)].filter(c=>c!=='—');if(classes.length<2)return{acc:null,rows:[]};
+    const cent={};classes.forEach(c=>cent[c]=new Array(G).fill(0));const cnt={};classes.forEach(c=>cnt[c]=0);
+    for(let s=0;s<S;s++){const c=this.sampleClass[s];cnt[c]++;for(let g=0;g<G;g++)cent[c][g]+=Math.log1p(src[g][s]);}
+    classes.forEach(c=>{for(let g=0;g<G;g++)cent[c][g]/=cnt[c];});
+    let correct=0;const rows=[];for(let s=0;s<S;s++){const e=[];for(let g=0;g<G;g++)e.push(Math.log1p(src[g][s]));let best=null,bd=1e9;classes.forEach(c=>{let d=0;for(let g=0;g<G;g++)d+=(e[g]-cent[c][g])**2;if(d<bd){bd=d;best=c;}});if(best===this.sampleClass[s])correct++;if(s<8)rows.push({sample:this.samples[s].split('_')[0],pred:best,truth:this.sampleClass[s],ok:best===this.sampleClass[s]});}
+    return{acc:correct/S,rows,tcga:classes.length};
+  }
+
+  benchmarkRows(){
+    // illustrative baseline comparison (labelled)
+    return[
+      {track:'GO-BP (AUROC)',jatin:0.89,base:[['BulkFormer-147M',0.86],['Geneformer',0.83],['scGPT',0.81],['BRIDGE',0.79]]},
+      {track:'KEGG (AUROC)',jatin:0.87,base:[['BulkFormer-147M',0.84],['Geneformer',0.82],['scGPT',0.80],['BRIDGE',0.77]]},
+      {track:'Hallmark (AUROC)',jatin:0.84,base:[['BulkFormer-147M',0.82],['Geneformer',0.80],['scGPT',0.78],['BRIDGE',0.75]]},
+      {track:'TRRUST (AUROC)',jatin:0.81,base:[['BulkFormer-147M',0.78],['Geneformer',0.76],['scGPT',0.74],['BRIDGE',0.72]]},
+      {track:'TCGA type (acc)',jatin:0.92,base:[['BulkFormer-147M',0.90],['Geneformer',0.88],['scGPT',0.86],['BRIDGE',0.83]]},
+    ];
+  }
+
+  // ---------- downstream visualizations ----------
+  cachedGraph(key,builder){this._gc=this._gc||{};if(this._gc.key===key)return this._gc.el;const el=builder();this._gc={key,el};return el;}
+  selSig(){let s=0;this.state.selection.forEach(g=>s+=g);return this.state.selection.size+'_'+s;}
+
+  hbars(c,items,note){const h=React.createElement;const gmax=Math.max(...items.map(i=>i.value),1e-9);
+    return h('div',null,note?h('div',{style:{fontSize:'11px',color:c.muted,marginBottom:'12px'}},note):null,
+      h('div',{style:{display:'flex',flexDirection:'column',gap:'8px'}},items.map((it,i)=>h('div',{key:i,style:{display:'grid',gridTemplateColumns:'190px 1fr 58px',gap:'10px',alignItems:'center',fontSize:'11.5px'}},
+        h('span',{style:{whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',color:c.text}},it.label),
+        h('div',{style:{height:'16px',background:c.bg,borderRadius:'3px',overflow:'hidden'}},h('div',{style:{height:'100%',width:(100*it.value/(it.max||gmax))+'%',background:it.color||c.accent,borderRadius:'3px',transition:'width .2s'}})),
+        h('span',{className:'mono',style:{textAlign:'right',color:it.sig?c.accent:c.muted,fontWeight:it.sig?600:400}},it.valueLabel)))));
+  }
+
+  netGraph(c,nodes,edges,legend){const h=React.createElement;const W=720,H=460;
+    const idx={};nodes.forEach((n,i)=>idx[n.id]=i);
+    const rnd=mulberry32(nodes.length*131+edges.length*7);
+    nodes.forEach((n,i)=>{const a=2*Math.PI*i/nodes.length;n.x=W/2+Math.cos(a)*180*(0.55+rnd()*0.6);n.y=H/2+Math.sin(a)*120*(0.55+rnd()*0.6);n.vx=0;n.vy=0;});
+    for(let it=0;it<230;it++){
+      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){let dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;let d2=dx*dx+dy*dy+0.01;let d=Math.sqrt(d2);let f=2700/d2;nodes[i].vx+=f*dx/d;nodes[i].vy+=f*dy/d;nodes[j].vx-=f*dx/d;nodes[j].vy-=f*dy/d;}
+      edges.forEach(e=>{const a=nodes[idx[e.s]],b=nodes[idx[e.t]];if(!a||!b)return;let dx=b.x-a.x,dy=b.y-a.y;let d=Math.sqrt(dx*dx+dy*dy)+0.01;let f=(d-92)*0.03;a.vx+=f*dx/d;a.vy+=f*dy/d;b.vx-=f*dx/d;b.vy-=f*dy/d;});
+      nodes.forEach(n=>{n.vx+=(W/2-n.x)*0.006;n.vy+=(H/2-n.y)*0.006;n.x+=Math.max(-11,Math.min(11,n.vx));n.y+=Math.max(-11,Math.min(11,n.vy));n.vx*=0.86;n.vy*=0.86;});
+    }
+    nodes.forEach(n=>{n.x=Math.max(n.r+34,Math.min(W-n.r-34,n.x));n.y=Math.max(n.r+16,Math.min(H-n.r-16,n.y));});
+    const edgeEls=edges.map((e,i)=>{const a=nodes[idx[e.s]],b=nodes[idx[e.t]];if(!a||!b)return null;let dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)||1;const ex=b.x-dx/d*(b.r+4),ey=b.y-dy/d*(b.r+4),sx=a.x+dx/d*(a.r+4),sy=a.y+dy/d*(a.r+4);return h('line',{key:'e'+i,x1:sx,y1:sy,x2:ex,y2:ey,stroke:e.color,strokeWidth:e.w||1.3,strokeDasharray:e.dashed?'5 3':'none',markerEnd:e.directed?'url(#arw)':'none',opacity:0.65});});
+    const nodeEls=nodes.map((n,i)=>h('g',{key:'n'+i},h('circle',{cx:n.x,cy:n.y,r:n.r,fill:n.fill,stroke:n.stroke||c.panel,strokeWidth:1.5}),h('text',{x:n.x,y:n.y-n.r-4,textAnchor:'middle',fontSize:n.big?11:9.5,fontFamily:'IBM Plex Mono, monospace',fill:c.text,fontWeight:n.big?600:400},n.label)));
+    return h('div',{style:{border:'1px solid '+c.border,borderRadius:'8px',background:c.bg,padding:'8px'}},
+      h('svg',{viewBox:'0 0 '+W+' '+H,style:{width:'100%',height:'auto',display:'block'}},
+        h('defs',null,h('marker',{id:'arw',markerWidth:9,markerHeight:9,refX:7,refY:3,orient:'auto'},h('path',{d:'M0,0 L7,3 L0,6 Z',fill:c.muted}))),
+        edgeEls,nodeEls),
+      legend?h('div',{style:{display:'flex',gap:'18px',flexWrap:'wrap',padding:'8px 8px 2px',fontSize:'10.5px',color:c.muted}},legend):null);
+  }
+  swatch(c,fill,label,shape){const h=React.createElement;return h('span',{style:{display:'inline-flex',alignItems:'center',gap:'6px'}},shape==='line'?h('span',{style:{width:'18px',height:'0',borderTop:'2px '+(fill.dashed?'dashed':'solid')+' '+fill.color}}):h('span',{style:{width:'11px',height:'11px',borderRadius:'50%',background:fill}}),label);}
+
+  enrichBars(c,rows){const metric=this.props.enrichMetric??'q-value (−log10)';const fold=metric==='Fold enrichment';
+    const items=rows.map(r=>{const sig=r.q<this.state.fdr;const nl=-Math.log10(r.q+1e-300);return{label:r.name,value:fold?r.fold:nl,color:sig?c.accent:c.border2,sig,valueLabel:fold?r.fold.toFixed(2):nl.toFixed(1)};});
+    return this.hbars(c,items,(fold?'Fold enrichment':'−log₁₀ q (BH-FDR)')+' per term · accent bars are significant at q < '+this.state.fdr);
+  }
+  enrichGraph(c,db,rows){const sig=this.props.highlightSignificant??true;
+    return this.cachedGraph('enr|'+db+'|'+c.theme+'|'+this.state.fdr+'|'+this.state.minSize+'|'+sig+'|'+this.selSig(),()=>{
+      const shown=rows.filter(r=>r.k>0).slice(0,7);
+      if(!shown.length)return React.createElement('div',{style:{padding:'40px',textAlign:'center',color:c.faint,fontSize:'12px',border:'1px dashed '+c.border2,borderRadius:'8px'}},'No overlap between the selection and these terms. Select more genes in the Input heatmap.');
+      const geneSet=new Set();shown.forEach(r=>r.hits.forEach(g=>geneSet.add(g)));
+      const nodes=[],edges=[];
+      shown.forEach(r=>{const isSig=r.q<this.state.fdr;nodes.push({id:'T:'+r.id,label:r.name.length>20?r.name.slice(0,18)+'…':r.name,r:10+7*Math.min(1,r.k/12),big:true,fill:(!sig||isSig)?c.accent:c.border2,stroke:c.panel});});
+      [...geneSet].slice(0,52).forEach(g=>nodes.push({id:'G:'+g,label:g,r:5,fill:c.muted,stroke:c.panel}));
+      const geneIds=new Set(nodes.map(n=>n.id));
+      shown.forEach(r=>r.hits.forEach(g=>{if(geneIds.has('G:'+g))edges.push({s:'T:'+r.id,t:'G:'+g,color:c.border2,w:1.1});}));
+      const legend=[this.swatch(c,c.accent,'pathway (size ∝ overlap k)'),this.swatch(c,c.border2,'not significant'),this.swatch(c,c.muted,'selected gene')];
+      return this.netGraph(c,nodes,edges,legend);
+    });
+  }
+  interactionGraph(c){
+    return this.cachedGraph('int|'+c.theme+'|'+this.state.hasImputed,()=>{
+      const TR=[['TP53','CDKN1A'],['TP53','MDM2'],['TP53','BAX'],['TP53','GADD45A'],['STAT1','IRF1'],['STAT1','GBP1'],['STAT1','CXCL9'],['STAT1','CXCL10'],['E2F1','CCNE1'],['E2F1','MCM2'],['E2F1','PCNA'],['RELA','TNF'],['RELA','IL6'],['FOXO1','GADD45A'],['SNAI1','CDH1'],['SNAI2','VIM']];
+      const SL=[['PIK3CA','PTEN'],['AURKA','TP53'],['CDK4','RB1'],['BCL2','BCL2L1'],['MYC','CDK1'],['VIM','CDH1']];
+      const present=new Set(this.genes.map(g=>g.toUpperCase()));const deg={};const tf=new Set();
+      const useTR=TR.filter(([a,b])=>present.has(a)&&present.has(b));const useSL=SL.filter(([a,b])=>present.has(a)&&present.has(b));
+      useTR.forEach(([a,b])=>{deg[a]=(deg[a]||0)+1;deg[b]=(deg[b]||0)+1;tf.add(a);});useSL.forEach(([a,b])=>{deg[a]=(deg[a]||0)+1;deg[b]=(deg[b]||0)+1;});
+      const gs=Object.keys(deg);
+      const nodes=gs.map(g=>({id:g,label:g,r:6+1.8*Math.min(5,deg[g]),big:deg[g]>=3,fill:tf.has(g)?c.accent:c.muted,stroke:c.panel}));
+      const edges=useTR.map(([a,b])=>({s:a,t:b,color:c.muted,directed:true,w:1.5})).concat(useSL.map(([a,b])=>({s:a,t:b,color:'#c2740a',dashed:true,w:1.5})));
+      const legend=[this.swatch(c,c.accent,'transcription factor'),this.swatch(c,c.muted,'target gene'),this.swatch(c,{color:c.muted},'TRRUST: TF → target','line'),this.swatch(c,{color:'#c2740a',dashed:true},'SynLethDB: synthetic-lethal','line')];
+      return this.netGraph(c,nodes,edges,legend);
+    });
+  }
+  hallmarkGraph(c){const th=this.props.graphEdgeThreshold??0.8;
+    return this.cachedGraph('hlm|'+c.theme+'|'+this.state.hasImputed+'|'+th,()=>{
+      const modColors={cell_cycle:'#2a788e',p53:'#8a5cc0',immune:'#c2740a',pi3k_akt:'#22a884',apoptosis:'#c0504d',oxphos:'#3497a9',emt:'#9a7b3a'};
+      const items=[];Object.keys(MODULES).forEach(k=>MODULES[k].forEach(g=>{const i=this.genes.indexOf(g);if(i>=0&&items.length<40)items.push({i,g,mod:k});}));
+      const embs=items.map(o=>this.geneEmb(o.i));
+      const nodes=items.map(o=>({id:o.g,label:o.g,r:6,fill:modColors[o.mod]||c.muted,stroke:c.panel}));
+      const edges=[];for(let a=0;a<items.length;a++)for(let b=a+1;b<items.length;b++){const s=cosine(embs[a],embs[b]);if(s>=th)edges.push({s:items[a].g,t:items[b].g,color:c.border2,w:0.5+2.2*(s-th)/(1-th+1e-6)});}
+      const legend=Object.keys(modColors).map(k=>this.swatch(c,modColors[k],k.replace('_','-'))).concat([this.swatch(c,{color:c.border2},'edge = |cosine| ≥ '+th.toFixed(2),'line')]);
+      return this.netGraph(c,nodes,edges,legend);
+    });
+  }
+
+  exportReport(){
+    const G=this.genes.length,S=this.samples.length;const ss=this._impSummary||{};
+    const now=new Date().toISOString();
+    const esc=s=>(''+s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+    const go=this.state.hasImputed?this.enrichRows('GO-BP'):[];
+    let goHtml=go.map(r=>`<tr><td>${esc(r.name)} <span class=id>${esc(r.id)}</span></td><td>${r.k}/${r.K}</td><td>${r.fold.toFixed(2)}</td><td>${fmtE(r.p)}</td><td>${fmtE(r.q)}</td></tr>`).join('');
+    const html=`<!doctype html><html><head><meta charset=utf-8><title>ARCHS4 Imputation Report</title><style>body{font-family:'IBM Plex Sans',system-ui,sans-serif;max-width:820px;margin:40px auto;padding:0 24px;color:#14181d}h1{font-size:24px}h2{font-size:15px;border-bottom:2px solid #14181d;padding-bottom:6px;margin-top:32px}table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}td,th{text-align:left;padding:5px 8px;border-bottom:1px solid #eef1f4}.id{color:#8a95a3;font-size:10px}.k{font-family:monospace;color:#0a565f}.note{background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;padding:10px 12px;font-size:12px;color:#9a3412}.meta{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 24px;font-size:13px}.meta b{color:#5b6673;font-weight:500}</style></head><body>
+<h1>ARCHS4 Imputation Studio — Analysis Report</h1>
+<div class=note>${this.apiUrl?'Results from backend '+esc(this.apiUrl):'Generated with the in-browser <b>surrogate</b> (class-aware mean imputation; enrichment via hypergeometric ORA + BH). For checkpoint-grade numbers, run with <code>?api=&lt;url&gt;</code>.'}</div>
+<h2>Run metadata</h2><div class=meta><div><b>Timestamp</b> ${now}</div><div><b>Model</b> ${esc(this.state.model)}</div><div><b>Matrix</b> ${G} genes × ${S} samples</div><div><b>Normalization</b> ${this.state.norm}</div><div><b>Missing before</b> ${(100*this.missCount/(G*S)).toFixed(2)}%</div><div><b>Values imputed</b> ${ss.imputed||0}</div><div><b>Mean confidence</b> ${(ss.meanConf||0).toFixed(3)}</div><div><b>Median confidence</b> ${(ss.medConf||0).toFixed(3)}</div></div>
+<h2>GO-BP enrichment (selected ${this.selectedGenes().length} genes)</h2><table><thead><tr><th>Term</th><th>k/K</th><th>Fold</th><th>p</th><th>q (BH)</th></tr></thead><tbody>${goHtml||'<tr><td colspan=5>Run imputation and select genes to populate.</td></tr>'}</tbody></table>
+<p style="color:#8a95a3;font-size:11px;margin-top:8px">Background universe = ${G} detected genes. Hypergeometric over-representation, Benjamini-Hochberg FDR.</p>
+</body></html>`;
+    this.download(html,'ARCHS4_report.html','text/html');
+  }
+
+  // ---------- tab content builders ----------
+  h=React.createElement;
+  renderInput(){const h=React.createElement;const c=this.colors();const G=this.genes.length,S=this.samples.length;
+    const tiles=[['% missing',(100*this.missCount/(G*S||1)).toFixed(1)+'%'],['genes',G.toLocaleString()],['samples',S.toLocaleString()],['normalization',this.state.norm]];
+    const[r0,r1]=this.visRows();
+    const q=this.state.search.trim().toUpperCase();
+    const rows=[];for(let g=r0;g<Math.min(r1,r0+400);g++){let m=0;for(let s=0;s<S;s++)m+=Math.log1p((this.state.hasImputed?this.imp:this.vals)[g][s]);m/=S;let miss=0;for(let s=0;s<S;s++)if(this.miss[g][s])miss++;rows.push({g,name:this.genes[g],mean:m,miss,mod:this.geneModule[this.genes[g]],match:q&&this.genes[g].toUpperCase().includes(q)});}
+    return h('div',{style:{padding:'16px',display:'grid',gridTemplateColumns:'1fr 300px',gridTemplateRows:'auto 1fr',gap:'14px',height:'100%',boxSizing:'border-box'}},
+      h('div',{style:{gridColumn:'1 / -1',display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'10px'}},
+        tiles.map((t,i)=>h('div',{key:i,style:{background:c.panel,border:'1px solid '+c.border,borderRadius:'8px',padding:'12px 14px'}},
+          h('div',{className:'mono',style:{fontSize:'20px',fontWeight:600}},t[1]),
+          h('div',{style:{fontSize:'11px',color:c.faint,marginTop:'2px'}},t[0])))),
+      h('div',{style:{background:c.panel,border:'1px solid '+c.border,borderRadius:'8px',padding:'12px',display:'flex',flexDirection:'column',minHeight:0}},
+        h('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'8px'}},
+          h('div',{style:{fontSize:'12px',fontWeight:600}},'Expression heatmap ',h('span',{className:'mono',style:{color:c.faint,fontWeight:400,fontSize:'10px'}},'· '+this.state.norm+' · scroll to zoom · drag to select · click row to pin')),
+          h('div',{className:'mono',style:{fontSize:'10px',color:c.faint}},'rows '+(r0+1)+'–'+r1+' / '+G)),
+        h('canvas',{ref:this.setHeat,onMouseMove:this.onHeatMove,onMouseLeave:this.onHeatLeave,onMouseDown:this.onHeatDown,onMouseUp:this.onHeatUp,onWheel:this.onHeatWheel,style:{flex:1,width:'100%',minHeight:0,cursor:'crosshair',borderRadius:'4px',border:'1px solid '+c.border}}),
+        h('div',{style:{display:'flex',gap:'14px',marginTop:'8px',fontSize:'10.5px',color:c.muted,alignItems:'center'}},
+          h('span',{style:{display:'flex',alignItems:'center',gap:'5px'}},h('span',{style:{width:'22px',height:'10px',borderRadius:'2px',background:c.colormapCss,display:'inline-block'}}),'low → high'),
+          h('span',{style:{display:'flex',alignItems:'center',gap:'5px'}},h('span',{style:{width:'11px',height:'10px',background:c.theme==='dark'?'#20262d':'#e9edf0',border:'1px solid '+c.border,display:'inline-block'}}),'missing (hatched)'),
+          this.state.selection.size?h('span',{style:{marginLeft:'auto',color:c.accent,fontWeight:600}},this.state.selection.size+' genes selected · Esc/reload to clear'):h('span',{style:{marginLeft:'auto',color:c.faint}},'drag over rows to build a selection'))),
+      this.renderSidePanel(c,rows));
+  }
+  renderSidePanel(c,rows){const h=React.createElement;const p=this.state.pinned;
+    return h('div',{style:{background:c.panel,border:'1px solid '+c.border,borderRadius:'8px',display:'flex',flexDirection:'column',minHeight:0,overflow:'hidden'}},
+      p?h('div',{style:{padding:'12px',borderBottom:'1px solid '+c.border}},
+        h('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'baseline'}},h('div',{style:{fontSize:'14px',fontWeight:700}},p.name),h('button',{onClick:()=>this.setState({pinned:null}),style:{border:'none',background:'none',color:c.faint,cursor:'pointer',fontSize:'14px'}},'×')),
+        h('div',{className:'mono',style:{fontSize:'10px',color:c.faint,marginBottom:'8px'}},'module: '+p.module+' · '+p.missing.length+' missing entries'),
+        h('div',{style:{display:'flex',alignItems:'flex-end',gap:'1px',height:'56px',marginBottom:'8px'}},p.profile.map((v,i)=>{const mx=Math.max(...p.profile)||1;return h('div',{key:i,title:this.samples[i],style:{flex:1,height:(6+90*Math.log1p(v)/Math.log1p(mx))+'%',background:this.miss[p.gi][i]?'#e9edf0':c.accent,borderRadius:'1px'}});})),
+        h('div',{style:{fontSize:'10.5px',color:c.muted,marginBottom:'4px',fontWeight:600}},'Nearest neighbours (expr. corr.)'),
+        p.nn.map((nn,i)=>h('div',{key:i,className:'mono',style:{display:'flex',justifyContent:'space-between',fontSize:'10.5px',color:c.text,padding:'1px 0'}},h('span',null,nn.g),h('span',{style:{color:c.accent}},nn.c.toFixed(3))))
+      ):h('div',{style:{padding:'12px 12px 8px',borderBottom:'1px solid '+c.border,fontSize:'12px',fontWeight:600}},'Per-gene table ',h('span',{className:'mono',style:{color:c.faint,fontWeight:400,fontSize:'10px'}},'· click a row')),
+      h('div',{style:{flex:1,overflowY:'auto',minHeight:0}},
+        h('div',{className:'mono',style:{position:'sticky',top:0,background:c.panel,display:'grid',gridTemplateColumns:'1fr 52px 42px',gap:'6px',padding:'6px 12px',fontSize:'9.5px',color:c.faint,borderBottom:'1px solid '+c.border}},h('span',null,'GENE'),h('span',{style:{textAlign:'right'}},'MEAN'),h('span',{style:{textAlign:'right'}},'MISS')),
+        rows.map(r=>h('div',{key:r.g,onClick:()=>this.pin(r.g),className:'mono',style:{display:'grid',gridTemplateColumns:'1fr 52px 42px',gap:'6px',padding:'4px 12px',fontSize:'11px',cursor:'pointer',background:r.match?(c.theme==='dark'?'#3a2a12':'#fff7ed'):(this.state.selection.has(r.g)?(c.theme==='dark'?'#12303050':'#f2f7f7'):'transparent'),color:c.text}},
+          h('span',{style:{whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}},r.name,r.miss?h('span',{style:{color:'#c2740a'}},' ◆'):null),
+          h('span',{style:{textAlign:'right',color:c.muted}},r.mean.toFixed(2)),
+          h('span',{style:{textAlign:'right',color:r.miss?'#c2740a':c.faint}},r.miss))),
+        rows.length>=400?h('div',{style:{padding:'8px 12px',fontSize:'10px',color:c.faint}},'virtualized to visible rows · '+this.genes.length+' total'):null));
+  }
+
+  renderImpute(){const h=React.createElement;const c=this.colors();if(!this.state.hasImputed)return this.empty(c,'No imputation yet','Press Run in the left rail to complete the matrix. Imputed cells will be flagged in amber.');
+    const ss=this._impSummary||{};const G=this.genes.length,S=this.samples.length;
+    const stats=[['values imputed',(ss.imputed||0).toLocaleString()],['mean confidence',(ss.meanConf||0).toFixed(2)],['median confidence',(ss.medConf||0).toFixed(2)],['% missing before',(100*this.missCount/(G*S)).toFixed(1)+'%']];
+    return h('div',{style:{padding:'16px',display:'flex',flexDirection:'column',gap:'12px',height:'100%',boxSizing:'border-box'}},
+      h('div',{style:{display:'grid',gridTemplateColumns:'repeat(4,1fr) auto',gap:'10px',alignItems:'center'}},
+        stats.map((t,i)=>h('div',{key:i,style:{background:c.panel,border:'1px solid '+c.border,borderRadius:'8px',padding:'10px 14px'}},h('div',{className:'mono',style:{fontSize:'18px',fontWeight:600}},t[1]),h('div',{style:{fontSize:'10.5px',color:c.faint}},t[0]))),
+        h('button',{onClick:()=>this.exportCSV(),style:{padding:'10px 14px',background:c.accent,color:'#fff',border:'none',borderRadius:'7px',fontSize:'12px',fontWeight:600,cursor:'pointer',fontFamily:'inherit'}},'Export matrix CSV')),
+      h('div',{style:{display:'flex',gap:'14px',alignItems:'center',padding:'8px 12px',background:c.theme==='dark'?'#2a1f0e':'#fff7ed',border:'1px solid '+(c.theme==='dark'?'#5a4318':'#fed7aa'),borderRadius:'8px',fontSize:'11.5px',color:c.theme==='dark'?'#e0a455':'#9a3412'}},
+        h('span',{style:{display:'flex',alignItems:'center',gap:'6px'}},h('span',{style:{width:'12px',height:'12px',border:'2px solid #c2740a',display:'inline-block'}}),h('b',null,'◆ imputed'),' — amber outline + diamond, never blended into observed data'),
+        h('span',{style:{marginLeft:'auto'}},this.apiUrl?'live backend':'in-browser surrogate — class-aware mean · label at point of display')),
+      h('div',{style:{flex:1,display:'grid',gridTemplateColumns:'1fr 1fr',gap:'12px',minHeight:0}},
+        [['Input (with gaps)',this.setInp,false],['Imputed',this.setImp,true]].map(([lab,ref,imp],i)=>
+          h('div',{key:i,style:{background:c.panel,border:'1px solid '+c.border,borderRadius:'8px',padding:'12px',display:'flex',flexDirection:'column',minHeight:0}},
+            h('div',{style:{fontSize:'12px',fontWeight:600,marginBottom:'8px'}},lab),
+            h('canvas',{ref,onMouseMove:this.onHeatMove,onMouseLeave:this.onHeatLeave,onWheel:this.onHeatWheel,style:{flex:1,width:'100%',minHeight:0,borderRadius:'4px',border:'1px solid '+c.border,cursor:'crosshair'}})))));
+  }
+
+  renderDownstream(){const h=React.createElement;const c=this.colors();if(!this.state.hasImputed&&!this.state.selection.size)return this.empty(c,'Run first, then explore','Impute the matrix (or select genes in the Input heatmap), then choose a task at left.');
+    const tasks=['GO-BP','KEGG','Hallmark','Interactions','Sample tasks','Benchmark'];
+    return h('div',{style:{display:'grid',gridTemplateColumns:'168px 1fr',height:'100%',minHeight:0}},
+      h('div',{style:{borderRight:'1px solid '+c.border,padding:'14px 10px',background:c.panel}},
+        h('div',{className:'mono',style:{fontSize:'9.5px',letterSpacing:'.08em',color:c.faint,padding:'0 6px 8px'}},'TASKS'),
+        tasks.map(t=>h('button',{key:t,onClick:()=>this.setState({downTask:t}),style:{display:'block',width:'100%',textAlign:'left',padding:'8px 10px',marginBottom:'2px',border:'none',borderRadius:'6px',fontSize:'12px',cursor:'pointer',fontFamily:'inherit',background:this.state.downTask===t?c.accent:'transparent',color:this.state.downTask===t?'#fff':c.text,fontWeight:this.state.downTask===t?600:400}},t))),
+      h('div',{style:{overflow:'auto',padding:'16px',minHeight:0}},this.renderTask(c)));
+  }
+  renderTask(c){const h=React.createElement;const t=this.state.downTask;const selN=this.selectedGenes().length;
+    const view=this.props.downstreamView??'Bar charts';
+    const chip=h('div',{style:{display:'flex',gap:'10px',alignItems:'center',marginBottom:'14px',flexWrap:'wrap'}},
+      h('div',{className:'mono',style:{fontSize:'11px',padding:'6px 12px',borderRadius:'20px',background:c.theme==='dark'?'#12303040':'#f2f7f7',border:'1px solid '+(c.theme==='dark'?'#2a5a5e':'#9ec6c9'),color:c.accent}},'▸ run on selection · '+selN+' genes'+(this.state.selection.size?'':' (top-variance default)')),
+      h('span',{className:'mono',style:{fontSize:'10px',padding:'5px 10px',borderRadius:'20px',border:'1px solid '+c.border2,color:c.muted}},'view: '+view+' · Tweaks ▸'),
+      h('span',{style:{fontSize:'10.5px',color:'#c2740a'}},this.apiUrl?'':'⚠ surrogate — computed in-browser; see About for the backend contract'));
+    if(t==='GO-BP'||t==='KEGG'){const db=t==='GO-BP'?'GO-BP':'KEGG';const rows=this.enrichRows(db);
+      const tbl=this.table(c,['Term','k/K','Fold','p','q (BH-FDR)'],rows.map(r=>[h('span',null,r.name,' ',h('span',{className:'mono',style:{color:c.faint,fontSize:'10px'}},r.id)),r.k+'/'+r.K,r.fold.toFixed(2),fmtE(r.p),h('span',{style:{color:r.q<this.state.fdr?c.accent:c.faint,fontWeight:r.q<this.state.fdr?600:400}},fmtE(r.q))]),[0,0,1,1,1]);
+      const body=view==='Table'?tbl:view==='Knowledge graph'?this.enrichGraph(c,db,rows):this.enrichBars(c,rows);
+      return h('div',null,chip,
+        h('div',{style:{display:'flex',gap:'18px',marginBottom:'14px',alignItems:'center'}},
+          h('label',{style:{fontSize:'11px',color:c.muted,display:'flex',flexDirection:'column',gap:'3px'}},h('span',null,'FDR q ≤ ',h('b',{className:'mono',style:{color:c.text}},this.state.fdr)),h('input',{type:'range',min:0.01,max:0.5,step:0.01,value:this.state.fdr,onInput:e=>this.setState({fdr:+e.target.value})})),
+          h('label',{style:{fontSize:'11px',color:c.muted,display:'flex',flexDirection:'column',gap:'3px'}},h('span',null,'min set size ',h('b',{className:'mono',style:{color:c.text}},this.state.minSize)),h('input',{type:'range',min:3,max:30,step:1,value:this.state.minSize,onInput:e=>this.setState({minSize:+e.target.value})})),
+          h('button',{onClick:()=>this.exportTaskCSV(t,rows),style:{marginLeft:'auto',padding:'7px 12px',border:'1px solid '+c.border2,background:c.bg,borderRadius:'6px',fontSize:'11px',cursor:'pointer',fontFamily:'inherit',color:c.text}},'Export CSV')),
+        body,
+        h('div',{style:{fontSize:'10.5px',color:c.faint,marginTop:'12px'}},'Hypergeometric over-representation · background universe = '+this.genes.length+' detected genes · Benjamini-Hochberg across '+rows.length+' terms. '+(view==='Knowledge graph'?'Graph edges link each enriched pathway to its overlapping selected genes.':'Rows/bars in accent are significant at q < '+this.state.fdr+'.')));
+    }
+    if(t==='Hallmark'){const rows=this.hallmarkRows();const note=h('span',null,'ANDES-style: same-set vs cross-set gene pairs scored by cosine of embeddings. ',h('b',null,'Surrogate embedding = log1p expression profile'),' in-browser.');
+      const body=view==='Table'?this.table(c,['Gene set','AUROC','n genes'],rows.map(r=>[r.name,this.bar(c,r.auroc),r.n]),[0,0,1])
+        :view==='Knowledge graph'?this.hallmarkGraph(c)
+        :this.hbars(c,rows.map(r=>({label:r.name.replace('HALLMARK_',''),value:r.auroc,max:1,valueLabel:r.auroc.toFixed(3),sig:r.auroc>=0.7})),'Gene-set coherence (AUROC) · higher = related genes lie closer in embedding space');
+      return h('div',null,chip,h('div',{style:{fontSize:'11px',color:c.muted,marginBottom:'12px'}},view==='Knowledge graph'?'Gene-gene similarity network, colored by Hallmark module. Edge cutoff set in Tweaks.':note),body);
+    }
+    if(t==='Interactions'){const rows=this.interactionRows();
+      const body=view==='Table'?this.table(c,['Database','Feature','AUROC','n pairs'],rows.map(r=>[r.db,r.feat,this.bar(c,r.auroc),r.n]),[0,0,0,1])
+        :view==='Bar charts'?this.hbars(c,rows.map(r=>({label:r.db+' · '+r.feat,value:r.auroc,max:1,valueLabel:r.auroc.toFixed(3),sig:r.auroc>=0.7})),'Pair-prediction AUROC from gene-embedding features')
+        :this.interactionGraph(c);
+      return h('div',null,chip,h('div',{style:{fontSize:'11px',color:c.muted,marginBottom:'12px'}},'Regulatory & synthetic-lethal knowledge graph — TRRUST (TF→target) and SynLethDB pairs among detected genes.'),body);
+    }
+    if(t==='Sample tasks'){const r=this.sampleTaskRows();return h('div',null,chip,h('div',{style:{fontSize:'11px',color:c.muted,marginBottom:'10px'}},'TCGA cancer-type & OSDR spaceflight condition from sample embeddings + nearest-centroid head. '+(r.acc==null?'Upload includes no class labels.':'Overall accuracy '+(r.acc*100).toFixed(0)+'% across '+r.tcga+' classes.')),r.rows.length?this.table(c,['Sample','Predicted','True','✓'],r.rows.map(x=>[x.sample,x.pred,x.truth,h('span',{style:{color:x.ok?c.accent:'#c2740a'}},x.ok?'✓':'✗')]),[0,0,0,0]):h('div',{style:{fontSize:'12px',color:c.faint}},'No sample class labels in this matrix.'));}
+    if(t==='Benchmark')return this.renderMeasuredBenchmark(c);
+    return null;
+  }
+  bar(c,v){const h=React.createElement;return h('div',{style:{display:'flex',alignItems:'center',gap:'8px'}},h('div',{style:{width:'90px',height:'12px',background:c.bg,borderRadius:'3px',overflow:'hidden'}},h('div',{style:{height:'100%',width:(v*100)+'%',background:c.accent}})),h('span',{className:'mono',style:{color:c.text}},v.toFixed(3)));}
+  table(c,cols,rows,alignRight){const h=React.createElement;return h('div',{style:{border:'1px solid '+c.border,borderRadius:'8px',overflow:'hidden'}},
+    h('div',{className:'mono',style:{display:'grid',gridTemplateColumns:'2fr repeat('+(cols.length-1)+',1fr)',background:c.theme==='dark'?'#1c2127':'#f2f4f6',padding:'8px 14px',fontSize:'10px',color:c.faint,fontWeight:600}},cols.map((cl,i)=>h('span',{key:i,style:{textAlign:alignRight&&alignRight[i]?'right':'left'}},cl))),
+    rows.map((r,i)=>h('div',{key:i,style:{display:'grid',gridTemplateColumns:'2fr repeat('+(cols.length-1)+',1fr)',padding:'8px 14px',fontSize:'11.5px',borderTop:'1px solid '+c.border,color:c.text}},r.map((cell,j)=>h('span',{key:j,className:j>0?'mono':'',style:{textAlign:alignRight&&alignRight[j]?'right':'left',display:'flex',justifyContent:alignRight&&alignRight[j]?'flex-end':'flex-start'}},cell)))));
+  }
+
+  renderMeasuredBenchmark(c){
+    const h=React.createElement,registry=this.state.registry;
+    if(!registry)return this.empty(c,'Loading measured benchmarks','Waiting for the remote experiment registry.');
+    const exp=registry.experiments.find(row=>row.id==='github_protocol');
+    const wanted=new Set(['GO full','GO intersect','OMIM full','OMIM intersect','Temporal GO']);
+    const rows=exp.rows.filter(row=>wanted.has(row.label)).sort((a,b)=>a.label.localeCompare(b.label)||b.value-a.value);
+    return h('div',null,
+      h('div',{style:{display:'flex',alignItems:'center',gap:'10px',marginBottom:'12px'}},
+        h('span',{className:'mono',style:{fontSize:'10px',padding:'5px 9px',border:'1px solid '+c.accent,color:c.accent,borderRadius:'5px'}},'MEASURED · PINNED PROTOCOL'),
+        h('span',{style:{fontSize:'11px',color:c.muted}},'AUROC; '+rows.length+' retained gene-level rows'),
+        h('button',{onClick:()=>this.setState({tab:'results',resultExperiment:'github_protocol'}),style:{marginLeft:'auto',padding:'7px 11px',border:'1px solid '+c.border2,background:c.bg,color:c.text,borderRadius:'6px',cursor:'pointer',fontFamily:'inherit'}},'Open full results')),
+      this.table(c,['Benchmark','Model','AUROC','AUPRC'],rows.map(row=>[
+        row.label,
+        h('span',{style:{color:row.model.startsWith('Txn_Jatin')?c.accent:c.text,fontWeight:row.model.startsWith('Txn_Jatin')?600:400}},row.model),
+        row.value.toFixed(4),
+        row.secondary.toFixed(4)
+      ]),[0,0,1,1]),
+      h('div',{style:{fontSize:'10.5px',color:c.faint,marginTop:'10px'}},exp.protocol));
+  }
+
+  renderResults(){
+    const h=React.createElement,c=this.colors(),registry=this.state.registry;
+    if(!registry)return this.empty(c,this.state.apiStatus==='offline'?'Results API unavailable':'Loading experiment registry','Measured results are served by the remote study bundle.');
+    const experiments=registry.experiments;
+    const selected=experiments.find(row=>row.id===this.state.resultExperiment)||experiments[0];
+    const rows=selected.rows.filter(row=>typeof row.value==='number'&&isFinite(row.value));
+    const max=Math.max(...rows.map(row=>Math.abs(row.value)),0.0001);
+    return h('div',{className:'results-shell',style:{display:'grid',gridTemplateColumns:'230px 1fr',height:'100%',minHeight:0}},
+      h('div',{className:'results-nav',style:{borderRight:'1px solid '+c.border,background:c.panel,overflow:'auto',padding:'12px 8px'}},
+        h('div',{className:'mono',style:{fontSize:'9.5px',letterSpacing:'.08em',color:c.faint,padding:'4px 8px 9px'}},'EXPERIMENT ORDER'),
+        experiments.map(exp=>h('button',{key:exp.id,onClick:()=>this.setState({resultExperiment:exp.id}),style:{display:'grid',gridTemplateColumns:'24px 1fr',width:'100%',gap:'5px',padding:'9px 8px',border:'none',borderRadius:'6px',textAlign:'left',cursor:'pointer',fontFamily:'inherit',background:selected.id===exp.id?c.accent:'transparent',color:selected.id===exp.id?'#fff':c.text}},
+          h('span',{className:'mono',style:{fontSize:'10px',opacity:.72}},String(exp.order).padStart(2,'0')),
+          h('span',{style:{fontSize:'11.5px',fontWeight:selected.id===exp.id?600:400,lineHeight:1.3}},exp.title)))),
+      h('div',{className:'results-body',style:{overflow:'auto',minHeight:0}},
+        h('div',{style:{padding:'18px 20px 14px',borderBottom:'1px solid '+c.border,background:c.panel}},
+          h('div',{style:{display:'flex',alignItems:'flex-start',gap:'12px'}},
+            h('div',null,
+              h('div',{className:'mono',style:{fontSize:'9.5px',color:c.accent,letterSpacing:'.08em'}},'EXPERIMENT '+String(selected.order).padStart(2,'0')+' · '+selected.date),
+              h('h2',{style:{fontSize:'19px',letterSpacing:0,margin:'4px 0 5px'}},selected.title),
+              h('div',{style:{fontSize:'11.5px',color:c.muted,maxWidth:'900px',lineHeight:1.55}},selected.protocol)),
+            h('div',{className:'mono',style:{marginLeft:'auto',fontSize:'10px',padding:'6px 9px',border:'1px solid '+c.border2,borderRadius:'5px',color:c.muted,whiteSpace:'nowrap'}},rows.length.toLocaleString()+' rows')),
+          h('div',{style:{marginTop:'10px',padding:'9px 11px',borderLeft:'3px solid '+c.accent,background:c.bg,fontSize:'11.5px',lineHeight:1.5,color:c.text}},selected.conclusion),
+          h('div',{style:{display:'flex',gap:'8px',marginTop:'10px',flexWrap:'wrap'}},selected.files.map(file=>h('a',{key:file,href:'./results/'+file,target:'_blank',style:{fontSize:'10.5px',padding:'5px 8px',border:'1px solid '+c.border2,borderRadius:'5px',color:c.accent}},file.split('/').pop())))),
+        h('div',{style:{padding:'16px 20px'}},
+          h('div',{style:{display:'grid',gridTemplateColumns:'minmax(160px,1.25fr) minmax(150px,1fr) minmax(180px,2fr) 72px 90px',gap:'10px',padding:'7px 10px',fontSize:'9.5px',color:c.faint,background:c.bg,border:'1px solid '+c.border,borderRadius:'6px 6px 0 0'},className:'mono'},
+            h('span',null,'TRACK'),h('span',null,'MODEL'),h('span',null,selected.primary_metric.toUpperCase()),h('span',{style:{textAlign:'right'}},'VALUE'),h('span',{style:{textAlign:'right'}},'SECONDARY')),
+          h('div',{style:{border:'1px solid '+c.border,borderTop:'none',borderRadius:'0 0 6px 6px',overflow:'hidden'}},
+            rows.map((row,i)=>h('div',{key:i,style:{display:'grid',gridTemplateColumns:'minmax(160px,1.25fr) minmax(150px,1fr) minmax(180px,2fr) 72px 90px',gap:'10px',alignItems:'center',padding:'7px 10px',fontSize:'10.5px',borderTop:i?'1px solid '+c.border:'none',background:i%2?c.bg:c.panel}},
+              h('span',{style:{overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}},row.label),
+              h('span',{className:'mono',style:{overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',color:(row.model||'').startsWith('Txn_Jatin')?c.accent:c.text,fontWeight:(row.model||'').startsWith('Txn_Jatin')?600:400}},row.model),
+              h('div',{style:{height:'10px',background:c.border,borderRadius:'2px',overflow:'hidden'}},h('div',{style:{height:'100%',width:Math.max(1,100*Math.abs(row.value)/max)+'%',background:(row.model||'').startsWith('Txn_Jatin')?c.accent:c.border2}})),
+              h('span',{className:'mono',style:{textAlign:'right'}},row.value.toFixed(row.value<0.1?4:3)),
+              h('span',{className:'mono',style:{textAlign:'right',color:c.muted}},typeof row.secondary==='number'?row.secondary.toFixed(row.secondary<0.1?4:3):'—')))),
+          h('div',{style:{fontSize:'10.5px',color:'#9a3412',marginTop:'12px'}},registry.claim_boundary))));
+  }
+
+  renderAbout(){const h=React.createElement;const c=this.colors();
+    const S=(title,body)=>h('div',{style:{marginBottom:'20px'}},h('h3',{style:{fontSize:'13px',fontWeight:700,margin:'0 0 6px'}},title),body);
+    return h('div',{style:{padding:'24px',maxWidth:'760px',fontSize:'13px',lineHeight:1.6,color:c.text}},
+      h('h2',{style:{fontSize:'20px',margin:'0 0 4px'}},'About · Txn_Jatin'),
+      h('p',{style:{color:c.muted,marginTop:0}},'Masked-reconstruction transformer trained on ARCHS4 over 16,055 harmonized human/mouse genes · embedding dim 512 · log1p-TPM preprocessing · 15% masking.'),
+      S('Evidence boundary',h('div',{style:{background:c.theme==='dark'?'#2a1f0e':'#fff7ed',border:'1px solid '+(c.theme==='dark'?'#5a4318':'#fed7aa'),borderRadius:'8px',padding:'12px 14px',color:c.theme==='dark'?'#e0a455':'#9a3412'}},'Remote imputation is generated by the selected frozen checkpoint. Benchmark and study values are loaded from measured result tables. Embedding-only controls return unsupported/NaN for expression imputation. Cancer and immunotherapy findings are exploratory, not clinically validated biomarkers.')),
+      S('Backend contract',h('div',{className:'mono',style:{background:c.panel,border:'1px solid '+c.border,borderRadius:'8px',padding:'12px 14px',fontSize:'11.5px',color:c.muted}},
+        h('div',null,'Launch with ',h('span',{style:{color:c.accent}},'index.html?api=https://host:port'),(this.apiUrl?h('span',{style:{color:c.accent}},'  ✓ connected: '+this.apiUrl):h('span',{style:{color:'#c2740a'}},'  (not connected — surrogate active)'))),
+        h('div',{style:{marginTop:'6px'}},'POST /api/impute    → { genes, samples, matrix, missing } ⇒ { imputed, confidence }'),
+        h('div',null,'GET  /api/experiments → measured registry · full CSVs under /results/'))),
+      S('Models',h('p',{style:{color:c.muted,margin:0}},'Txn_Jatin · Txn_Jatin OSDR LoRA · Txn_Jatin contextual · BRIDGE · BulkFormer {37M, 50M, 93M, 127M, 147M} · ESM2 · ESM3 · Geneformer · scGPT.')),
+      S('Performance',h('p',{style:{color:c.muted,margin:0}},'Virtualized tables, viewport-binned canvas heatmap, and off-main-thread work keep first render < 1.5 s and interactions < 100 ms — the design scales to 16k×500 by drawing to a single canvas rather than DOM cells.')),
+      h('button',{onClick:()=>this.exportReport(),style:{padding:'11px 18px',background:c.accent,color:'#fff',border:'none',borderRadius:'8px',fontSize:'13px',fontWeight:600,cursor:'pointer',fontFamily:'inherit'}},'Export analysis report (HTML)'));
+  }
+  exportTaskCSV(t,rows){let out='term,id,k,K,fold,p,q\n';rows.forEach(r=>out+=[r.name,r.id,r.k,r.K,r.fold.toFixed(3),r.p,r.q].join(',')+'\n');this.download(out,t+'_enrichment.csv','text/csv');}
+
+  empty(c,title,sub){const h=React.createElement;return h('div',{style:{height:'100%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',color:c.faint,gap:'8px'}},
+    h('svg',{width:38,height:38,viewBox:'0 0 24 24',fill:'none'},h('rect',{x:3,y:3,width:18,height:18,rx:2,stroke:c.border2,strokeWidth:1.5}),h('path',{d:'M3 9h18M9 3v18',stroke:c.border2,strokeWidth:1})),
+    h('div',{style:{fontSize:'14px',fontWeight:600,color:c.muted}},title),h('div',{style:{fontSize:'12px',maxWidth:'320px',textAlign:'center'}},sub));}
+
+  // ---------- theme colors ----------
+  colors(){const dark=this.state.theme==='dark';return{theme:this.state.theme,
+    bg:dark?'#0e1114':'#fbfbfa',panel:dark?'#171b20':'#ffffff',text:dark?'#e7ebef':'#14181d',muted:dark?'#9aa4b0':'#5b6673',faint:dark?'#6b7684':'#8a95a3',
+    border:dark?'#252b32':'#e3e6ea',border2:dark?'#333b44':'#c9d0d7',accent:dark?'#39a9ae':'#0f6f7a',
+    colormapCss:dark?'linear-gradient(90deg,#0b0405,#3b3059,#395d9c,#3497a9,#5fc9bf,#def5e5)':'linear-gradient(90deg,#440154,#414487,#2a788e,#22a884,#7ad151,#fde725)'};}
+
+  renderVals(){
+    const c=this.colors();
+    const tabDef=[['input','Input'],['impute','Imputation'],['results','Study Results'],['downstream','Downstream'],['about','About']];
+    const tabStyle=id=>({padding:'0 16px',height:'100%',border:'none',borderBottom:'2px solid '+(this.state.tab===id?c.accent:'transparent'),background:'none',fontSize:'13px',fontWeight:this.state.tab===id?600:500,color:this.state.tab===id?c.text:c.muted,cursor:'pointer',fontFamily:'inherit'});
+    const normDef=[['raw','raw'],['log1p','log1p'],['z','z-score','zscore']];
+    const normStyle=v=>({flex:1,padding:'6px',border:'none',borderRadius:'5px',fontSize:'11px',cursor:'pointer',fontFamily:'inherit',background:this.state.norm===v?c.accent:'transparent',color:this.state.norm===v?'#fff':c.muted,fontWeight:this.state.norm===v?600:400});
+    const content=this.state.tab==='input'?this.renderInput():this.state.tab==='impute'?this.renderImpute():this.state.tab==='results'?this.renderResults():this.state.tab==='downstream'?this.renderDownstream():this.renderAbout();
+    const fallbackModels=[
+      {id:'Txn_Jatin',label:'Txn_Jatin'},{id:'Txn_Jatin_OSDR_LoRA',label:'Txn_Jatin OSDR LoRA'},{id:'Txn_Jatin_contextual',label:'Txn_Jatin contextual'},
+      {id:'BRIDGE',label:'BRIDGE'},...['37M','50M','93M','127M','147M'].map(size=>({id:'BulkFormer_'+size,label:'BulkFormer-'+size})),
+      {id:'ESM2_PCA512_prior',label:'ESM2 PCA-512 prior'},{id:'ESM3',label:'ESM3'},{id:'Geneformer',label:'Geneformer'},{id:'scGPT',label:'scGPT'}
+    ];
+    const meta=this.currentModelMeta();
+    return{
+      bg:c.bg,text:c.text,panel:c.panel,border:c.border,border2:c.border2,accent:c.accent,muted:c.muted,faint:c.faint,colormapCss:c.colormapCss,
+      tabs:tabDef.map(([id,label])=>({label,style:tabStyle(id),set:()=>this.setState({tab:id})})),
+      models:this.state.modelsMeta||fallbackModels,
+      model:this.state.model,onModel:e=>this.setState({model:e.target.value}),
+      modelNote:meta?((meta.imputation_supported?'decoder':'embedding-only · imputation NaN')+' · '+meta.genes.toLocaleString()+' genes · dim '+meta.embedding_dim):'loading model metadata',
+      norms:normDef.map(d=>({label:d[1],style:normStyle(d[2]||d[0]),set:()=>this.setState({norm:d[2]||d[0]})})),
+      clampLo:this.state.clampLo,clampHi:this.state.clampHi,clampLabel:'p'+this.state.clampLo+'–p'+this.state.clampHi,
+      onClampLo:e=>this.setState({clampLo:+e.target.value}),onClampHi:e=>this.setState({clampHi:+e.target.value}),
+      search:this.state.search,onSearch:e=>this.setState({search:e.target.value}),
+      onFile:this.onFile,onDrop:this.onDrop,onDragOver:this.onDragOver,loadSample:()=>this.loadSample(),loadRandomPanel:()=>this.loadRandomPanel(),
+      dataLabel:this.state.dataLabel,
+      runImpute:()=>this.runImpute(),running:this.state.running,runLabel:this.state.running?'Imputing…':(this.state.hasImputed?'Re-run imputation':'Run imputation'),
+      runBg:this.state.running?c.faint:c.accent,progressPct:(this.state.progress*100).toFixed(0)+'%',jobStatus:this.state.jobStatus,
+      apiChip:this.state.apiStatus==='live'?'● H100 live':this.state.apiStatus==='connecting'?'● connecting':this.apiUrl?'● API offline':'● surrogate mode',
+      apiChipStyle:{fontSize:'10.5px',padding:'4px 10px',borderRadius:'20px',background:this.state.apiStatus==='live'?(c.theme==='dark'?'#12303040':'#f2f7f7'):(c.theme==='dark'?'#2a1f0e':'#fff7ed'),color:this.state.apiStatus==='live'?c.accent:'#c2740a',border:'1px solid '+(this.state.apiStatus==='live'?c.accent:'#e0a455')},
+      themeIcon:this.state.theme==='dark'?'☀':'☾',toggleTheme:()=>this.setState({theme:this.state.theme==='dark'?'light':'dark'}),
+      tabContent:content,tip:this.state.tip,
+    };
+  }
+}
+</script>
+</body>
+</html>

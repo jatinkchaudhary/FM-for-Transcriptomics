@@ -1,0 +1,4151 @@
+{
+  "generated_utc": "2026-07-27T05:00:00Z",
+  "title": "Txn_Jatin experiment registry",
+  "claim_boundary": "Research-use-only. Cancer and immunotherapy analyses are exploratory and do not establish clinically validated biomarkers.",
+  "models": [
+    {
+      "id": "Txn_Jatin",
+      "label": "Txn_Jatin",
+      "family": "ARCHS4 transformer",
+      "genes": 16055,
+      "embedding_dim": 512,
+      "imputation_supported": true,
+      "note": "Final 20-epoch static checkpoint; reconstruction plus ESM2, contextual, and sample-contrastive objectives."
+    },
+    {
+      "id": "Txn_Jatin_OSDR_LoRA",
+      "label": "Txn_Jatin OSDR LoRA",
+      "family": "ARCHS4 transformer + PEFT",
+      "genes": 16055,
+      "embedding_dim": 512,
+      "imputation_supported": true,
+      "note": "Rank-4 LoRA on attention and FFN projections in the last three layers; 0.24% trainable parameters."
+    },
+    {
+      "id": "Txn_Jatin_contextual",
+      "label": "Txn_Jatin contextual",
+      "family": "context-averaged embedding",
+      "genes": 15916,
+      "embedding_dim": 512,
+      "imputation_supported": false,
+      "note": "Expression-conditioned hidden states averaged across 20,000 ARCHS4 samples; no standalone decoder."
+    },
+    {
+      "id": "BRIDGE",
+      "label": "BRIDGE",
+      "family": "masked reconstruction transformer",
+      "genes": 15165,
+      "embedding_dim": 512,
+      "imputation_supported": true,
+      "note": "Original reconstruction-focused control checkpoint."
+    },
+    {
+      "id": "BulkFormer_37M",
+      "label": "BulkFormer-37M",
+      "family": "BulkFormer",
+      "genes": 20010,
+      "embedding_dim": 128,
+      "imputation_supported": true,
+      "note": "Native bulk-expression decoder and static learned gene embeddings."
+    },
+    {
+      "id": "BulkFormer_50M",
+      "label": "BulkFormer-50M",
+      "family": "BulkFormer",
+      "genes": 20010,
+      "embedding_dim": 256,
+      "imputation_supported": true,
+      "note": "Native bulk-expression decoder and static learned gene embeddings."
+    },
+    {
+      "id": "BulkFormer_93M",
+      "label": "BulkFormer-93M",
+      "family": "BulkFormer",
+      "genes": 20010,
+      "embedding_dim": 512,
+      "imputation_supported": true,
+      "note": "Native bulk-expression decoder and static learned gene embeddings."
+    },
+    {
+      "id": "BulkFormer_127M",
+      "label": "BulkFormer-127M",
+      "family": "BulkFormer",
+      "genes": 20010,
+      "embedding_dim": 640,
+      "imputation_supported": true,
+      "note": "Native bulk-expression decoder and static learned gene embeddings."
+    },
+    {
+      "id": "BulkFormer_147M",
+      "label": "BulkFormer-147M",
+      "family": "BulkFormer",
+      "genes": 20010,
+      "embedding_dim": 640,
+      "imputation_supported": true,
+      "note": "Native bulk-expression decoder and static learned gene embeddings."
+    },
+    {
+      "id": "ESM2_PCA512_prior",
+      "label": "ESM2 PCA-512 prior",
+      "family": "protein sequence control",
+      "genes": 16055,
+      "embedding_dim": 512,
+      "imputation_supported": false,
+      "note": "Protein-sequence embeddings projected to 512 dimensions; benchmark control, no expression decoder."
+    },
+    {
+      "id": "ESM3",
+      "label": "ESM3",
+      "family": "protein sequence control",
+      "genes": 13434,
+      "embedding_dim": 512,
+      "imputation_supported": false,
+      "note": "Protein-sequence embedding control used in strict 13,408-gene individual-GO comparisons."
+    },
+    {
+      "id": "Geneformer",
+      "label": "Geneformer",
+      "family": "single-cell foundation model",
+      "genes": 15916,
+      "embedding_dim": 768,
+      "imputation_supported": false,
+      "note": "Rank-value pseudo-cell embedding control; no validated bulk-expression decoder."
+    },
+    {
+      "id": "scGPT",
+      "label": "scGPT",
+      "family": "single-cell foundation model",
+      "genes": 15916,
+      "embedding_dim": 512,
+      "imputation_supported": false,
+      "note": "Gene-encoder embedding control; no validated bulk-expression decoder."
+    }
+  ],
+  "experiments": [
+    {
+      "id": "training",
+      "order": 1,
+      "title": "ARCHS4 pretraining",
+      "date": "2026-06-24 to 2026-07-20",
+      "protocol": "Final 20-epoch run over 958,212 training and 20,000 validation samples; 15% random masking; log1p-TPM.",
+      "conclusion": "Logged validation reconstruction loss declined from 0.0869 to 0.0781. The checkpoint also optimized ESM2 prior, contextual alignment, and sample-contrastive terms.",
+      "primary_metric": "validation reconstruction loss",
+      "rows": [
+        {
+          "label": "Epoch 1",
+          "model": "Txn_Jatin",
+          "metric": "validation reconstruction loss",
+          "value": 0.0869046822190284,
+          "secondary": 0.0861571527867362,
+          "secondary_label": "train reconstruction loss"
+        },
+        {
+          "label": "Epoch 2",
+          "model": "Txn_Jatin",
+          "metric": "validation reconstruction loss",
+          "value": 0.0852763950824737,
+          "secondary": 0.0844023167654319,
+          "secondary_label": "train reconstruction loss"
+        },
+        {
+          "label": "Epoch 3",
+          "model": "Txn_Jatin",
+          "metric": "validation reconstruction loss",
+          "value": 0.0836352035403251,
+          "secondary": 0.0827853205848313,
+          "secondary_label": "train reconstruction loss"
+        },
+        {
+          "label": "Epoch 4",
+          "model": "Txn_Jatin",
+          "metric": "validation reconstruction loss",
+          "value": 0.0823616907000541,
+          "secondary": 0.0812913487018768,
+          "secondary_label": "train reconstruction loss"
+        },
+        {
+          "label": "Epoch 5",
+          "model": "Txn_Jatin",
+          "metric": "validation reconstruction loss",
+          "value": 0.0812641382217407,
+          "secondary": 0.0799487803672696,
+          "secondary_label": "train reconstruction loss"
+        },
+        {
+          "label": "Epoch 6",
+          "model": "Txn_Jatin",
+          "metric": "validation reconstruction loss",
+          "value": 0.0802093297243118,
+          "secondary": 0.0787771072333357,
+          "secondary_label": "train reconstruction loss"
+        },
+        {
+          "label": "Epoch 7",
+          "model": "Txn_Jatin",
+          "metric": "validation reconstruction loss",
+          "value": 0.079309768974781,
+          "secondary": 0.0777884276159906,
+          "secondary_label": "train reconstruction loss"
+        },
+        {
+          "label": "Epoch 8",
+          "model": "Txn_Jatin",
+          "metric": "validation reconstruction loss",
+          "value": 0.078657329082489,
+          "secondary": 0.0770150211434478,
+          "secondary_label": "train reconstruction loss"
+        },
+        {
+          "label": "Epoch 9",
+          "model": "Txn_Jatin",
+          "metric": "validation reconstruction loss",
+          "value": 0.0783181488513946,
+          "secondary": 0.0764864750891825,
+          "secondary_label": "train reconstruction loss"
+        },
+        {
+          "label": "Epoch 10",
+          "model": "Txn_Jatin",
+          "metric": "validation reconstruction loss",
+          "value": 0.0780588462948799,
+          "secondary": 0.0761440911669026,
+          "secondary_label": "train reconstruction loss"
+        }
+      ],
+      "files": [
+        "training/loss_history.csv"
+      ]
+    },
+    {
+      "id": "epoch7_comparison",
+      "order": 2,
+      "title": "Epoch-7 checkpoint comparison",
+      "date": "2026-07",
+      "protocol": "Frozen full-corpus contextual embeddings; paired on 14,567 shared genes.",
+      "conclusion": "Txn_Jatin epoch 7 led centroid functional prediction, while BRIDGE retained stronger same-set neighborhood ranking.",
+      "primary_metric": "AUROC",
+      "rows": [
+        {
+          "label": "DisGeNET centroid",
+          "model": "Txn_Jatin epoch 7",
+          "metric": "AUROC",
+          "value": 0.6909
+        },
+        {
+          "label": "DisGeNET centroid",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.6669
+        },
+        {
+          "label": "GO-BP centroid",
+          "model": "Txn_Jatin epoch 7",
+          "metric": "AUROC",
+          "value": 0.808
+        },
+        {
+          "label": "GO-BP centroid",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.7091
+        },
+        {
+          "label": "KEGG centroid",
+          "model": "Txn_Jatin epoch 7",
+          "metric": "AUROC",
+          "value": 0.8979
+        },
+        {
+          "label": "KEGG centroid",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.733
+        }
+      ],
+      "files": [
+        "epoch7_comparison/comparison_report.md"
+      ]
+    },
+    {
+      "id": "github_protocol",
+      "order": 3,
+      "title": "Pinned GitHub gene-embedding protocol",
+      "date": "2026-07-21",
+      "protocol": "ylaboratory/gene-embedding-benchmarks-compatible holdout evaluation; 11 models, 29 groups, 319 rows. ANDES was excluded.",
+      "conclusion": "Txn_Jatin was strongest on GO among learned expression models, while model rankings varied materially across disease and gene-pair domains.",
+      "primary_metric": "AUROC",
+      "rows": [
+        {
+          "label": "GO full",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.7768139210873342,
+          "secondary": 0.3860963237884139,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO full",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.6794507414852876,
+          "secondary": 0.245922347386408,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO full",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6991652761799195,
+          "secondary": 0.2596733523613673,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO full",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6858304756524206,
+          "secondary": 0.24155318676406,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO full",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.697673459140548,
+          "secondary": 0.2535533412624791,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO full",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.698570973728509,
+          "secondary": 0.2519355339838487,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO full",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.8276744052922661,
+          "secondary": 0.5448097423596291,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO full",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.7656944430505982,
+          "secondary": 0.3780242721493049,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO full",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.8367337851705399,
+          "secondary": 0.564308401556073,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO full",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.8205234519125723,
+          "secondary": 0.5238270452937478,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO full",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.7866241106345974,
+          "secondary": 0.4179752985220409,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.7838572725902618,
+          "secondary": 0.4158345330848431,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.6748674919708247,
+          "secondary": 0.2670432460462149,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6995011984738378,
+          "secondary": 0.2801951956516991,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6934397460282627,
+          "secondary": 0.2663283555622965,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.7043407093373857,
+          "secondary": 0.2798508788020573,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.7001930543574127,
+          "secondary": 0.2674080082326033,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.832315823050658,
+          "secondary": 0.5547287649354666,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.7620877747297934,
+          "secondary": 0.3811674565685706,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.8438527648524045,
+          "secondary": 0.578488773568531,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.823005073262245,
+          "secondary": 0.5430977825587384,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "GO intersect",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.7847158837348392,
+          "secondary": 0.4139437398784806,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.7527955285603076,
+          "secondary": 0.4262114880649767,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.6262404556793845,
+          "secondary": 0.2436138748443087,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6424659744894661,
+          "secondary": 0.2593117639914881,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6217335461136372,
+          "secondary": 0.2488640703177934,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.6495075995666887,
+          "secondary": 0.2555461107065097,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.6365059080685698,
+          "secondary": 0.253421511107925,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6800634695612042,
+          "secondary": 0.3218281628031073,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.7429589255899847,
+          "secondary": 0.4045467125511307,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.7013071694216223,
+          "secondary": 0.3491715308328886,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6782927201650245,
+          "secondary": 0.3214291207363499,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM full",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.748970316650256,
+          "secondary": 0.423856093722002,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.7519062010635384,
+          "secondary": 0.4165994452300602,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.6190032309596559,
+          "secondary": 0.2505906784302145,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6301800709766978,
+          "secondary": 0.2555214182356847,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6202512967985866,
+          "secondary": 0.2468881136776817,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.6412133577713967,
+          "secondary": 0.2538559706747768,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.6221742743818894,
+          "secondary": 0.2364421869522078,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6493354257858801,
+          "secondary": 0.2971140204804212,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.73006542150931,
+          "secondary": 0.3924345593702637,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.6629165533233748,
+          "secondary": 0.3168514183936495,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6423518462873464,
+          "secondary": 0.2956127870294101,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "OMIM intersect",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.7342277638442273,
+          "secondary": 0.4088644080565504,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5523621141503279,
+          "secondary": 0.188552859131681,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5480585729922866,
+          "secondary": 0.1436050839758139,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5442600480314316,
+          "secondary": 0.1318251441058804,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5466217802460656,
+          "secondary": 0.1401124852674252,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5578416168281145,
+          "secondary": 0.146314984223242,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5342011797726782,
+          "secondary": 0.1377535154251193,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.585779167491378,
+          "secondary": 0.2239505075817196,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5965706144401303,
+          "secondary": 0.1738834143879936,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.5849635913608008,
+          "secondary": 0.2114400522085013,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.5866119349806339,
+          "secondary": 0.2057693767924966,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "Temporal GO",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5980042896169137,
+          "secondary": 0.2116057081771042,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_level"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.567508602006488,
+          "secondary": 0.1304611828502848,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5369766247022812,
+          "secondary": 0.1093171801148884,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5995464354661129,
+          "secondary": 0.133889297821551,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5816303553983445,
+          "secondary": 0.1419606820476924,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5501426756091815,
+          "secondary": 0.1124783723622014,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.4935429338754842,
+          "secondary": 0.0989743792554414,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.7144870187651179,
+          "secondary": 0.32728494494487,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5722993312268214,
+          "secondary": 0.161889067907944,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.7207535297076632,
+          "secondary": 0.3322449938167975,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.695106375170453,
+          "secondary": 0.279502295035177,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes concat",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.6248456107038157,
+          "secondary": 0.1661005999746636,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5173402023568935,
+          "secondary": 0.1397463259703122,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5308555538363372,
+          "secondary": 0.1092229849949072,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6169845843156287,
+          "secondary": 0.1351370673617439,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5292899728491224,
+          "secondary": 0.1184791828809988,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5466311419378636,
+          "secondary": 0.1190483402215063,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5053942326051959,
+          "secondary": 0.1018958358381307,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6247316117082647,
+          "secondary": 0.2391944227331891,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5711366336840623,
+          "secondary": 0.1816618299957375,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.6285807314346289,
+          "secondary": 0.2417191542512489,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6178293401291792,
+          "secondary": 0.2385974693525511,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes product",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5481865224012346,
+          "secondary": 0.1825596537144241,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5458268815728933,
+          "secondary": 0.1354042213489454,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5415446189707004,
+          "secondary": 0.1159738454486816,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.555930289896377,
+          "secondary": 0.1221958275865513,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5067873149787891,
+          "secondary": 0.1106057004349837,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5065965849178515,
+          "secondary": 0.1020480162205024,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.494378115747087,
+          "secondary": 0.0972212766724326,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.7273721567782622,
+          "secondary": 0.3285365878095896,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.6235342320985371,
+          "secondary": 0.1916871674767885,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.7286213852955887,
+          "secondary": 0.3386522658777937,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6933674806696977,
+          "secondary": 0.2616899754884133,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG all_genes sum",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.6420347627702548,
+          "secondary": 0.216989484590142,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5415463292568626,
+          "secondary": 0.1389071517461495,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5520801797085281,
+          "secondary": 0.1418431011829858,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6238451080707614,
+          "secondary": 0.1769545268980698,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5633011242336577,
+          "secondary": 0.1649351806351044,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5501588590980242,
+          "secondary": 0.1340055496472842,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5230734124100535,
+          "secondary": 0.1246002584167704,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.7854758421256167,
+          "secondary": 0.4582301892548407,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5563896941938321,
+          "secondary": 0.1506811523573462,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.7881925701050339,
+          "secondary": 0.4558639702931441,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.7497801297745,
+          "secondary": 0.3773938025361034,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect concat",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5700102170477707,
+          "secondary": 0.1496363771206494,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5115493498973772,
+          "secondary": 0.156156253119777,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5563393730697107,
+          "secondary": 0.1404886035304772,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.657879846703382,
+          "secondary": 0.1912223915563007,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5691727470877156,
+          "secondary": 0.1601219359541311,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5416437729144993,
+          "secondary": 0.1366996848676934,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5376469980217049,
+          "secondary": 0.1310040208916022,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6761328189487417,
+          "secondary": 0.302804730946192,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.595200466515676,
+          "secondary": 0.2256528496369886,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.6682112494276958,
+          "secondary": 0.298918422241032,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6780256081188966,
+          "secondary": 0.3170420583734391,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect product",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5664598579806869,
+          "secondary": 0.2320161353024366,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5170797287468966,
+          "secondary": 0.1574061823264061,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5423146888312084,
+          "secondary": 0.1375684738857636,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6247059676581488,
+          "secondary": 0.1829652082954661,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.4847165460954268,
+          "secondary": 0.129156334664586,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.4724486640069392,
+          "secondary": 0.1078402395590996,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5032213696090208,
+          "secondary": 0.1225998822205991,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.7543410668307683,
+          "secondary": 0.3989995876400631,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5696852373852606,
+          "secondary": 0.1631654255547246,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.7725818995833742,
+          "secondary": 0.4256832588709924,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.7192217552045231,
+          "secondary": 0.3471110275243297,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "NG intersect sum",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.592667289664405,
+          "secondary": 0.2304003141211248,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5159085996956104,
+          "secondary": 0.0945875875398768,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5446201370906886,
+          "secondary": 0.1028515192828966,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5616398494778451,
+          "secondary": 0.1084344071343473,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5452575617639672,
+          "secondary": 0.104723890078969,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.525563956355608,
+          "secondary": 0.0995375516259174,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.523118490892317,
+          "secondary": 0.0971781637031825,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6393399114118802,
+          "secondary": 0.1418400566214074,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5176895746412494,
+          "secondary": 0.0914849036573444,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.6352795219416469,
+          "secondary": 0.1413367317162267,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6327937218217964,
+          "secondary": 0.1307684982050465,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes concat",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5548122604256022,
+          "secondary": 0.1108870374802135,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.519419911945841,
+          "secondary": 0.0963543383658139,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.553201720722231,
+          "secondary": 0.1078343918624332,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5576154138065591,
+          "secondary": 0.1076768824448185,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5536291937922216,
+          "secondary": 0.1051047541229949,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5382946159983829,
+          "secondary": 0.0998988552253233,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5468822159386448,
+          "secondary": 0.1006806538521511,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.5795560904396968,
+          "secondary": 0.1128482969651332,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.4974522878195186,
+          "secondary": 0.090630984563766,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.580054188483211,
+          "secondary": 0.1138596472882399,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.5878015668037491,
+          "secondary": 0.1170968007230215,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes product",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5235197115633042,
+          "secondary": 0.0996438281309969,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.4900480960702607,
+          "secondary": 0.0921711462663671,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5523090228904053,
+          "secondary": 0.10597240283488,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5727536115361791,
+          "secondary": 0.1135480119953274,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5453234142116948,
+          "secondary": 0.1026622458838236,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5290102247185757,
+          "secondary": 0.0967163055832637,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5518841183046234,
+          "secondary": 0.1023462002736178,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6439538181216484,
+          "secondary": 0.1496480434690113,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5227279830220871,
+          "secondary": 0.0941887057395135,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.6236845769165184,
+          "secondary": 0.1384989611456088,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6398644263158283,
+          "secondary": 0.1451270160168027,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE all_genes sum",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.565004077215305,
+          "secondary": 0.1163022936351844,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5366579163310999,
+          "secondary": 0.111320425364364,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5566570532117563,
+          "secondary": 0.1218261796391571,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5443029277442263,
+          "secondary": 0.1140311635668079,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5600407885480664,
+          "secondary": 0.1255895088410322,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5327402205615704,
+          "secondary": 0.1095415204105604,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5238523542550266,
+          "secondary": 0.1108029638587376,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6192741572054897,
+          "secondary": 0.1516689057123378,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5098680257682257,
+          "secondary": 0.1085090984818564,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.620779602825616,
+          "secondary": 0.1519403816098912,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6280288128423178,
+          "secondary": 0.1473025592224197,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect concat",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.54742400250059,
+          "secondary": 0.125697444506645,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5456030225813597,
+          "secondary": 0.1153919766285648,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5701693694786476,
+          "secondary": 0.12941019183812,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5896147744853014,
+          "secondary": 0.1278787680983559,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5771002393216479,
+          "secondary": 0.1330855041516022,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5596257742697089,
+          "secondary": 0.1186406227809828,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5699336362397551,
+          "secondary": 0.1241959402116875,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.5794505526240081,
+          "secondary": 0.1302340043518168,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.4756777512906018,
+          "secondary": 0.0997711072536691,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.5806568855875135,
+          "secondary": 0.1304821052114567,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.599240641760714,
+          "secondary": 0.138561077556123,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect product",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5139165205573705,
+          "secondary": 0.1172296752469982,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5375419940138323,
+          "secondary": 0.113780736364396,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5544696799389606,
+          "secondary": 0.1263769013068423,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5905151664790559,
+          "secondary": 0.1314333106269648,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5642369219211085,
+          "secondary": 0.1265714368246989,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5464664673601058,
+          "secondary": 0.119626717260571,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5552671569601745,
+          "secondary": 0.1219641302173435,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6196783652446997,
+          "secondary": 0.1601957904955457,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5270685646921794,
+          "secondary": 0.1141075823255571,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.6222508941840575,
+          "secondary": 0.1603924764265905,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6217205892579302,
+          "secondary": 0.1548040979586682,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "POMBE intersect sum",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5601439566755326,
+          "secondary": 0.1321568072397992,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5377349113158694,
+          "secondary": 0.1176265689403052,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.7113598306389001,
+          "secondary": 0.1978716409599052,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6416723715722262,
+          "secondary": 0.1522067953654488,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6984897135694407,
+          "secondary": 0.2066234114005469,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.6176825063071018,
+          "secondary": 0.1473387624176328,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.6051172863561817,
+          "secondary": 0.1498181036636995,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6791197984364746,
+          "secondary": 0.2016259881449247,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.6704001214773038,
+          "secondary": 0.1690807018719039,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.7363726066414449,
+          "secondary": 0.2565334301586899,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6924691198643039,
+          "secondary": 0.193355562881017,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes concat",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.4933546615550577,
+          "secondary": 0.0928372574053171,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.569759231947831,
+          "secondary": 0.1238701438637405,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.6728519489633099,
+          "secondary": 0.1794938718405108,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6947798712235255,
+          "secondary": 0.1914344450672676,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6045593375348918,
+          "secondary": 0.1244263462573828,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5827865515001412,
+          "secondary": 0.1271665642005422,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5809603198330217,
+          "secondary": 0.1451218801471231,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6339539796319112,
+          "secondary": 0.1590032395496229,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5867869877652802,
+          "secondary": 0.1191799086820284,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.581118802743498,
+          "secondary": 0.1303472156351611,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6082113887056902,
+          "secondary": 0.1576901628733104,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes product",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.4889703900093151,
+          "secondary": 0.100826871897535,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5307208159318249,
+          "secondary": 0.1171268409684915,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.706914011697218,
+          "secondary": 0.195128306220411,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6946365187095852,
+          "secondary": 0.1786418974869861,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6936887096591745,
+          "secondary": 0.2179664428501294,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.6310674481374553,
+          "secondary": 0.1509310656233944,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.6330725127708069,
+          "secondary": 0.1617167408949765,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.7092490924541025,
+          "secondary": 0.2410324270665211,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.6927920873252305,
+          "secondary": 0.1761764300150785,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.7611698972294597,
+          "secondary": 0.2493010308821629,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6686620199458199,
+          "secondary": 0.2159117713781696,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL all_genes sum",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.4628432807651757,
+          "secondary": 0.0878121090867456,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.6109118970579642,
+          "secondary": 0.1272030333027378,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.6871422669870145,
+          "secondary": 0.1292477259637929,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.7547934065313182,
+          "secondary": 0.2031804370839741,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6739263601547226,
+          "secondary": 0.1244128095998437,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.7088675638671834,
+          "secondary": 0.192922636814304,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.6687057964859088,
+          "secondary": 0.1980183061143219,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.7645931429227878,
+          "secondary": 0.2697796163899442,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.6319177357090383,
+          "secondary": 0.1203719731121683,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.7927145745391728,
+          "secondary": 0.3083589016373674,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.8040413072008379,
+          "secondary": 0.3372317577345713,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect concat",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5199948865825715,
+          "secondary": 0.0869595508312674,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.6417651840086999,
+          "secondary": 0.1110054805057934,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.6682007384649017,
+          "secondary": 0.1256262044241094,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.7179484461084127,
+          "secondary": 0.1849144947766278,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5367753745055458,
+          "secondary": 0.0839608165162458,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.6681338782013393,
+          "secondary": 0.159649628506403,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.6421993116008017,
+          "secondary": 0.1449143476866982,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6093230676063166,
+          "secondary": 0.1191756809750304,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5597482168032588,
+          "secondary": 0.0929850555792467,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.6180661973089859,
+          "secondary": 0.1196598093485735,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.5824984712599349,
+          "secondary": 0.1227325073684689,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect product",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5378931826554619,
+          "secondary": 0.0838696837660019,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.6250597889864474,
+          "secondary": 0.158351377495864,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.7011495032756173,
+          "secondary": 0.1517567591583337,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.7389374804845463,
+          "secondary": 0.2197854940439243,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6435736781234612,
+          "secondary": 0.1219709100041356,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.7383839364398345,
+          "secondary": 0.211163475521356,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.6817863792348678,
+          "secondary": 0.2194764283367184,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.7936604966182296,
+          "secondary": 0.2694242201112702,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.6208976826756007,
+          "secondary": 0.1441185543166756,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.841053837538645,
+          "secondary": 0.3255669963758562,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.8403471176261651,
+          "secondary": 0.3201610670983322,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "SL intersect sum",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5395754101230437,
+          "secondary": 0.1165002297511348,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.6544526101858413,
+          "secondary": 0.1715744961442324,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5571424122950271,
+          "secondary": 0.1128528289616733,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5346856467658746,
+          "secondary": 0.1051908333469081,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5450394811148312,
+          "secondary": 0.1127866667165115,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5568717191402929,
+          "secondary": 0.1101081356732283,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.554957881473393,
+          "secondary": 0.1150757718802801,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.8661047437021351,
+          "secondary": 0.3761583079927592,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.6135065471691927,
+          "secondary": 0.1496894083508972,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.864595482687728,
+          "secondary": 0.3798968307219688,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.8639037875442382,
+          "secondary": 0.3713886782863165,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes concat",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.6803905245194674,
+          "secondary": 0.2092147687835367,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.6327494565875107,
+          "secondary": 0.1365218622137252,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5592333116830055,
+          "secondary": 0.1133294243111373,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5466925270803104,
+          "secondary": 0.1117434392778729,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5424929865175815,
+          "secondary": 0.1106290291947113,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.561356395150982,
+          "secondary": 0.1098802467662275,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5571089226425681,
+          "secondary": 0.1164104036741848,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6574344525361614,
+          "secondary": 0.1606277404315621,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5776195413794029,
+          "secondary": 0.1170426393420435,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.6607172498272317,
+          "secondary": 0.1613893972399682,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6540566338121209,
+          "secondary": 0.162362646508283,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes product",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5263737364965769,
+          "secondary": 0.1009508449158346,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.6407775563435892,
+          "secondary": 0.1572928050603737,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5490599370410107,
+          "secondary": 0.1116212973576298,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.519032968222891,
+          "secondary": 0.100286124450204,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5399239930154592,
+          "secondary": 0.1093535151083239,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5495173465030495,
+          "secondary": 0.1085393441335445,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5603784666228165,
+          "secondary": 0.1157993311902036,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.8694159056184992,
+          "secondary": 0.3816373580870424,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.6125691568674135,
+          "secondary": 0.1415452815791359,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.8650166537322695,
+          "secondary": 0.3830806013090811,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.86952740363097,
+          "secondary": 0.3813558965655934,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF all_genes sum",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.6748775960894497,
+          "secondary": 0.2033539794421265,
+          "secondary_label": "AUPRC",
+          "scope": "all_genes",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.6148118323154871,
+          "secondary": 0.1583517051089594,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5117024464596346,
+          "secondary": 0.1079285098283188,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5302304892131836,
+          "secondary": 0.1139895202948962,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5405915873080095,
+          "secondary": 0.11790491963258,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5414388396116622,
+          "secondary": 0.1168975523572396,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5598655036172645,
+          "secondary": 0.1194221918252926,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.8573734957226122,
+          "secondary": 0.3836626832557603,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.6021458622028106,
+          "secondary": 0.1610038298929284,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.8572474544271887,
+          "secondary": 0.3849324399529725,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.855968478600543,
+          "secondary": 0.3729006433489039,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect concat",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.6571604885392873,
+          "secondary": 0.1914181598061931,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5988030567566499,
+          "secondary": 0.1374871256024471,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5088445589073385,
+          "secondary": 0.1037764039605374,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5235533988863904,
+          "secondary": 0.1105865071701153,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5278931416173643,
+          "secondary": 0.114491803925852,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5463768499908702,
+          "secondary": 0.1218708831361403,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5340492514247693,
+          "secondary": 0.1146360449684441,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.6570664724165761,
+          "secondary": 0.1795078316906155,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5689188266262638,
+          "secondary": 0.1394734572680436,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.6509264956678239,
+          "secondary": 0.1751253821589945,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.6514815944981881,
+          "secondary": 0.1745880348400653,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect product",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.5287770768742992,
+          "secondary": 0.112951721189077,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.5921786763432982,
+          "secondary": 0.146340435759625,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.5068766896759861,
+          "secondary": 0.1053380305689529,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.5292331910769711,
+          "secondary": 0.109992411906625,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.5185402522717212,
+          "secondary": 0.1115177821276525,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.5187108417673992,
+          "secondary": 0.1122921706738112,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.5499520066008526,
+          "secondary": 0.1202022707876603,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.8638361432038301,
+          "secondary": 0.4086203266294206,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.5907976976220097,
+          "secondary": 0.1475075793816379,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.8601714176246666,
+          "secondary": 0.4065315739486728,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "Txn_Jatin_contextual",
+          "metric": "AUROC",
+          "value": 0.8645208547550092,
+          "secondary": 0.4197408056677855,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        },
+        {
+          "label": "TF intersect sum",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.651175355100988,
+          "secondary": 0.1953055950207519,
+          "secondary_label": "AUPRC",
+          "scope": "intersect",
+          "family": "gene_pair"
+        }
+      ],
+      "files": [
+        "github_protocol/all_results_long_numeric.csv",
+        "github_protocol/all_results_wide_numeric.csv"
+      ]
+    },
+    {
+      "id": "dynamic_context",
+      "order": 4,
+      "title": "Expression-context embedding benchmark",
+      "date": "2026-07",
+      "protocol": "Contextual hidden states accumulated across ARCHS4, then evaluated on gene-set, pair, GO, and disease tracks.",
+      "conclusion": "BRIDGE ranked first at 0.6437; Txn_Jatin ranked second at 0.6357. Context helped both over their static full-track means.",
+      "primary_metric": "AUROC",
+      "rows": [
+        {
+          "label": "Dynamic full-track mean",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.64365,
+          "secondary": 0.0157500000000001,
+          "secondary_label": "delta vs static"
+        },
+        {
+          "label": "Dynamic full-track mean",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.6357,
+          "secondary": 0.01095,
+          "secondary_label": "delta vs static"
+        },
+        {
+          "label": "Dynamic full-track mean",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.6354,
+          "secondary": 2.4999999999941732e-05,
+          "secondary_label": "delta vs static"
+        },
+        {
+          "label": "Dynamic full-track mean",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.6295999999999999,
+          "secondary": -0.00015,
+          "secondary_label": "delta vs static"
+        },
+        {
+          "label": "Dynamic full-track mean",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.62425,
+          "secondary": -0.000325,
+          "secondary_label": "delta vs static"
+        },
+        {
+          "label": "Dynamic full-track mean",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.616125,
+          "secondary": -0.0003749999999999,
+          "secondary_label": "delta vs static"
+        },
+        {
+          "label": "Dynamic full-track mean",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.6131249999999999,
+          "secondary": -0.000725,
+          "secondary_label": "delta vs static"
+        },
+        {
+          "label": "Dynamic full-track mean",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6113,
+          "secondary": 2.4999999999941732e-05,
+          "secondary_label": "delta vs static"
+        },
+        {
+          "label": "Dynamic full-track mean",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.6094999999999999,
+          "secondary": -0.00155,
+          "secondary_label": "delta vs static"
+        }
+      ],
+      "files": [
+        "dynamic_context/dynamic_overall_ranking.csv",
+        "dynamic_context/dynamic_full_track_summary.csv"
+      ]
+    },
+    {
+      "id": "whole_gene_mask",
+      "order": 5,
+      "title": "15% whole-gene masking",
+      "date": "2026-07-23",
+      "protocol": "The same 2,188 genes were hidden across all samples on a 14,585-gene common universe; three seeds; TCGA and OSDR.",
+      "conclusion": "Txn_Jatin led TCGA expressed-gene AUROC (0.9284); BRIDGE led global PCC/MSE and all OSDR reconstruction metrics.",
+      "primary_metric": "AUROC",
+      "rows": [
+        {
+          "label": "OSDR whole-gene mask",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.9549796814982069,
+          "secondary": 0.9026440079828505,
+          "secondary_label": "global PCC",
+          "mse": 0.6660857995351156
+        },
+        {
+          "label": "OSDR whole-gene mask",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.8619743713245187,
+          "secondary": 0.8022591098562478,
+          "secondary_label": "global PCC",
+          "mse": 1.30789315700531
+        },
+        {
+          "label": "OSDR whole-gene mask",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.8397234349378074,
+          "secondary": 0.7592551275842953,
+          "secondary_label": "global PCC",
+          "mse": 1.53776748975118
+        },
+        {
+          "label": "OSDR whole-gene mask",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.8362025489882926,
+          "secondary": 0.7589714146450991,
+          "secondary_label": "global PCC",
+          "mse": 1.5376325050989788
+        },
+        {
+          "label": "OSDR whole-gene mask",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.8339895241820764,
+          "secondary": 0.7526642093111748,
+          "secondary_label": "global PCC",
+          "mse": 1.691274086634318
+        },
+        {
+          "label": "OSDR whole-gene mask",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.8314937485334298,
+          "secondary": 0.7633705781589174,
+          "secondary_label": "global PCC",
+          "mse": 1.5999946594238281
+        },
+        {
+          "label": "OSDR whole-gene mask",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.8272679273741813,
+          "secondary": 0.7576465543227892,
+          "secondary_label": "global PCC",
+          "mse": 1.630170742670695
+        },
+        {
+          "label": "TCGA whole-gene mask",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.928426538163424,
+          "secondary": 0.9087490835006634,
+          "secondary_label": "global PCC",
+          "mse": 0.44441606601079303
+        },
+        {
+          "label": "TCGA whole-gene mask",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.9120506509870473,
+          "secondary": 0.9155490001664309,
+          "secondary_label": "global PCC",
+          "mse": 0.41124186913172406
+        },
+        {
+          "label": "TCGA whole-gene mask",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.8885437323480653,
+          "secondary": 0.8931310476172483,
+          "secondary_label": "global PCC",
+          "mse": 0.5138456126054128
+        },
+        {
+          "label": "TCGA whole-gene mask",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.8867206564503043,
+          "secondary": 0.8907466363252787,
+          "secondary_label": "global PCC",
+          "mse": 0.5268241365750631
+        },
+        {
+          "label": "TCGA whole-gene mask",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.8676561643391034,
+          "secondary": 0.8781858418094796,
+          "secondary_label": "global PCC",
+          "mse": 0.5842783053716024
+        },
+        {
+          "label": "TCGA whole-gene mask",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.851406579162388,
+          "secondary": 0.8741792092926678,
+          "secondary_label": "global PCC",
+          "mse": 0.6048250993092855
+        },
+        {
+          "label": "TCGA whole-gene mask",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.8455931380459748,
+          "secondary": 0.8731237743092363,
+          "secondary_label": "global PCC",
+          "mse": 0.6083428859710693
+        }
+      ],
+      "files": [
+        "whole_gene_mask/imputation_all_models.csv",
+        "whole_gene_mask/unsupported_imputation_rows.csv",
+        "whole_gene_mask/protocol.json"
+      ]
+    },
+    {
+      "id": "cancer_rf",
+      "order": 6,
+      "title": "Cancer-gene identification",
+      "date": "2026-07-23",
+      "protocol": "Patient-grouped five-fold random forests for 2-cancer and 5-cancer panels, using masked/imputed genes.",
+      "conclusion": "All native decoders preserved near-ceiling tumor-versus-normal signal. These are internal TCGA discrimination results, not validated biomarkers.",
+      "primary_metric": "AUROC",
+      "rows": [
+        {
+          "label": "2 cancer",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.999479121701344,
+          "secondary": 0.9859295083992685,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "2 cancer",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.9994301994301994,
+          "secondary": 0.9859295083992685,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "2 cancer",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.9993927882816772,
+          "secondary": 0.9889502959852733,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "2 cancer",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.9993870327203661,
+          "secondary": 0.9889502959852733,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "2 cancer",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.9993812771590549,
+          "secondary": 0.9843192024411364,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "2 cancer",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.9993323548879104,
+          "secondary": 0.9874351444701218,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "2 cancer",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.9993265993265993,
+          "secondary": 0.9875931223532183,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "5 cancer",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.9963803088803088,
+          "secondary": 0.9656686123960584,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "5 cancer",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.9961579122293408,
+          "secondary": 0.9651347513715721,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "5 cancer",
+          "model": "Txn_Jatin",
+          "metric": "AUROC",
+          "value": 0.9961050532479102,
+          "secondary": 0.9680634582344694,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "5 cancer",
+          "model": "BRIDGE",
+          "metric": "AUROC",
+          "value": 0.9960486585486586,
+          "secondary": 0.9667992919899362,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "5 cancer",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.9957679225536369,
+          "secondary": 0.9667743394221876,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "5 cancer",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.99528671135814,
+          "secondary": 0.9663749325372746,
+          "secondary_label": "balanced accuracy"
+        },
+        {
+          "label": "5 cancer",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.9951097486811772,
+          "secondary": 0.9651364761071838,
+          "secondary_label": "balanced accuracy"
+        }
+      ],
+      "files": [
+        "cancer_rf/masked_rf_all_models.csv",
+        "cancer_rf/raw_rf_baseline.csv"
+      ]
+    },
+    {
+      "id": "osdr_peft",
+      "order": 7,
+      "title": "OSDR gradual unfreezing and LoRA",
+      "date": "2026-07-24",
+      "protocol": "Accession-grouped split; 20 epochs; head-only, BitFit/Norm, last 1-3 layers, and three LoRA configurations.",
+      "conclusion": "Last-3 unfreezing minimized MSE (0.3177); last-3 attention+FFN LoRA maximized flight-vs-ground AUROC (0.6547) and was selected by the predeclared combined-rank rule.",
+      "primary_metric": "AUROC",
+      "rows": [
+        {
+          "label": "OSDR PEFT candidate",
+          "model": "head_only",
+          "metric": "AUROC",
+          "value": 0.635,
+          "secondary": 1.0401,
+          "secondary_label": "masked MSE"
+        },
+        {
+          "label": "OSDR PEFT candidate",
+          "model": "bitfit_norm",
+          "metric": "AUROC",
+          "value": 0.5981,
+          "secondary": 0.9447,
+          "secondary_label": "masked MSE"
+        },
+        {
+          "label": "OSDR PEFT candidate",
+          "model": "last1",
+          "metric": "AUROC",
+          "value": 0.5955,
+          "secondary": 0.6783,
+          "secondary_label": "masked MSE"
+        },
+        {
+          "label": "OSDR PEFT candidate",
+          "model": "last2",
+          "metric": "AUROC",
+          "value": 0.5749,
+          "secondary": 0.4204,
+          "secondary_label": "masked MSE"
+        },
+        {
+          "label": "OSDR PEFT candidate",
+          "model": "last3",
+          "metric": "AUROC",
+          "value": 0.5739,
+          "secondary": 0.3177,
+          "secondary_label": "masked MSE"
+        },
+        {
+          "label": "OSDR PEFT candidate",
+          "model": "lora_attn_all_r4",
+          "metric": "AUROC",
+          "value": 0.6272,
+          "secondary": 0.9359,
+          "secondary_label": "masked MSE"
+        },
+        {
+          "label": "OSDR PEFT candidate",
+          "model": "lora_attn_last6_r8",
+          "metric": "AUROC",
+          "value": 0.6161,
+          "secondary": 0.9308,
+          "secondary_label": "masked MSE"
+        },
+        {
+          "label": "OSDR PEFT candidate",
+          "model": "lora_attn_ffn_last3_r4",
+          "metric": "AUROC",
+          "value": 0.6547,
+          "secondary": 0.9648,
+          "secondary_label": "masked MSE"
+        }
+      ],
+      "files": [
+        "osdr_peft/candidate_summary.csv",
+        "osdr_peft/report.md"
+      ]
+    },
+    {
+      "id": "individual_go_esm3",
+      "order": 8,
+      "title": "Individual GO terms with ESM3",
+      "date": "2026-07-25",
+      "protocol": "Forty frozen GO-BP terms; five-fold out-of-fold GPU linear probes; strict 13,408-gene ESM3 comparison.",
+      "conclusion": "ESM3 (0.7817) and ESM2 (0.7808) led sequence-aligned GO recovery; BulkFormer-147M led the expression-model group.",
+      "primary_metric": "AUROC",
+      "rows": [
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "ESM3",
+          "metric": "AUROC",
+          "value": 0.7816560870658995,
+          "secondary": 0.2442244587375508,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "ESM2_PCA512_prior",
+          "metric": "AUROC",
+          "value": 0.7807730020682475,
+          "secondary": 0.2311111452793978,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "BulkFormer_147M",
+          "metric": "AUROC",
+          "value": 0.6734069076646095,
+          "secondary": 0.0781917345631848,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "BRIDGE_OSDR_last1_dynamic",
+          "metric": "AUROC",
+          "value": 0.6630764915543942,
+          "secondary": 0.0867323121649659,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "BRIDGE_OSDR_last3_dynamic",
+          "metric": "AUROC",
+          "value": 0.6627361331302041,
+          "secondary": 0.0872948013023524,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "BRIDGE_OSDR_last2_dynamic",
+          "metric": "AUROC",
+          "value": 0.6625508476517845,
+          "secondary": 0.0867622321846363,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "BRIDGE_OSDR_original_dynamic",
+          "metric": "AUROC",
+          "value": 0.6615634686260019,
+          "secondary": 0.0864469327726987,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "scGPT",
+          "metric": "AUROC",
+          "value": 0.6611995123319876,
+          "secondary": 0.090378324204168,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "BRIDGE_OSDR_FT_dynamic",
+          "metric": "AUROC",
+          "value": 0.6595979711297628,
+          "secondary": 0.0849660280203788,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "Geneformer",
+          "metric": "AUROC",
+          "value": 0.6573129149764501,
+          "secondary": 0.0953352157622409,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "BulkFormer_50M",
+          "metric": "AUROC",
+          "value": 0.6566712390843088,
+          "secondary": 0.0736337232802048,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "BulkFormer_93M",
+          "metric": "AUROC",
+          "value": 0.6550121324329727,
+          "secondary": 0.0699240612008687,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "BulkFormer_127M",
+          "metric": "AUROC",
+          "value": 0.6516318327585794,
+          "secondary": 0.0687613861512594,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "BulkFormer_37M",
+          "metric": "AUROC",
+          "value": 0.6502067428081927,
+          "secondary": 0.0715798056549874,
+          "secondary_label": "AUPRC"
+        },
+        {
+          "label": "40 individual GO-BP terms",
+          "model": "Txn_Jatin_OSDR_dynamic",
+          "metric": "AUROC",
+          "value": 0.6428870739870918,
+          "secondary": 0.0794454790292435,
+          "secondary_label": "AUPRC"
+        }
+      ],
+      "files": [
+        "individual_go/osdr_go_model_summary_with_esm3.csv",
+        "individual_go/osdr_go_term_scores_with_esm3.csv"
+      ]
+    },
+    {
+      "id": "sparse_biomarker",
+      "order": 9,
+      "title": "Sparse-panel biomarker feasibility",
+      "date": "2026-07-25",
+      "protocol": "Only 1,000 or 2,000 genes observed; 86-93% of the vocabulary hidden; internal TCGA endpoints.",
+      "conclusion": "Literal sparse-panel reconstruction failed (PCC about 0.009; expression AUROC about 0.505). Strong phenotype scores did not validate hidden-gene recovery and must not be framed as biomarker discovery.",
+      "primary_metric": "global PCC",
+      "rows": [
+        {
+          "label": "1000-gene observed panel",
+          "model": "Txn_Jatin",
+          "metric": "global PCC",
+          "value": 0.00947632547467947,
+          "secondary": 0.5049940386120456,
+          "secondary_label": "expression AUROC"
+        },
+        {
+          "label": "2000-gene observed panel",
+          "model": "Txn_Jatin",
+          "metric": "global PCC",
+          "value": 0.009281723760068417,
+          "secondary": 0.5079530515135713,
+          "secondary_label": "expression AUROC"
+        }
+      ],
+      "files": [
+        "sparse_biomarker/panel_1000/phenotype_prediction.csv",
+        "sparse_biomarker/panel_2000/phenotype_prediction.csv",
+        "sparse_biomarker/report.md"
+      ]
+    },
+    {
+      "id": "immunotherapy",
+      "order": 10,
+      "title": "Exploratory immunotherapy transfer",
+      "date": "2026-07-26",
+      "protocol": "Four public ICI cohorts, n=239; nested leave-one-cohort-out logistic evaluation; frozen Txn_Jatin features; explicit pretraining-overlap audit.",
+      "conclusion": "Raw expression led macro AUROC (0.6535); Txn-completed expression reached 0.6361; context features were dominated by cohort. IFN-alpha and IFN-gamma response pathways were concordantly higher in responders, but the study is exploratory.",
+      "primary_metric": "macro AUROC",
+      "rows": [
+        {
+          "label": "Four-cohort leave-one-cohort-out",
+          "model": "hallmark_common",
+          "metric": "macro AUROC",
+          "value": 0.5514879415606111,
+          "secondary": 0.4250572351259631,
+          "secondary_label": "macro AUPRC"
+        },
+        {
+          "label": "Four-cohort leave-one-cohort-out",
+          "model": "raw_common_topvar",
+          "metric": "macro AUROC",
+          "value": 0.6535403540801552,
+          "secondary": 0.5132098790895803,
+          "secondary_label": "macro AUPRC"
+        },
+        {
+          "label": "Four-cohort leave-one-cohort-out",
+          "model": "txn_completed_hallmark",
+          "metric": "macro AUROC",
+          "value": 0.5512168861181139,
+          "secondary": 0.4256307523576721,
+          "secondary_label": "macro AUPRC"
+        },
+        {
+          "label": "Four-cohort leave-one-cohort-out",
+          "model": "txn_completed_topvar",
+          "metric": "macro AUROC",
+          "value": 0.636084173858773,
+          "secondary": 0.5054236849619689,
+          "secondary_label": "macro AUPRC"
+        },
+        {
+          "label": "Four-cohort leave-one-cohort-out",
+          "model": "txn_context_mean",
+          "metric": "macro AUROC",
+          "value": 0.4064268918240685,
+          "secondary": 0.3710855992742173,
+          "secondary_label": "macro AUPRC"
+        },
+        {
+          "label": "Four-cohort leave-one-cohort-out",
+          "model": "txn_hidden_all",
+          "metric": "macro AUROC",
+          "value": 0.452359152777838,
+          "secondary": 0.355669293738704,
+          "secondary_label": "macro AUPRC"
+        }
+      ],
+      "files": [
+        "immunotherapy/loco_summary.csv",
+        "immunotherapy/hallmark_random_effects_meta.csv",
+        "immunotherapy/clean_no_pretraining_overlap_summary.csv",
+        "immunotherapy/representation_nuisance_diagnostics.csv",
+        "immunotherapy/report.md"
+      ]
+    }
+  ],
+  "counts": {
+    "models": 13,
+    "experiments": 10,
+    "github_protocol_rows": 319,
+    "individual_go_rows": 3800,
+    "whole_gene_mask_rows": 42,
+    "ici_patients": 239
+  }
+}

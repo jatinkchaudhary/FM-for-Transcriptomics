@@ -1,0 +1,125 @@
+{
+  "benchmark": "whole_gene_masking_and_cancer_gene_identification",
+  "cancer_panels": {
+    "2_cancer": [
+      "TCGA-LUAD",
+      "TCGA-LUSC"
+    ],
+    "5_cancer": [
+      "TCGA-BRCA",
+      "TCGA-KIRC",
+      "TCGA-LUAD",
+      "TCGA-LUSC",
+      "TCGA-SKCM"
+    ]
+  },
+  "cancer_probe": {
+    "class_weight": "balanced",
+    "cross_validation": "5-fold stratified patient-group CV",
+    "trees": 300,
+    "type": "RandomForestClassifier"
+  },
+  "cancer_target": "binary tumor versus normal",
+  "created_utc": "2026-07-23T20:37:28.062653+00:00",
+  "datasets": {
+    "OSDR": {
+      "binary_expression_threshold": "CPM >= 1",
+      "input_scale": "prepared log1p(CPM)",
+      "matrix": "/media/volume/TrainingData/txn_jatin_archs4/bridge_osdr_finetune/prepared_osdr_bridge_input.npz",
+      "samples": 2099,
+      "source_gene_count": 15165
+    },
+    "TCGA": {
+      "binary_expression_threshold": "TPM >= 1",
+      "input_scale": "log1p(TPM)",
+      "matrix": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/tcga/tcga_tpm_unstranded_matrix.parquet",
+      "metadata": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/tcga/tcga_metadata.parquet",
+      "sample_sheet": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/tcga/gdc_sample_sheet.2025-11-16.tsv",
+      "samples": 3481,
+      "source_gene_count": 15165
+    }
+  },
+  "imputation_metrics": [
+    "PCC",
+    "Spearman",
+    "MSE",
+    "MAE",
+    "expressed-vs-unexpressed AUROC",
+    "expressed-vs-unexpressed AUPRC"
+  ],
+  "masking": {
+    "fraction": 0.15,
+    "genes_per_seed": 2188,
+    "mask_token": -10.0,
+    "same_genes_across_samples": true,
+    "seeds": [
+      20260723,
+      20260724,
+      20260725
+    ],
+    "type": "whole_gene"
+  },
+  "models": {
+    "BRIDGE": {
+      "checkpoint": "/media/volume/TrainingData/txn_jatin_archs4/baselines/BRIDGE_s66qfh36/best_model.pt",
+      "supported": true
+    },
+    "BulkFormer_127M": {
+      "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_127M.pt",
+      "supported": true
+    },
+    "BulkFormer_147M": {
+      "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_147M.pt",
+      "supported": true
+    },
+    "BulkFormer_37M": {
+      "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_37M.pt",
+      "supported": true
+    },
+    "BulkFormer_50M": {
+      "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_50M.pt",
+      "supported": true
+    },
+    "BulkFormer_93M": {
+      "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_93M.pt",
+      "supported": true
+    },
+    "ESM2_PCA512_prior": {
+      "checkpoint": null,
+      "supported": false
+    },
+    "Geneformer": {
+      "checkpoint": null,
+      "supported": false
+    },
+    "Txn_Jatin": {
+      "checkpoint": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/best_model.pt",
+      "supported": true
+    },
+    "Txn_Jatin_contextual": {
+      "checkpoint": null,
+      "supported": false
+    },
+    "scGPT": {
+      "checkpoint": null,
+      "supported": false
+    }
+  },
+  "paths": {
+    "bridge_genes": "/media/volume/TrainingData/txn_jatin_archs4/baselines/BRIDGE_s66qfh36/canonical_genes.csv",
+    "bulk_genes": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/BulkFormer-main/data/bulkformer_gene_info.csv",
+    "bulkformer_root": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/BulkFormer-main",
+    "esm2": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/esm2_feature_concat.pt",
+    "existing_sample_results": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/Txn_Jatin/benchmark/tables/sample_scores.csv",
+    "existing_static_results": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/github_protocol_d132002_20260721_202549",
+    "graph": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/G_tcga.pt",
+    "graph_weights": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/G_tcga_weight.pt",
+    "train_flash": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/RNA Walter/flash_osdr_model/train_flash.py",
+    "txn_genes": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/canonical_genes.csv"
+  },
+  "reuse_without_recalculation": {
+    "github_protocol_static_results": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/github_protocol_d132002_20260721_202549",
+    "previous_sample_results": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/Txn_Jatin/benchmark/tables/sample_scores.csv"
+  },
+  "shared_gene_count": 14585
+}

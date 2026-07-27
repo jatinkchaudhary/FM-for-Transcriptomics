@@ -1,0 +1,39 @@
+{
+  "device": "cuda",
+  "python_packages": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/python_packages_clean",
+  "train_flash": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/RNA Walter/flash_osdr_model/train_flash.py",
+  "bulkformer_root": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/BulkFormer-main",
+  "bulkformer_genes": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/BulkFormer-main/data/bulkformer_gene_info.csv",
+  "bulkformer_graph": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/G_tcga.pt",
+  "bulkformer_graph_weights": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/G_tcga_weight.pt",
+  "bulkformer_esm2": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/esm2_feature_concat.pt",
+  "models": {
+    "Txn_Jatin": {
+      "checkpoint": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/best_model.pt",
+      "genes": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/canonical_genes.csv"
+    },
+    "Txn_Jatin_OSDR_LoRA": {
+      "checkpoint": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/osdr_txn_peft_sweep_20260724_0240/candidates/lora_attn_ffn_last3_r4/best.pt",
+      "genes": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/canonical_genes.csv"
+    },
+    "BRIDGE": {
+      "checkpoint": "/media/volume/TrainingData/txn_jatin_archs4/baselines/BRIDGE_s66qfh36/best_model.pt",
+      "genes": "/media/volume/TrainingData/txn_jatin_archs4/baselines/BRIDGE_s66qfh36/canonical_genes.csv"
+    },
+    "BulkFormer_37M": {
+      "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_37M.pt"
+    },
+    "BulkFormer_50M": {
+      "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_50M.pt"
+    },
+    "BulkFormer_93M": {
+      "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_93M.pt"
+    },
+    "BulkFormer_127M": {
+      "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_127M.pt"
+    },
+    "BulkFormer_147M": {
+      "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_147M.pt"
+    }
+  }
+}

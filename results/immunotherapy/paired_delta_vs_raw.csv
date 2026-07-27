@@ -1,0 +1,11 @@
+method,reference,delta_auroc,delta_ci_low,delta_ci_high,bootstrap_valid,analysis
+txn_context_mean,raw_common_topvar,-0.20487421383647803,-0.29910488233473087,-0.11452663893840347,3000,four_cohort_loco
+txn_hidden_all,raw_common_topvar,-0.29913522012578614,-0.3998361998361999,-0.19841136678384996,3000,four_cohort_loco
+hallmark_common,raw_common_topvar,-0.05896226415094341,-0.1053014592933949,-0.013059910559910652,3000,four_cohort_loco
+txn_completed_topvar,raw_common_topvar,-0.008176100628930816,-0.01835851540419549,0.0015932205659994797,3000,four_cohort_loco
+txn_completed_hallmark,raw_common_topvar,-0.060298742138364836,-0.10671683478038803,-0.014857205423975528,3000,four_cohort_loco
+txn_context_mean,raw_common_topvar,-0.18859011627906969,-0.3232996434048452,-0.053003756441373076,3000,melanoma_loco
+txn_hidden_all,raw_common_topvar,-0.010356104651162767,-0.1439570608623794,0.12783617544929873,3000,melanoma_loco
+hallmark_common,raw_common_topvar,-0.16551598837209291,-0.28995588235294123,-0.035713645214183326,3000,melanoma_loco
+txn_completed_topvar,raw_common_topvar,-0.07430959302325574,-0.12459883926989201,-0.027442962229745477,3000,melanoma_loco
+txn_completed_hallmark,raw_common_topvar,-0.16497093023255804,-0.2896124873523006,-0.03575456122920437,3000,melanoma_loco

@@ -1,0 +1,5 @@
+track,Txn_Jatin,Txn_rank,BRIDGE,BRIDGE_rank,winner,winner_score
+gene-set,0.6386,2,0.6446,1,BRIDGE,0.6446
+paired,0.5862,3,0.5888,1,BRIDGE,0.5888
+single-gene-GO,0.657,8,0.6698,2,BulkFormer_147M,0.681
+single-gene-disease,0.661,7,0.6714,3,Geneformer,0.6795

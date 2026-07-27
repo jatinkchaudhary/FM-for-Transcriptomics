@@ -1,0 +1,21 @@
+param(
+    [string]$HostName = "149.165.152.254",
+    [string]$RemoteDir = "/media/volume/AdditionalHeadroom/Txn_Jatin_studio_20260726",
+    [int]$Port = 8000
+)
+
+$ErrorActionPreference = "Stop"
+$Root = Split-Path -Parent $PSScriptRoot
+$Python = Join-Path (Split-Path -Parent $Root) ".venv\Scripts\python.exe"
+$Uploader = Join-Path (Split-Path -Parent $Root) "Txn_Jatin_20epochs\remote_upload.py"
+$Executor = Join-Path (Split-Path -Parent $Root) "Txn_Jatin_20epochs\remote_exec.py"
+
+if (-not $env:REMOTE_PASS) {
+    throw "REMOTE_PASS must be set for the remote SSH account."
+}
+
+$Archive = Join-Path $env:TEMP "txn_jatin_studio_deploy.tar.gz"
+tar -czf $Archive -C $Root app config results
+& $Python $Uploader --host $HostName --remote-dir $RemoteDir $Archive
+& $Python $Executor --host $HostName --timeout 120 -- "cd $RemoteDir && tar -xzf txn_jatin_studio_deploy.tar.gz && nohup /media/volume/TrainingData/home_data/benchmarking_run/.venv/bin/python app/backend/server.py --port $Port > studio.log 2>&1 < /dev/null & echo `$! > studio.pid"
+Write-Host "Remote Studio: http://${HostName}:$Port/"

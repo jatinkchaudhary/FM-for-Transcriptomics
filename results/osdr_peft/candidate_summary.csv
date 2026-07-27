@@ -1,0 +1,9 @@
+model,masked_reconstruction_mse,f1_macro,flight_ground_auroc
+head_only,1.0401,0.595,0.635
+bitfit_norm,0.9447,0.5575,0.5981
+last1,0.6783,0.5545,0.5955
+last2,0.4204,0.533,0.5749
+last3,0.3177,0.5588,0.5739
+lora_attn_all_r4,0.9359,0.5987,0.6272
+lora_attn_last6_r8,0.9308,0.5985,0.6161
+lora_attn_ffn_last3_r4,0.9648,0.6047,0.6547
