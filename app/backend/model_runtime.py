@@ -18,11 +18,17 @@ import numpy as np
 import torch
 import torch.nn as nn
 
+try:
+    from .downstream_analysis import build_live_analysis
+except ImportError:
+    from downstream_analysis import build_live_analysis
+
 
 MASK_TOKEN = -10.0
 MAX_REQUEST_GENES = 20010
 MAX_REQUEST_SAMPLES = 512
 INFERENCE_BATCH_SAMPLES = 32
+EMBEDDING_BATCH_SAMPLES = 8
 BULK_CONFIGS = {
     "BulkFormer_37M": {"dim": 128, "p_repeat": 1},
     "BulkFormer_50M": {"dim": 256, "p_repeat": 2},
@@ -257,6 +263,9 @@ class ModelRuntime:
     @staticmethod
     def _validate_payload(
         payload: dict[str, Any],
+        *,
+        require_missing: bool = True,
+        allow_negative: bool = False,
     ) -> tuple[list[str], list[str], np.ndarray, np.ndarray]:
         genes = [str(value).strip().upper() for value in payload.get("genes", [])]
         samples = [str(value) for value in payload.get("samples", [])]
@@ -290,10 +299,11 @@ class ModelRuntime:
                     number = float(value)
                 except (TypeError, ValueError) as error:
                     raise RequestError(f"matrix[{g}][{s}] is not numeric") from error
-                if not math.isfinite(number) or number < 0:
-                    raise RequestError("observed expression values must be finite and non-negative")
+                if not math.isfinite(number) or (number < 0 and not allow_negative):
+                    qualifier = "finite" if allow_negative else "finite and non-negative"
+                    raise RequestError(f"observed expression values must be {qualifier}")
                 values[g, s] = number
-        if not mask.any():
+        if require_missing and not mask.any():
             raise RequestError("the matrix contains no missing values to impute")
         return genes, samples, values, mask
 
@@ -328,6 +338,24 @@ class ModelRuntime:
             del tensor, chunk
         return prediction
 
+    def _embed_aligned(self, aligned: np.ndarray) -> np.ndarray:
+        sample_embeddings = []
+        for start in range(0, len(aligned), EMBEDDING_BATCH_SAMPLES):
+            end = min(start + EMBEDDING_BATCH_SAMPLES, len(aligned))
+            tensor = torch.from_numpy(aligned[start:end]).to(
+                self.device, non_blocking=True
+            )
+            with torch.inference_mode(), torch.autocast(
+                device_type=self.device.type,
+                dtype=torch.bfloat16,
+                enabled=self.device.type == "cuda",
+            ):
+                hidden = self.model.encode_hidden(tensor)
+                chunk = hidden.float().mean(dim=1)
+            sample_embeddings.append(chunk.cpu().numpy())
+            del tensor, hidden, chunk
+        return np.concatenate(sample_embeddings, axis=0)
+
     def impute(self, payload: dict[str, Any]) -> dict[str, Any]:
         genes, samples, values, missing = self._validate_payload(payload)
         with self.lock:
@@ -348,7 +376,9 @@ class ModelRuntime:
                 observed = ~missing[request_index]
                 aligned[observed, model_index] = model_values[request_index, observed]
             if not matched:
-                raise RequestError("none of the submitted genes are in the selected model vocabulary")
+                raise RequestError(
+                    "none of the submitted genes are in the selected model vocabulary"
+                )
 
             prediction = self._predict_aligned(name, aligned)
             completed = values.astype(float).tolist()
@@ -381,7 +411,9 @@ class ModelRuntime:
                 "model": name,
                 "imputed": completed,
                 "confidence": confidence,
-                "confidence_kind": "placeholder; checkpoint has no calibrated predictive uncertainty",
+                "confidence_kind": (
+                    "placeholder; checkpoint has no calibrated predictive uncertainty"
+                ),
                 "input_scale": scale,
                 "matched_genes": len(matched),
                 "model_gene_count": len(self.model_genes),
@@ -391,3 +423,102 @@ class ModelRuntime:
                 "device": torch.cuda.get_device_name(0),
                 "inference_batch_samples": INFERENCE_BATCH_SAMPLES,
             }
+
+    def analyze_downstream(self, payload: dict[str, Any]) -> dict[str, Any]:
+        genes, samples, values, missing = self._validate_payload(
+            payload,
+            require_missing=False,
+            allow_negative=True,
+        )
+        if len(samples) < 2:
+            raise RequestError("downstream analysis requires at least two samples")
+        groups = [str(value).strip() or "Unlabeled" for value in payload.get("groups", [])]
+        if not groups:
+            groups = ["Unlabeled"] * len(samples)
+        if len(groups) != len(samples):
+            raise RequestError("groups must have one value per sample")
+
+        raw_name = str(payload.get("model", ""))
+        name = self.normalize_name(raw_name)
+        public = self.public_models.get(name)
+        if public is None:
+            raise RequestError(f"Unknown model: {raw_name}")
+        requested_scale = str(payload.get("input_scale", "auto")).lower()
+        if np.any(values[~missing] < 0):
+            scale = "log1p"
+        elif requested_scale in {"raw", "tpm", "cpm", "counts"}:
+            scale = "raw"
+        elif requested_scale in {"log1p", "log1p_tpm", "log1p_cpm"}:
+            scale = "log1p"
+        else:
+            scale = self._resolve_scale(payload, values, missing)
+        model_values = np.log1p(np.maximum(values, 0)) if scale == "raw" else values.copy()
+
+        warnings: list[str] = []
+        model_gene_count: int | None = None
+        matched_genes = len(genes)
+        can_encode = bool(public["imputation_supported"]) and not name.startswith(
+            "BulkFormer_"
+        )
+        if can_encode:
+            with self.lock:
+                name = self.ensure_loaded(name)
+                model_gene_count = len(self.model_genes)
+                aligned = np.zeros(
+                    (len(samples), model_gene_count), dtype=np.float32
+                )
+                matched_genes = 0
+                for request_index, gene in enumerate(genes):
+                    model_index = self.gene_index.get(gene)
+                    if model_index is None:
+                        continue
+                    matched_genes += 1
+                    aligned[:, model_index] = model_values[request_index]
+                    aligned[missing[request_index], model_index] = MASK_TOKEN
+                if not matched_genes:
+                    raise RequestError(
+                        "none of the submitted genes are in the selected model vocabulary"
+                    )
+                embeddings = self._embed_aligned(aligned)
+            embedding_mode = "mean contextual sample embedding (512-d)"
+        else:
+            profile = model_values.T.astype(np.float32, copy=True)
+            if missing.any():
+                profile[missing.T] = 0
+            means = profile.mean(axis=0, keepdims=True)
+            standard_deviation = profile.std(axis=0, keepdims=True)
+            informative = standard_deviation > 1e-6
+            profile[:, informative[0]] = (
+                profile[:, informative[0]] - means[:, informative[0]]
+            ) / standard_deviation[:, informative[0]]
+            profile[:, ~informative[0]] = 0
+            embeddings = profile
+            embedding_mode = "standardized log-expression profile"
+            warnings.append(
+                f"{public['label']} has no validated contextual sample-embedding "
+                "interface in this deployment; retrieval and maps use expression "
+                "profiles rather than model embeddings."
+            )
+
+        result = build_live_analysis(
+            model=name,
+            embedding_mode=embedding_mode,
+            genes=genes,
+            samples=samples,
+            groups=groups,
+            expression=values,
+            embeddings=embeddings,
+            matched_genes=matched_genes,
+            model_gene_count=model_gene_count,
+            initial_warnings=warnings,
+        )
+        result["input_scale"] = scale
+        result["device"] = (
+            torch.cuda.get_device_name(0)
+            if can_encode and torch.cuda.is_available()
+            else "CPU"
+        )
+        result["embedding_batch_samples"] = (
+            EMBEDDING_BATCH_SAMPLES if can_encode else None
+        )
+        return result

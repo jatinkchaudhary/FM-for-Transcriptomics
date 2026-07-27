@@ -141,6 +141,7 @@ The service exposes:
 - `GET /api/models`
 - `GET /api/experiments`
 - `POST /api/impute`
+- `POST /api/downstream`
 - `GET /results/...`
 - `GET /test-data/...`
 
@@ -151,6 +152,22 @@ Imputation requests accept up to 20,010 genes and 512 samples, subject to the
 25 MB HTTP body limit. The runtime processes samples in 32-sample GPU batches
 so larger requests, including the built-in 46-sample ARCHS4 example, keep
 predictable peak inference memory.
+
+`POST /api/downstream` recomputes the downstream workspace from the submitted
+matrix. Txn_Jatin, Txn_Jatin OSDR LoRA, and BRIDGE use mean contextual sample
+embeddings from their selected checkpoint. Models without a validated sample
+encoder use a clearly labeled standardized log-expression fallback. The
+response contains exact within-input cosine retrieval, independently fitted
+PCA/UMAP/t-SNE coordinates in 2D and 3D, projection trustworthiness,
+per-sample expression inspection, group-neighborhood diagnostics, and a
+numerically generated interpretation.
+
+These live results cover only the samples in the current request. The
+`de-jish/bridge-rna` repository does not distribute its 940,455-sample ARCHS4
+embedding memmap (`artifacts.json` lists a null download URL), and an index
+built by BRIDGE cannot be mixed with Txn_Jatin query embeddings. The Studio
+therefore reports that boundary explicitly rather than presenting an
+incompatible or stale corpus search.
 
 ## Reproducing the study
 

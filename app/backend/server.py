@@ -111,7 +111,7 @@ class StudioHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self) -> None:
         route = urlparse(self.path).path
-        if route != "/api/impute":
+        if route not in {"/api/impute", "/api/downstream"}:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -119,7 +119,10 @@ class StudioHandler(SimpleHTTPRequestHandler):
             if length <= 0 or length > 25 * 1024 * 1024:
                 raise RequestError("request body must be between 1 byte and 25 MB")
             payload = json.loads(self.rfile.read(length))
-            result = self.server.runtime.impute(payload)
+            if route == "/api/impute":
+                result = self.server.runtime.impute(payload)
+            else:
+                result = self.server.runtime.analyze_downstream(payload)
             self._json(result)
         except UnsupportedModelError as error:
             self._json(

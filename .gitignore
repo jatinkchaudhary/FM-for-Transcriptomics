@@ -17,6 +17,7 @@ __pycache__/
 *.py[cod]
 *.log
 *.pid
+validation/*_local.png
 .venv/
 venv/
 .pytest_cache/

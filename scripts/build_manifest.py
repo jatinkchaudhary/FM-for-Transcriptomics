@@ -27,6 +27,8 @@ def main() -> int:
         and path != OUTPUT
         and ".git" not in path.parts
         and "__pycache__" not in path.parts
+        and path.suffix != ".log"
+        and not path.name.endswith("_local.png")
     )
     OUTPUT.write_text(
         "".join(f"{sha256(path)}  {path.relative_to(ROOT).as_posix()}\n" for path in files),

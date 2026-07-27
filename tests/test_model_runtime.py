@@ -1,9 +1,11 @@
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 import torch
 import torch.nn as nn
 
+from app.backend.downstream_analysis import build_live_analysis
 from app.backend.model_runtime import (
     INFERENCE_BATCH_SAMPLES,
     MAX_REQUEST_SAMPLES,
@@ -66,6 +68,74 @@ class ModelRuntimeTest(unittest.TestCase):
             [INFERENCE_BATCH_SAMPLES, 46 - INFERENCE_BATCH_SAMPLES],
         )
         np.testing.assert_array_equal(prediction, np.ones_like(aligned))
+
+    def test_live_analysis_is_derived_from_submitted_embeddings(self):
+        common = {
+            "model": "Txn_Jatin",
+            "embedding_mode": "test embedding",
+            "genes": ["A", "B", "C"],
+            "samples": ["S1", "S2", "S3", "S4"],
+            "groups": ["case", "case", "control", "control"],
+            "expression": np.asarray(
+                [[5, 4, 1, 0], [0, 1, 4, 5], [1, 1, 1, 1]],
+                dtype=np.float32,
+            ),
+            "matched_genes": 3,
+            "model_gene_count": 3,
+            "methods": ("pca",),
+        }
+        first = build_live_analysis(
+            embeddings=np.asarray(
+                [[1, 0], [0.9, 0.1], [0, 1], [0.1, 0.9]],
+                dtype=np.float32,
+            ),
+            **common,
+        )
+        second = build_live_analysis(
+            embeddings=np.asarray(
+                [[1, 0], [0, 1], [1, 0], [0, 1]],
+                dtype=np.float32,
+            ),
+            **common,
+        )
+
+        self.assertEqual(first["source"], "current_request")
+        self.assertEqual(first["scope"], "uploaded cohort")
+        self.assertIn("pca", first["projections"])
+        self.assertNotEqual(first["similarity"], second["similarity"])
+        self.assertEqual(first["nearest_neighbors"][0]["neighbors"][0]["sample"], "S2")
+
+    def test_expression_fallback_accepts_complete_matrix(self):
+        runtime = ModelRuntime.__new__(ModelRuntime)
+        runtime.public_models = {
+            "ESM3": {
+                "id": "ESM3",
+                "label": "ESM3",
+                "imputation_supported": False,
+            }
+        }
+        payload = {
+            "model": "ESM3",
+            "genes": ["A", "B"],
+            "samples": ["S1", "S2"],
+            "groups": ["case", "control"],
+            "matrix": [[1.0, 3.0], [4.0, 2.0]],
+            "missing": [[False, False], [False, False]],
+            "input_scale": "log1p",
+        }
+
+        with patch(
+            "app.backend.model_runtime.build_live_analysis",
+            return_value={"source": "current_request"},
+        ) as builder:
+            result = runtime.analyze_downstream(payload)
+
+        self.assertEqual(result["source"], "current_request")
+        self.assertEqual(result["device"], "CPU")
+        arguments = builder.call_args.kwargs
+        self.assertEqual(arguments["embedding_mode"], "standardized log-expression profile")
+        self.assertEqual(arguments["embeddings"].shape, (2, 2))
+        self.assertFalse(np.allclose(arguments["embeddings"][0], arguments["embeddings"][1]))
 
 
 if __name__ == "__main__":

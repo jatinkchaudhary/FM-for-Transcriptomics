@@ -37,6 +37,12 @@
     .results-nav>div{display:none}
     .results-nav>button{min-width:176px!important}
     .results-body{min-height:620px}
+    .downstream-shell{grid-template-columns:1fr!important;height:auto!important}
+    .downstream-task-nav{display:flex!important;gap:4px;overflow-x:auto!important;border-right:none!important;border-bottom:1px solid #e3e6ea;padding:8px!important}
+    .downstream-task-nav>div{display:none}
+    .downstream-task-nav>button{display:inline-block!important;width:auto!important;min-width:max-content;margin:0!important;white-space:nowrap}
+    .downstream-content{min-height:640px;padding:14px!important}
+    .live-two-column{grid-template-columns:1fr!important}
   }
 </style>
 </helmet>
@@ -191,9 +197,11 @@ const EXTRA=['EGFR','KRAS','BRAF','MYC','VEGFA','PTGS2','ERBB2','MET','ALK','NRA
 class Component extends DCLogic{
   state={tab:'input',model:'Txn_Jatin',norm:'raw',clampLo:1,clampHi:99,search:'',theme:'light',
     running:false,progress:0,jobStatus:'Load a matrix to begin',hasImputed:false,
-    pinned:null,selection:new Set(),tip:{on:false},downTask:'GO-BP',fdr:0.05,minSize:5,
+    pinned:null,selection:new Set(),tip:{on:false},downTask:'Cohort overview',fdr:0.05,minSize:5,
     dataLabel:'No matrix loaded',viewRows:null,rowStart:0,cmpSync:0,apiStatus:'idle',
-    modelsMeta:null,registry:null,resultExperiment:'github_protocol'};
+    modelsMeta:null,registry:null,resultExperiment:'github_protocol',
+    downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0,
+    topK:8,mapMethod:'umap',mapDims:'2d',mapColor:'group',mapRotation:24};
   genes=[];samples=[];sampleClass=[];geneModule={};vals=[];miss=[];missCount=0;
 
   componentDidMount(){
@@ -267,7 +275,7 @@ class Component extends DCLogic{
     this.vals=vals;this.miss=miss;this.imp=null;this.conf=null;this.impMask=null;
     let mc=0,tot=G*S;for(let g=0;g<G;g++)for(let s=0;s<S;s++)if(miss[g][s])mc++;
     this.missCount=mc;
-    this.setState({dataLabel:'sample_ARCHS4.tsv · '+G+' genes × '+S+' samples · '+(100*mc/tot).toFixed(1)+'% missing',hasImputed:false,jobStatus:'Ready · '+G+'×'+S+' loaded',selection:new Set(),pinned:null,rowStart:0,viewRows:null,progress:0});
+    this.setState({dataLabel:'sample_ARCHS4.tsv · '+G+' genes × '+S+' samples · '+(100*mc/tot).toFixed(1)+'% missing',hasImputed:false,jobStatus:'Ready · '+G+'×'+S+' loaded',selection:new Set(),pinned:null,rowStart:0,viewRows:null,progress:0,downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0});
   }
 
   onFile=e=>{const f=e.target.files[0];if(f)this.readFile(f);};
@@ -302,7 +310,7 @@ class Component extends DCLogic{
     this.genes=genes;this.samples=samples;this.sampleClass=samples.map(()=>'—');this.geneModule={};genes.forEach(g=>this.geneModule[g]='bg');
     this.vals=vals;this.miss=miss;this.imp=null;this.impMask=null;this.conf=null;
     let mc=0;for(let g=0;g<G;g++)for(let s=0;s<S;s++)if(miss[g][s])mc++;this.missCount=mc;
-    this.setState({dataLabel:name+' · '+G+'×'+S+' · '+(100*mc/(G*S)).toFixed(1)+'% missing · '+(genesInRows?'genes in rows':'genes in columns (transposed)'),hasImputed:false,jobStatus:'Parsed '+G+'×'+S,selection:new Set(),pinned:null,rowStart:0,viewRows:null});
+    this.setState({dataLabel:name+' · '+G+'×'+S+' · '+(100*mc/(G*S)).toFixed(1)+'% missing · '+(genesInRows?'genes in rows':'genes in columns (transposed)'),hasImputed:false,jobStatus:'Parsed '+G+'×'+S,selection:new Set(),pinned:null,rowStart:0,viewRows:null,downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0});
   }
 
   // ---------- normalization / display ----------
@@ -386,7 +394,7 @@ class Component extends DCLogic{
     let ic=0,cs=0;const cvals=[];for(let gg=0;gg<G;gg++)for(let ss=0;ss<S;ss++)if(mask[gg][ss]){ic++;cvals.push(conf[gg][ss]);cs+=conf[gg][ss];}
     cvals.sort((a,b)=>a-b);const med=cvals[Math.floor(cvals.length/2)]||0;
     this._impSummary={imputed:ic,meanConf:ic?cs/ic:0,medConf:med,source};
-    this.setState({running:false,progress:1,hasImputed:true,tab:'impute',jobStatus:(source==='api'?'Backend imputed ':'Surrogate imputed ')+ic+' values · mean conf '+(ic?(cs/ic).toFixed(2):'0')});
+    this.setState({running:false,progress:1,hasImputed:true,tab:'impute',jobStatus:(source==='api'?'Backend imputed ':'Surrogate imputed ')+ic+' values · mean conf '+(ic?(cs/ic).toFixed(2):'0'),downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0});
   }
   // POST the matrix to the FastAPI checkpoint; response { imputed:[[…]], confidence:[[…]] }
   async imputeViaApi(){
@@ -500,6 +508,63 @@ class Component extends DCLogic{
       {track:'TRRUST (AUROC)',jatin:0.81,base:[['BulkFormer-147M',0.78],['Geneformer',0.76],['scGPT',0.74],['BRIDGE',0.72]]},
       {track:'TCGA type (acc)',jatin:0.92,base:[['BulkFormer-147M',0.90],['Geneformer',0.88],['scGPT',0.86],['BRIDGE',0.83]]},
     ];
+  }
+
+  sampleGroups(){
+    const known=new Set(['Tumor','Adjacent-normal','Cell-line','Spaceflight']);
+    return this.samples.map((sample,index)=>{
+      const existing=this.sampleClass[index];
+      if(known.has(existing))return existing;
+      const parts=(''+sample).split(/[_|]/).filter(Boolean);
+      const candidate=parts.length>1?parts[parts.length-1]:'Unlabeled';
+      return candidate.length<=32&&candidate!==sample?candidate:'Unlabeled';
+    });
+  }
+
+  async runDownstream(){
+    if(!this.apiUrl){
+      this.setState({downstreamStatus:'error: connect the H100 API to run live downstream analysis'});
+      return;
+    }
+    const G=this.genes.length,S=this.samples.length;
+    const source=this.state.hasImputed?this.imp:this.vals;
+    const matrix=source.map((row,g)=>row.map((value,s)=>
+      !this.state.hasImputed&&this.miss[g][s]?null:value));
+    const missing=this.state.hasImputed
+      ?this.miss.map(row=>row.map(()=>false))
+      :this.miss.map(row=>row.map(Boolean));
+    const inputScale=this._apiMeta&&this._apiMeta.input_scale
+      ?this._apiMeta.input_scale
+      :(this.state.norm==='raw'?'auto':'log1p');
+    this.setState({downstreamStatus:'running',downstreamData:null});
+    try{
+      const response=await fetch(this.apiUrl.replace(/\/$/,'')+'/api/downstream',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          model:this.state.model,
+          genes:this.genes,
+          samples:this.samples,
+          groups:this.sampleGroups(),
+          matrix,
+          missing,
+          input_scale:inputScale
+        })
+      });
+      const data=await response.json();
+      if(!response.ok)throw new Error(data.message||('HTTP '+response.status));
+      if(data.source!=='current_request')throw new Error('backend did not return request-scoped results');
+      const preferred=data.projections&&data.projections.umap?'umap':'pca';
+      this.setState({
+        downstreamData:data,
+        downstreamStatus:'ready',
+        querySample:Math.min(this.state.querySample,S-1),
+        inspectorSample:Math.min(this.state.inspectorSample,S-1),
+        mapMethod:preferred
+      });
+    }catch(error){
+      this.setState({downstreamStatus:'error: '+error.message,downstreamData:null});
+    }
   }
 
   // ---------- downstream visualizations ----------
@@ -652,15 +717,190 @@ class Component extends DCLogic{
             h('canvas',{ref,onMouseMove:this.onHeatMove,onMouseLeave:this.onHeatLeave,onWheel:this.onHeatWheel,style:{flex:1,width:'100%',minHeight:0,borderRadius:'4px',border:'1px solid '+c.border,cursor:'crosshair'}})))));
   }
 
-  renderDownstream(){const h=React.createElement;const c=this.colors();if(!this.state.hasImputed&&!this.state.selection.size)return this.empty(c,'Run first, then explore','Impute the matrix (or select genes in the Input heatmap), then choose a task at left.');
-    const tasks=['GO-BP','KEGG','Hallmark','Interactions','Sample tasks','Benchmark'];
-    return h('div',{style:{display:'grid',gridTemplateColumns:'168px 1fr',height:'100%',minHeight:0}},
-      h('div',{style:{borderRight:'1px solid '+c.border,padding:'14px 10px',background:c.panel}},
+  analysisHeader(c){
+    const h=React.createElement,d=this.state.downstreamData;
+    if(!d)return null;
+    return h('div',{style:{display:'flex',alignItems:'center',gap:'8px',flexWrap:'wrap',marginBottom:'14px'}},
+      h('span',{className:'mono',style:{fontSize:'10px',padding:'5px 8px',border:'1px solid '+c.accent,borderRadius:'5px',color:c.accent}},'LIVE · CURRENT REQUEST'),
+      h('span',{className:'mono',style:{fontSize:'10px',color:c.muted}},d.model+' · '+d.sample_count+' samples · '+d.genes+' genes'),
+      h('span',{className:'mono',style:{fontSize:'10px',color:c.faint}},d.embedding_mode),
+      h('button',{onClick:()=>this.runDownstream(),style:{marginLeft:'auto',padding:'7px 10px',border:'1px solid '+c.border2,background:c.bg,color:c.text,borderRadius:'6px',cursor:'pointer',fontFamily:'inherit',fontSize:'10.5px'}},'Recompute'));
+  }
+
+  renderLiveGate(c){
+    const h=React.createElement,status=this.state.downstreamStatus;
+    return h('div',{style:{maxWidth:'720px',margin:'48px auto',padding:'28px',border:'1px solid '+c.border,borderRadius:'8px',background:c.panel}},
+      h('div',{className:'mono',style:{fontSize:'10px',letterSpacing:'.08em',color:c.accent}},'INPUT-DERIVED ANALYSIS'),
+      h('h2',{style:{fontSize:'20px',letterSpacing:0,margin:'6px 0 8px'}},'Build the cohort embedding workspace'),
+      h('p',{style:{fontSize:'12px',lineHeight:1.6,color:c.muted,margin:'0 0 16px'}},'The H100 will encode the matrix currently in memory, then compute exact within-cohort retrieval and request-scoped PCA, UMAP, and t-SNE maps. No benchmark CSV is loaded for these views.'),
+      h('button',{onClick:()=>this.runDownstream(),disabled:status==='running',style:{padding:'10px 15px',border:'none',borderRadius:'7px',background:c.accent,color:'#fff',fontFamily:'inherit',fontWeight:600,cursor:status==='running'?'wait':'pointer'}},status==='running'?'Computing current input…':'Analyze current matrix'),
+      status.startsWith('error')?h('div',{style:{marginTop:'12px',fontSize:'11px',color:'#c0504d'}},status):null,
+      h('div',{style:{marginTop:'16px',fontSize:'10.5px',lineHeight:1.5,color:c.faint}},'Scope: submitted samples only. The upstream 940,455-sample BRIDGE index is not distributed by that repository and cannot be reused across incompatible model embedding spaces.'));
+  }
+
+  metricTile(c,label,value,note){
+    const h=React.createElement;
+    return h('div',{style:{border:'1px solid '+c.border,borderRadius:'7px',padding:'12px 13px',background:c.panel,minWidth:0}},
+      h('div',{className:'mono',style:{fontSize:'9px',letterSpacing:'.06em',color:c.faint,textTransform:'uppercase'}},label),
+      h('div',{className:'mono',style:{fontSize:'21px',fontWeight:600,color:c.text,marginTop:'5px',overflow:'hidden',textOverflow:'ellipsis'}},value),
+      note?h('div',{style:{fontSize:'10px',color:c.muted,marginTop:'4px',lineHeight:1.35}},note):null);
+  }
+
+  renderCohortOverview(c){
+    const h=React.createElement,d=this.state.downstreamData;if(!d)return this.renderLiveGate(c);
+    const gm=d.group_metrics||{},agreement=gm.nearest_neighbor_group_agreement;
+    const projectionRows=Object.keys(d.projections||{}).map(method=>{
+      const p=d.projections[method];
+      return[method.toUpperCase(),p.status,p.trustworthiness_2d==null?'—':p.trustworthiness_2d.toFixed(3),p.trustworthiness_3d==null?'—':p.trustworthiness_3d.toFixed(3),p.parameters.fit_scope||'current input'];
+    });
+    return h('div',null,this.analysisHeader(c),
+      h('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(150px,1fr))',gap:'9px',marginBottom:'16px'}},
+        this.metricTile(c,'Samples',d.sample_count,'current request'),
+        this.metricTile(c,'Submitted genes',d.genes.toLocaleString(),d.matched_genes.toLocaleString()+' model matches'),
+        this.metricTile(c,'Model coverage',(100*d.coverage_fraction).toFixed(1)+'%','of selected model vocabulary'),
+        this.metricTile(c,'Mean cosine',d.pairwise_mean_cosine.toFixed(4),'all distinct sample pairs'),
+        this.metricTile(c,'NN group agreement',agreement==null?'Unlabeled':(100*agreement).toFixed(1)+'%',gm.groups.length+' submitted groups')),
+      h('div',{className:'live-two-column',style:{display:'grid',gridTemplateColumns:'minmax(0,1.35fr) minmax(260px,.65fr)',gap:'12px'}},
+        h('div',null,
+          h('h3',{style:{fontSize:'13px',margin:'0 0 8px'}},'Projection diagnostics'),
+          this.table(c,['Method','Status','Trust 2D','Trust 3D','Fit scope'],projectionRows,[0,0,1,1,0])),
+        h('div',{style:{border:'1px solid '+c.border,borderRadius:'8px',padding:'13px',background:c.panel}},
+          h('h3',{style:{fontSize:'13px',margin:'0 0 8px'}},'Evidence boundary'),
+          h('div',{style:{fontSize:'11px',lineHeight:1.55,color:c.muted}},'Every value here was generated from the current matrix. Retrieval is exact within this cohort. Projection coordinates are newly fitted and must not be compared numerically with a previous upload.'),
+          d.warnings&&d.warnings.length?h('div',{style:{fontSize:'10.5px',lineHeight:1.5,color:'#9a3412',marginTop:'10px'}},d.warnings[0]):null)));
+  }
+
+  groupColor(group,groups){
+    const palette=['#0f6f7a','#c2740a','#8a5cc0','#2a788e','#c0504d','#22a884','#526b8a','#9a7b3a','#b45f78','#5a8f4c'];
+    const index=Math.max(0,groups.indexOf(group));
+    return palette[index%palette.length];
+  }
+
+  renderSampleRetrieval(c){
+    const h=React.createElement,d=this.state.downstreamData;if(!d)return this.renderLiveGate(c);
+    const q=Math.min(this.state.querySample,d.samples.length-1),entry=d.nearest_neighbors[q];
+    const neighbors=(entry?entry.neighbors:[]).slice(0,Math.min(this.state.topK,d.samples.length-1));
+    const W=760,H=390,cx=W/2,cy=H/2,radius=145,groups=[...new Set(d.groups)];
+    const controls=h('div',{style:{display:'flex',gap:'12px',alignItems:'end',flexWrap:'wrap',marginBottom:'12px'}},
+      h('label',{style:{fontSize:'10.5px',color:c.muted,display:'grid',gap:'4px',minWidth:'240px'}},'Query sample',
+        h('select',{value:q,onChange:e=>this.setState({querySample:+e.target.value,inspectorSample:+e.target.value}),style:{padding:'7px 8px',border:'1px solid '+c.border2,borderRadius:'6px',background:c.panel,color:c.text,fontFamily:'inherit'}},d.samples.map((sample,index)=>h('option',{key:sample,value:index},sample)))),
+      h('label',{style:{fontSize:'10.5px',color:c.muted,display:'grid',gap:'4px'}},'Top-k · '+this.state.topK,
+        h('input',{type:'range',min:1,max:Math.min(20,d.samples.length-1),step:1,value:Math.min(this.state.topK,d.samples.length-1),onInput:e=>this.setState({topK:+e.target.value})})),
+      h('span',{className:'mono',style:{fontSize:'10px',color:c.faint,marginLeft:'auto'}},'exact cosine · '+d.embedding_mode));
+    const lines=neighbors.map((neighbor,index)=>{
+      const angle=2*Math.PI*index/Math.max(1,neighbors.length)-Math.PI/2,x=cx+radius*Math.cos(angle),y=cy+radius*.72*Math.sin(angle);
+      return h('line',{key:'line'+index,x1:cx,y1:cy,x2:x,y2:y,stroke:c.border2,strokeWidth:1+4*Math.max(0,neighbor.cosine),opacity:.7});
+    });
+    const nodes=neighbors.map((neighbor,index)=>{
+      const angle=2*Math.PI*index/Math.max(1,neighbors.length)-Math.PI/2,x=cx+radius*Math.cos(angle),y=cy+radius*.72*Math.sin(angle);
+      const sampleIndex=d.samples.indexOf(neighbor.sample);
+      return h('g',{key:neighbor.sample,onClick:()=>this.setState({inspectorSample:sampleIndex,downTask:'Sample inspector'}),style:{cursor:'pointer'}},
+        h('circle',{cx:x,cy:y,r:9,fill:this.groupColor(neighbor.group,groups),stroke:c.panel,strokeWidth:2}),
+        h('text',{x,y:y+24,textAnchor:'middle',fontSize:9,fill:c.text,fontFamily:'IBM Plex Mono,monospace'},neighbor.sample.length>18?neighbor.sample.slice(0,16)+'…':neighbor.sample),
+        h('title',null,'rank '+neighbor.rank+' · cosine '+neighbor.cosine.toFixed(4)+' · '+neighbor.group));
+    });
+    const network=h('div',{style:{border:'1px solid '+c.border,borderRadius:'8px',background:c.bg}},
+      h('svg',{viewBox:'0 0 '+W+' '+H,style:{display:'block',width:'100%',maxHeight:'430px'}},lines,
+        h('circle',{cx,cy,r:16,fill:c.accent,stroke:c.panel,strokeWidth:3}),
+        h('text',{x:cx,y:cy+32,textAnchor:'middle',fontSize:10,fontWeight:600,fill:c.text,fontFamily:'IBM Plex Mono,monospace'},d.samples[q].length>22?d.samples[q].slice(0,20)+'…':d.samples[q]),
+        nodes));
+    const rows=neighbors.map(neighbor=>[neighbor.rank,neighbor.sample,neighbor.group,neighbor.cosine.toFixed(5)]);
+    return h('div',null,this.analysisHeader(c),controls,
+      h('div',{className:'live-two-column',style:{display:'grid',gridTemplateColumns:'minmax(0,1.35fr) minmax(320px,.65fr)',gap:'12px'}},network,this.table(c,['Rank','Sample','Group','Cosine'],rows,[1,0,0,1])),
+      h('div',{style:{fontSize:'10.5px',color:c.faint,marginTop:'10px'}},'Edges encode cosine similarity in the selected model space. This is an exact scan over the '+d.sample_count+' samples in the current input, not the unavailable global ARCHS4 index.'));
+  }
+
+  renderSampleMap(c){
+    const h=React.createElement,d=this.state.downstreamData;if(!d)return this.renderLiveGate(c);
+    const method=d.projections[this.state.mapMethod]?this.state.mapMethod:'pca',projection=d.projections[method];
+    const dims=this.state.mapDims,raw=projection[dims==='3d'?'coordinates_3d':'coordinates_2d'];
+    const angle=this.state.mapRotation*Math.PI/180;
+    const rotated=raw.map(point=>dims==='3d'
+      ?[point[0]*Math.cos(angle)-point[2]*Math.sin(angle),point[1],point[0]*Math.sin(angle)+point[2]*Math.cos(angle)]
+      :[point[0],point[1],0]);
+    const xs=rotated.map(p=>p[0]),ys=rotated.map(p=>p[1]),zs=rotated.map(p=>p[2]);
+    const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys),minZ=Math.min(...zs),maxZ=Math.max(...zs);
+    const sx=value=>38+684*(value-minX)/((maxX-minX)||1),sy=value=>342-304*(value-minY)/((maxY-minY)||1);
+    const groups=[...new Set(d.groups)],query=Math.min(this.state.querySample,d.samples.length-1),similarity=d.similarity[query];
+    const points=rotated.map((point,index)=>{
+      const depth=(point[2]-minZ)/((maxZ-minZ)||1);
+      const color=this.state.mapColor==='similarity'
+        ?(()=>{const rgb=ramp(VIRIDIS,(similarity[index]+1)/2);return'rgb('+rgb.join(',')+')';})()
+        :this.groupColor(d.groups[index],groups);
+      const selected=index===query,px=sx(point[0]),py=sy(point[1]),right=px>620;
+      return h('g',{key:d.samples[index],onClick:()=>this.setState({querySample:index,inspectorSample:index}),style:{cursor:'pointer'}},
+        h('circle',{cx:px,cy:py,r:selected?8:(dims==='3d'?4+3*depth:5),fill:color,opacity:selected?1:(dims==='3d'?.45+.5*depth:.82),stroke:selected?'#ffffff':c.panel,strokeWidth:selected?2.5:1}),
+        selected?h('text',{x:px+(right?-10:10),y:py-8,textAnchor:right?'end':'start',fontSize:9.5,fontFamily:'IBM Plex Mono,monospace',fill:c.text},d.samples[index].slice(0,24)):null,
+        h('title',null,d.samples[index]+' · '+d.groups[index]+' · query cosine '+similarity[index].toFixed(4)));
+    });
+    const methodButtons=['pca','umap','tsne'].map(name=>h('button',{key:name,onClick:()=>this.setState({mapMethod:name}),style:{padding:'6px 10px',border:'1px solid '+c.border2,borderRadius:'5px',background:method===name?c.accent:c.panel,color:method===name?'#fff':c.text,fontFamily:'inherit',cursor:'pointer'}},name.toUpperCase()));
+    const dimButtons=['2d','3d'].map(name=>h('button',{key:name,onClick:()=>this.setState({mapDims:name}),style:{padding:'6px 10px',border:'1px solid '+c.border2,borderRadius:'5px',background:dims===name?c.accent:c.panel,color:dims===name?'#fff':c.text,fontFamily:'inherit',cursor:'pointer'}},name.toUpperCase()));
+    const legend=this.state.mapColor==='group'
+      ?groups.map(group=>h('span',{key:group,style:{display:'inline-flex',alignItems:'center',gap:'5px'}},h('span',{style:{width:'9px',height:'9px',borderRadius:'50%',background:this.groupColor(group,groups)}}),group))
+      :[h('span',{key:'scale',style:{display:'inline-flex',alignItems:'center',gap:'6px'}},h('span',{style:{width:'100px',height:'9px',borderRadius:'2px',background:'linear-gradient(90deg,#440154,#2a788e,#7ad151,#fde725)'}}),'lower → higher query cosine')];
+    legend.push(h('span',{key:'query',style:{display:'inline-flex',alignItems:'center',gap:'5px'}},h('span',{style:{width:'11px',height:'11px',borderRadius:'50%',background:c.accent,border:'2px solid #fff',boxShadow:'0 0 0 1px '+c.border2}}),'active query'));
+    return h('div',null,this.analysisHeader(c),
+      h('div',{style:{display:'flex',gap:'6px',alignItems:'center',flexWrap:'wrap',marginBottom:'10px'}},methodButtons,h('span',{style:{width:'8px'}}),dimButtons,
+        h('select',{value:this.state.mapColor,onChange:e=>this.setState({mapColor:e.target.value}),style:{marginLeft:'8px',padding:'6px 8px',border:'1px solid '+c.border2,borderRadius:'5px',background:c.panel,color:c.text,fontFamily:'inherit'}},h('option',{value:'group'},'Color: submitted group'),h('option',{value:'similarity'},'Color: query similarity')),
+        dims==='3d'?h('label',{style:{display:'flex',alignItems:'center',gap:'6px',fontSize:'10px',color:c.muted,marginLeft:'auto'}},'Rotate',h('input',{type:'range',min:0,max:360,value:this.state.mapRotation,onInput:e=>this.setState({mapRotation:+e.target.value})})):null),
+      h('div',{style:{border:'1px solid '+c.border,borderRadius:'8px',background:c.bg,padding:'6px'}},
+        h('svg',{viewBox:'0 0 760 380',style:{display:'block',width:'100%',height:'min(58vh,520px)'}},
+          h('line',{x1:38,y1:342,x2:722,y2:342,stroke:c.border2}),h('line',{x1:38,y1:38,x2:38,y2:342,stroke:c.border2}),points)),
+      h('div',{style:{display:'flex',gap:'13px',flexWrap:'wrap',alignItems:'center',padding:'9px 2px 2px',fontSize:'10px',color:c.muted}},legend),
+      h('div',{style:{display:'flex',gap:'14px',flexWrap:'wrap',marginTop:'9px',fontSize:'10.5px',color:c.muted}},
+        h('span',null,projection.status==='ok'?'new fit on current input':'fallback: '+projection.status),
+        h('span',null,'trustworthiness '+(projection[dims==='3d'?'trustworthiness_3d':'trustworthiness_2d']??'—')),
+        h('span',null,Object.entries(projection.parameters).map(([key,value])=>key+'='+value).slice(0,4).join(' · '))));
+  }
+
+  renderSampleInspector(c){
+    const h=React.createElement,d=this.state.downstreamData;if(!d)return this.renderLiveGate(c);
+    const index=Math.min(this.state.inspectorSample,d.samples.length-1),stats=d.sample_statistics[index],neighbors=d.nearest_neighbors[index].neighbors.slice(0,8);
+    const max=Math.max(...stats.top_genes.map(row=>row.value),1e-9);
+    const external=/^(GSM|GSE)\d+/i.test(stats.sample)?'https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc='+encodeURIComponent(stats.sample.match(/^(GSM|GSE)\d+/i)[0]):null;
+    return h('div',null,this.analysisHeader(c),
+      h('div',{style:{display:'flex',alignItems:'end',gap:'10px',marginBottom:'12px'}},
+        h('label',{style:{display:'grid',gap:'4px',fontSize:'10.5px',color:c.muted,minWidth:'280px'}},'Inspect sample',
+          h('select',{value:index,onChange:e=>this.setState({inspectorSample:+e.target.value}),style:{padding:'7px 8px',border:'1px solid '+c.border2,borderRadius:'6px',background:c.panel,color:c.text,fontFamily:'inherit'}},d.samples.map((sample,i)=>h('option',{key:sample,value:i},sample)))),
+        external?h('a',{href:external,target:'_blank',rel:'noreferrer',style:{fontSize:'11px',padding:'7px 9px',border:'1px solid '+c.border2,borderRadius:'6px'}},'Open GEO record'):null),
+      h('div',{className:'live-two-column',style:{display:'grid',gridTemplateColumns:'minmax(0,1fr) minmax(300px,.72fr)',gap:'12px'}},
+        h('div',{style:{border:'1px solid '+c.border,borderRadius:'8px',padding:'13px'}},
+          h('h3',{style:{fontSize:'13px',margin:'0 0 10px'}},'Top submitted genes'),
+          this.hbars(c,stats.top_genes.map(row=>({label:row.gene,value:row.value,max,valueLabel:row.value.toFixed(3)})),'Expression values from the matrix used for this live run')),
+        h('div',null,
+          h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px',marginBottom:'10px'}},
+            this.metricTile(c,'Group',stats.group),this.metricTile(c,'Detected genes',stats.detected_genes.toLocaleString()),
+            this.metricTile(c,'Top-10 concentration',(100*stats.top10_concentration).toFixed(1)+'%'),this.metricTile(c,'Expression sum',stats.expression_sum.toFixed(2))),
+          this.table(c,['Rank','Nearest sample','Group','Cosine'],neighbors.map(row=>[row.rank,row.sample,row.group,row.cosine.toFixed(5)]),[1,0,0,1]))));
+  }
+
+  renderInterpretation(c){
+    const h=React.createElement,d=this.state.downstreamData;if(!d)return this.renderLiveGate(c);
+    return h('div',null,this.analysisHeader(c),
+      h('div',{style:{maxWidth:'880px',border:'1px solid '+c.border,borderRadius:'8px',padding:'18px',background:c.panel}},
+        h('div',{className:'mono',style:{fontSize:'9.5px',letterSpacing:'.08em',color:c.accent}},'COMPUTED READING · NO LLM'),
+        h('h2',{style:{fontSize:'18px',letterSpacing:0,margin:'6px 0 12px'}},'What this input says in the selected representation'),
+        d.reading.map((paragraph,index)=>h('p',{key:index,style:{fontSize:'12px',lineHeight:1.65,color:index===0?c.text:c.muted,margin:'0 0 10px'}},paragraph)),
+        d.warnings&&d.warnings.length?h('div',{style:{marginTop:'14px',borderLeft:'3px solid #c2740a',padding:'9px 11px',background:c.bg}},
+          h('div',{style:{fontSize:'10px',fontWeight:600,color:'#9a3412',marginBottom:'5px'}},'Scope warnings'),
+          d.warnings.map((warning,index)=>h('div',{key:index,style:{fontSize:'10.5px',lineHeight:1.5,color:c.muted}},warning))):null,
+        h('div',{style:{fontSize:'10.5px',lineHeight:1.5,color:c.faint,marginTop:'14px'}},'This panel is generated from numerical outputs only. It is a reading aid, not differential-expression evidence, a causal claim, or a clinical interpretation.')));
+  }
+
+  renderDownstream(){const h=React.createElement;const c=this.colors();
+    const tasks=['Cohort overview','Sample retrieval','Sample map','Sample inspector','Interpretation','GO-BP','KEGG','Hallmark','Interactions','Sample tasks','Benchmark evidence'];
+    return h('div',{className:'downstream-shell',style:{display:'grid',gridTemplateColumns:'168px 1fr',height:'100%',minHeight:0}},
+      h('div',{className:'downstream-task-nav',style:{borderRight:'1px solid '+c.border,padding:'14px 10px',background:c.panel}},
         h('div',{className:'mono',style:{fontSize:'9.5px',letterSpacing:'.08em',color:c.faint,padding:'0 6px 8px'}},'TASKS'),
         tasks.map(t=>h('button',{key:t,onClick:()=>this.setState({downTask:t}),style:{display:'block',width:'100%',textAlign:'left',padding:'8px 10px',marginBottom:'2px',border:'none',borderRadius:'6px',fontSize:'12px',cursor:'pointer',fontFamily:'inherit',background:this.state.downTask===t?c.accent:'transparent',color:this.state.downTask===t?'#fff':c.text,fontWeight:this.state.downTask===t?600:400}},t))),
-      h('div',{style:{overflow:'auto',padding:'16px',minHeight:0}},this.renderTask(c)));
+      h('div',{className:'downstream-content',style:{overflow:'auto',padding:'16px',minHeight:0}},this.renderTask(c)));
   }
   renderTask(c){const h=React.createElement;const t=this.state.downTask;const selN=this.selectedGenes().length;
+    if(t==='Cohort overview')return this.renderCohortOverview(c);
+    if(t==='Sample retrieval')return this.renderSampleRetrieval(c);
+    if(t==='Sample map')return this.renderSampleMap(c);
+    if(t==='Sample inspector')return this.renderSampleInspector(c);
+    if(t==='Interpretation')return this.renderInterpretation(c);
     const view=this.props.downstreamView??'Bar charts';
     const chip=h('div',{style:{display:'flex',gap:'10px',alignItems:'center',marginBottom:'14px',flexWrap:'wrap'}},
       h('div',{className:'mono',style:{fontSize:'11px',padding:'6px 12px',borderRadius:'20px',background:c.theme==='dark'?'#12303040':'#f2f7f7',border:'1px solid '+(c.theme==='dark'?'#2a5a5e':'#9ec6c9'),color:c.accent}},'▸ run on selection · '+selN+' genes'+(this.state.selection.size?'':' (top-variance default)')),
@@ -690,7 +930,7 @@ class Component extends DCLogic{
       return h('div',null,chip,h('div',{style:{fontSize:'11px',color:c.muted,marginBottom:'12px'}},'Regulatory & synthetic-lethal knowledge graph — TRRUST (TF→target) and SynLethDB pairs among detected genes.'),body);
     }
     if(t==='Sample tasks'){const r=this.sampleTaskRows();return h('div',null,chip,h('div',{style:{fontSize:'11px',color:c.muted,marginBottom:'10px'}},'TCGA cancer-type & OSDR spaceflight condition from sample embeddings + nearest-centroid head. '+(r.acc==null?'Upload includes no class labels.':'Overall accuracy '+(r.acc*100).toFixed(0)+'% across '+r.tcga+' classes.')),r.rows.length?this.table(c,['Sample','Predicted','True','✓'],r.rows.map(x=>[x.sample,x.pred,x.truth,h('span',{style:{color:x.ok?c.accent:'#c2740a'}},x.ok?'✓':'✗')]),[0,0,0,0]):h('div',{style:{fontSize:'12px',color:c.faint}},'No sample class labels in this matrix.'));}
-    if(t==='Benchmark')return this.renderMeasuredBenchmark(c);
+    if(t==='Benchmark evidence')return this.renderMeasuredBenchmark(c);
     return null;
   }
   bar(c,v){const h=React.createElement;return h('div',{style:{display:'flex',alignItems:'center',gap:'8px'}},h('div',{style:{width:'90px',height:'12px',background:c.bg,borderRadius:'3px',overflow:'hidden'}},h('div',{style:{height:'100%',width:(v*100)+'%',background:c.accent}})),h('span',{className:'mono',style:{color:c.text}},v.toFixed(3)));}
@@ -764,6 +1004,7 @@ class Component extends DCLogic{
       S('Backend contract',h('div',{className:'mono',style:{background:c.panel,border:'1px solid '+c.border,borderRadius:'8px',padding:'12px 14px',fontSize:'11.5px',color:c.muted}},
         h('div',null,'Launch with ',h('span',{style:{color:c.accent}},'index.html?api=https://host:port'),(this.apiUrl?h('span',{style:{color:c.accent}},'  ✓ connected: '+this.apiUrl):h('span',{style:{color:'#c2740a'}},'  (not connected — surrogate active)'))),
         h('div',{style:{marginTop:'6px'}},'POST /api/impute    → { genes, samples, matrix, missing } ⇒ { imputed, confidence }'),
+        h('div',null,'POST /api/downstream → current matrix ⇒ live retrieval, maps, inspection, interpretation'),
         h('div',null,'GET  /api/experiments → measured registry · full CSVs under /results/'))),
       S('Models',h('p',{style:{color:c.muted,margin:0}},'Txn_Jatin · Txn_Jatin OSDR LoRA · Txn_Jatin contextual · BRIDGE · BulkFormer {37M, 50M, 93M, 127M, 147M} · ESM2 · ESM3 · Geneformer · scGPT.')),
       S('Performance',h('p',{style:{color:c.muted,margin:0}},'Virtualized tables, viewport-binned canvas heatmap, and off-main-thread work keep first render < 1.5 s and interactions < 100 ms — the design scales to 16k×500 by drawing to a single canvas rather than DOM cells.')),
@@ -798,7 +1039,7 @@ class Component extends DCLogic{
       bg:c.bg,text:c.text,panel:c.panel,border:c.border,border2:c.border2,accent:c.accent,muted:c.muted,faint:c.faint,colormapCss:c.colormapCss,
       tabs:tabDef.map(([id,label])=>({label,style:tabStyle(id),set:()=>this.setState({tab:id})})),
       models:this.state.modelsMeta||fallbackModels,
-      model:this.state.model,onModel:e=>this.setState({model:e.target.value}),
+      model:this.state.model,onModel:e=>this.setState({model:e.target.value,hasImputed:false,downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0}),
       modelNote:meta?((meta.imputation_supported?'decoder':'embedding-only · imputation NaN')+' · '+meta.genes.toLocaleString()+' genes · dim '+meta.embedding_dim):'loading model metadata',
       norms:normDef.map(d=>({label:d[1],style:normStyle(d[2]||d[0]),set:()=>this.setState({norm:d[2]||d[0]})})),
       clampLo:this.state.clampLo,clampHi:this.state.clampHi,clampLabel:'p'+this.state.clampLo+'–p'+this.state.clampHi,
