@@ -74,10 +74,10 @@ MODEL_ROWS = [
         "id": "ESM3",
         "label": "ESM3",
         "family": "protein sequence control",
-        "genes": 13434,
-        "embedding_dim": 512,
+        "genes": 15529,
+        "embedding_dim": 1536,
         "imputation_supported": False,
-        "note": "Protein-sequence embedding control used in strict 13,408-gene individual-GO comparisons.",
+        "note": "Native frozen ESM3 sequence embeddings; mean-pooled final-layer residues with BOS/EOS excluded.",
     },
     {
         "id": "Geneformer",
@@ -536,8 +536,54 @@ def main() -> int:
         )
     )
 
+    tcga_go_root = results_dir / "individual_go_tcga"
+    tcga_go_summary = pd.read_csv(tcga_go_root / "tables/model_summary.csv")
+    tcga_go_manifest = json.loads((tcga_go_root / "manifest.json").read_text())
+    tcga_go_rows = [
+        {
+            "label": (
+                "TCGA native genes"
+                if row["scope"] == "tcga_all_genes"
+                else "TCGA strict intersection"
+            ),
+            "model": row["model"],
+            "metric": "mean AUROC",
+            "value": float(row["mean_AUROC"]),
+            "secondary": float(row["mean_AUPRC"]),
+            "secondary_label": "mean AUPRC",
+        }
+        for _, row in tcga_go_summary.iterrows()
+    ]
+    experiments.append(
+        experiment(
+            "individual_go_tcga_github",
+            11,
+            "Official individual GO benchmark on TCGA genes",
+            "2026-07-27",
+            (
+                "Pinned ylaboratory/gene-embedding-benchmarks commit "
+                f"{tcga_go_manifest['benchmark_commit']}; all 56 official GO terms; "
+                "fixed nested-CV folds and holdout SVC; native and 9,568-gene strict "
+                "TCGA scopes."
+            ),
+            (
+                "Txn_Jatin ranked first in both scopes (AUROC 0.8353 native; "
+                "0.8439 strict), followed by ESM2 and Txn_Jatin contextual. "
+                "Native 1,536-dimensional ESM3 ranked fourth."
+            ),
+            "mean AUROC",
+            tcga_go_rows,
+            [
+                "individual_go_tcga/tables/model_summary.csv",
+                "individual_go_tcga/tables/individual_go_term_scores.csv",
+                "individual_go_tcga/tables/per_term_winners.csv",
+                "individual_go_tcga/reports/REPORT.md",
+            ],
+        )
+    )
+
     registry = {
-        "generated_utc": "2026-07-27T05:00:00Z",
+        "generated_utc": tcga_go_manifest["completed_utc"],
         "title": "Txn_Jatin experiment registry",
         "claim_boundary": (
             "Research-use-only. Cancer and immunotherapy analyses are exploratory and do not "
@@ -550,6 +596,11 @@ def main() -> int:
             "experiments": len(experiments),
             "github_protocol_rows": len(github),
             "individual_go_rows": len(pd.read_csv(go_terms)),
+            "tcga_individual_go_rows": len(
+                pd.read_csv(
+                    tcga_go_root / "tables/individual_go_term_scores.csv"
+                )
+            ),
             "whole_gene_mask_rows": len(imputation),
             "ici_patients": 239,
         },

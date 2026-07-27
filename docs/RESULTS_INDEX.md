@@ -68,9 +68,10 @@ MSE and biological AUROC?
 - [`results/osdr_peft/report.md`](../results/osdr_peft/report.md)
 - [`results/osdr_peft/candidate_summary.csv`](../results/osdr_peft/candidate_summary.csv)
 
-## Individual GO terms and ESM3
+## Earlier OSDR individual-GO probe
 
-**Question:** Which models capture individual functional annotations?
+**Question:** Which models captured individual functional annotations under the
+earlier 40-term OSDR linear-probe design?
 
 - Model-level summary:
   [`results/individual_go/osdr_go_model_summary_with_esm3.csv`](../results/individual_go/osdr_go_model_summary_with_esm3.csv)
@@ -78,6 +79,31 @@ MSE and biological AUROC?
   [`results/individual_go/osdr_go_term_scores_with_esm3.csv`](../results/individual_go/osdr_go_term_scores_with_esm3.csv)
 - Run metadata:
   [`results/individual_go/manifest.json`](../results/individual_go/manifest.json)
+
+This archived experiment is separate from the supplied GitHub protocol.
+
+## Official TCGA-scoped individual GO
+
+**Question:** How do all models, including native ESM3, compare on TCGA genes
+using the supplied GitHub protocol?
+
+- Full named 1,344-row term table:
+  [`results/individual_go_tcga/tables/individual_go_term_scores.csv`](../results/individual_go_tcga/tables/individual_go_term_scores.csv)
+- Model ranking:
+  [`results/individual_go_tcga/tables/model_summary.csv`](../results/individual_go_tcga/tables/model_summary.csv)
+- Winner for each GO term:
+  [`results/individual_go_tcga/tables/per_term_winners.csv`](../results/individual_go_tcga/tables/per_term_winners.csv)
+- Per-model winner counts:
+  [`results/individual_go_tcga/tables/winner_counts.csv`](../results/individual_go_tcga/tables/winner_counts.csv)
+- Official GO ID/name map:
+  [`results/individual_go_tcga/tables/go_term_names.csv`](../results/individual_go_tcga/tables/go_term_names.csv)
+- Protocol and validation report:
+  [`results/individual_go_tcga/reports/REPORT.md`](../results/individual_go_tcga/reports/REPORT.md)
+
+This run is pinned to `ylaboratory/gene-embedding-benchmarks` commit
+`d1320026a2a4ee033d49517f91e2d1c2ccc8df1e`. TCGA defines the eligible gene
+universe; GO remains a gene-level label, so TCGA expression values are not
+substituted for the official GO folds.
 
 ## Sparse biomarker feasibility
 

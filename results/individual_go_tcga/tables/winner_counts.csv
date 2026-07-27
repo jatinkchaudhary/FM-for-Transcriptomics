@@ -1,0 +1,17 @@
+scope,model,AUROC_wins
+tcga_all_genes,Txn_Jatin,22
+tcga_all_genes,ESM3,8
+tcga_all_genes,Txn_Jatin_contextual,8
+tcga_all_genes,ESM2_PCA512_prior,5
+tcga_all_genes,scGPT,5
+tcga_all_genes,BRIDGE,4
+tcga_all_genes,Geneformer,3
+tcga_all_genes,BulkFormer_93M,1
+tcga_strict_intersection,Txn_Jatin,15
+tcga_strict_intersection,scGPT,10
+tcga_strict_intersection,ESM3,9
+tcga_strict_intersection,Txn_Jatin_contextual,9
+tcga_strict_intersection,BRIDGE,5
+tcga_strict_intersection,ESM2_PCA512_prior,5
+tcga_strict_intersection,Geneformer,2
+tcga_strict_intersection,BulkFormer_50M,1

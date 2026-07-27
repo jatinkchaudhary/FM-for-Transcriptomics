@@ -1,0 +1,263 @@
+{
+  "models": {
+    "BRIDGE": {
+      "dimensions": 512,
+      "entrez_rows": 14560,
+      "provenance": {
+        "name": "BRIDGE"
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/BRIDGE__gene_benchmark__symbol.npz",
+      "source_sha256": "e725825978b387bc82bc76cf65704e42227431c8992108ae94ad239e5b99ba2e",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 15914,
+      "tcga_entrez_rows": 14560
+    },
+    "BulkFormer_127M": {
+      "dimensions": 640,
+      "entrez_rows": 15522,
+      "provenance": {
+        "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_127M.pt",
+        "checkpoint_variant": "BulkFormer_127M",
+        "device": "cuda",
+        "dir": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer",
+        "embedding_key": "gene_emb_proj(gene_emb_onehot_layer.weight)",
+        "gene_namespace": "HGNC symbol",
+        "hidden_dim": 640,
+        "name": "BulkFormer_127M",
+        "note": "native bulk model; static learned gene identity embeddings",
+        "vocab": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv"
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/BulkFormer_127M__gene_benchmark__symbol.npz",
+      "source_sha256": "4a9af4daf15a3aadc43dede4c446a5b75188e5f48b13d3fc9d0e6a9400d16b03",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 15914,
+      "tcga_entrez_rows": 14558
+    },
+    "BulkFormer_147M": {
+      "dimensions": 640,
+      "entrez_rows": 15522,
+      "provenance": {
+        "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_147M.pt",
+        "checkpoint_variant": "BulkFormer_147M",
+        "device": "cuda",
+        "dir": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer",
+        "embedding_key": "gene_emb_proj(gene_emb_onehot_layer.weight)",
+        "gene_namespace": "HGNC symbol",
+        "hidden_dim": 640,
+        "name": "BulkFormer_147M",
+        "note": "native bulk model; static learned gene identity embeddings",
+        "vocab": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv"
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/BulkFormer_147M__gene_benchmark__symbol.npz",
+      "source_sha256": "5888e6832f5c94edc119d31f8d22fdd1c08df0e41aa74f81ba99667016c7e6e0",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 15914,
+      "tcga_entrez_rows": 14558
+    },
+    "BulkFormer_37M": {
+      "dimensions": 128,
+      "entrez_rows": 15522,
+      "provenance": {
+        "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer/model/bulkformer_37M.pt",
+        "checkpoint_variant": "bulkformer_37M",
+        "device": "cuda",
+        "dir": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer",
+        "embedding_key": "gene_emb_proj(gene_emb_onehot_layer.weight)",
+        "gene_namespace": "HGNC symbol",
+        "hidden_dim": 128,
+        "name": "BulkFormer_37M",
+        "note": "native bulk model; static learned gene identity embeddings",
+        "vocab": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv"
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/BulkFormer_37M__gene_benchmark__symbol.npz",
+      "source_sha256": "90716fbf44873b9b271948901cb1c124b2f3da0980be46fa97b5ef4647f7415e",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 15914,
+      "tcga_entrez_rows": 14558
+    },
+    "BulkFormer_50M": {
+      "dimensions": 256,
+      "entrez_rows": 15522,
+      "provenance": {
+        "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_50M.pt",
+        "checkpoint_variant": "BulkFormer_50M",
+        "device": "cuda",
+        "dir": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer",
+        "embedding_key": "gene_emb_proj(gene_emb_onehot_layer.weight)",
+        "gene_namespace": "HGNC symbol",
+        "hidden_dim": 256,
+        "name": "BulkFormer_50M",
+        "note": "native bulk model; static learned gene identity embeddings",
+        "vocab": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv"
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/BulkFormer_50M__gene_benchmark__symbol.npz",
+      "source_sha256": "c2c42f220be8c7b545c62d5aea795f0fb0cc8bafdaf6d6f340ff14560e940caa",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 15914,
+      "tcga_entrez_rows": 14558
+    },
+    "BulkFormer_93M": {
+      "dimensions": 512,
+      "entrez_rows": 15522,
+      "provenance": {
+        "checkpoint": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_93M.pt",
+        "checkpoint_variant": "BulkFormer_93M",
+        "device": "cuda",
+        "dir": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer",
+        "embedding_key": "gene_emb_proj(gene_emb_onehot_layer.weight)",
+        "gene_namespace": "HGNC symbol",
+        "hidden_dim": 512,
+        "name": "BulkFormer_93M",
+        "note": "native bulk model; static learned gene identity embeddings",
+        "vocab": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv"
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/BulkFormer_93M__gene_benchmark__symbol.npz",
+      "source_sha256": "4c280725ef050a4ff50bd68f62bbd73c1c144ac5e3e12c9c6b870a6aa186a493",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 15914,
+      "tcga_entrez_rows": 14558
+    },
+    "ESM2_PCA512_prior": {
+      "dimensions": 512,
+      "entrez_rows": 15659,
+      "provenance": {
+        "role": "training-prior ablation",
+        "source": "ESM2 PCA-512"
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full_tpm_v2/esm2_prior_512d.npz",
+      "source_sha256": "6ddcc4d2524b513f5bb8c0860aac4b931fe09a20c3b8970c0eb0e5e8327e16f7",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 16055,
+      "tcga_entrez_rows": 14578
+    },
+    "ESM3": {
+      "dimensions": 1536,
+      "provenance": {
+        "covered_genes": 15529,
+        "device": "cuda",
+        "dimensions": 1536,
+        "master_gene_source": "/media/volume/TrainingData/txn_jatin_archs4/bridge_osdr_partial_unfreeze/baselines/BRIDGE_OSDR_original_dynamic__gene_benchmark__symbol.npz",
+        "master_gene_source_sha256": "7bc8c2920b0c69db4ea50a52f5c653c00efb23e07f1e9b9853398332ca8c97ec",
+        "max_residues": 1022,
+        "model": "esm3-sm-open-v1",
+        "name": "ESM3",
+        "pooling": "mean final-layer residue embeddings; BOS/EOS excluded",
+        "role": "sequence-only protein-language-model control",
+        "sequence_source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/inputs/bulkformer_gene_info.csv",
+        "sequence_source_sha256": "fdaa1ee2ac77749c71adda90050da3a2dc5fa6eecc7d89a591129a8f7f39615d",
+        "total_genes": 15916,
+        "truncated_sequences": 2139
+      },
+      "representation": "native frozen ESM3 sequence embedding",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_esm3_20260725/embeddings/ESM3__gene_benchmark__symbol.npz",
+      "source_sha256": "c067c05f51beaf28874b3d6caeed617abcfa3e0edccd1012697e4f7bc03c109b",
+      "strict_intersection_rows": 9568,
+      "tcga_entrez_rows": 14558
+    },
+    "Geneformer": {
+      "dimensions": 768,
+      "entrez_rows": 15523,
+      "provenance": {
+        "device": "cuda",
+        "gene_namespace": "Ensembl gene id (rank-value)",
+        "model": "ctheodoris/Geneformer",
+        "model_subdir": "Geneformer-V2-104M",
+        "name": "Geneformer",
+        "note": "single-cell model; bulk->rank-value pseudo-cell",
+        "source": "ctheodoris/Geneformer"
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/Geneformer__gene_benchmark__symbol.npz",
+      "source_sha256": "5b6d2b1449af28ed6fbb50edb2af20630d2c3863c7fa3e4f26c5ee2f09c224a9",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 15914,
+      "tcga_entrez_rows": 14560
+    },
+    "Txn_Jatin": {
+      "dimensions": 512,
+      "entrez_rows": 15907,
+      "provenance": {
+        "checkpoint": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/latest.pt",
+        "device": "cuda",
+        "gene_embedding_mode": "checkpoint",
+        "gene_namespace": "HGNC symbol",
+        "hidden_dim": 512,
+        "name": "Txn_Jatin",
+        "normalization": "counts_to_log1p_tpm",
+        "num_genes": 16055,
+        "num_layers": 12,
+        "run": "Txn_Jatin",
+        "val_loss": 0.07805884629487991
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/Txn_Jatin__gene_benchmark__symbol.npz",
+      "source_sha256": "94054239c012cde4c1d6e451d0b2dccc49777403086b5df1751776dc822fede1",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 15914,
+      "tcga_entrez_rows": 14560
+    },
+    "Txn_Jatin_contextual": {
+      "dimensions": 512,
+      "entrez_rows": 15907,
+      "provenance": {
+        "canonical_genes": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/canonical_genes.csv",
+        "canonical_rows": 16055,
+        "checkpoint": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/best_model.pt",
+        "checkpoint_epoch": 20,
+        "checkpoint_sha256": "8b4ab76cfe5658b86b2c7e0c1330ef57c49ddfdbd9c39c82dc702f288c320cf7",
+        "context_key": "contextual_gene_embedding",
+        "context_samples": 20000,
+        "role": "contextual representation",
+        "source": "saved frozen-model mean contextual gene states",
+        "static_checkpoint_match_max_abs_error": 0.000244140625,
+        "static_source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/Txn_Jatin__gene_benchmark__symbol.npz"
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/Txn_Jatin_contextual__gene_benchmark__symbol.npz",
+      "source_sha256": "48c90c24b78a9493c832a6f260d70c9c62c4704a05a9a43b22fa8ec952aa27b4",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 15914,
+      "tcga_entrez_rows": 14560
+    },
+    "scGPT": {
+      "dimensions": 512,
+      "entrez_rows": 15834,
+      "provenance": {
+        "device": "cuda",
+        "embedding_key": "gene_encoder.embedding.weight",
+        "gene_namespace": "HGNC symbol",
+        "hf_id": "tdc/scGPT",
+        "hidden_dim": 512,
+        "name": "scGPT",
+        "note": "HF tdc/scGPT weights; gene embeddings loaded directly from safetensors",
+        "vocab": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/tmp/hf_full_reuse_bridge_20260721_053639/hub/models--tdc--scGPT/snapshots/573c7f7782d8b9975230ba79a54b2497ebc8ab9b/vocab.json",
+        "vocab_revision": "573c7f7782d8b9975230ba79a54b2497ebc8ab9b",
+        "vocab_size": 60697,
+        "weights": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/tmp/hf_full_reuse_bridge_20260721_053639/hub/models--tdc--scGPT/snapshots/acf749f35bf5c0b00633838f02588272ed0d9911/model.safetensors"
+      },
+      "representation": "frozen embedding preserved from the completed pinned GitHub run",
+      "source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/full_scope_gpu_reuse_bridge_20260721_053639/embeddings/scGPT__gene_benchmark__symbol.npz",
+      "source_sha256": "be19b3787a31309c09b85a556b3efc63ea5054ec8176051433eedbac3a3cd24f",
+      "strict_intersection_rows": 9568,
+      "symbol_rows": 15914,
+      "tcga_entrez_rows": 14527
+    }
+  },
+  "protocol": "ylaboratory/gene-embedding-benchmarks GO holdout protocol",
+  "source_manifest": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/github_protocol_d132002_20260721_202549/embeddings/embedding_manifest.json",
+  "source_manifest_sha256": "320cb25e9882699385c2bec61dbdc8e650a3dff38f06346c2a175d59f1fe1bef",
+  "strict_intersection_definition": "TCGA Entrez genes AND all 12 local model vocabularies AND the pinned official 38-model reference intersection",
+  "strict_intersection_genes": 9568,
+  "tcga_definition": "Processed TCGA TPM matrix gene columns mapped from HGNC symbols to human Entrez identifiers using the original GitHub-run mapping cache",
+  "tcga_entrez_genes": 14580,
+  "tcga_parquet": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/tcga/tcga_tpm_unstranded_matrix.parquet",
+  "tcga_parquet_sha256": "5212600d0fbc52fa0c5bdd0762e4af28340a03df600f45c5389462ab79556064",
+  "tcga_symbol_genes": 15165
+}

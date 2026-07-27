@@ -1,0 +1,57 @@
+term,term_name,term_namespace
+GO:0000086,G2/M transition of mitotic cell cycle,biological_process
+GO:0000381,"regulation of alternative mRNA splicing, via spliceosome",biological_process
+GO:0000724,double-strand break repair via homologous recombination,biological_process
+GO:0001578,microtubule bundle formation,biological_process
+GO:0001649,osteoblast differentiation,biological_process
+GO:0001654,eye development,biological_process
+GO:0001666,response to hypoxia,biological_process
+GO:0001837,epithelial to mesenchymal transition,biological_process
+GO:0001938,positive regulation of endothelial cell proliferation,biological_process
+GO:0006325,chromatin organization,biological_process
+GO:0006400,tRNA modification,biological_process
+GO:0006402,mRNA catabolic process,biological_process
+GO:0006487,protein N-linked glycosylation,biological_process
+GO:0006493,protein O-linked glycosylation,biological_process
+GO:0006631,fatty acid metabolic process,biological_process
+GO:0006693,prostaglandin metabolic process,biological_process
+GO:0006813,potassium ion transport,biological_process
+GO:0006879,intracellular iron ion homeostasis,biological_process
+GO:0006888,endoplasmic reticulum to Golgi vesicle-mediated transport,biological_process
+GO:0007189,adenylate cyclase-activating G protein-coupled receptor signaling pathway,biological_process
+GO:0007283,spermatogenesis,biological_process
+GO:0007399,nervous system development,biological_process
+GO:0007601,visual perception,biological_process
+GO:0007605,sensory perception of sound,biological_process
+GO:0008202,steroid metabolic process,biological_process
+GO:0008584,male gonad development,biological_process
+GO:0010506,regulation of autophagy,biological_process
+GO:0016236,macroautophagy,biological_process
+GO:0031297,replication fork processing,biological_process
+GO:0031398,positive regulation of protein ubiquitination,biological_process
+GO:0034341,response to type II interferon,biological_process
+GO:0035987,endodermal cell differentiation,biological_process
+GO:0042476,odontogenesis,biological_process
+GO:0042593,glucose homeostasis,biological_process
+GO:0042632,cholesterol homeostasis,biological_process
+GO:0043488,regulation of mRNA stability,biological_process
+GO:0045089,positive regulation of innate immune response,biological_process
+GO:0045787,positive regulation of cell cycle,biological_process
+GO:0045814,"negative regulation of gene expression, epigenetic",biological_process
+GO:0046034,ATP metabolic process,biological_process
+GO:0050679,positive regulation of epithelial cell proliferation,biological_process
+GO:0050680,negative regulation of epithelial cell proliferation,biological_process
+GO:0050731,positive regulation of peptidyl-tyrosine phosphorylation,biological_process
+GO:0050796,regulation of insulin secretion,biological_process
+GO:0050890,cognition,biological_process
+GO:0051310,metaphase chromosome alignment,biological_process
+GO:0051865,protein autoubiquitination,biological_process
+GO:0060828,regulation of canonical Wnt signaling pathway,biological_process
+GO:0061844,antimicrobial humoral immune response mediated by antimicrobial peptide,biological_process
+GO:0070555,response to interleukin-1,biological_process
+GO:0090303,positive regulation of wound healing,biological_process
+GO:0097190,apoptotic signaling pathway,biological_process
+GO:0097191,extrinsic apoptotic signaling pathway,biological_process
+GO:1901224,positive regulation of non-canonical NF-kappaB signal transduction,biological_process
+GO:2000781,positive regulation of double-strand break repair,biological_process
+GO:2001244,positive regulation of intrinsic apoptotic signaling pathway,biological_process

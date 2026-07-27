@@ -9,9 +9,10 @@
 | 5 | Whole-gene masking | Same 2,188 genes hidden across samples; three seeds; TCGA and OSDR | `results/whole_gene_mask/imputation_all_models.csv` |
 | 6 | Cancer RF | Patient-grouped 5-fold RF on 2-cancer and 5-cancer panels | `results/cancer_rf/masked_rf_all_models.csv` |
 | 7 | OSDR PEFT | Head/BitFit/last-1-3/LoRA sweep; accession-grouped split | `results/osdr_peft/candidate_summary.csv` |
-| 8 | Individual GO + ESM3 | 40 terms, 5-fold OOF GPU probes, strict 13,408-gene comparison | `results/individual_go/osdr_go_term_scores_with_esm3.csv` |
+| 8 | OSDR individual GO + ESM3 | Earlier 40-term, 5-fold OOF GPU linear probes; strict 13,408-gene comparison | `results/individual_go/osdr_go_term_scores_with_esm3.csv` |
 | 9 | Sparse biomarker pilot | 1,000/2,000 observed genes, 86-93% hidden | `results/sparse_biomarker/report.md` |
 | 10 | Immunotherapy transfer | Four-cohort nested leave-one-cohort-out evaluation, n=239 | `results/immunotherapy/report.md` |
+| 11 | Official TCGA-scoped individual GO | Pinned GitHub commit; 56 terms; fixed folds; nested-CV/holdout SVC; 12 models; native and 9,568-gene strict scopes | `results/individual_go_tcga/tables/individual_go_term_scores.csv` |
 
 ## Recalculation hierarchy
 

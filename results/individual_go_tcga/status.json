@@ -1,0 +1,26 @@
+{
+  "completed": [],
+  "completed_utc": "2026-07-27T07:25:57Z",
+  "failed": [],
+  "models": [
+    "BRIDGE",
+    "BulkFormer_127M",
+    "BulkFormer_147M",
+    "BulkFormer_37M",
+    "BulkFormer_50M",
+    "BulkFormer_93M",
+    "ESM2_PCA512_prior",
+    "ESM3",
+    "Geneformer",
+    "Txn_Jatin",
+    "Txn_Jatin_contextual",
+    "scGPT"
+  ],
+  "running": [],
+  "scopes": [
+    "tcga_all_genes",
+    "tcga_strict_intersection"
+  ],
+  "stage": "complete",
+  "started_utc": "2026-07-27T07:25:48Z"
+}

@@ -35,8 +35,9 @@ fine-tuning, sparse-panel behavior, and exploratory immunotherapy transfer.
 
 The central result is task-specific rather than universal: Txn_Jatin improves
 several functional-ranking and TCGA expressed-gene endpoints, while BRIDGE
-retains stronger global reconstruction geometry and sequence models lead
-strict GO prediction.
+retains stronger global reconstruction geometry. Sequence controls led an
+earlier 40-term linear-probe experiment, but Txn_Jatin led the official
+56-term, TCGA-scoped GitHub GO protocol in both reported gene scopes.
 
 ## Repository map
 
@@ -59,6 +60,7 @@ strict GO prediction.
 |   |-- whole_gene_mask/
 |   |-- osdr_peft/
 |   |-- individual_go/
+|   |-- individual_go_tcga/
 |   |-- sparse_biomarker/
 |   `-- immunotherapy/
 |-- results/                     # Measured CSV, JSON, reports, and figures
@@ -96,11 +98,15 @@ Choose the route matching your goal:
    5-cancer endpoints.
 7. **OSDR PEFT:** gradual unfreezing, BitFit/Norm, and LoRA selected using a
    predeclared MSE/AUROC combined rank.
-8. **Individual GO plus ESM3:** term-level comparison across the full model
-   panel.
+8. **OSDR individual-GO probe plus ESM3:** an earlier 40-term linear-probe
+   comparison retained as a separate experiment.
 9. **Sparse biomarker pilot:** 1,000- and 2,000-gene observed panels.
 10. **Immunotherapy transfer:** exploratory four-cohort leave-one-cohort-out
     response analysis.
+11. **Official TCGA-scoped individual GO:** all 56 terms and all 12 models
+    evaluated with the fixed folds, nested-CV SVC, and holdout metrics from
+    pinned `ylaboratory/gene-embedding-benchmarks` commit
+    `d1320026a2a4ee033d49517f91e2d1c2ccc8df1e`.
 
 Exact protocols and primary outputs are linked in
 [`docs/EXPERIMENT_ORDER.md`](docs/EXPERIMENT_ORDER.md).

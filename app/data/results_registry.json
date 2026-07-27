@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-27T05:00:00Z",
+  "generated_utc": "2026-07-27T07:25:57Z",
   "title": "Txn_Jatin experiment registry",
   "claim_boundary": "Research-use-only. Cancer and immunotherapy analyses are exploratory and do not establish clinically validated biomarkers.",
   "models": [
@@ -97,10 +97,10 @@
       "id": "ESM3",
       "label": "ESM3",
       "family": "protein sequence control",
-      "genes": 13434,
-      "embedding_dim": 512,
+      "genes": 15529,
+      "embedding_dim": 1536,
       "imputation_supported": false,
-      "note": "Protein-sequence embedding control used in strict 13,408-gene individual-GO comparisons."
+      "note": "Native frozen ESM3 sequence embeddings; mean-pooled final-layer residues with BOS/EOS excluded."
     },
     {
       "id": "Geneformer",
@@ -4138,13 +4138,223 @@
         "immunotherapy/representation_nuisance_diagnostics.csv",
         "immunotherapy/report.md"
       ]
+    },
+    {
+      "id": "individual_go_tcga_github",
+      "order": 11,
+      "title": "Official individual GO benchmark on TCGA genes",
+      "date": "2026-07-27",
+      "protocol": "Pinned ylaboratory/gene-embedding-benchmarks commit d1320026a2a4ee033d49517f91e2d1c2ccc8df1e; all 56 official GO terms; fixed nested-CV folds and holdout SVC; native and 9,568-gene strict TCGA scopes.",
+      "conclusion": "Txn_Jatin ranked first in both scopes (AUROC 0.8353 native; 0.8439 strict), followed by ESM2 and Txn_Jatin contextual. Native 1,536-dimensional ESM3 ranked fourth.",
+      "primary_metric": "mean AUROC",
+      "rows": [
+        {
+          "label": "TCGA native genes",
+          "model": "Txn_Jatin",
+          "metric": "mean AUROC",
+          "value": 0.8352910789196982,
+          "secondary": 0.5701699819862879,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "ESM2_PCA512_prior",
+          "metric": "mean AUROC",
+          "value": 0.8249783911307598,
+          "secondary": 0.5467121592017153,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "Txn_Jatin_contextual",
+          "metric": "mean AUROC",
+          "value": 0.8191522144314939,
+          "secondary": 0.5211324901408246,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "ESM3",
+          "metric": "mean AUROC",
+          "value": 0.8101469714750278,
+          "secondary": 0.4957282305995101,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "scGPT",
+          "metric": "mean AUROC",
+          "value": 0.7822809969841332,
+          "secondary": 0.4157726247360253,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "BRIDGE",
+          "metric": "mean AUROC",
+          "value": 0.7768139210873342,
+          "secondary": 0.3860963237884139,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "Geneformer",
+          "metric": "mean AUROC",
+          "value": 0.7602697901901051,
+          "secondary": 0.3702077012333156,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "BulkFormer_147M",
+          "metric": "mean AUROC",
+          "value": 0.6965037795667961,
+          "secondary": 0.2601299789926942,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "BulkFormer_93M",
+          "metric": "mean AUROC",
+          "value": 0.696157292634407,
+          "secondary": 0.2529930502401925,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "BulkFormer_50M",
+          "metric": "mean AUROC",
+          "value": 0.6928378985439521,
+          "secondary": 0.2546190908895783,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "BulkFormer_37M",
+          "metric": "mean AUROC",
+          "value": 0.6872468457098934,
+          "secondary": 0.2466486631209417,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA native genes",
+          "model": "BulkFormer_127M",
+          "metric": "mean AUROC",
+          "value": 0.6754431789094605,
+          "secondary": 0.2476187875584446,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "Txn_Jatin",
+          "metric": "mean AUROC",
+          "value": 0.8438527648524045,
+          "secondary": 0.578488773568531,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "ESM2_PCA512_prior",
+          "metric": "mean AUROC",
+          "value": 0.832315823050658,
+          "secondary": 0.5547287649354665,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "Txn_Jatin_contextual",
+          "metric": "mean AUROC",
+          "value": 0.823005073262245,
+          "secondary": 0.5430977825587384,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "ESM3",
+          "metric": "mean AUROC",
+          "value": 0.8125811043917117,
+          "secondary": 0.4918716156579319,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "scGPT",
+          "metric": "mean AUROC",
+          "value": 0.7847158837348391,
+          "secondary": 0.4139437398784805,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "BRIDGE",
+          "metric": "mean AUROC",
+          "value": 0.7838572725902618,
+          "secondary": 0.4158345330848431,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "Geneformer",
+          "metric": "mean AUROC",
+          "value": 0.7620877747297934,
+          "secondary": 0.3811674565685706,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "BulkFormer_50M",
+          "metric": "mean AUROC",
+          "value": 0.7043407093373857,
+          "secondary": 0.2798508788020573,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "BulkFormer_93M",
+          "metric": "mean AUROC",
+          "value": 0.7001930543574126,
+          "secondary": 0.2674080082326033,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "BulkFormer_147M",
+          "metric": "mean AUROC",
+          "value": 0.699501198473838,
+          "secondary": 0.2801951956516991,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "BulkFormer_37M",
+          "metric": "mean AUROC",
+          "value": 0.6934397460282627,
+          "secondary": 0.2663283555622965,
+          "secondary_label": "mean AUPRC"
+        },
+        {
+          "label": "TCGA strict intersection",
+          "model": "BulkFormer_127M",
+          "metric": "mean AUROC",
+          "value": 0.6748674919708249,
+          "secondary": 0.2670432460462149,
+          "secondary_label": "mean AUPRC"
+        }
+      ],
+      "files": [
+        "individual_go_tcga/tables/model_summary.csv",
+        "individual_go_tcga/tables/individual_go_term_scores.csv",
+        "individual_go_tcga/tables/per_term_winners.csv",
+        "individual_go_tcga/reports/REPORT.md"
+      ]
     }
   ],
   "counts": {
     "models": 13,
-    "experiments": 10,
+    "experiments": 11,
     "github_protocol_rows": 319,
     "individual_go_rows": 3800,
+    "tcga_individual_go_rows": 1344,
     "whole_gene_mask_rows": 42,
     "ici_patients": 239
   }

@@ -13,11 +13,17 @@ BRIDGE retained better global reconstruction geometry: higher PCC/lower MSE and
 stronger OSDR whole-gene recovery. BRIDGE also ranked first in the aggregated
 dynamic-context benchmark.
 
-## What sequence controls show
+## What the two GO experiments show
 
-ESM2 and ESM3 led the strict individual-GO experiment. This is coherent with
-their direct protein-sequence signal and demonstrates that GO performance alone
-does not establish superior expression modeling.
+ESM2 and ESM3 led the earlier 40-term OSDR linear-probe experiment, which is
+coherent with their direct protein-sequence signal. Under the supplied,
+pinned GitHub protocol on TCGA genes, Txn_Jatin instead ranked first across all
+56 terms: mean AUROC was 0.8353 on each model's native TCGA genes and 0.8439 on
+the identical 9,568-gene intersection. ESM2 ranked second, Txn_Jatin contextual
+third, and native 1,536-dimensional ESM3 fourth in both scopes. The reversal
+shows that conclusions depend on the annotation set, split construction, probe,
+and eligible-gene universe; GO performance alone does not establish superior
+expression reconstruction.
 
 ## What PEFT shows
 

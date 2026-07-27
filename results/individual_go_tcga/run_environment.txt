@@ -1,0 +1,6 @@
+started_utc=2026-07-27T06:52:59+00:00
+hostname=nvidea-h100-2-of-2
+benchmark_commit=d1320026a2a4ee033d49517f91e2d1c2ccc8df1e
+python=Python 3.10.12
+NVIDIA H100 80GB HBM3, 595.84, 81559 MiB
+completed_utc=2026-07-27T07:13:40+00:00
