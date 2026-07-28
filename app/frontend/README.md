@@ -22,11 +22,15 @@ falls back silently when a live backend is connected.
 The Downstream tab separates two evidence types:
 
 - **Live current-request analysis** recomputes exact cohort neighbors,
-  PCA/UMAP/t-SNE 2D and 3D maps, sample inspection, and interpretation whenever
-  the input matrix or model changes.
+  PCA/UMAP/t-SNE maps, including a Plotly WebGL 3D scene with orbit, pan, zoom,
+  hover inspection, and PNG export, plus sample inspection and interpretation
+  whenever the input matrix or model changes.
 - **Benchmark evidence** reads the packaged, pinned study tables and is
   explicitly labeled historical.
 
 The live retrieval scope is the uploaded cohort. It does not claim to search
 the external BRIDGE ARCHS4 index, which is unavailable in the upstream
 repository and is model-specific.
+
+Plotly.js 6.9.0 is vendored under `vendor/` so the 3D map does not depend on a
+third-party CDN. Its MIT license is included at `vendor/plotly-license/LICENSE.txt`.

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script src="./vendor/plotly-6.9.0.min.js"></script>
 </head>
 <body>
 <x-dc>
@@ -43,6 +44,7 @@
     .downstream-task-nav>button{display:inline-block!important;width:auto!important;min-width:max-content;margin:0!important;white-space:nowrap}
     .downstream-content{min-height:640px;padding:14px!important}
     .live-two-column{grid-template-columns:1fr!important}
+    .plotly-3d-host{height:480px!important;min-height:480px!important}
   }
 </style>
 </helmet>
@@ -201,7 +203,7 @@ class Component extends DCLogic{
     dataLabel:'No matrix loaded',viewRows:null,rowStart:0,cmpSync:0,apiStatus:'idle',
     modelsMeta:null,registry:null,resultExperiment:'github_protocol',
     downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0,
-    topK:8,mapMethod:'umap',mapDims:'2d',mapColor:'group',mapRotation:24};
+    topK:8,mapMethod:'umap',mapDims:'2d',mapColor:'group'};
   genes=[];samples=[];sampleClass=[];geneModule={};vals=[];miss=[];missCount=0;
 
   componentDidMount(){
@@ -209,12 +211,19 @@ class Component extends DCLogic{
     this.apiUrl=q.has('api')?(q.get('api')||null):(location.protocol==='http:'||location.protocol==='https:'?location.origin:null);
     this.loadSample();
     if(this.apiUrl)this.loadRemoteMetadata();
-    window.addEventListener('resize',this._rz=()=>this.draw());
+    window.addEventListener('resize',this._rz=()=>{this.draw();if(this.map3d&&window.Plotly)window.Plotly.Plots.resize(this.map3d);});
     [60,200,500,900].forEach(t=>setTimeout(()=>this.draw(),t));
   }
   componentDidUpdate(pp,ps){
     if(!ps)return;
     if(ps.tab!==this.state.tab||ps.norm!==this.state.norm||ps.clampLo!==this.state.clampLo||ps.clampHi!==this.state.clampHi||ps.hasImputed!==this.state.hasImputed||ps.theme!==this.state.theme||ps.rowStart!==this.state.rowStart||ps.viewRows!==this.state.viewRows||ps.selection!==this.state.selection){this.draw();}
+    if(this.state.tab==='downstream'&&this.state.downTask==='Sample map'&&this.state.mapDims==='3d'&&
+      (ps.tab!==this.state.tab||ps.downTask!==this.state.downTask||ps.mapDims!==this.state.mapDims||
+       ps.mapMethod!==this.state.mapMethod||ps.mapColor!==this.state.mapColor||
+       ps.querySample!==this.state.querySample||ps.theme!==this.state.theme||
+       ps.downstreamData!==this.state.downstreamData)){
+      requestAnimationFrame(()=>this.drawPlotly3d());
+    }
   }
 
   async loadRemoteMetadata(){
@@ -776,6 +785,91 @@ class Component extends DCLogic{
     return palette[index%palette.length];
   }
 
+  setPlotly3d=element=>{
+    this.map3d=element;
+    if(!element)return;
+    if(!element.__resizeObserver){
+      element.__resizeObserver=new ResizeObserver(()=>{if(window.Plotly&&element.isConnected)window.Plotly.Plots.resize(element);});
+      element.__resizeObserver.observe(element);
+    }
+    requestAnimationFrame(()=>this.drawPlotly3d());
+  };
+
+  drawPlotly3d(){
+    const element=this.map3d,d=this.state.downstreamData;
+    if(!element||!element.isConnected||!d||!window.Plotly||this.state.mapDims!=='3d')return;
+    const method=d.projections[this.state.mapMethod]?this.state.mapMethod:'pca';
+    const projection=d.projections[method],coordinates=projection.coordinates_3d;
+    if(!coordinates||!coordinates.length)return;
+    const c=this.colors(),groups=[...new Set(d.groups)],query=Math.min(this.state.querySample,d.samples.length-1);
+    const similarities=d.similarity[query],traces=[];
+    const traceFor=(indices,name,color)=>({
+      type:'scatter3d',mode:'markers',name,
+      x:indices.map(index=>coordinates[index][0]),
+      y:indices.map(index=>coordinates[index][1]),
+      z:indices.map(index=>coordinates[index][2]),
+      customdata:indices,
+      hovertext:indices.map(index=>d.samples[index]+'<br>group: '+d.groups[index]+'<br>query cosine: '+similarities[index].toFixed(4)),
+      hovertemplate:'%{hovertext}<extra></extra>',
+      marker:{size:5.5,color,opacity:.82,line:{width:0}},
+    });
+    if(this.state.mapColor==='group'){
+      groups.forEach(group=>{
+        const indices=d.samples.map((_,index)=>index).filter(index=>d.groups[index]===group&&index!==query);
+        if(indices.length)traces.push(traceFor(indices,group,this.groupColor(group,groups)));
+      });
+    }else{
+      const indices=d.samples.map((_,index)=>index).filter(index=>index!==query);
+      const trace=traceFor(indices,'Query cosine',indices.map(index=>similarities[index]));
+      trace.marker={size:5.5,color:indices.map(index=>similarities[index]),colorscale:'Viridis',cmin:-1,cmax:1,opacity:.84,colorbar:{title:{text:'cosine'},thickness:11,len:.55,x:1.02},line:{width:0}};
+      traces.push(trace);
+    }
+    traces.push({
+      type:'scatter3d',mode:'markers+text',name:'Active query',
+      x:[coordinates[query][0]],y:[coordinates[query][1]],z:[coordinates[query][2]],
+      customdata:[query],text:[d.samples[query]],textposition:'top center',
+      hovertext:[d.samples[query]+'<br>active query<br>group: '+d.groups[query]],
+      hovertemplate:'%{hovertext}<extra></extra>',
+      marker:{size:10,color:'#ffffff',symbol:'diamond',line:{color:c.accent,width:4},opacity:1},
+      textfont:{family:'IBM Plex Mono, monospace',size:10,color:c.theme==='dark'?'#e7ebef':'#172033'},
+    });
+    const dark=c.theme==='dark',sceneBackground=dark?'#101a2b':'#f7f9fc',grid=dark?'#28405f':'#d9e1eb',axisText=dark?'#aebdd1':'#536174';
+    const axis=number=>({
+      title:{text:method.toUpperCase()+' '+number,font:{size:11,color:axisText}},
+      showbackground:true,backgroundcolor:sceneBackground,gridcolor:grid,zerolinecolor:grid,
+      tickfont:{size:9,color:axisText},showspikes:false,
+    });
+    const layout={
+      autosize:true,margin:{l:0,r:this.state.mapColor==='similarity'?60:0,t:4,b:0},
+      paper_bgcolor:sceneBackground,plot_bgcolor:sceneBackground,
+      font:{family:'IBM Plex Sans, sans-serif',color:axisText},
+      legend:{x:.01,y:.99,xanchor:'left',yanchor:'top',bgcolor:dark?'rgba(16,26,43,.78)':'rgba(255,255,255,.82)',bordercolor:grid,borderwidth:1,font:{size:10}},
+      scene:{
+        bgcolor:sceneBackground,xaxis:axis(1),yaxis:axis(2),zaxis:axis(3),
+        aspectmode:'cube',dragmode:'orbit',
+        camera:{eye:{x:1.45,y:1.45,z:1.05},up:{x:0,y:0,z:1}},
+      },
+      uirevision:'live-3d|'+method+'|'+d.sample_count,
+      hovermode:'closest',
+    };
+    const config={
+      responsive:true,displaylogo:false,scrollZoom:true,
+      modeBarButtonsToRemove:['select2d','lasso2d','autoScale2d','toggleSpikelines'],
+      toImageButtonOptions:{format:'png',filename:'Txn_Jatin_'+method+'_3d',scale:2},
+    };
+    window.Plotly.react(element,traces,layout,config).then(()=>{
+      if(typeof element.removeAllListeners==='function')element.removeAllListeners('plotly_click');
+      element.on('plotly_click',event=>{
+        const index=event&&event.points&&event.points[0]?Number(event.points[0].customdata):NaN;
+        if(Number.isInteger(index))this.setState({querySample:index,inspectorSample:index});
+      });
+    });
+  }
+
+  reset3dCamera(){
+    if(this.map3d&&window.Plotly)window.Plotly.relayout(this.map3d,{'scene.camera':{eye:{x:1.45,y:1.45,z:1.05},up:{x:0,y:0,z:1}}});
+  }
+
   renderSampleRetrieval(c){
     const h=React.createElement,d=this.state.downstreamData;if(!d)return this.renderLiveGate(c);
     const q=Math.min(this.state.querySample,d.samples.length-1),entry=d.nearest_neighbors[q];
@@ -814,25 +908,20 @@ class Component extends DCLogic{
     const h=React.createElement,d=this.state.downstreamData;if(!d)return this.renderLiveGate(c);
     const method=d.projections[this.state.mapMethod]?this.state.mapMethod:'pca',projection=d.projections[method];
     const dims=this.state.mapDims,raw=projection[dims==='3d'?'coordinates_3d':'coordinates_2d'];
-    const angle=this.state.mapRotation*Math.PI/180;
-    const rotated=raw.map(point=>dims==='3d'
-      ?[point[0]*Math.cos(angle)-point[2]*Math.sin(angle),point[1],point[0]*Math.sin(angle)+point[2]*Math.cos(angle)]
-      :[point[0],point[1],0]);
-    const xs=rotated.map(p=>p[0]),ys=rotated.map(p=>p[1]),zs=rotated.map(p=>p[2]);
-    const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys),minZ=Math.min(...zs),maxZ=Math.max(...zs);
+    const xs=raw.map(p=>p[0]),ys=raw.map(p=>p[1]);
+    const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
     const sx=value=>38+684*(value-minX)/((maxX-minX)||1),sy=value=>342-304*(value-minY)/((maxY-minY)||1);
     const groups=[...new Set(d.groups)],query=Math.min(this.state.querySample,d.samples.length-1),similarity=d.similarity[query];
-    const points=rotated.map((point,index)=>{
-      const depth=(point[2]-minZ)/((maxZ-minZ)||1);
+    const points=dims==='2d'?raw.map((point,index)=>{
       const color=this.state.mapColor==='similarity'
         ?(()=>{const rgb=ramp(VIRIDIS,(similarity[index]+1)/2);return'rgb('+rgb.join(',')+')';})()
         :this.groupColor(d.groups[index],groups);
       const selected=index===query,px=sx(point[0]),py=sy(point[1]),right=px>620;
       return h('g',{key:d.samples[index],onClick:()=>this.setState({querySample:index,inspectorSample:index}),style:{cursor:'pointer'}},
-        h('circle',{cx:px,cy:py,r:selected?8:(dims==='3d'?4+3*depth:5),fill:color,opacity:selected?1:(dims==='3d'?.45+.5*depth:.82),stroke:selected?'#ffffff':c.panel,strokeWidth:selected?2.5:1}),
+        h('circle',{cx:px,cy:py,r:selected?8:5,fill:color,opacity:selected?1:.82,stroke:selected?'#ffffff':c.panel,strokeWidth:selected?2.5:1}),
         selected?h('text',{x:px+(right?-10:10),y:py-8,textAnchor:right?'end':'start',fontSize:9.5,fontFamily:'IBM Plex Mono,monospace',fill:c.text},d.samples[index].slice(0,24)):null,
         h('title',null,d.samples[index]+' · '+d.groups[index]+' · query cosine '+similarity[index].toFixed(4)));
-    });
+    }):[];
     const methodButtons=['pca','umap','tsne'].map(name=>h('button',{key:name,onClick:()=>this.setState({mapMethod:name}),style:{padding:'6px 10px',border:'1px solid '+c.border2,borderRadius:'5px',background:method===name?c.accent:c.panel,color:method===name?'#fff':c.text,fontFamily:'inherit',cursor:'pointer'}},name.toUpperCase()));
     const dimButtons=['2d','3d'].map(name=>h('button',{key:name,onClick:()=>this.setState({mapDims:name}),style:{padding:'6px 10px',border:'1px solid '+c.border2,borderRadius:'5px',background:dims===name?c.accent:c.panel,color:dims===name?'#fff':c.text,fontFamily:'inherit',cursor:'pointer'}},name.toUpperCase()));
     const legend=this.state.mapColor==='group'
@@ -842,11 +931,15 @@ class Component extends DCLogic{
     return h('div',null,this.analysisHeader(c),
       h('div',{style:{display:'flex',gap:'6px',alignItems:'center',flexWrap:'wrap',marginBottom:'10px'}},methodButtons,h('span',{style:{width:'8px'}}),dimButtons,
         h('select',{value:this.state.mapColor,onChange:e=>this.setState({mapColor:e.target.value}),style:{marginLeft:'8px',padding:'6px 8px',border:'1px solid '+c.border2,borderRadius:'5px',background:c.panel,color:c.text,fontFamily:'inherit'}},h('option',{value:'group'},'Color: submitted group'),h('option',{value:'similarity'},'Color: query similarity')),
-        dims==='3d'?h('label',{style:{display:'flex',alignItems:'center',gap:'6px',fontSize:'10px',color:c.muted,marginLeft:'auto'}},'Rotate',h('input',{type:'range',min:0,max:360,value:this.state.mapRotation,onInput:e=>this.setState({mapRotation:+e.target.value})})):null),
-      h('div',{style:{border:'1px solid '+c.border,borderRadius:'8px',background:c.bg,padding:'6px'}},
-        h('svg',{viewBox:'0 0 760 380',style:{display:'block',width:'100%',height:'min(58vh,520px)'}},
-          h('line',{x1:38,y1:342,x2:722,y2:342,stroke:c.border2}),h('line',{x1:38,y1:38,x2:38,y2:342,stroke:c.border2}),points)),
-      h('div',{style:{display:'flex',gap:'13px',flexWrap:'wrap',alignItems:'center',padding:'9px 2px 2px',fontSize:'10px',color:c.muted}},legend),
+        dims==='3d'?h('div',{style:{display:'flex',alignItems:'center',gap:'9px',marginLeft:'auto',fontSize:'10px',color:c.muted}},
+          h('span',null,'Drag to orbit | wheel to zoom | right-drag to pan'),
+          h('button',{onClick:()=>this.reset3dCamera(),style:{padding:'6px 9px',border:'1px solid '+c.border2,borderRadius:'5px',background:c.panel,color:c.text,fontFamily:'inherit',cursor:'pointer'}},'Reset camera')):null),
+      h('div',{style:{border:'1px solid '+c.border,borderRadius:'8px',background:c.bg,padding:dims==='3d'?'0':'6px',overflow:'hidden'}},
+        dims==='3d'
+          ?h('div',{className:'plotly-3d-host',ref:this.setPlotly3d,style:{display:'block',width:'100%',height:'min(62vh,600px)',minHeight:'440px',background:c.bg}})
+          :h('svg',{viewBox:'0 0 760 380',style:{display:'block',width:'100%',height:'min(58vh,520px)'}},
+            h('line',{x1:38,y1:342,x2:722,y2:342,stroke:c.border2}),h('line',{x1:38,y1:38,x2:38,y2:342,stroke:c.border2}),points)),
+      dims==='2d'?h('div',{style:{display:'flex',gap:'13px',flexWrap:'wrap',alignItems:'center',padding:'9px 2px 2px',fontSize:'10px',color:c.muted}},legend):null,
       h('div',{style:{display:'flex',gap:'14px',flexWrap:'wrap',marginTop:'9px',fontSize:'10.5px',color:c.muted}},
         h('span',null,projection.status==='ok'?'new fit on current input':'fallback: '+projection.status),
         h('span',null,'trustworthiness '+(projection[dims==='3d'?'trustworthiness_3d':'trustworthiness_2d']??'—')),

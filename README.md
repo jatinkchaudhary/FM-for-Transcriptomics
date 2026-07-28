@@ -158,7 +158,8 @@ matrix. Txn_Jatin, Txn_Jatin OSDR LoRA, and BRIDGE use mean contextual sample
 embeddings from their selected checkpoint. Models without a validated sample
 encoder use a clearly labeled standardized log-expression fallback. The
 response contains exact within-input cosine retrieval, independently fitted
-PCA/UMAP/t-SNE coordinates in 2D and 3D, projection trustworthiness,
+PCA/UMAP/t-SNE coordinates in 2D and an interactive Plotly WebGL 3D scene,
+projection trustworthiness,
 per-sample expression inspection, group-neighborhood diagnostics, and a
 numerically generated interpretation.
 
