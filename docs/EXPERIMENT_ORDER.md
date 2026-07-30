@@ -17,6 +17,7 @@
 | 13 | Atlas-augmented immunotherapy | Fixed immune/pathway atlas; nested calibrated LOCO; six ablations; random-effects pathway consistency | `results/immunotherapy/atlas_augmented/REPORT.md` |
 | 14 | Multi-model immunotherapy | Eight H100 decoders; strict 15,171-gene intersection; nested calibrated LOCO; paired screening bootstrap | `results/immunotherapy/multimodel/REPORT.md` |
 | 15 | Immune edge recovery | Gene-disjoint TF/SL folds; final Txn_Jatin versus independent immunotherapy-cohort co-expression; 2,000 paired bootstraps | `results/immune_edge_recovery/REPORT.md` |
+| 16 | Immunotherapy provenance audit | Signature-gene holdout, provenance PVCA, CORAL/project-out/DANN screen, and preregistered locked IMvigor210 test | `results/immunotherapy/provenance_not_response/REPORT.md` |
 
 ## Recalculation hierarchy
 

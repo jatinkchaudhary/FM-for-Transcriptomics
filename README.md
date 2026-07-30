@@ -121,6 +121,12 @@ Choose the route matching your goal:
 14. **Downstream validation suite:** DepMap common essentiality, human-to-mouse
     tissue transfer, TCGA survival/progression, and crossed GTEx-TCGA study
     integration with paired uncertainty estimates and full audit tables.
+15. **Immunotherapy provenance audit:** locked IMvigor210 external test,
+    signature-gene holdout recovery, PVCA-style provenance partition, and
+    cohort-invariant adaptation screen. The primary external result is neutral
+    versus raw expression; the strongest positive result is masked immune-
+    signature gene recovery. See
+    [`results/immunotherapy/provenance_not_response/REPORT.md`](results/immunotherapy/provenance_not_response/REPORT.md).
 
 Exact protocols and primary outputs are linked in
 [`docs/EXPERIMENT_ORDER.md`](docs/EXPERIMENT_ORDER.md).

@@ -1,0 +1,21 @@
+{
+  "models": [
+    "Txn_Jatin",
+    "BulkFormer_147M"
+  ],
+  "cohorts": [
+    "gide",
+    "riaz",
+    "hugo",
+    "rose"
+  ],
+  "masking": "All measured genes in the fixed Phase-1 immune signatures were masked together.",
+  "input_scale": "log1p(TPM)",
+  "observed_non-target_genes_retained": true,
+  "metrics": [
+    "Pearson",
+    "Spearman",
+    "MAE_log1p_TPM"
+  ],
+  "note": "This tests measured-gene holdout recovery; it does not use response labels."
+}
