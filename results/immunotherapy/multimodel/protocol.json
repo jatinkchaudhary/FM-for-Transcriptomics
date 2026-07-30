@@ -22,5 +22,6 @@
   "secondary_track": "fixed within-sample rank atlas scores",
   "outer_validation": "leave one entire cohort out",
   "inner_tuning": "leave one training cohort out",
-  "calibration": "monotone intercept-only, fitted on inner OOF predictions"
+  "calibration": "monotone intercept-only, fitted on inner OOF predictions",
+  "paired_bootstrap_replicates": 2000
 }

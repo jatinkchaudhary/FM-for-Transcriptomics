@@ -108,7 +108,7 @@ def metrics(frame):
     }
 
 
-def paired_bootstrap(predictions, method, reference="Raw_common_measured", n_boot=500):
+def paired_bootstrap(predictions, method, reference="Raw_common_measured", n_boot=2000):
     columns = ["sample_id", "held_out_cohort", "label", "probability"]
     left = predictions.loc[predictions["method"].eq(method), columns].rename(
         columns={"probability": "model_probability"}
@@ -304,6 +304,7 @@ def main() -> int:
                 "outer_validation": "leave one entire cohort out",
                 "inner_tuning": "leave one training cohort out",
                 "calibration": "monotone intercept-only, fitted on inner OOF predictions",
+                "paired_bootstrap_replicates": 2000,
             },
             indent=2,
         )

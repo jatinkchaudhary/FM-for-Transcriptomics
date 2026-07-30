@@ -42,15 +42,13 @@ them. Model size did not produce monotonic improvement within BulkFormer.
 
 ## Paired uncertainty
 
-A 100-replicate cohort-and-label-stratified paired bootstrap was used as a
-screening uncertainty analysis. BRIDGE, Txn OSDR-LoRA, and all BulkFormer
+A 2,000-replicate cohort-and-label-stratified paired bootstrap was used for
+the final uncertainty analysis. BRIDGE, Txn OSDR-LoRA, and all BulkFormer
 AUROC/AUPRC difference intervals included zero relative to raw expression.
 Final Txn_Jatin had a macro AUROC delta of -0.0176 with screening interval
--0.0427 to -0.0011; its AUPRC interval included zero.
-
-These 100-replicate intervals are suitable for screening, not final
-publication inference. A locked analysis should use at least 2,000 replicates
-without a short interactive runtime constraint.
+-0.0435 to 0.0056; its AUPRC interval also included zero. Thus, after the
+predeclared higher-resolution resampling run, none of the decoder differences
+from raw measured expression was statistically resolved by these intervals.
 
 ## Cohort behavior
 
