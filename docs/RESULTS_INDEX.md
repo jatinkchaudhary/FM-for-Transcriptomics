@@ -150,6 +150,17 @@ response predictor.
 The atlas improved raw-model calibration but did not improve macro
 held-out-cohort AUROC or AUPRC.
 
+### Multi-model immunotherapy benchmark
+
+- Report:
+  [`results/immunotherapy/multimodel/REPORT.md`](../results/immunotherapy/multimodel/REPORT.md)
+- Model summary:
+  [`results/immunotherapy/multimodel/multimodel_loco_summary.csv`](../results/immunotherapy/multimodel/multimodel_loco_summary.csv)
+- Paired uncertainty:
+  [`results/immunotherapy/multimodel/paired_bootstrap_vs_raw.csv`](../results/immunotherapy/multimodel/paired_bootstrap_vs_raw.csv)
+- Comparison figure:
+  [`results/immunotherapy/multimodel/multimodel_primary_comparison.png`](../results/immunotherapy/multimodel/multimodel_primary_comparison.png)
+
 ## External GTEx whole-gene recovery
 
 **Question:** Do decoder-capable models recover completely hidden genes in an

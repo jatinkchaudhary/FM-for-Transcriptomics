@@ -1,0 +1,26 @@
+{
+  "patients": 239,
+  "cohorts": [
+    "Gide",
+    "Riaz",
+    "Hugo",
+    "Rose"
+  ],
+  "decoder_models": [
+    "Txn_Jatin",
+    "Txn_Jatin_OSDR_LoRA",
+    "BRIDGE",
+    "BulkFormer_37M",
+    "BulkFormer_50M",
+    "BulkFormer_93M",
+    "BulkFormer_127M",
+    "BulkFormer_147M"
+  ],
+  "strict_shared_genes": 15171,
+  "raw_common_measured_genes": 13523,
+  "primary_track": "completed expression; top 1000 variance genes selected inside training folds",
+  "secondary_track": "fixed within-sample rank atlas scores",
+  "outer_validation": "leave one entire cohort out",
+  "inner_tuning": "leave one training cohort out",
+  "calibration": "monotone intercept-only, fitted on inner OOF predictions"
+}

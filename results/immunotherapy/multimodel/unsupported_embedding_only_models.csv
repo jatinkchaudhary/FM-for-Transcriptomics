@@ -1,0 +1,6 @@
+model,patient_level_track,reason
+Txn_Jatin_contextual,unsupported,No validated bulk-expression decoder or frozen bulk sample encoder
+ESM2_PCA512_prior,unsupported,No validated bulk-expression decoder or frozen bulk sample encoder
+ESM3,unsupported,No validated bulk-expression decoder or frozen bulk sample encoder
+Geneformer,unsupported,No validated bulk-expression decoder or frozen bulk sample encoder
+scGPT,unsupported,No validated bulk-expression decoder or frozen bulk sample encoder

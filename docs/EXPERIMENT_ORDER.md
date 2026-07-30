@@ -15,6 +15,7 @@
 | 11 | Official TCGA-scoped individual GO | Pinned GitHub commit; 56 terms; fixed folds; nested-CV/holdout SVC; 12 models; native and 9,568-gene strict scopes | `results/individual_go_tcga/tables/individual_go_term_scores.csv` |
 | 12 | External GTEx whole-gene recovery | 12 diverse recount2 GTEx samples; log1p-CPM; fixed 15% whole-gene mask; strict 2,117-gene decoder intersection | `results/gtex_external/gtex_all_model_summary.csv` |
 | 13 | Atlas-augmented immunotherapy | Fixed immune/pathway atlas; nested calibrated LOCO; six ablations; random-effects pathway consistency | `results/immunotherapy/atlas_augmented/REPORT.md` |
+| 14 | Multi-model immunotherapy | Eight H100 decoders; strict 15,171-gene intersection; nested calibrated LOCO; paired screening bootstrap | `results/immunotherapy/multimodel/REPORT.md` |
 
 ## Recalculation hierarchy
 
