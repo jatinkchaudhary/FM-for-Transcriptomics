@@ -1,0 +1,82 @@
+level,role,claim,detail
+INFO,ReproEng,paths,BENCH_ROOT=/home/exouser/benchmarking_run/Benchmarking WALTER=/home/exouser/benchmarking_run/Benchmarking/RNA Walter
+INFO,ReproEng,config,quick=False threads=32 tcga_max=0 osdr_max_acc=0 bench_max_genes=200000
+PASS,CompBio,TCGA loaded,<ExprBundle TCGA[human] | 3481 samples x 15165 genes | id_type=symbol>
+INFO,Statistician,TCGA label balance,"{'TCGA-BRCA': 1231, 'TCGA-LUAD': 601, 'TCGA-SKCM': 473, 'TCGA-KIRC': 614, 'TCGA-LUSC': 562}"
+INFO,ReproEng,provenance: TCGA X,"df hash=0a4801009f9e shape=(3481, 15165)"
+PASS,CompBio,OSDR loaded (Mus musculus),<ExprBundle OSDR[Mus musculus] | 2106 samples x 51929 genes | id_type=ensembl_mouse>
+INFO,Statistician,OSDR label balance,"{'flight': 775, 'ground': 1331}"
+PASS,Methodologist,OSDR has >=2 study groups for GroupKFold,70 study accessions
+INFO,ReproEng,provenance: OSDR[Mus musculus] X,"df hash=019185c63a8c shape=(2106, 51929)"
+PASS,CompBio,HUMAN/TCGA: no all-NaN samples,
+PASS,Statistician,HUMAN/TCGA: median library size positive,"value=776107.625 expected in [1.0, 1000000000000.0]"
+PASS,CompBio,MOUSE/OSDR: no all-NaN samples,
+PASS,Statistician,MOUSE/OSDR: median library size positive,"value=38932536.0 expected in [1.0, 1000000000000.0]"
+INFO,ReproEng,HUMAN/TCGA: QC,"genes 15165->15102, samples 3481->3481 (0 dropped <14000 genes), norm=log1p_tpm"
+PASS,Methodologist,HUMAN/TCGA: no NaNs after preprocessing,
+INFO,ReproEng,provenance: HUMAN/TCGA normalised X,"df hash=02feb97476e9 shape=(3481, 15102)"
+INFO,ReproEng,MOUSE/OSDR: QC,"genes 51929->51305, samples 2106->2099 (7 dropped <14000 genes), norm=log1p_cpm(mouse counts; GENCODE exon-length TPM unavailable)"
+PASS,Methodologist,MOUSE/OSDR: no NaNs after preprocessing,
+INFO,ReproEng,provenance: MOUSE/OSDR normalised X,"df hash=631565dbeb0b shape=(2099, 51305)"
+PASS,CompBio,MGI orthologs loaded,24584 pairs (17092 one-to-one)
+PASS,CompBio,mouse Ensembl->human symbol map,16406 entries
+PASS,CompBio,mouse->human symbol projection,15832 human-symbol genes
+PASS,Statistician,cross-species expression Spearman r,n=13678 orthologs
+PASS,ReproEng,canonical gene dictionary <- canonical_genes.csv,16057 genes
+INFO,CompBio,benchmark gene vocabulary,15916 symbols
+PASS,ReproEng,canonical gene dictionary <- canonical_genes.csv,16057 genes
+PASS,ReproEng,canonical gene dictionary <- canonical_genes.csv,16057 genes
+PASS,ReproEng,Txn_Jatin model loaded,"epoch_00.pt, dim=512, genes=16057, device=cuda"
+PASS,CompBio,Txn_Jatin contextual gene embeddings,"978212 context samples across 863 files, dim=512, elapsed=762.4 min"
+PASS,CompBio,Txn_Jatin gene embeddings,"15916/15916 covered, dim=512"
+INFO,CompBio,Txn_Jatin: gene coverage,15916/15916  dim=512 
+PASS,ReproEng,BRIDGE model loaded,"best_model.pt, dim=512, genes=15165, device=cuda"
+PASS,CompBio,BRIDGE contextual gene embeddings,"978212 context samples across 863 files, dim=512, elapsed=691.7 min"
+PASS,CompBio,BRIDGE gene embeddings,"14567/15916 covered, dim=512"
+INFO,CompBio,BRIDGE: gene coverage,14567/15916  dim=512 
+INFO,CompBio,scGPT: gene coverage,15841/15916  dim=512 
+INFO,CompBio,Geneformer: gene coverage,15532/15916  dim=768 
+INFO,CompBio,BulkFormer_37M: gene coverage,15529/15916  dim=128 
+INFO,CompBio,BulkFormer_50M: gene coverage,15529/15916  dim=256 
+INFO,CompBio,BulkFormer_93M: gene coverage,15529/15916  dim=512 
+INFO,CompBio,BulkFormer_127M: gene coverage,15529/15916  dim=640 
+INFO,CompBio,BulkFormer_147M: gene coverage,15529/15916  dim=640 
+PASS,Methodologist,shared (common) gene set across 9 models,14532 genes
+INFO,Statistician,GO-BP single-gene AUROC [common],"{'BRIDGE': 0.67, 'BulkFormer_127M': 0.659, 'BulkFormer_147M': 0.679, 'BulkFormer_37M': 0.654, 'BulkFormer_50M': 0.662, 'BulkFormer_93M': 0.658, 'Geneformer': 0.661, 'Txn_Jatin': 0.649, 'scGPT': 0.663}"
+PASS,Statistician,GO-BP[common]: a model beats chance,
+INFO,Statistician,DisGeNET single-gene AUROC [common],"{'BRIDGE': 0.671, 'BulkFormer_127M': 0.655, 'BulkFormer_147M': 0.67, 'BulkFormer_37M': 0.656, 'BulkFormer_50M': 0.659, 'BulkFormer_93M': 0.66, 'Geneformer': 0.668, 'Txn_Jatin': 0.66, 'scGPT': 0.67}"
+PASS,Statistician,DisGeNET[common]: a model beats chance,
+INFO,Statistician,gene-set matching[common] AUROC,"{'Txn_Jatin': 0.638, 'BRIDGE': 0.644, 'scGPT': 0.632, 'Geneformer': 0.611, 'BulkFormer_37M': 0.575, 'BulkFormer_50M': 0.581, 'BulkFormer_93M': 0.576, 'BulkFormer_127M': 0.579, 'BulkFormer_147M': 0.591}"
+INFO,Statistician,GO-BP single-gene AUROC [full],"{'BRIDGE': 0.67, 'BulkFormer_127M': 0.661, 'BulkFormer_147M': 0.681, 'BulkFormer_37M': 0.656, 'BulkFormer_50M': 0.664, 'BulkFormer_93M': 0.662, 'Geneformer': 0.665, 'Txn_Jatin': 0.657, 'scGPT': 0.669}"
+PASS,Statistician,GO-BP[full]: a model beats chance,
+INFO,Statistician,DisGeNET single-gene AUROC [full],"{'BRIDGE': 0.671, 'BulkFormer_127M': 0.659, 'BulkFormer_147M': 0.676, 'BulkFormer_37M': 0.661, 'BulkFormer_50M': 0.664, 'BulkFormer_93M': 0.665, 'Geneformer': 0.68, 'Txn_Jatin': 0.661, 'scGPT': 0.671}"
+PASS,Statistician,DisGeNET[full]: a model beats chance,
+INFO,Statistician,GO-shuffled single-gene AUROC [full],"{'BRIDGE': 0.501, 'BulkFormer_127M': 0.495, 'BulkFormer_147M': 0.494, 'BulkFormer_37M': 0.502, 'BulkFormer_50M': 0.5, 'BulkFormer_93M': 0.501, 'Geneformer': 0.504, 'Txn_Jatin': 0.5, 'scGPT': 0.499}"
+WARN,Statistician,GO-shuffled[full]: a model beats chance,
+INFO,Statistician,gene-set matching[full] AUROC,"{'Txn_Jatin': 0.639, 'BRIDGE': 0.645, 'scGPT': 0.615, 'Geneformer': 0.602, 'BulkFormer_37M': 0.559, 'BulkFormer_50M': 0.569, 'BulkFormer_93M': 0.568, 'BulkFormer_127M': 0.56, 'BulkFormer_147M': 0.582}"
+WARN,Methodologist,GO temporal holdout,needs two dated GO snapshots (set GO_OLD/GO_NEW); skipped
+PASS,ReproEng,Txn_Jatin model loaded,"epoch_00.pt, dim=512, genes=16057, device=cuda"
+PASS,CompBio,Txn_Jatin sample embeddings,3481 samples x 512 dims; batch_size=8; bf16=True
+PASS,ReproEng,BRIDGE model loaded,"best_model.pt, dim=512, genes=15165, device=cuda"
+PASS,CompBio,BRIDGE sample embeddings,3481 samples x 512 dims; batch_size=8; bf16=True
+WARN,CompBio,scGPT sample embeddings,skipped (single-cell pipeline): No module named 'scgpt'
+WARN,CompBio,Geneformer sample embeddings,skipped: requires Geneformer tokeniser + EmbExtractor on rank-value pseudo-cells (see README caveat)
+WARN,CompBio,BulkFormer_37M sample embeddings,skipped (wire encode() to your clone): 'NoneType' object has no attribute 'to'
+WARN,CompBio,BulkFormer_50M sample embeddings,skipped (wire encode() to your clone): 'NoneType' object has no attribute 'to'
+WARN,CompBio,BulkFormer_93M sample embeddings,skipped (wire encode() to your clone): 'NoneType' object has no attribute 'to'
+WARN,CompBio,BulkFormer_127M sample embeddings,skipped (wire encode() to your clone): 'NoneType' object has no attribute 'to'
+WARN,CompBio,BulkFormer_147M sample embeddings,skipped (wire encode() to your clone): 'NoneType' object has no attribute 'to'
+INFO,Statistician,TCGA-cancer-type: best emb vs raw F1,emb=0.960 raw=0.972 (raw wins/ties)
+PASS,ReproEng,Txn_Jatin model loaded,"epoch_00.pt, dim=512, genes=16057, device=cuda"
+PASS,CompBio,Txn_Jatin sample embeddings,2099 samples x 512 dims; batch_size=8; bf16=True
+PASS,ReproEng,BRIDGE model loaded,"best_model.pt, dim=512, genes=15165, device=cuda"
+PASS,CompBio,BRIDGE sample embeddings,2099 samples x 512 dims; batch_size=8; bf16=True
+WARN,CompBio,scGPT sample embeddings,skipped (single-cell pipeline): No module named 'scgpt'
+WARN,CompBio,Geneformer sample embeddings,skipped: requires Geneformer tokeniser + EmbExtractor on rank-value pseudo-cells (see README caveat)
+WARN,CompBio,BulkFormer_37M sample embeddings,skipped (wire encode() to your clone): 'NoneType' object has no attribute 'to'
+WARN,CompBio,BulkFormer_50M sample embeddings,skipped (wire encode() to your clone): 'NoneType' object has no attribute 'to'
+WARN,CompBio,BulkFormer_93M sample embeddings,skipped (wire encode() to your clone): 'NoneType' object has no attribute 'to'
+WARN,CompBio,BulkFormer_127M sample embeddings,skipped (wire encode() to your clone): 'NoneType' object has no attribute 'to'
+WARN,CompBio,BulkFormer_147M sample embeddings,skipped (wire encode() to your clone): 'NoneType' object has no attribute 'to'
+INFO,Statistician,OSDR-spaceflight: best emb vs raw F1,emb=0.703 raw=0.817 (raw wins/ties)
+INFO,CompBio,inter-model CCA computed,9 models

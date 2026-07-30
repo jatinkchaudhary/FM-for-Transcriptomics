@@ -1,0 +1,189 @@
+{
+  "BRIDGE": {
+    "shape": [
+      15916,
+      512
+    ],
+    "fallback": false,
+    "provenance": {
+      "checkpoint": "/media/volume/TrainingData/txn_jatin_archs4/baselines/BRIDGE_s66qfh36/best_model.pt",
+      "context_amp_bf16": true,
+      "context_batch_size": 96,
+      "context_elapsed_seconds": 41502.8835401535,
+      "context_embedding_sha256": "4bd6dabbf3d9c6f03b3e59b059c3633a6890d42c698b423b87efac3a485fc6e5",
+      "context_files": 863,
+      "context_path": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full",
+      "context_samples": 978212,
+      "device": "cuda",
+      "dynamic_embedding": true,
+      "gene_embedding_mode": "contextual",
+      "gene_namespace": "HGNC symbol",
+      "hidden_dim": 512,
+      "name": "BRIDGE",
+      "normalization": "log1p_tpm",
+      "num_genes": 15165,
+      "num_layers": 12,
+      "run": "Txn_Jatin_A100_b9_full",
+      "val_loss": 0.1378040909767151
+    }
+  },
+  "BulkFormer_127M": {
+    "shape": [
+      15916,
+      640
+    ],
+    "fallback": false,
+    "provenance": {
+      "checkpoint": "/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_127M.pt",
+      "checkpoint_variant": "BulkFormer_127M",
+      "device": "cuda",
+      "dir": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer",
+      "embedding_key": "gene_emb_proj(gene_emb_onehot_layer.weight)",
+      "gene_namespace": "HGNC symbol",
+      "hidden_dim": 640,
+      "name": "BulkFormer_127M",
+      "note": "native bulk model; static learned gene identity embeddings",
+      "vocab": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv"
+    }
+  },
+  "BulkFormer_147M": {
+    "shape": [
+      15916,
+      640
+    ],
+    "fallback": false,
+    "provenance": {
+      "checkpoint": "/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_147M.pt",
+      "checkpoint_variant": "BulkFormer_147M",
+      "device": "cuda",
+      "dir": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer",
+      "embedding_key": "gene_emb_proj(gene_emb_onehot_layer.weight)",
+      "gene_namespace": "HGNC symbol",
+      "hidden_dim": 640,
+      "name": "BulkFormer_147M",
+      "note": "native bulk model; static learned gene identity embeddings",
+      "vocab": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv"
+    }
+  },
+  "BulkFormer_37M": {
+    "shape": [
+      15916,
+      128
+    ],
+    "fallback": false,
+    "provenance": {
+      "checkpoint": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer/model/bulkformer_37M.pt",
+      "checkpoint_variant": "bulkformer_37M",
+      "device": "cuda",
+      "dir": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer",
+      "embedding_key": "gene_emb_proj(gene_emb_onehot_layer.weight)",
+      "gene_namespace": "HGNC symbol",
+      "hidden_dim": 128,
+      "name": "BulkFormer_37M",
+      "note": "native bulk model; static learned gene identity embeddings",
+      "vocab": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv"
+    }
+  },
+  "BulkFormer_50M": {
+    "shape": [
+      15916,
+      256
+    ],
+    "fallback": false,
+    "provenance": {
+      "checkpoint": "/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_50M.pt",
+      "checkpoint_variant": "BulkFormer_50M",
+      "device": "cuda",
+      "dir": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer",
+      "embedding_key": "gene_emb_proj(gene_emb_onehot_layer.weight)",
+      "gene_namespace": "HGNC symbol",
+      "hidden_dim": 256,
+      "name": "BulkFormer_50M",
+      "note": "native bulk model; static learned gene identity embeddings",
+      "vocab": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv"
+    }
+  },
+  "BulkFormer_93M": {
+    "shape": [
+      15916,
+      512
+    ],
+    "fallback": false,
+    "provenance": {
+      "checkpoint": "/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_93M.pt",
+      "checkpoint_variant": "BulkFormer_93M",
+      "device": "cuda",
+      "dir": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer",
+      "embedding_key": "gene_emb_proj(gene_emb_onehot_layer.weight)",
+      "gene_namespace": "HGNC symbol",
+      "hidden_dim": 512,
+      "name": "BulkFormer_93M",
+      "note": "native bulk model; static learned gene identity embeddings",
+      "vocab": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv"
+    }
+  },
+  "Geneformer": {
+    "shape": [
+      15916,
+      768
+    ],
+    "fallback": false,
+    "provenance": {
+      "device": "cuda",
+      "gene_namespace": "Ensembl gene id (rank-value)",
+      "model": "ctheodoris/Geneformer",
+      "model_subdir": "Geneformer-V2-104M",
+      "name": "Geneformer",
+      "note": "single-cell model; bulk->rank-value pseudo-cell",
+      "source": "ctheodoris/Geneformer"
+    }
+  },
+  "Txn_Jatin": {
+    "shape": [
+      15916,
+      512
+    ],
+    "fallback": false,
+    "provenance": {
+      "checkpoint": "/media/volume/TrainingData/txn_jatin_archs4/checkpoints/Txn_Jatin_A100_b9_full/epoch_00.pt",
+      "context_amp_bf16": true,
+      "context_batch_size": 96,
+      "context_elapsed_seconds": 45742.18032193184,
+      "context_embedding_sha256": "9e21f082fdc09152e05a13766e37b1276660ef863f7ef5374c1c6602a5e89263",
+      "context_files": 863,
+      "context_path": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full",
+      "context_samples": 978212,
+      "device": "cuda",
+      "dynamic_embedding": true,
+      "gene_embedding_mode": "contextual",
+      "gene_namespace": "HGNC symbol",
+      "hidden_dim": 512,
+      "name": "Txn_Jatin",
+      "normalization": "log1p_tpm",
+      "num_genes": 16057,
+      "num_layers": 12,
+      "run": "Txn_Jatin_A100_b9_full",
+      "val_loss": 0.32639795541763306
+    }
+  },
+  "scGPT": {
+    "shape": [
+      15916,
+      512
+    ],
+    "fallback": false,
+    "provenance": {
+      "device": "cuda",
+      "embedding_key": "gene_encoder.embedding.weight",
+      "gene_namespace": "HGNC symbol",
+      "hf_id": "tdc/scGPT",
+      "hidden_dim": 512,
+      "name": "scGPT",
+      "note": "HF tdc/scGPT weights; gene embeddings loaded directly from safetensors",
+      "vocab": "/home/exouser/.cache/huggingface/hub/models--tdc--scGPT/snapshots/573c7f7782d8b9975230ba79a54b2497ebc8ab9b/vocab.json",
+      "vocab_revision": "573c7f7782d8b9975230ba79a54b2497ebc8ab9b",
+      "vocab_size": 60697,
+      "weights": "/home/exouser/.cache/huggingface/hub/models--tdc--scGPT/snapshots/acf749f35bf5c0b00633838f02588272ed0d9911/model.safetensors"
+    }
+  }
+}

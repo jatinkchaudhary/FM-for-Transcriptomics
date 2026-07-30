@@ -1,0 +1,1580 @@
+signature,gene_symbol
+Apoptosis,CASP3
+Apoptosis,CASP9
+Apoptosis,DFFA
+Apoptosis,CASP7
+Apoptosis,CFLAR
+Apoptosis,BIRC3
+Apoptosis,CASP8
+Apoptosis,JUN
+Apoptosis,BCL2L11
+Apoptosis,MCL1
+Apoptosis,IL1B
+Apoptosis,SPTAN1
+Apoptosis,DIABLO
+Apoptosis,BAX
+Apoptosis,IL1A
+Apoptosis,BID
+Apoptosis,CDKN1A
+Apoptosis,GADD45A
+Apoptosis,DDIT3
+Apoptosis,CDKN1B
+Apoptosis,TNF
+Apoptosis,GSN
+Apoptosis,TNFSF10
+Apoptosis,CASP6
+Apoptosis,SQSTM1
+Apoptosis,EGR3
+Apoptosis,CD44
+Apoptosis,IL18
+Apoptosis,IGFBP6
+Apoptosis,PRF1
+Apoptosis,DAP
+Apoptosis,CCND1
+Apoptosis,BTG3
+Apoptosis,F2R
+Apoptosis,SATB1
+Apoptosis,BNIP3L
+Apoptosis,TNFRSF12A
+Apoptosis,CREBBP
+Apoptosis,RHOB
+Apoptosis,GPX3
+Apoptosis,PDGFRB
+Apoptosis,TSPO
+Apoptosis,CCND2
+Apoptosis,TIMP1
+Apoptosis,CTNNB1
+Apoptosis,IRF1
+Apoptosis,HSPB1
+Apoptosis,ADD1
+Apoptosis,TIMP2
+Apoptosis,BTG2
+Apoptosis,TIMP3
+Apoptosis,LEF1
+Apoptosis,GPX1
+Apoptosis,BCL10
+Apoptosis,IGF2R
+Apoptosis,CDC25B
+Apoptosis,AIFM3
+Apoptosis,CD38
+Apoptosis,PPP3R1
+Apoptosis,HGF
+Apoptosis,CLU
+Apoptosis,ATF3
+Apoptosis,LGALS3
+Apoptosis,LUM
+Apoptosis,LMNA
+Apoptosis,GADD45B
+Apoptosis,CDK2
+Apoptosis,RETSAT
+Apoptosis,SMAD7
+Apoptosis,SOD1
+Apoptosis,PTK2
+Apoptosis,ENO2
+Apoptosis,HMOX1
+Apoptosis,IER3
+Apoptosis,CD2
+Apoptosis,GCH1
+Apoptosis,MMP2
+Apoptosis,VDAC2
+Apoptosis,TAP1
+Apoptosis,PLAT
+Apoptosis,IFNGR1
+Apoptosis,APP
+Apoptosis,BRCA1
+Apoptosis,ROCK1
+Apoptosis,PSEN1
+Apoptosis,DCN
+Apoptosis,PSEN2
+Apoptosis,SOD2
+Apoptosis,BMF
+Apoptosis,EREG
+Apoptosis,KRT18
+Apoptosis,TGFB2
+Apoptosis,RELA
+Apoptosis,WEE1
+Apoptosis,RARA
+Apoptosis,CD14
+Apoptosis,CD69
+Apoptosis,DNAJC3
+Apoptosis,CASP2
+Apoptosis,CTH
+Apoptosis,PLCB2
+Apoptosis,BMP2
+Apoptosis,HMGB2
+Apoptosis,PLPPR4
+Apoptosis,TGFBR3
+Apoptosis,EBP
+Apoptosis,TXNIP
+Apoptosis,RHOT2
+Apoptosis,CYLD
+Apoptosis,GSR
+Apoptosis,BGN
+Apoptosis,BCL2L1
+Apoptosis,GNA15
+Apoptosis,MGMT
+Apoptosis,F2
+Apoptosis,SC5D
+Apoptosis,RNASEL
+Apoptosis,EMP1
+Apoptosis,CAV1
+Apoptosis,DNM1L
+Apoptosis,ANXA1
+Apoptosis,TOP2A
+Apoptosis,SLC20A1
+Apoptosis,MADD
+Apoptosis,PPP2R5B
+Apoptosis,BCAP31
+Apoptosis,ERBB3
+Apoptosis,NEDD9
+Apoptosis,SAT1
+Apoptosis,PDCD4
+Apoptosis,BCL2L2
+Apoptosis,FEZ1
+Apoptosis,ERBB2
+Apoptosis,DNAJA1
+Apoptosis,DAP3
+Apoptosis,DPYD
+Apoptosis,NEFH
+Apoptosis,PAK1
+Apoptosis,GPX4
+Apoptosis,ETF1
+Apoptosis,CCNA1
+Apoptosis,AVPR1A
+DNA Repair,POLR2H
+DNA Repair,POLR2A
+DNA Repair,POLR2G
+DNA Repair,POLR2E
+DNA Repair,POLR2F
+DNA Repair,POLR2C
+DNA Repair,POLR2K
+DNA Repair,GTF2H3
+DNA Repair,POLR2D
+DNA Repair,ERCC3
+DNA Repair,DDB2
+DNA Repair,POLR1C
+DNA Repair,XPC
+DNA Repair,PCNA
+DNA Repair,POLR2I
+DNA Repair,POLR3C
+DNA Repair,GTF2B
+DNA Repair,POLR1D
+DNA Repair,NELFE
+DNA Repair,GTF2F1
+DNA Repair,LIG1
+DNA Repair,ERCC1
+DNA Repair,ERCC4
+DNA Repair,POLD4
+DNA Repair,NELFB
+DNA Repair,RFC2
+DNA Repair,ELL
+DNA Repair,TAF10
+DNA Repair,RRM2B
+DNA Repair,RPA3
+DNA Repair,SNAPC5
+DNA Repair,SSRP1
+DNA Repair,RFC3
+DNA Repair,RPA2
+DNA Repair,ELOA
+DNA Repair,TAF12
+DNA Repair,NELFCD
+DNA Repair,TAF13
+DNA Repair,TAF6
+DNA Repair,GTF2A2
+DNA Repair,VPS37D
+DNA Repair,NME1
+DNA Repair,RNMT
+DNA Repair,ERCC2
+DNA Repair,POLE4
+DNA Repair,VPS37B
+DNA Repair,SNAPC4
+DNA Repair,AAAS
+DNA Repair,RFC4
+DNA Repair,ITPA
+DNA Repair,BRF2
+DNA Repair,RFC5
+DNA Repair,SAC3D1
+DNA Repair,CLP1
+DNA Repair,NME4
+DNA Repair,PRIM1
+DNA Repair,VPS28
+DNA Repair,TSG101
+DNA Repair,USP11
+DNA Repair,TAF1C
+DNA Repair,TARBP2
+DNA Repair,POLH
+DNA Repair,CETN2
+DNA Repair,POLD1
+DNA Repair,CANT1
+DNA Repair,PDE4B
+DNA Repair,DGCR8
+DNA Repair,RAD51
+DNA Repair,SURF1
+DNA Repair,ADA
+DNA Repair,NME3
+DNA Repair,GTF3C5
+DNA Repair,NT5C
+DNA Repair,AK1
+DNA Repair,GTF2H1
+DNA Repair,HCLS1
+DNA Repair,APRT
+DNA Repair,ERCC8
+DNA Repair,IMPDH2
+DNA Repair,POLB
+DNA Repair,SDCBP
+DNA Repair,SF3A3
+DNA Repair,DAD1
+DNA Repair,UPF3B
+DNA Repair,GUK1
+DNA Repair,SEC61A1
+DNA Repair,POLA2
+DNA Repair,FEN1
+DNA Repair,NUDT9
+DNA Repair,PDE6G
+DNA Repair,TYMS
+DNA Repair,BCAP31
+DNA Repair,DDB1
+DNA Repair,NFX1
+DNA Repair,RAD52
+DNA Repair,ADCY6
+DNA Repair,ARL6IP1
+DNA Repair,DGUOK
+DNA Repair,POLL
+DNA Repair,SMAD5
+DNA Repair,MPG
+DNA Repair,DUT
+DNA Repair,POLA1
+DNA Repair,AGO4
+DNA Repair,RALA
+DNA Repair,BCAM
+DNA Repair,TK2
+DNA Repair,CSTF3
+DNA Repair,GTF2H5
+DNA Repair,GPX4
+DNA Repair,MPC2
+DNA Repair,CDA
+DNA Repair,MRPL40
+DNA Repair,NPR2
+DNA Repair,REV3L
+DNA Repair,EDF1
+DNA Repair,GSDME
+DNA Repair,TMED2
+DNA Repair,STX3
+DNA Repair,RAE1
+DNA Repair,UMPS
+DNA Repair,EIF1B
+DNA Repair,AK3
+DNA Repair,NUDT21
+DNA Repair,RBX1
+DNA Repair,SRSF6
+DNA Repair,GMPR2
+DNA Repair,DCTN4
+DNA Repair,COX17
+DNA Repair,CMPK2
+DNA Repair,CCNO
+E2F Targets,AURKA
+E2F Targets,BRCA2
+E2F Targets,CCP110
+E2F Targets,CENPE
+E2F Targets,CKS2
+E2F Targets,DCLRE1B
+E2F Targets,DNMT1
+E2F Targets,DONSON
+E2F Targets,EED
+E2F Targets,GINS1
+E2F Targets,GINS4
+E2F Targets,LIG1
+E2F Targets,MAD2L1
+E2F Targets,MCM2
+E2F Targets,MCM4
+E2F Targets,MCM5
+E2F Targets,MCM7
+E2F Targets,MELK
+E2F Targets,MMS22L
+E2F Targets,NAA38
+E2F Targets,NASP
+E2F Targets,NUDT21
+E2F Targets,NUP205
+E2F Targets,ORC6
+E2F Targets,PCNA
+E2F Targets,PLK4
+E2F Targets,POLE
+E2F Targets,PRIM2
+E2F Targets,RAD51AP1
+E2F Targets,RFC2
+E2F Targets,RPA2
+E2F Targets,RPA3
+E2F Targets,SUV39H1
+E2F Targets,UBE2T
+E2F Targets,WDR90
+E2F Targets,CDK1
+E2F Targets,MCM3
+E2F Targets,TOP2A
+E2F Targets,MCM6
+E2F Targets,BIRC5
+E2F Targets,CCNB2
+E2F Targets,RRM2
+E2F Targets,HMGB2
+E2F Targets,BUB1B
+E2F Targets,RFC3
+E2F Targets,EZH2
+E2F Targets,CHEK1
+E2F Targets,SMC4
+E2F Targets,CDC20
+E2F Targets,PLK1
+E2F Targets,KIF2C
+E2F Targets,DLGAP5
+E2F Targets,AURKB
+E2F Targets,CDC25A
+E2F Targets,TRIP13
+E2F Targets,H2AX
+E2F Targets,HMMR
+E2F Targets,E2F8
+E2F Targets,BRCA1
+E2F Targets,MYBL2
+E2F Targets,POLD1
+E2F Targets,RACGAP1
+E2F Targets,MSH2
+E2F Targets,CDKN3
+E2F Targets,ATAD2
+E2F Targets,RPA1
+E2F Targets,STMN1
+E2F Targets,TIPIN
+E2F Targets,TK1
+E2F Targets,CDCA8
+E2F Targets,ESPL1
+E2F Targets,NCAPD2
+E2F Targets,RANBP1
+E2F Targets,LMNB1
+E2F Targets,KIF22
+E2F Targets,UNG
+E2F Targets,SMC1A
+E2F Targets,CCNE1
+E2F Targets,CDCA3
+E2F Targets,ASF1B
+E2F Targets,POLA2
+E2F Targets,TIMELESS
+E2F Targets,HELLS
+E2F Targets,PRKDC
+E2F Targets,USP1
+E2F Targets,SPAG5
+E2F Targets,DUT
+E2F Targets,KIF18B
+E2F Targets,CDC25B
+E2F Targets,SRSF1
+E2F Targets,GINS3
+E2F Targets,NOLC1
+E2F Targets,SLBP
+E2F Targets,CHEK2
+E2F Targets,SPC25
+E2F Targets,BARD1
+E2F Targets,DCTPP1
+E2F Targets,SMC3
+E2F Targets,RNASEH2A
+E2F Targets,DEK
+E2F Targets,CENPM
+E2F Targets,RAD51C
+E2F Targets,CBX5
+E2F Targets,RFC1
+E2F Targets,POLD2
+E2F Targets,DSCC1
+E2F Targets,ILF3
+E2F Targets,DCK
+E2F Targets,CDKN2C
+E2F Targets,MYC
+E2F Targets,TCF19
+E2F Targets,RAD1
+E2F Targets,LBR
+E2F Targets,NBN
+E2F Targets,UBR7
+E2F Targets,POLE4
+E2F Targets,TUBG1
+E2F Targets,CTCF
+E2F Targets,CNOT9
+E2F Targets,SMC6
+E2F Targets,ZW10
+E2F Targets,PA2G4
+E2F Targets,SSRP1
+E2F Targets,NAP1L1
+E2F Targets,ANP32E
+E2F Targets,HMGB3
+E2F Targets,IPO7
+E2F Targets,RAD21
+E2F Targets,CDK4
+E2F Targets,CDKN1A
+E2F Targets,BRMS1L
+E2F Targets,RAD50
+E2F Targets,TRA2B
+E2F Targets,CSE1L
+E2F Targets,PAICS
+E2F Targets,STAG1
+E2F Targets,LUC7L3
+E2F Targets,PPM1D
+E2F Targets,NME1
+E2F Targets,SRSF2
+E2F Targets,XPO1
+E2F Targets,HNRNPD
+E2F Targets,PMS2
+E2F Targets,ASF1A
+E2F Targets,EXOSC8
+E2F Targets,MLH1
+E2F Targets,NUP107
+E2F Targets,ORC2
+E2F Targets,TFRC
+E2F Targets,PSIP1
+E2F Targets,DDX39A
+E2F Targets,SNRPB
+E2F Targets,CDKN1B
+E2F Targets,MTHFD2
+E2F Targets,WEE1
+E2F Targets,PRDX4
+E2F Targets,PHF5A
+E2F Targets,TBRG4
+E2F Targets,SHMT1
+E2F Targets,PRPS1
+E2F Targets,DIAPH3
+E2F Targets,NUP153
+E2F Targets,PSMC3IP
+E2F Targets,XRCC6
+E2F Targets,PNN
+E2F Targets,HUS1
+E2F Targets,RBBP7
+E2F Targets,PDS5B
+E2F Targets,NOP56
+E2F Targets,MXD3
+E2F Targets,PPP1R8
+E2F Targets,GSPT1
+E2F Targets,CDKN2A
+E2F Targets,AK2
+E2F Targets,CIT
+E2F Targets,ING3
+E2F Targets,JPT1
+E2F Targets,POP7
+E2F Targets,SYNCRIP
+E2F Targets,EIF2S1
+E2F Targets,LYAR
+E2F Targets,PAN2
+E2F Targets,SPC24
+Epithelial Mesenchymal Transition,COL3A1
+Epithelial Mesenchymal Transition,COL5A2
+Epithelial Mesenchymal Transition,COL5A1
+Epithelial Mesenchymal Transition,FBN1
+Epithelial Mesenchymal Transition,COL1A1
+Epithelial Mesenchymal Transition,FN1
+Epithelial Mesenchymal Transition,COL6A3
+Epithelial Mesenchymal Transition,SERPINE1
+Epithelial Mesenchymal Transition,COL1A2
+Epithelial Mesenchymal Transition,COL4A1
+Epithelial Mesenchymal Transition,COL4A2
+Epithelial Mesenchymal Transition,VCAN
+Epithelial Mesenchymal Transition,IGFBP3
+Epithelial Mesenchymal Transition,TGFBI
+Epithelial Mesenchymal Transition,SPARC
+Epithelial Mesenchymal Transition,LUM
+Epithelial Mesenchymal Transition,LAMC1
+Epithelial Mesenchymal Transition,LOX
+Epithelial Mesenchymal Transition,LAMC2
+Epithelial Mesenchymal Transition,CCN2
+Epithelial Mesenchymal Transition,TAGLN
+Epithelial Mesenchymal Transition,LOXL2
+Epithelial Mesenchymal Transition,COL6A2
+Epithelial Mesenchymal Transition,ITGAV
+Epithelial Mesenchymal Transition,THBS2
+Epithelial Mesenchymal Transition,COL16A1
+Epithelial Mesenchymal Transition,NNMT
+Epithelial Mesenchymal Transition,TPM1
+Epithelial Mesenchymal Transition,CDH2
+Epithelial Mesenchymal Transition,MMP2
+Epithelial Mesenchymal Transition,COL11A1
+Epithelial Mesenchymal Transition,THBS1
+Epithelial Mesenchymal Transition,FAP
+Epithelial Mesenchymal Transition,BGN
+Epithelial Mesenchymal Transition,SERPINH1
+Epithelial Mesenchymal Transition,FSTL1
+Epithelial Mesenchymal Transition,POSTN
+Epithelial Mesenchymal Transition,THY1
+Epithelial Mesenchymal Transition,SPP1
+Epithelial Mesenchymal Transition,TNC
+Epithelial Mesenchymal Transition,TFPI2
+Epithelial Mesenchymal Transition,NID2
+Epithelial Mesenchymal Transition,ITGB5
+Epithelial Mesenchymal Transition,MMP3
+Epithelial Mesenchymal Transition,VIM
+Epithelial Mesenchymal Transition,LOXL1
+Epithelial Mesenchymal Transition,FBLN5
+Epithelial Mesenchymal Transition,COL12A1
+Epithelial Mesenchymal Transition,ELN
+Epithelial Mesenchymal Transition,CDH11
+Epithelial Mesenchymal Transition,COMP
+Epithelial Mesenchymal Transition,SPOCK1
+Epithelial Mesenchymal Transition,BMP1
+Epithelial Mesenchymal Transition,LAMA3
+Epithelial Mesenchymal Transition,TIMP1
+Epithelial Mesenchymal Transition,QSOX1
+Epithelial Mesenchymal Transition,TIMP3
+Epithelial Mesenchymal Transition,VCAM1
+Epithelial Mesenchymal Transition,CCN1
+Epithelial Mesenchymal Transition,EDIL3
+Epithelial Mesenchymal Transition,CALD1
+Epithelial Mesenchymal Transition,MAGEE1
+Epithelial Mesenchymal Transition,FBLN1
+Epithelial Mesenchymal Transition,SGCB
+Epithelial Mesenchymal Transition,ECM1
+Epithelial Mesenchymal Transition,LAMA2
+Epithelial Mesenchymal Transition,FSTL3
+Epithelial Mesenchymal Transition,TPM2
+Epithelial Mesenchymal Transition,INHBA
+Epithelial Mesenchymal Transition,DAB2
+Epithelial Mesenchymal Transition,EMP3
+Epithelial Mesenchymal Transition,BASP1
+Epithelial Mesenchymal Transition,ITGA5
+Epithelial Mesenchymal Transition,MGP
+Epithelial Mesenchymal Transition,VEGFA
+Epithelial Mesenchymal Transition,WNT5A
+Epithelial Mesenchymal Transition,SDC1
+Epithelial Mesenchymal Transition,PLOD2
+Epithelial Mesenchymal Transition,PCOLCE
+Epithelial Mesenchymal Transition,GREM1
+Epithelial Mesenchymal Transition,ITGB1
+Epithelial Mesenchymal Transition,COL5A3
+Epithelial Mesenchymal Transition,RHOB
+Epithelial Mesenchymal Transition,HTRA1
+Epithelial Mesenchymal Transition,FGF2
+Epithelial Mesenchymal Transition,SNTB1
+Epithelial Mesenchymal Transition,GADD45A
+Epithelial Mesenchymal Transition,MEST
+Epithelial Mesenchymal Transition,LRRC15
+Epithelial Mesenchymal Transition,TNFRSF11B
+Epithelial Mesenchymal Transition,ACTA2
+Epithelial Mesenchymal Transition,EFEMP2
+Epithelial Mesenchymal Transition,MATN2
+Epithelial Mesenchymal Transition,PCOLCE2
+Epithelial Mesenchymal Transition,SERPINE2
+Epithelial Mesenchymal Transition,GPC1
+Epithelial Mesenchymal Transition,ABI3BP
+Epithelial Mesenchymal Transition,FUCA1
+Epithelial Mesenchymal Transition,SLIT3
+Epithelial Mesenchymal Transition,LAMA1
+Epithelial Mesenchymal Transition,PMEPA1
+Epithelial Mesenchymal Transition,COL8A2
+Epithelial Mesenchymal Transition,FBN2
+Epithelial Mesenchymal Transition,IGFBP2
+Epithelial Mesenchymal Transition,PFN2
+Epithelial Mesenchymal Transition,SDC4
+Epithelial Mesenchymal Transition,CD44
+Epithelial Mesenchymal Transition,GADD45B
+Epithelial Mesenchymal Transition,GLIPR1
+Epithelial Mesenchymal Transition,ANPEP
+Epithelial Mesenchymal Transition,P3H1
+Epithelial Mesenchymal Transition,VEGFC
+Epithelial Mesenchymal Transition,MMP14
+Epithelial Mesenchymal Transition,SGCD
+Epithelial Mesenchymal Transition,PLOD1
+Epithelial Mesenchymal Transition,MATN3
+Epithelial Mesenchymal Transition,MYL9
+Epithelial Mesenchymal Transition,CALU
+Epithelial Mesenchymal Transition,PRRX1
+Epithelial Mesenchymal Transition,TNFRSF12A
+Epithelial Mesenchymal Transition,FMOD
+Epithelial Mesenchymal Transition,ID2
+Epithelial Mesenchymal Transition,GEM
+Epithelial Mesenchymal Transition,PLAUR
+Epithelial Mesenchymal Transition,MYLK
+Epithelial Mesenchymal Transition,TGFB1
+Epithelial Mesenchymal Transition,SFRP1
+Epithelial Mesenchymal Transition,PLOD3
+Epithelial Mesenchymal Transition,APLP1
+Epithelial Mesenchymal Transition,FBLN2
+Epithelial Mesenchymal Transition,MSX1
+Epithelial Mesenchymal Transition,PTX3
+Epithelial Mesenchymal Transition,FZD8
+Epithelial Mesenchymal Transition,JUN
+Epithelial Mesenchymal Transition,FERMT2
+Epithelial Mesenchymal Transition,DKK1
+Epithelial Mesenchymal Transition,SNAI2
+Epithelial Mesenchymal Transition,DST
+Epithelial Mesenchymal Transition,TPM4
+Epithelial Mesenchymal Transition,DCN
+Epithelial Mesenchymal Transition,GJA1
+Epithelial Mesenchymal Transition,PMP22
+Epithelial Mesenchymal Transition,IGFBP4
+Epithelial Mesenchymal Transition,COPA
+Epithelial Mesenchymal Transition,LRP1
+Epithelial Mesenchymal Transition,ITGA2
+Epithelial Mesenchymal Transition,FLNA
+Epithelial Mesenchymal Transition,MFAP5
+Epithelial Mesenchymal Transition,PTHLH
+Epithelial Mesenchymal Transition,TGFBR3
+Epithelial Mesenchymal Transition,SFRP4
+Epithelial Mesenchymal Transition,LGALS1
+Epithelial Mesenchymal Transition,RGS4
+Epithelial Mesenchymal Transition,CDH6
+Epithelial Mesenchymal Transition,SAT1
+Epithelial Mesenchymal Transition,NT5E
+Epithelial Mesenchymal Transition,DPYSL3
+Epithelial Mesenchymal Transition,PPIB
+Epithelial Mesenchymal Transition,TGM2
+Epithelial Mesenchymal Transition,SGCG
+Epithelial Mesenchymal Transition,ITGB3
+Epithelial Mesenchymal Transition,PDLIM4
+Epithelial Mesenchymal Transition,CTHRC1
+Epithelial Mesenchymal Transition,ECM2
+Epithelial Mesenchymal Transition,CRLF1
+Epithelial Mesenchymal Transition,AREG
+Epithelial Mesenchymal Transition,IL15
+Epithelial Mesenchymal Transition,MCM7
+Epithelial Mesenchymal Transition,GAS1
+Epithelial Mesenchymal Transition,CADM1
+Epithelial Mesenchymal Transition,OXTR
+Epithelial Mesenchymal Transition,SCG2
+Epithelial Mesenchymal Transition,TNFAIP3
+Epithelial Mesenchymal Transition,CAPG
+Epithelial Mesenchymal Transition,CAP2
+Epithelial Mesenchymal Transition,FOXC2
+Epithelial Mesenchymal Transition,NTM
+Epithelial Mesenchymal Transition,ENO2
+Epithelial Mesenchymal Transition,BDNF
+Epithelial Mesenchymal Transition,ADAM12
+Epithelial Mesenchymal Transition,CXCL12
+Epithelial Mesenchymal Transition,PDGFRB
+Epithelial Mesenchymal Transition,SLIT2
+Epithelial Mesenchymal Transition,NOTCH2
+Epithelial Mesenchymal Transition,COLGALT1
+Epithelial Mesenchymal Transition,GPX7
+Epithelial Mesenchymal Transition,WIPF1
+G2-M Checkpoint,AURKA
+G2-M Checkpoint,CCNA2
+G2-M Checkpoint,TOP2A
+G2-M Checkpoint,CCNB2
+G2-M Checkpoint,CENPA
+G2-M Checkpoint,BIRC5
+G2-M Checkpoint,CDC20
+G2-M Checkpoint,PLK1
+G2-M Checkpoint,TTK
+G2-M Checkpoint,PRC1
+G2-M Checkpoint,NDC80
+G2-M Checkpoint,KIF11
+G2-M Checkpoint,NUSAP1
+G2-M Checkpoint,CKS2
+G2-M Checkpoint,KIF2C
+G2-M Checkpoint,AURKB
+G2-M Checkpoint,TPX2
+G2-M Checkpoint,SMC4
+G2-M Checkpoint,BUB1
+G2-M Checkpoint,CENPF
+G2-M Checkpoint,RACGAP1
+G2-M Checkpoint,CENPE
+G2-M Checkpoint,KIF23
+G2-M Checkpoint,UBE2C
+G2-M Checkpoint,MCM6
+G2-M Checkpoint,MCM3
+G2-M Checkpoint,CDK1
+G2-M Checkpoint,ESPL1
+G2-M Checkpoint,MAD2L1
+G2-M Checkpoint,NEK2
+G2-M Checkpoint,KIF22
+G2-M Checkpoint,HMMR
+G2-M Checkpoint,CDKN3
+G2-M Checkpoint,CDC25A
+G2-M Checkpoint,H2AX
+G2-M Checkpoint,CDC25B
+G2-M Checkpoint,PLK4
+G2-M Checkpoint,CDC6
+G2-M Checkpoint,CCNF
+G2-M Checkpoint,MCM5
+G2-M Checkpoint,LMNB1
+G2-M Checkpoint,E2F3
+G2-M Checkpoint,KIF15
+G2-M Checkpoint,CHEK1
+G2-M Checkpoint,NSD2
+G2-M Checkpoint,HMGB3
+G2-M Checkpoint,DBF4
+G2-M Checkpoint,MCM2
+G2-M Checkpoint,CDKN2C
+G2-M Checkpoint,CDKN1B
+G2-M Checkpoint,FANCC
+G2-M Checkpoint,NASP
+G2-M Checkpoint,STAG1
+G2-M Checkpoint,GINS2
+G2-M Checkpoint,FBXO5
+G2-M Checkpoint,POLQ
+G2-M Checkpoint,EZH2
+G2-M Checkpoint,RAD21
+G2-M Checkpoint,STMN1
+G2-M Checkpoint,SUV39H1
+G2-M Checkpoint,PRIM2
+G2-M Checkpoint,E2F1
+G2-M Checkpoint,CHAF1A
+G2-M Checkpoint,NOLC1
+G2-M Checkpoint,GSPT1
+G2-M Checkpoint,BUB3
+G2-M Checkpoint,SMC1A
+G2-M Checkpoint,ILF3
+G2-M Checkpoint,CDC7
+G2-M Checkpoint,INCENP
+G2-M Checkpoint,EXO1
+G2-M Checkpoint,CCND1
+G2-M Checkpoint,KPNB1
+G2-M Checkpoint,JPT1
+G2-M Checkpoint,LBR
+G2-M Checkpoint,HUS1
+G2-M Checkpoint,KIF20B
+G2-M Checkpoint,TOP1
+G2-M Checkpoint,PDS5B
+G2-M Checkpoint,SRSF1
+G2-M Checkpoint,STIL
+G2-M Checkpoint,ABL1
+G2-M Checkpoint,DTYMK
+G2-M Checkpoint,CDC27
+G2-M Checkpoint,BARD1
+G2-M Checkpoint,ATF5
+G2-M Checkpoint,CDC45
+G2-M Checkpoint,ODC1
+G2-M Checkpoint,XPO1
+G2-M Checkpoint,SFPQ
+G2-M Checkpoint,PML
+G2-M Checkpoint,BRCA2
+G2-M Checkpoint,CTCF
+G2-M Checkpoint,KNL1
+G2-M Checkpoint,KMT5A
+G2-M Checkpoint,SLC38A1
+G2-M Checkpoint,TRA2B
+G2-M Checkpoint,MYBL2
+G2-M Checkpoint,TROAP
+G2-M Checkpoint,TENT4A
+G2-M Checkpoint,CUL3
+G2-M Checkpoint,MAPK14
+G2-M Checkpoint,MYC
+G2-M Checkpoint,CBX1
+G2-M Checkpoint,CHMP1A
+G2-M Checkpoint,DKC1
+G2-M Checkpoint,YTHDC1
+G2-M Checkpoint,CCNT1
+G2-M Checkpoint,TGFB1
+G2-M Checkpoint,ATRX
+G2-M Checkpoint,LIG3
+G2-M Checkpoint,SLC7A5
+G2-M Checkpoint,RBL1
+G2-M Checkpoint,NUMA1
+G2-M Checkpoint,RAD54L
+G2-M Checkpoint,EFNA5
+G2-M Checkpoint,UCK2
+G2-M Checkpoint,ARID4A
+G2-M Checkpoint,CUL1
+G2-M Checkpoint,UPF1
+G2-M Checkpoint,DR1
+G2-M Checkpoint,MNAT1
+G2-M Checkpoint,SMC2
+G2-M Checkpoint,RPA2
+G2-M Checkpoint,SQLE
+G2-M Checkpoint,ORC6
+G2-M Checkpoint,CDK4
+G2-M Checkpoint,POLE
+G2-M Checkpoint,RASAL2
+G2-M Checkpoint,HOXC10
+G2-M Checkpoint,RPS6KA5
+G2-M Checkpoint,CUL4A
+G2-M Checkpoint,SLC7A1
+G2-M Checkpoint,FOXN3
+G2-M Checkpoint,SS18
+G2-M Checkpoint,TRAIP
+G2-M Checkpoint,PRMT5
+G2-M Checkpoint,CUL5
+G2-M Checkpoint,DDX39A
+G2-M Checkpoint,MARCKS
+G2-M Checkpoint,PBK
+G2-M Checkpoint,ORC5
+G2-M Checkpoint,SAP30
+G2-M Checkpoint,KATNA1
+G2-M Checkpoint,HNRNPD
+G2-M Checkpoint,POLA2
+G2-M Checkpoint,HIRA
+G2-M Checkpoint,HIF1A
+G2-M Checkpoint,SYNCRIP
+G2-M Checkpoint,TLE3
+G2-M Checkpoint,RAD23B
+G2-M Checkpoint,E2F2
+G2-M Checkpoint,EGF
+G2-M Checkpoint,SRSF10
+G2-M Checkpoint,SNRPD1
+G2-M Checkpoint,CASP8AP2
+G2-M Checkpoint,SMARCC1
+G2-M Checkpoint,SLC12A2
+G2-M Checkpoint,NOTCH2
+G2-M Checkpoint,TNPO2
+G2-M Checkpoint,SMAD3
+G2-M Checkpoint,MAP3K20
+G2-M Checkpoint,HSPA8
+G2-M Checkpoint,G3BP1
+G2-M Checkpoint,DMD
+G2-M Checkpoint,MEIS1
+G2-M Checkpoint,HNRNPU
+G2-M Checkpoint,SRSF2
+G2-M Checkpoint,NUP98
+G2-M Checkpoint,EWSR1
+G2-M Checkpoint,KIF5B
+G2-M Checkpoint,MTF2
+G2-M Checkpoint,E2F4
+G2-M Checkpoint,BCL3
+G2-M Checkpoint,PURA
+G2-M Checkpoint,MEIS2
+G2-M Checkpoint,PAFAH1B1
+G2-M Checkpoint,WRN
+G2-M Checkpoint,H2AZ2
+G2-M Checkpoint,ODF2
+Hypoxia,PGK1
+Hypoxia,PDK1
+Hypoxia,GBE1
+Hypoxia,PFKL
+Hypoxia,ENO2
+Hypoxia,PGM1
+Hypoxia,NDRG1
+Hypoxia,ALDOC
+Hypoxia,MXI1
+Hypoxia,SLC2A1
+Hypoxia,P4HA1
+Hypoxia,ADM
+Hypoxia,P4HA2
+Hypoxia,PFKP
+Hypoxia,FAM162A
+Hypoxia,PFKFB3
+Hypoxia,VEGFA
+Hypoxia,BNIP3L
+Hypoxia,TPI1
+Hypoxia,ERO1A
+Hypoxia,KDM3A
+Hypoxia,CCNG2
+Hypoxia,LDHA
+Hypoxia,GYS1
+Hypoxia,BHLHE40
+Hypoxia,ANGPTL4
+Hypoxia,JUN
+Hypoxia,SERPINE1
+Hypoxia,LOX
+Hypoxia,GCK
+Hypoxia,PPFIA4
+Hypoxia,MAFF
+Hypoxia,DDIT4
+Hypoxia,IGFBP3
+Hypoxia,NFIL3
+Hypoxia,FOS
+Hypoxia,RBPJ
+Hypoxia,HK1
+Hypoxia,CITED2
+Hypoxia,GALK1
+Hypoxia,WSB1
+Hypoxia,PYGM
+Hypoxia,STC1
+Hypoxia,BTG1
+Hypoxia,PLIN2
+Hypoxia,CSRP2
+Hypoxia,VLDLR
+Hypoxia,JMJD6
+Hypoxia,EXT1
+Hypoxia,F3
+Hypoxia,PDK3
+Hypoxia,ANKZF1
+Hypoxia,UGP2
+Hypoxia,ALDOB
+Hypoxia,STC2
+Hypoxia,ERRFI1
+Hypoxia,ENO3
+Hypoxia,PNRC1
+Hypoxia,HMOX1
+Hypoxia,PGF
+Hypoxia,GAPDHS
+Hypoxia,CHST2
+Hypoxia,BCAN
+Hypoxia,ATF3
+Hypoxia,CAV1
+Hypoxia,AMPD3
+Hypoxia,GPC3
+Hypoxia,NDST1
+Hypoxia,IRS2
+Hypoxia,SAP30
+Hypoxia,GAA
+Hypoxia,SDC4
+Hypoxia,STBD1
+Hypoxia,IER3
+Hypoxia,PKLR
+Hypoxia,IGFBP1
+Hypoxia,PLAUR
+Hypoxia,CAVIN3
+Hypoxia,CCN5
+Hypoxia,LARGE1
+Hypoxia,NOCT
+Hypoxia,S100A4
+Hypoxia,RRAGD
+Hypoxia,ZFP36
+Hypoxia,EGFR
+Hypoxia,EDN2
+Hypoxia,IDS
+Hypoxia,CDKN1A
+Hypoxia,RORA
+Hypoxia,DUSP1
+Hypoxia,MIF
+Hypoxia,PPP1R3C
+Hypoxia,DPYSL4
+Hypoxia,KDELR3
+Hypoxia,DTNA
+Hypoxia,ADORA2B
+Hypoxia,HS3ST1
+Hypoxia,CAVIN1
+Hypoxia,NR3C1
+Hypoxia,KLF6
+Hypoxia,GPC4
+Hypoxia,CCN1
+Hypoxia,TNFAIP3
+Hypoxia,HEXA
+Hypoxia,BGN
+Hypoxia,PGM2
+Hypoxia,PIM1
+Hypoxia,PRDX5
+Hypoxia,NAGK
+Hypoxia,CDKN1B
+Hypoxia,BRS3
+Hypoxia,TKTL1
+Hypoxia,ATP7A
+Hypoxia,SDC3
+Hypoxia,TIPARP
+Hypoxia,PKP1
+Hypoxia,PGAM2
+Hypoxia,DDIT3
+Hypoxia,PRKCA
+Hypoxia,SLC37A4
+Hypoxia,CXCR4
+Hypoxia,EFNA3
+Hypoxia,CP
+Hypoxia,KLF7
+Hypoxia,CCN2
+Hypoxia,CHST3
+Hypoxia,TPD52
+Hypoxia,LXN
+Hypoxia,B4GALNT2
+Hypoxia,PPARGC1A
+Hypoxia,BCL2
+Hypoxia,HAS1
+Hypoxia,KLHL24
+Hypoxia,SCARB1
+Hypoxia,SLC25A1
+Hypoxia,SDC2
+Hypoxia,CASP6
+Hypoxia,VHL
+Hypoxia,FOXO3
+Hypoxia,PDGFB
+Hypoxia,B3GALT6
+Hypoxia,SLC2A5
+Hypoxia,SRPX
+Hypoxia,EFNA1
+Hypoxia,GLRX
+Hypoxia,ACKR3
+Hypoxia,PAM
+Hypoxia,TGFBI
+Hypoxia,DCN
+Hypoxia,SIAH2
+Hypoxia,PLAC8
+Hypoxia,FBP1
+Hypoxia,TPST2
+Hypoxia,PHKG1
+Hypoxia,MYH9
+Hypoxia,GRHPR
+Hypoxia,PCK1
+Hypoxia,INHA
+Hypoxia,HSPA5
+Hypoxia,NDST2
+Hypoxia,NEDD4L
+Hypoxia,TPBG
+Hypoxia,XPNPEP1
+Hypoxia,SLC6A6
+Hypoxia,MAP3K1
+Hypoxia,LDHC
+Hypoxia,AKAP12
+Hypoxia,KIF5A
+Hypoxia,LALBA
+Hypoxia,COL5A1
+Hypoxia,GPC1
+Hypoxia,HDLBP
+Hypoxia,NCAN
+Hypoxia,TGM2
+Hypoxia,ETS1
+Hypoxia,HOXB9
+Hypoxia,FOSL2
+Hypoxia,SULT2B1
+Hypoxia,TGFB3
+IL-6/JAK/STAT3 Signaling,IL6ST
+IL-6/JAK/STAT3 Signaling,STAT1
+IL-6/JAK/STAT3 Signaling,IL1R1
+IL-6/JAK/STAT3 Signaling,SOCS3
+IL-6/JAK/STAT3 Signaling,STAT3
+IL-6/JAK/STAT3 Signaling,OSMR
+IL-6/JAK/STAT3 Signaling,IL2RG
+IL-6/JAK/STAT3 Signaling,IFNGR1
+IL-6/JAK/STAT3 Signaling,TYK2
+IL-6/JAK/STAT3 Signaling,IL13RA1
+IL-6/JAK/STAT3 Signaling,TLR2
+IL-6/JAK/STAT3 Signaling,IFNGR2
+IL-6/JAK/STAT3 Signaling,IL10RB
+IL-6/JAK/STAT3 Signaling,IL1R2
+IL-6/JAK/STAT3 Signaling,TNFRSF1A
+IL-6/JAK/STAT3 Signaling,MYD88
+IL-6/JAK/STAT3 Signaling,ACVR1B
+IL-6/JAK/STAT3 Signaling,CSF3R
+IL-6/JAK/STAT3 Signaling,ITGB3
+IL-6/JAK/STAT3 Signaling,A2M
+IL-6/JAK/STAT3 Signaling,IL15RA
+IL-6/JAK/STAT3 Signaling,IRF9
+IL-6/JAK/STAT3 Signaling,PDGFC
+IL-6/JAK/STAT3 Signaling,HAX1
+IL-6/JAK/STAT3 Signaling,BAK1
+IL-6/JAK/STAT3 Signaling,EBI3
+IL-6/JAK/STAT3 Signaling,INHBE
+IL-6/JAK/STAT3 Signaling,TNFRSF1B
+IL-6/JAK/STAT3 Signaling,CD14
+IL-6/JAK/STAT3 Signaling,PTPN1
+IL-6/JAK/STAT3 Signaling,PTPN2
+IL-6/JAK/STAT3 Signaling,IL1B
+IL-6/JAK/STAT3 Signaling,CSF1
+IL-6/JAK/STAT3 Signaling,IL18R1
+IL-6/JAK/STAT3 Signaling,TNF
+IL-6/JAK/STAT3 Signaling,LTBR
+IL-6/JAK/STAT3 Signaling,IL17RA
+IL-6/JAK/STAT3 Signaling,CXCL10
+IL-6/JAK/STAT3 Signaling,IL9R
+IL-6/JAK/STAT3 Signaling,STAM2
+IL-6/JAK/STAT3 Signaling,TNFRSF12A
+IL-6/JAK/STAT3 Signaling,STAT2
+IL-6/JAK/STAT3 Signaling,HMOX1
+IL-6/JAK/STAT3 Signaling,LEPR
+IL-6/JAK/STAT3 Signaling,CBL
+IL-6/JAK/STAT3 Signaling,CD9
+IL-6/JAK/STAT3 Signaling,TGFB1
+IL-6/JAK/STAT3 Signaling,MAP3K8
+IL-6/JAK/STAT3 Signaling,ITGA4
+IL-6/JAK/STAT3 Signaling,CD38
+IL-6/JAK/STAT3 Signaling,JUN
+IL-6/JAK/STAT3 Signaling,SOCS1
+IL-6/JAK/STAT3 Signaling,ACVRL1
+IL-6/JAK/STAT3 Signaling,PIM1
+IL-6/JAK/STAT3 Signaling,TNFRSF21
+IL-6/JAK/STAT3 Signaling,PIK3R5
+IL-6/JAK/STAT3 Signaling,GRB2
+IL-6/JAK/STAT3 Signaling,IRF1
+IL-6/JAK/STAT3 Signaling,DNTT
+IL-6/JAK/STAT3 Signaling,CSF2
+IL-6/JAK/STAT3 Signaling,IL2RA
+IL-6/JAK/STAT3 Signaling,PTPN11
+IL-6/JAK/STAT3 Signaling,CNTFR
+IL-6/JAK/STAT3 Signaling,CXCL9
+IL-6/JAK/STAT3 Signaling,CD44
+IL-6/JAK/STAT3 Signaling,IL7
+IL-6/JAK/STAT3 Signaling,CCL7
+IL-6/JAK/STAT3 Signaling,LTB
+IL-6/JAK/STAT3 Signaling,IL17RB
+IL-6/JAK/STAT3 Signaling,CD36
+Inflammatory Response,CXCL10
+Inflammatory Response,CCL5
+Inflammatory Response,FPR1
+Inflammatory Response,CCL20
+Inflammatory Response,IL1A
+Inflammatory Response,CCL7
+Inflammatory Response,CCL22
+Inflammatory Response,CCR7
+Inflammatory Response,EDN1
+Inflammatory Response,CD40
+Inflammatory Response,CXCL9
+Inflammatory Response,IL1B
+Inflammatory Response,TLR2
+Inflammatory Response,IL1R1
+Inflammatory Response,CD69
+Inflammatory Response,ICAM1
+Inflammatory Response,AQP9
+Inflammatory Response,EREG
+Inflammatory Response,C3AR1
+Inflammatory Response,GNA15
+Inflammatory Response,CMKLR1
+Inflammatory Response,PTGER4
+Inflammatory Response,LIF
+Inflammatory Response,IL15
+Inflammatory Response,NAMPT
+Inflammatory Response,OPRK1
+Inflammatory Response,ITGB8
+Inflammatory Response,PTAFR
+Inflammatory Response,ADM
+Inflammatory Response,PLAUR
+Inflammatory Response,NFKB1
+Inflammatory Response,INHBA
+Inflammatory Response,TNFSF10
+Inflammatory Response,TNFSF15
+Inflammatory Response,IFNGR2
+Inflammatory Response,ADGRE1
+Inflammatory Response,IL12B
+Inflammatory Response,CSF1
+Inflammatory Response,TNFRSF9
+Inflammatory Response,LYN
+Inflammatory Response,ACVR2A
+Inflammatory Response,LDLR
+Inflammatory Response,BDKRB1
+Inflammatory Response,HRH1
+Inflammatory Response,F3
+Inflammatory Response,PTGIR
+Inflammatory Response,CALCRL
+Inflammatory Response,CSF3
+Inflammatory Response,NLRP3
+Inflammatory Response,IL15RA
+Inflammatory Response,ADORA2B
+Inflammatory Response,GCH1
+Inflammatory Response,PTGER2
+Inflammatory Response,CSF3R
+Inflammatory Response,MYC
+Inflammatory Response,RELA
+Inflammatory Response,TNFAIP6
+Inflammatory Response,IL7R
+Inflammatory Response,IL18
+Inflammatory Response,GABBR1
+Inflammatory Response,CD82
+Inflammatory Response,NMUR1
+Inflammatory Response,IL2RB
+Inflammatory Response,TLR1
+Inflammatory Response,LPAR1
+Inflammatory Response,IRAK2
+Inflammatory Response,RIPK2
+Inflammatory Response,MMP14
+Inflammatory Response,P2RX7
+Inflammatory Response,SLC11A2
+Inflammatory Response,SELL
+Inflammatory Response,P2RY2
+Inflammatory Response,ABCA1
+Inflammatory Response,FFAR2
+Inflammatory Response,PROK2
+Inflammatory Response,GNAI3
+Inflammatory Response,TACR1
+Inflammatory Response,SLC7A1
+Inflammatory Response,CDKN1A
+Inflammatory Response,CYBB
+Inflammatory Response,TIMP1
+Inflammatory Response,HBEGF
+Inflammatory Response,SCARF1
+Inflammatory Response,EBI3
+Inflammatory Response,NFKBIA
+Inflammatory Response,SRI
+Inflammatory Response,SLC7A2
+Inflammatory Response,CCL17
+Inflammatory Response,TLR3
+Inflammatory Response,APLNR
+Inflammatory Response,OSMR
+Inflammatory Response,IL10RA
+Inflammatory Response,PSEN1
+Inflammatory Response,GPR183
+Inflammatory Response,ATP2B1
+Inflammatory Response,TNFRSF1B
+Inflammatory Response,BEST1
+Inflammatory Response,GPC3
+Inflammatory Response,SCN1B
+Inflammatory Response,ACVR1B
+Inflammatory Response,HPN
+Inflammatory Response,SEMA4D
+Inflammatory Response,KLF6
+Inflammatory Response,CXCR6
+Inflammatory Response,SLC1A2
+Inflammatory Response,GP1BA
+Inflammatory Response,TAPBP
+Inflammatory Response,RGS16
+Inflammatory Response,SLAMF1
+Inflammatory Response,LCK
+Inflammatory Response,HIF1A
+Inflammatory Response,AHR
+Inflammatory Response,NMI
+Inflammatory Response,RHOG
+Inflammatory Response,TPBG
+Inflammatory Response,NPFFR2
+Inflammatory Response,RASGRP1
+Inflammatory Response,KCNJ2
+Inflammatory Response,LY6E
+Inflammatory Response,IL18R1
+Inflammatory Response,IL10
+Inflammatory Response,KCNA3
+Inflammatory Response,HAS2
+Inflammatory Response,DCBLD2
+Inflammatory Response,VIP
+Inflammatory Response,CD70
+Inflammatory Response,RGS1
+Inflammatory Response,SLC31A1
+Inflammatory Response,KCNMB2
+Inflammatory Response,SERPINE1
+Inflammatory Response,MXD1
+Inflammatory Response,AXL
+Inflammatory Response,CCL24
+Inflammatory Response,PDE4B
+Inflammatory Response,LCP2
+Inflammatory Response,IRF7
+Inflammatory Response,MET
+Inflammatory Response,ATP2A2
+Inflammatory Response,SLC31A2
+Inflammatory Response,FZD5
+Inflammatory Response,ITGA5
+Inflammatory Response,SGMS2
+Inflammatory Response,MARCO
+Inflammatory Response,CD14
+Inflammatory Response,EIF2AK2
+Inflammatory Response,ROS1
+Inflammatory Response,ATP2C1
+Inflammatory Response,NDP
+Inflammatory Response,BTG2
+Inflammatory Response,MSR1
+Inflammatory Response,PTPRE
+Inflammatory Response,RNF144B
+Inflammatory Response,PCDH7
+Inflammatory Response,SPHK1
+Inflammatory Response,IL18RAP
+Inflammatory Response,RAF1
+Inflammatory Response,CHST2
+Inflammatory Response,ITGB3
+Inflammatory Response,KIF1B
+Inflammatory Response,SELE
+Inflammatory Response,NOD2
+Inflammatory Response,C5AR1
+Inflammatory Response,EMP3
+Inflammatory Response,CLEC5A
+Inflammatory Response,TACR3
+Inflammatory Response,SLC4A4
+Inflammatory Response,SELENOS
+Inflammatory Response,LTA
+Inflammatory Response,PIK3R5
+Inflammatory Response,STAB1
+Inflammatory Response,IRF1
+Inflammatory Response,ICAM4
+Inflammatory Response,P2RX4
+Inflammatory Response,ABI1
+Inflammatory Response,CX3CL1
+Interferon Gamma Response,STAT1
+Interferon Gamma Response,ISG15
+Interferon Gamma Response,IFI35
+Interferon Gamma Response,IRF7
+Interferon Gamma Response,IFIT2
+Interferon Gamma Response,OAS2
+Interferon Gamma Response,TAP1
+Interferon Gamma Response,EIF2AK2
+Interferon Gamma Response,RSAD2
+Interferon Gamma Response,IRF1
+Interferon Gamma Response,OAS3
+Interferon Gamma Response,TNFSF10
+Interferon Gamma Response,IRF9
+Interferon Gamma Response,CXCL10
+Interferon Gamma Response,IFI44
+Interferon Gamma Response,PSMB8
+Interferon Gamma Response,DDX60
+Interferon Gamma Response,LGALS3BP
+Interferon Gamma Response,IRF8
+Interferon Gamma Response,PSMB9
+Interferon Gamma Response,PML
+Interferon Gamma Response,IFIH1
+Interferon Gamma Response,UBE2L6
+Interferon Gamma Response,ADAR
+Interferon Gamma Response,LY6E
+Interferon Gamma Response,STAT2
+Interferon Gamma Response,CXCL9
+Interferon Gamma Response,IL10RA
+Interferon Gamma Response,PLA2G4A
+Interferon Gamma Response,TRIM21
+Interferon Gamma Response,PTGS2
+Interferon Gamma Response,EPSTI1
+Interferon Gamma Response,IL15
+Interferon Gamma Response,NLRC5
+Interferon Gamma Response,NMI
+Interferon Gamma Response,IDO1
+Interferon Gamma Response,PSMB10
+Interferon Gamma Response,ITGB7
+Interferon Gamma Response,SAMHD1
+Interferon Gamma Response,HERC6
+Interferon Gamma Response,CMPK2
+Interferon Gamma Response,SAMD9L
+Interferon Gamma Response,PTPN2
+Interferon Gamma Response,PARP14
+Interferon Gamma Response,TNFAIP2
+Interferon Gamma Response,SOCS1
+Interferon Gamma Response,ICAM1
+Interferon Gamma Response,PSME1
+Interferon Gamma Response,IRF2
+Interferon Gamma Response,TRIM14
+Interferon Gamma Response,MARCHF1
+Interferon Gamma Response,SOCS3
+Interferon Gamma Response,JAK2
+Interferon Gamma Response,PARP12
+Interferon Gamma Response,TNFAIP6
+Interferon Gamma Response,TRIM26
+Interferon Gamma Response,VCAM1
+Interferon Gamma Response,CD274
+Interferon Gamma Response,CIITA
+Interferon Gamma Response,NAMPT
+Interferon Gamma Response,SELP
+Interferon Gamma Response,GPR18
+Interferon Gamma Response,FPR1
+Interferon Gamma Response,HELZ2
+Interferon Gamma Response,SERPING1
+Interferon Gamma Response,CCL5
+Interferon Gamma Response,RNF31
+Interferon Gamma Response,SOD2
+Interferon Gamma Response,TRIM25
+Interferon Gamma Response,LAP3
+Interferon Gamma Response,PSMA3
+Interferon Gamma Response,RNF213
+Interferon Gamma Response,PELI1
+Interferon Gamma Response,CFB
+Interferon Gamma Response,TXNIP
+Interferon Gamma Response,GCH1
+Interferon Gamma Response,CCL7
+Interferon Gamma Response,PTPN6
+Interferon Gamma Response,SPPL2A
+Interferon Gamma Response,PNPT1
+Interferon Gamma Response,DHX58
+Interferon Gamma Response,BTG1
+Interferon Gamma Response,CASP8
+Interferon Gamma Response,IFI30
+Interferon Gamma Response,FGL2
+Interferon Gamma Response,CASP7
+Interferon Gamma Response,IL15RA
+Interferon Gamma Response,CD40
+Interferon Gamma Response,TRAFD1
+Interferon Gamma Response,LCP2
+Interferon Gamma Response,RIPK1
+Interferon Gamma Response,UPP1
+Interferon Gamma Response,PSMB2
+Interferon Gamma Response,TDRD7
+Interferon Gamma Response,HIF1A
+Interferon Gamma Response,EIF4E3
+Interferon Gamma Response,VAMP8
+Interferon Gamma Response,PFKP
+Interferon Gamma Response,CD38
+Interferon Gamma Response,BANK1
+Interferon Gamma Response,TOR1B
+Interferon Gamma Response,RBCK1
+Interferon Gamma Response,PDE4B
+Interferon Gamma Response,MVP
+Interferon Gamma Response,IL7
+Interferon Gamma Response,BPGM
+Interferon Gamma Response,CMTR1
+Interferon Gamma Response,AUTS2
+Interferon Gamma Response,B2M
+Interferon Gamma Response,RIPK2
+Interferon Gamma Response,CD69
+Interferon Gamma Response,MYD88
+Interferon Gamma Response,PSMA2
+Interferon Gamma Response,PIM1
+Interferon Gamma Response,NOD1
+Interferon Gamma Response,TAPBP
+Interferon Gamma Response,SLC25A28
+Interferon Gamma Response,PTPN1
+Interferon Gamma Response,TNFAIP3
+Interferon Gamma Response,SSPN
+Interferon Gamma Response,NUP93
+Interferon Gamma Response,MTHFD2
+Interferon Gamma Response,CDKN1A
+Interferon Gamma Response,IRF4
+Interferon Gamma Response,NFKB1
+Interferon Gamma Response,BATF2
+Interferon Gamma Response,LATS2
+Interferon Gamma Response,IRF5
+Interferon Gamma Response,ISOC1
+Interferon Gamma Response,P2RY14
+Interferon Gamma Response,STAT3
+Interferon Gamma Response,NCOA3
+Interferon Gamma Response,GZMA
+Interferon Gamma Response,CD74
+Interferon Gamma Response,RAPGEF6
+Interferon Gamma Response,ARL4A
+Interferon Gamma Response,SRI
+Interferon Gamma Response,LYSMD2
+Interferon Gamma Response,ST3GAL5
+Interferon Gamma Response,CASP3
+Interferon Gamma Response,CMKLR1
+Interferon Gamma Response,NFKBIA
+Interferon Gamma Response,ST8SIA4
+Interferon Gamma Response,IL2RB
+Interferon Gamma Response,VAMP5
+Interferon Gamma Response,IL18BP
+Interferon Gamma Response,ZNFX1
+Interferon Gamma Response,ARID5B
+Interferon Gamma Response,STAT4
+TNF-alpha Signaling via NF-kB,JUNB
+TNF-alpha Signaling via NF-kB,ATF3
+TNF-alpha Signaling via NF-kB,NFKBIA
+TNF-alpha Signaling via NF-kB,TNFAIP3
+TNF-alpha Signaling via NF-kB,PTGS2
+TNF-alpha Signaling via NF-kB,IER3
+TNF-alpha Signaling via NF-kB,CD83
+TNF-alpha Signaling via NF-kB,CCL20
+TNF-alpha Signaling via NF-kB,MAFF
+TNF-alpha Signaling via NF-kB,NFKB2
+TNF-alpha Signaling via NF-kB,TNFAIP2
+TNF-alpha Signaling via NF-kB,HBEGF
+TNF-alpha Signaling via NF-kB,KLF6
+TNF-alpha Signaling via NF-kB,BIRC3
+TNF-alpha Signaling via NF-kB,PLAUR
+TNF-alpha Signaling via NF-kB,ZFP36
+TNF-alpha Signaling via NF-kB,ICAM1
+TNF-alpha Signaling via NF-kB,JUN
+TNF-alpha Signaling via NF-kB,EGR3
+TNF-alpha Signaling via NF-kB,IL1B
+TNF-alpha Signaling via NF-kB,ZC3H12A
+TNF-alpha Signaling via NF-kB,SOD2
+TNF-alpha Signaling via NF-kB,NR4A2
+TNF-alpha Signaling via NF-kB,IL1A
+TNF-alpha Signaling via NF-kB,RELB
+TNF-alpha Signaling via NF-kB,TRAF1
+TNF-alpha Signaling via NF-kB,BTG2
+TNF-alpha Signaling via NF-kB,DUSP1
+TNF-alpha Signaling via NF-kB,MAP3K8
+TNF-alpha Signaling via NF-kB,ETS2
+TNF-alpha Signaling via NF-kB,F3
+TNF-alpha Signaling via NF-kB,SDC4
+TNF-alpha Signaling via NF-kB,EGR1
+TNF-alpha Signaling via NF-kB,TNF
+TNF-alpha Signaling via NF-kB,KDM6B
+TNF-alpha Signaling via NF-kB,NFKB1
+TNF-alpha Signaling via NF-kB,LIF
+TNF-alpha Signaling via NF-kB,PTX3
+TNF-alpha Signaling via NF-kB,FOSL1
+TNF-alpha Signaling via NF-kB,NR4A1
+TNF-alpha Signaling via NF-kB,JAG1
+TNF-alpha Signaling via NF-kB,GCH1
+TNF-alpha Signaling via NF-kB,RCAN1
+TNF-alpha Signaling via NF-kB,DUSP2
+TNF-alpha Signaling via NF-kB,EHD1
+TNF-alpha Signaling via NF-kB,IER2
+TNF-alpha Signaling via NF-kB,REL
+TNF-alpha Signaling via NF-kB,CFLAR
+TNF-alpha Signaling via NF-kB,RIPK2
+TNF-alpha Signaling via NF-kB,NFKBIE
+TNF-alpha Signaling via NF-kB,NR4A3
+TNF-alpha Signaling via NF-kB,PHLDA1
+TNF-alpha Signaling via NF-kB,IER5
+TNF-alpha Signaling via NF-kB,GEM
+TNF-alpha Signaling via NF-kB,GADD45A
+TNF-alpha Signaling via NF-kB,CXCL10
+TNF-alpha Signaling via NF-kB,PLK2
+TNF-alpha Signaling via NF-kB,BHLHE40
+TNF-alpha Signaling via NF-kB,EGR2
+TNF-alpha Signaling via NF-kB,SOCS3
+TNF-alpha Signaling via NF-kB,SLC2A6
+TNF-alpha Signaling via NF-kB,PTGER4
+TNF-alpha Signaling via NF-kB,DUSP5
+TNF-alpha Signaling via NF-kB,SERPINB2
+TNF-alpha Signaling via NF-kB,NFIL3
+TNF-alpha Signaling via NF-kB,SERPINE1
+TNF-alpha Signaling via NF-kB,TRIB1
+TNF-alpha Signaling via NF-kB,TIPARP
+TNF-alpha Signaling via NF-kB,RELA
+TNF-alpha Signaling via NF-kB,BIRC2
+TNF-alpha Signaling via NF-kB,LITAF
+TNF-alpha Signaling via NF-kB,TNFAIP6
+TNF-alpha Signaling via NF-kB,CD44
+TNF-alpha Signaling via NF-kB,INHBA
+TNF-alpha Signaling via NF-kB,PLAU
+TNF-alpha Signaling via NF-kB,MYC
+TNF-alpha Signaling via NF-kB,TNFRSF9
+TNF-alpha Signaling via NF-kB,SGK1
+TNF-alpha Signaling via NF-kB,TNIP1
+TNF-alpha Signaling via NF-kB,NAMPT
+TNF-alpha Signaling via NF-kB,FOSL2
+TNF-alpha Signaling via NF-kB,PNRC1
+TNF-alpha Signaling via NF-kB,ID2
+TNF-alpha Signaling via NF-kB,CD69
+TNF-alpha Signaling via NF-kB,IL7R
+TNF-alpha Signaling via NF-kB,EFNA1
+TNF-alpha Signaling via NF-kB,PHLDA2
+TNF-alpha Signaling via NF-kB,PFKFB3
+TNF-alpha Signaling via NF-kB,CCL5
+TNF-alpha Signaling via NF-kB,YRDC
+TNF-alpha Signaling via NF-kB,IFNGR2
+TNF-alpha Signaling via NF-kB,SQSTM1
+TNF-alpha Signaling via NF-kB,BTG3
+TNF-alpha Signaling via NF-kB,GADD45B
+TNF-alpha Signaling via NF-kB,KYNU
+TNF-alpha Signaling via NF-kB,G0S2
+TNF-alpha Signaling via NF-kB,BTG1
+TNF-alpha Signaling via NF-kB,MCL1
+TNF-alpha Signaling via NF-kB,VEGFA
+TNF-alpha Signaling via NF-kB,MAP2K3
+TNF-alpha Signaling via NF-kB,CDKN1A
+TNF-alpha Signaling via NF-kB,CCN1
+TNF-alpha Signaling via NF-kB,TANK
+TNF-alpha Signaling via NF-kB,IFIT2
+TNF-alpha Signaling via NF-kB,IL18
+TNF-alpha Signaling via NF-kB,TUBB2A
+TNF-alpha Signaling via NF-kB,IRF1
+TNF-alpha Signaling via NF-kB,FOS
+TNF-alpha Signaling via NF-kB,RHOB
+TNF-alpha Signaling via NF-kB,AREG
+TNF-alpha Signaling via NF-kB,NINJ1
+TNF-alpha Signaling via NF-kB,ZBTB10
+TNF-alpha Signaling via NF-kB,PLPP3
+TNF-alpha Signaling via NF-kB,KLF4
+TNF-alpha Signaling via NF-kB,SAT1
+TNF-alpha Signaling via NF-kB,CSF1
+TNF-alpha Signaling via NF-kB,GPR183
+TNF-alpha Signaling via NF-kB,PMEPA1
+TNF-alpha Signaling via NF-kB,PTPRE
+TNF-alpha Signaling via NF-kB,TLR2
+TNF-alpha Signaling via NF-kB,ACKR3
+TNF-alpha Signaling via NF-kB,KLF10
+TNF-alpha Signaling via NF-kB,MARCKS
+TNF-alpha Signaling via NF-kB,LAMB3
+TNF-alpha Signaling via NF-kB,CEBPB
+TNF-alpha Signaling via NF-kB,TRIP10
+TNF-alpha Signaling via NF-kB,F2RL1
+TNF-alpha Signaling via NF-kB,KLF9
+TNF-alpha Signaling via NF-kB,LDLR
+TNF-alpha Signaling via NF-kB,TGIF1
+TNF-alpha Signaling via NF-kB,RNF19B
+TNF-alpha Signaling via NF-kB,DRAM1
+TNF-alpha Signaling via NF-kB,B4GALT1
+TNF-alpha Signaling via NF-kB,DNAJB4
+TNF-alpha Signaling via NF-kB,CSF2
+TNF-alpha Signaling via NF-kB,PDE4B
+TNF-alpha Signaling via NF-kB,SNN
+TNF-alpha Signaling via NF-kB,PLEK
+TNF-alpha Signaling via NF-kB,STAT5A
+TNF-alpha Signaling via NF-kB,DENND5A
+TNF-alpha Signaling via NF-kB,CCND1
+TNF-alpha Signaling via NF-kB,SPHK1
+TNF-alpha Signaling via NF-kB,TNFAIP8
+TNF-alpha Signaling via NF-kB,CCNL1
+TNF-alpha Signaling via NF-kB,FUT4
+TNF-alpha Signaling via NF-kB,SPSB1
+TNF-alpha Signaling via NF-kB,TSC22D1
+TNF-alpha Signaling via NF-kB,B4GALT5
+TNF-alpha Signaling via NF-kB,SIK1
+TNF-alpha Signaling via NF-kB,CLCF1
+TNF-alpha Signaling via NF-kB,NFE2L2
+TNF-alpha Signaling via NF-kB,FOSB
+TNF-alpha Signaling via NF-kB,PER1
+TNF-alpha Signaling via NF-kB,NFAT5
+TNF-alpha Signaling via NF-kB,ATP2B1
+TNF-alpha Signaling via NF-kB,IL12B
+TNF-alpha Signaling via NF-kB,IL6ST
+TNF-alpha Signaling via NF-kB,SLC16A6
+TNF-alpha Signaling via NF-kB,ABCA1
+TNF-alpha Signaling via NF-kB,HES1
+TNF-alpha Signaling via NF-kB,BCL6
+TNF-alpha Signaling via NF-kB,IRS2
+TNF-alpha Signaling via NF-kB,CEBPD
+TNF-alpha Signaling via NF-kB,IL23A
+TNF-alpha Signaling via NF-kB,SMAD3
+TNF-alpha Signaling via NF-kB,TAP1
+TNF-alpha Signaling via NF-kB,MSC
+TNF-alpha Signaling via NF-kB,IFIH1
+TNF-alpha Signaling via NF-kB,IL15RA
+TNF-alpha Signaling via NF-kB,TNIP2
+TNF-alpha Signaling via NF-kB,BCL3
+TNF-alpha Signaling via NF-kB,PANX1
+TNF-alpha Signaling via NF-kB,FJX1
+TNF-alpha Signaling via NF-kB,EDN1
+TNF-alpha Signaling via NF-kB,EIF1
+TNF-alpha Signaling via NF-kB,BMP2
+TNF-alpha Signaling via NF-kB,DUSP4
+TNF-alpha Signaling via NF-kB,PDLIM5
+TNF-alpha Signaling via NF-kB,GFPT2
+TNF-alpha Signaling via NF-kB,KLF2
+TNF-alpha Signaling via NF-kB,TNC
+TNF-alpha Signaling via NF-kB,SERPINB8
+TNF-alpha Signaling via NF-kB,MXD1

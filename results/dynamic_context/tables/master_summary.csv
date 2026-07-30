@@ -1,0 +1,105 @@
+task,variant,model,auroc_mean,auprc_mean,n_tasks,metric
+gene-set,common,BRIDGE,0.6444577777777778,0.6315352322900543,1,AUROC
+gene-set,common,BulkFormer_127M,0.5790954444444444,0.5764713123933592,1,AUROC
+gene-set,common,BulkFormer_147M,0.5910304444444444,0.5848638247459479,1,AUROC
+gene-set,common,BulkFormer_37M,0.5751461111111111,0.5798303814282633,1,AUROC
+gene-set,common,BulkFormer_50M,0.5814472222222222,0.5764399241317035,1,AUROC
+gene-set,common,BulkFormer_93M,0.5760013333333334,0.5803645733517593,1,AUROC
+gene-set,common,Geneformer,0.611489,0.5973637835831477,1,AUROC
+gene-set,common,Txn_Jatin,0.637715,0.6322075809144424,1,AUROC
+gene-set,common,scGPT,0.6316126666666667,0.6284158946114442,1,AUROC
+gene-set,full,BRIDGE,0.6445761861696473,0.6292119955988056,1,AUROC
+gene-set,full,BulkFormer_127M,0.5600222474321139,0.5596172570377024,1,AUROC
+gene-set,full,BulkFormer_147M,0.5816205174032979,0.5761520586657047,1,AUROC
+gene-set,full,BulkFormer_37M,0.5587506789279493,0.5617710972431593,1,AUROC
+gene-set,full,BulkFormer_50M,0.5687759586819389,0.5681913187095554,1,AUROC
+gene-set,full,BulkFormer_93M,0.5676764075547625,0.5628695056505764,1,AUROC
+gene-set,full,Geneformer,0.6019215699901058,0.5974903403023349,1,AUROC
+gene-set,full,Txn_Jatin,0.6386493333333334,0.6396516407257984,1,AUROC
+gene-set,full,scGPT,0.6153256666666667,0.6287933016576859,1,AUROC
+paired,common,BRIDGE,0.5831719270833333,0.5659249053583993,3,AUROC
+paired,common,BulkFormer_127M,0.5627955937500001,0.5524438972024909,3,AUROC
+paired,common,BulkFormer_147M,0.5609143541666667,0.5496238499198803,3,AUROC
+paired,common,BulkFormer_37M,0.5688319375,0.5577857178611084,3,AUROC
+paired,common,BulkFormer_50M,0.5677613854166667,0.552145994418091,3,AUROC
+paired,common,BulkFormer_93M,0.5529721666666667,0.5445787996507357,3,AUROC
+paired,common,Geneformer,0.5606736354166667,0.5515591708192958,3,AUROC
+paired,common,Txn_Jatin,0.5765013541666667,0.5596074812044473,3,AUROC
+paired,common,scGPT,0.57185425,0.5566090549153683,3,AUROC
+paired,full,BRIDGE,0.5888273510783798,0.5738450334338331,3,AUROC
+paired,full,BulkFormer_127M,0.5573505634309127,0.548543500948017,3,AUROC
+paired,full,BulkFormer_147M,0.5587450179568537,0.5506277115020805,3,AUROC
+paired,full,BulkFormer_37M,0.5694859082134848,0.5544990010467922,3,AUROC
+paired,full,BulkFormer_50M,0.568412756863387,0.5544617138575507,3,AUROC
+paired,full,BulkFormer_93M,0.5578978726100589,0.549346168655026,3,AUROC
+paired,full,Geneformer,0.5716310026715922,0.5569419085744244,3,AUROC
+paired,full,Txn_Jatin,0.5862434791666667,0.5702966260044059,3,AUROC
+paired,full,scGPT,0.58666721875,0.5677908558680543,3,AUROC
+single-gene-GO,common,BRIDGE,0.6696715855623185,0.08992792487996462,40,AUROC
+single-gene-GO,common,BulkFormer_127M,0.659131856652226,0.06946852617384718,40,AUROC
+single-gene-GO,common,BulkFormer_147M,0.679051478685568,0.07733923533277287,40,AUROC
+single-gene-GO,common,BulkFormer_37M,0.6537885385499593,0.07015081728606844,40,AUROC
+single-gene-GO,common,BulkFormer_50M,0.6617026307119451,0.07318343698812994,40,AUROC
+single-gene-GO,common,BulkFormer_93M,0.6582629447376446,0.0694499195285912,40,AUROC
+single-gene-GO,common,Geneformer,0.661005424733579,0.09683223586563737,40,AUROC
+single-gene-GO,common,Txn_Jatin,0.6491986978913421,0.08032382985607645,40,AUROC
+single-gene-GO,common,scGPT,0.6627874240774542,0.08873417644081594,40,AUROC
+single-gene-GO,full,BRIDGE,0.6697670310254656,0.0904140252232957,40,AUROC
+single-gene-GO,full,BulkFormer_127M,0.6613798737838005,0.06875845465382742,40,AUROC
+single-gene-GO,full,BulkFormer_147M,0.6810079850121101,0.07644254492573506,40,AUROC
+single-gene-GO,full,BulkFormer_37M,0.6559522203922719,0.06937538341431207,40,AUROC
+single-gene-GO,full,BulkFormer_50M,0.6635595851959677,0.07277640255565768,40,AUROC
+single-gene-GO,full,BulkFormer_93M,0.6624294718948941,0.0690579289169304,40,AUROC
+single-gene-GO,full,Geneformer,0.6654236439722252,0.0983262896543001,40,AUROC
+single-gene-GO,full,Txn_Jatin,0.6570041278962706,0.08054165514681123,40,AUROC
+single-gene-GO,full,scGPT,0.6689807176316969,0.08943593803843397,40,AUROC
+single-gene-disease,common,BRIDGE,0.6705971173764411,0.24932687688109115,40,AUROC
+single-gene-disease,common,BulkFormer_127M,0.6551697052194554,0.21713716365239585,40,AUROC
+single-gene-disease,common,BulkFormer_147M,0.6701975531321696,0.238319184628785,40,AUROC
+single-gene-disease,common,BulkFormer_37M,0.6564167607898678,0.22733807292653033,40,AUROC
+single-gene-disease,common,BulkFormer_50M,0.6594430900861493,0.22450088553499814,40,AUROC
+single-gene-disease,common,BulkFormer_93M,0.6603222792169899,0.22278394336690138,40,AUROC
+single-gene-disease,common,Geneformer,0.6680721179245125,0.25115068497171017,40,AUROC
+single-gene-disease,common,Txn_Jatin,0.6603102668300594,0.23732988320088425,40,AUROC
+single-gene-disease,common,scGPT,0.6699165936238278,0.2459245616378439,40,AUROC
+single-gene-disease,full,BRIDGE,0.6714264568596325,0.24944145073151294,40,AUROC
+single-gene-disease,full,BulkFormer_127M,0.6592346267229179,0.21377267423100657,40,AUROC
+single-gene-disease,full,BulkFormer_147M,0.6757119808289537,0.23566467933422178,40,AUROC
+single-gene-disease,full,BulkFormer_37M,0.660892821951607,0.2237033082837915,40,AUROC
+single-gene-disease,full,BulkFormer_50M,0.6637374439169024,0.22146164781146896,40,AUROC
+single-gene-disease,full,BulkFormer_93M,0.6645426227877936,0.2190311203238149,40,AUROC
+single-gene-disease,full,Geneformer,0.6795271176746833,0.2554593867465221,40,AUROC
+single-gene-disease,full,Txn_Jatin,0.6609841643824477,0.23723264905263503,40,AUROC
+single-gene-disease,full,scGPT,0.6706342417147293,0.24687257922691005,40,AUROC
+TCGA-cancer-type (stratified),sample,raw_log1p_TPM,0.9628,0.9978,1,F1-macro
+TCGA-cancer-type (group),sample,raw_log1p_TPM,0.9622,0.9978,1,F1-macro
+TCGA-cancer-type (stratified),sample,raw_log1p_TPM,0.9716,0.9979,1,F1-macro
+TCGA-cancer-type (group),sample,raw_log1p_TPM,0.9715,0.9978,1,F1-macro
+TCGA-cancer-type (stratified),sample,PCA-64,0.9597,0.9971,1,F1-macro
+TCGA-cancer-type (group),sample,PCA-64,0.9606,0.9972,1,F1-macro
+TCGA-cancer-type (stratified),sample,PCA-64,0.9669,0.9976,1,F1-macro
+TCGA-cancer-type (group),sample,PCA-64,0.9655,0.9976,1,F1-macro
+TCGA-cancer-type (stratified),sample,Txn_Jatin-emb,0.9516,0.9966,1,F1-macro
+TCGA-cancer-type (group),sample,Txn_Jatin-emb,0.9522,0.9966,1,F1-macro
+TCGA-cancer-type (stratified),sample,Txn_Jatin-emb,0.959,0.9971,1,F1-macro
+TCGA-cancer-type (group),sample,Txn_Jatin-emb,0.9601,0.9969,1,F1-macro
+TCGA-cancer-type (stratified),sample,BRIDGE-emb,0.9514,0.9963,1,F1-macro
+TCGA-cancer-type (group),sample,BRIDGE-emb,0.9504,0.9962,1,F1-macro
+TCGA-cancer-type (stratified),sample,BRIDGE-emb,0.9565,0.997,1,F1-macro
+TCGA-cancer-type (group),sample,BRIDGE-emb,0.9527,0.9964,1,F1-macro
+OSDR-spaceflight (stratified),sample,raw_log1p_TPM,0.7044,0.8368,1,F1-macro
+OSDR-spaceflight (group),sample,raw_log1p_TPM,0.5454,0.6809,1,F1-macro
+OSDR-spaceflight (stratified),sample,raw_log1p_TPM,0.8167,0.8932,1,F1-macro
+OSDR-spaceflight (group),sample,raw_log1p_TPM,0.6559,0.7056,1,F1-macro
+OSDR-spaceflight (stratified),sample,PCA-64,0.7058,0.8219,1,F1-macro
+OSDR-spaceflight (group),sample,PCA-64,0.5327,0.6721,1,F1-macro
+OSDR-spaceflight (stratified),sample,PCA-64,0.6553,0.7202,1,F1-macro
+OSDR-spaceflight (group),sample,PCA-64,0.5819,0.6459,1,F1-macro
+OSDR-spaceflight (stratified),sample,Txn_Jatin-emb,0.6607,0.7887,1,F1-macro
+OSDR-spaceflight (group),sample,Txn_Jatin-emb,0.4963,0.5842,1,F1-macro
+OSDR-spaceflight (stratified),sample,Txn_Jatin-emb,0.7032,0.778,1,F1-macro
+OSDR-spaceflight (group),sample,Txn_Jatin-emb,0.5765,0.6189,1,F1-macro
+OSDR-spaceflight (stratified),sample,BRIDGE-emb,0.6717,0.7817,1,F1-macro
+OSDR-spaceflight (group),sample,BRIDGE-emb,0.5232,0.5853,1,F1-macro
+OSDR-spaceflight (stratified),sample,BRIDGE-emb,0.6794,0.7511,1,F1-macro
+OSDR-spaceflight (group),sample,BRIDGE-emb,0.5632,0.5888,1,F1-macro

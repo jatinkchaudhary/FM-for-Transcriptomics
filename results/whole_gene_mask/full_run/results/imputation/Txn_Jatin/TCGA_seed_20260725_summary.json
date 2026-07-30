@@ -1,0 +1,19 @@
+{
+  "auc_eligible_genes": 1565,
+  "auprc_macro": 0.8682928365253688,
+  "auroc_macro": 0.9275232605523356,
+  "dataset": "TCGA",
+  "mae": 0.40497106313705444,
+  "mask_seed": 20260725,
+  "masked_genes": 2188,
+  "model": "Txn_Jatin",
+  "mse": 0.47260603308677673,
+  "pcc_gene_macro": 0.800291694255767,
+  "pcc_global": 0.9019026071246822,
+  "pcc_sample_macro": 0.9004217040021678,
+  "reason": "",
+  "samples": 3481,
+  "spearman_global": 0.9066450950719988,
+  "status": "complete",
+  "supported": true
+}

@@ -1,0 +1,10 @@
+model,embedding_type,gene-set,paired,single-gene-GO,single-gene-disease
+Txn_Jatin,dynamic,0.638600,0.586200,0.657000,0.661000
+BRIDGE,dynamic,0.644600,0.588800,0.669800,0.671400
+scGPT,static,0.615300,0.586700,0.669000,0.670600
+Geneformer,static,0.601900,0.571600,0.665400,0.679500
+BulkFormer_37M,static,0.558800,0.569500,0.656000,0.660900
+BulkFormer_50M,static,0.568800,0.568400,0.663600,0.663700
+BulkFormer_93M,static,0.567700,0.557900,0.662400,0.664500
+BulkFormer_127M,static,0.560000,0.557400,0.661400,0.659200
+BulkFormer_147M,static,0.581600,0.558700,0.681000,0.675700

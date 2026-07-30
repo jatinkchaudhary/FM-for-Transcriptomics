@@ -1,0 +1,10 @@
+model,embedding_type,dynamic,fallback,shape,checkpoint
+Txn_Jatin,dynamic,True,False,15916x512,/media/volume/TrainingData/txn_jatin_archs4/checkpoints/Txn_Jatin_A100_b9_full/epoch_00.pt
+BRIDGE,dynamic,True,False,15916x512,/media/volume/TrainingData/txn_jatin_archs4/baselines/BRIDGE_s66qfh36/best_model.pt
+scGPT,static,False,False,15916x512,
+Geneformer,static,False,False,15916x768,
+BulkFormer_37M,static,False,False,15916x128,/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer/model/bulkformer_37M.pt
+BulkFormer_50M,static,False,False,15916x256,/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_50M.pt
+BulkFormer_93M,static,False,False,15916x512,/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_93M.pt
+BulkFormer_127M,static,False,False,15916x640,/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_127M.pt
+BulkFormer_147M,static,False,False,15916x640,/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_147M.pt

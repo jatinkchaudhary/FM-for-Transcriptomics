@@ -1,0 +1,14 @@
+{
+  "expressed_auprc_micro_sampled_cells": 0.7619947296757693,
+  "expressed_auroc_micro_sampled_cells": 0.5079530515135713,
+  "hidden_genes": 12587,
+  "mae": 2.2016327381134033,
+  "mse": 7.608217716217041,
+  "observed_fraction": 0.13710838417769247,
+  "panel_size": 2000,
+  "pcc_gene_macro": -0.006381050052075759,
+  "pcc_global_sampled_cells": 0.009281723760068417,
+  "pcc_sample_macro": 0.01075862776421022,
+  "status": "complete",
+  "test_samples": 1047
+}

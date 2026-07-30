@@ -1,0 +1,10 @@
+model,dynamic,fallback,shape,checkpoint,context_samples,context_files,context_batch_size,context_amp_bf16,context_elapsed_seconds,embedding_sha256
+BRIDGE,True,False,15916x512,/media/volume/TrainingData/txn_jatin_archs4/baselines/BRIDGE_s66qfh36/best_model.pt,978212.0,863.0,96.0,True,41502.8835401535,4bd6dabbf3d9c6f03b3e59b059c3633a6890d42c698b423b87efac3a485fc6e5
+BulkFormer_127M,False,False,15916x640,/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_127M.pt,,,,,,
+BulkFormer_147M,False,False,15916x640,/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_147M.pt,,,,,,
+BulkFormer_37M,False,False,15916x128,/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer/model/bulkformer_37M.pt,,,,,,
+BulkFormer_50M,False,False,15916x256,/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_50M.pt,,,,,,
+BulkFormer_93M,False,False,15916x512,/home/exouser/benchmarking_run/Benchmarking/BulkFormer-main/BulkFormer_93M.pt,,,,,,
+Geneformer,False,False,15916x768,,,,,,,
+Txn_Jatin,True,False,15916x512,/media/volume/TrainingData/txn_jatin_archs4/checkpoints/Txn_Jatin_A100_b9_full/epoch_00.pt,978212.0,863.0,96.0,True,45742.18032193184,9e21f082fdc09152e05a13766e37b1276660ef863f7ef5374c1c6602a5e89263
+scGPT,False,False,15916x512,,,,,,,

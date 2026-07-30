@@ -1,0 +1,41 @@
+term,model,auroc,auprc,n_pos
+protein ubiquitination (GO:0016567),ESM2_PCA512_prior,0.935459655066215,0.5363536097762377,420
+protein phosphorylation (GO:0006468),ESM2_PCA512_prior,0.934636237535857,0.6935414031114696,449
+phosphorylation (GO:0016310),ESM2_PCA512_prior,0.9343810869239496,0.5738047537342622,358
+protein modification by small protein conjugation (GO:0032446),ESM3,0.9180701186505816,0.3788447984414416,315
+"regulation of transcription, DNA-templated (GO:0006355)",ESM2_PCA512_prior,0.8944616360640625,0.7011144796228267,1468
+regulation of transcription by RNA polymerase II (GO:0006357),ESM3,0.8892995465450251,0.7135825398800912,1491
+cellular protein modification process (GO:0006464),ESM3,0.8712938509119961,0.4760825118740776,881
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169),ESM3,0.8582754401463958,0.3564192517292048,361
+positive regulation of transcription by RNA polymerase II (GO:0045944),ESM2_PCA512_prior,0.8416096803418451,0.3400500879068978,771
+neutrophil degranulation (GO:0043312),scGPT,0.8404697975599761,0.19666036378677923,356
+cytokine-mediated signaling pathway (GO:0019221),ESM2_PCA512_prior,0.8367947789834128,0.3436456103209734,431
+"positive regulation of transcription, DNA-templated (GO:0045893)",ESM2_PCA512_prior,0.8351224936577902,0.39691050971253716,989
+negative regulation of nucleic acid-templated transcription (GO:1903507),ESM3,0.8349487548067747,0.17564099578998396,378
+negative regulation of transcription by RNA polymerase II (GO:0000122),ESM3,0.8336577682323189,0.24115109278950503,504
+neutrophil mediated immunity (GO:0002446),scGPT,0.832689344885035,0.19341956626296783,362
+"negative regulation of transcription, DNA-templated (GO:0045892)",ESM2_PCA512_prior,0.8246878079514063,0.2794912374595416,717
+neutrophil activation involved in immune response (GO:0002283),scGPT,0.8230695059611395,0.18498292153280269,359
+positive regulation of nucleic acid-templated transcription (GO:1903508),ESM2_PCA512_prior,0.8227220873752077,0.17399261153732945,436
+cellular response to cytokine stimulus (GO:0071345),ESM2_PCA512_prior,0.8164054465150492,0.2443136715817003,345
+regulation of intracellular signal transduction (GO:1902531),ESM2_PCA512_prior,0.8021267171657489,0.2670376402146165,382
+negative regulation of cellular macromolecule biosynthetic process (GO:2000113),ESM3,0.7970796966379158,0.1570166925539421,441
+organelle assembly (GO:0070925),ESM2_PCA512_prior,0.7946647141108585,0.11340114412441367,336
+regulation of cellular macromolecule biosynthetic process (GO:2000112),ESM2_PCA512_prior,0.790620246762609,0.10328743918906173,324
+regulation of cell migration (GO:0030334),ESM3,0.7758272999211167,0.19545580385749692,343
+cellular protein metabolic process (GO:0044267),ESM3,0.7740264544926033,0.2145307423624402,318
+positive regulation of protein phosphorylation (GO:0001934),ESM3,0.7667313984383157,0.20509923884467884,316
+regulation of gene expression (GO:0010468),ESM3,0.7558099282315185,0.20014620581595216,793
+organelle organization (GO:0006996),ESM3,0.7498238790349665,0.09511948026885654,343
+positive regulation of cell population proliferation (GO:0008284),ESM3,0.7443052533898716,0.14239868567803854,391
+nervous system development (GO:0007399),ESM3,0.7441197738514818,0.11063539193185525,381
+positive regulation of intracellular signal transduction (GO:1902533),ESM3,0.7378143286031678,0.12037538762890623,446
+positive regulation of gene expression (GO:0010628),ESM3,0.7045876895097676,0.10580875513247234,397
+regulation of cell population proliferation (GO:0042127),ESM3,0.7041077556903248,0.11904073205873081,623
+positive regulation of macromolecule metabolic process (GO:0010604),ESM3,0.7027710869699181,0.09559613846747955,311
+negative regulation of apoptotic process (GO:0043066),BulkFormer_147M,0.6919827088794952,0.06819382565333139,392
+negative regulation of programmed cell death (GO:0043069),BulkFormer_147M,0.687566266249077,0.0546220418439359,319
+regulation of apoptotic process (GO:0042981),ESM2_PCA512_prior,0.6759570621958306,0.12232216301638359,606
+positive regulation of cellular process (GO:0048522),ESM2_PCA512_prior,0.6633788456691998,0.09646630731680489,512
+negative regulation of cell population proliferation (GO:0008285),ESM2_PCA512_prior,0.6593311923067325,0.0559542891912625,309
+negative regulation of cellular process (GO:0048523),ESM3,0.6269857625661525,0.061744502519967534,454

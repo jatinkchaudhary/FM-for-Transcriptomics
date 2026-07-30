@@ -1,0 +1,12 @@
+model,imputation_supported,imputation_output,reason
+Txn_Jatin,True,native expression decoder,Validated checkpoint exposes a per-gene expression prediction head.
+BRIDGE,True,native expression decoder,Validated checkpoint exposes a per-gene expression prediction head.
+BulkFormer_37M,True,native expression decoder,Validated checkpoint exposes a per-gene expression prediction head.
+BulkFormer_50M,True,native expression decoder,Validated checkpoint exposes a per-gene expression prediction head.
+BulkFormer_93M,True,native expression decoder,Validated checkpoint exposes a per-gene expression prediction head.
+BulkFormer_127M,True,native expression decoder,Validated checkpoint exposes a per-gene expression prediction head.
+BulkFormer_147M,True,native expression decoder,Validated checkpoint exposes a per-gene expression prediction head.
+ESM2_PCA512_prior,False,NaN,No validated bulk-expression decoder is available for this embedding model.
+Geneformer,False,NaN,No validated bulk-expression decoder is available for this embedding model.
+scGPT,False,NaN,No validated bulk-expression decoder is available for this embedding model.
+Txn_Jatin_contextual,False,NaN,No validated bulk-expression decoder is available for this embedding model.

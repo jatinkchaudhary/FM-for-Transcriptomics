@@ -1,0 +1,53 @@
+{
+  "checkpoint": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/best_model.pt",
+  "checkpoint_epoch": 20,
+  "checkpoint_val_loss": 0.07805884629487991,
+  "model_name": "Txn_Jatin",
+  "num_genes": 16055,
+  "hidden_dim": 512,
+  "num_layers": 12,
+  "sample_contrastive_weight": 0.01,
+  "input_scale": "log1p(TPM)",
+  "representations": {
+    "txn_context_mean": "measured-gene mean of final hidden state minus static gene embedding; matches the representation used by the sample contrastive objective",
+    "txn_hidden_mean": "mean final hidden state over genes",
+    "txn_hidden_all": "max + mean + median final hidden state over genes",
+    "txn_reconstruction": "decoder output for all genes",
+    "txn_completed_log1p_tpm": "observed expression retained; assay-missing genes filled by decoder"
+  },
+  "missing_gene_input": "mask token -10.0, not biological zero",
+  "batch_size": 8,
+  "amp_dtype": "bfloat16",
+  "device": "NVIDIA H100 80GB HBM3",
+  "coverage": {
+    "gide": {
+      "source_genes": 15672,
+      "model_genes": 16055,
+      "covered_model_genes": 13603,
+      "missing_model_genes": 2452,
+      "coverage_fraction": 0.8472749922142635
+    },
+    "riaz": {
+      "source_genes": 22066,
+      "model_genes": 16055,
+      "covered_model_genes": 15612,
+      "missing_model_genes": 443,
+      "coverage_fraction": 0.972407349735285
+    },
+    "hugo": {
+      "source_genes": 25268,
+      "model_genes": 16055,
+      "covered_model_genes": 15027,
+      "missing_model_genes": 1028,
+      "coverage_fraction": 0.9359701027717222
+    },
+    "rose": {
+      "source_genes": 58387,
+      "model_genes": 16055,
+      "covered_model_genes": 15154,
+      "missing_model_genes": 901,
+      "coverage_fraction": 0.9438804110868888
+    }
+  },
+  "elapsed_seconds": 12.490898847579956
+}

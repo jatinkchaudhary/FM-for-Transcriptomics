@@ -1,0 +1,361 @@
+term,n_pos,model,auroc,auprc,term_AUROC_rank
+cellular protein metabolic process (GO:0044267),368,Geneformer,0.736969,0.257850,1
+cellular protein metabolic process (GO:0044267),368,BulkFormer_50M,0.736397,0.105635,2
+cellular protein metabolic process (GO:0044267),368,BulkFormer_127M,0.733963,0.095098,3
+cellular protein metabolic process (GO:0044267),368,scGPT,0.733043,0.170334,4
+cellular protein metabolic process (GO:0044267),333,BRIDGE,0.728701,0.123375,5
+cellular protein metabolic process (GO:0044267),368,BulkFormer_93M,0.728116,0.089761,6
+cellular protein metabolic process (GO:0044267),368,BulkFormer_37M,0.723956,0.078310,7
+cellular protein metabolic process (GO:0044267),368,BulkFormer_147M,0.721144,0.091977,8
+cellular protein metabolic process (GO:0044267),368,Txn_Jatin,0.705568,0.118611,9
+cellular protein modification process (GO:0006464),954,BulkFormer_147M,0.630590,0.094062,1
+cellular protein modification process (GO:0006464),954,BulkFormer_50M,0.621464,0.089542,2
+cellular protein modification process (GO:0006464),954,Geneformer,0.617324,0.092000,3
+cellular protein modification process (GO:0006464),954,scGPT,0.617212,0.092942,4
+cellular protein modification process (GO:0006464),954,BulkFormer_93M,0.615947,0.087149,5
+cellular protein modification process (GO:0006464),954,BulkFormer_127M,0.615108,0.086669,6
+cellular protein modification process (GO:0006464),954,BulkFormer_37M,0.608166,0.089487,7
+cellular protein modification process (GO:0006464),954,Txn_Jatin,0.589302,0.078954,8
+cellular protein modification process (GO:0006464),935,BRIDGE,0.582155,0.088507,9
+cellular response to cytokine stimulus (GO:0071345),394,BulkFormer_147M,0.741299,0.075329,1
+cellular response to cytokine stimulus (GO:0071345),364,BRIDGE,0.726952,0.087755,2
+cellular response to cytokine stimulus (GO:0071345),394,BulkFormer_50M,0.724880,0.077275,3
+cellular response to cytokine stimulus (GO:0071345),394,scGPT,0.724170,0.099408,4
+cellular response to cytokine stimulus (GO:0071345),394,BulkFormer_93M,0.723213,0.065288,5
+cellular response to cytokine stimulus (GO:0071345),394,BulkFormer_127M,0.718581,0.065767,6
+cellular response to cytokine stimulus (GO:0071345),394,BulkFormer_37M,0.709136,0.075216,7
+cellular response to cytokine stimulus (GO:0071345),394,Txn_Jatin,0.703872,0.067907,8
+cellular response to cytokine stimulus (GO:0071345),394,Geneformer,0.675351,0.091102,9
+cytokine-mediated signaling pathway (GO:0019221),503,scGPT,0.760928,0.168987,1
+cytokine-mediated signaling pathway (GO:0019221),503,Geneformer,0.760509,0.159159,2
+cytokine-mediated signaling pathway (GO:0019221),502,BulkFormer_147M,0.753747,0.105746,3
+cytokine-mediated signaling pathway (GO:0019221),457,BRIDGE,0.751328,0.132156,4
+cytokine-mediated signaling pathway (GO:0019221),502,BulkFormer_50M,0.747686,0.101480,5
+cytokine-mediated signaling pathway (GO:0019221),503,Txn_Jatin,0.746947,0.137031,6
+cytokine-mediated signaling pathway (GO:0019221),502,BulkFormer_37M,0.742461,0.105895,7
+cytokine-mediated signaling pathway (GO:0019221),502,BulkFormer_93M,0.739792,0.089984,8
+cytokine-mediated signaling pathway (GO:0019221),502,BulkFormer_127M,0.714519,0.080454,9
+negative regulation of apoptotic process (GO:0043066),430,BulkFormer_147M,0.687851,0.060555,1
+negative regulation of apoptotic process (GO:0043066),430,BulkFormer_37M,0.669628,0.056126,2
+negative regulation of apoptotic process (GO:0043066),430,BulkFormer_93M,0.665237,0.053798,3
+negative regulation of apoptotic process (GO:0043066),430,BulkFormer_50M,0.658990,0.055522,4
+negative regulation of apoptotic process (GO:0043066),431,Txn_Jatin,0.643683,0.046484,5
+negative regulation of apoptotic process (GO:0043066),430,BulkFormer_127M,0.643470,0.053857,6
+negative regulation of apoptotic process (GO:0043066),431,scGPT,0.619385,0.048246,7
+negative regulation of apoptotic process (GO:0043066),411,BRIDGE,0.618145,0.045462,8
+negative regulation of apoptotic process (GO:0043066),431,Geneformer,0.599497,0.049581,9
+negative regulation of cell population proliferation (GO:0008285),343,BulkFormer_147M,0.627939,0.034059,1
+negative regulation of cell population proliferation (GO:0008285),343,BulkFormer_93M,0.610663,0.031281,2
+negative regulation of cell population proliferation (GO:0008285),343,scGPT,0.610186,0.034092,3
+negative regulation of cell population proliferation (GO:0008285),327,BRIDGE,0.606889,0.035103,4
+negative regulation of cell population proliferation (GO:0008285),343,BulkFormer_127M,0.605963,0.030800,5
+negative regulation of cell population proliferation (GO:0008285),343,BulkFormer_37M,0.602238,0.039261,6
+negative regulation of cell population proliferation (GO:0008285),343,BulkFormer_50M,0.601290,0.030728,7
+negative regulation of cell population proliferation (GO:0008285),344,Txn_Jatin,0.587329,0.031640,8
+negative regulation of cell population proliferation (GO:0008285),344,Geneformer,0.534028,0.029672,9
+negative regulation of cellular macromolecule biosynthetic process (GO:2000113),496,Geneformer,0.683950,0.069533,1
+negative regulation of cellular macromolecule biosynthetic process (GO:2000113),496,BulkFormer_147M,0.674501,0.064627,2
+negative regulation of cellular macromolecule biosynthetic process (GO:2000113),496,scGPT,0.668615,0.061077,3
+negative regulation of cellular macromolecule biosynthetic process (GO:2000113),496,Txn_Jatin,0.665746,0.063661,4
+negative regulation of cellular macromolecule biosynthetic process (GO:2000113),471,BRIDGE,0.662975,0.071592,5
+negative regulation of cellular macromolecule biosynthetic process (GO:2000113),496,BulkFormer_127M,0.642810,0.055357,6
+negative regulation of cellular macromolecule biosynthetic process (GO:2000113),496,BulkFormer_93M,0.639980,0.053127,7
+negative regulation of cellular macromolecule biosynthetic process (GO:2000113),496,BulkFormer_50M,0.639649,0.056916,8
+negative regulation of cellular macromolecule biosynthetic process (GO:2000113),496,BulkFormer_37M,0.623818,0.049197,9
+negative regulation of cellular process (GO:0048523),509,BulkFormer_147M,0.621364,0.052360,1
+negative regulation of cellular process (GO:0048523),509,BulkFormer_37M,0.609919,0.050830,2
+negative regulation of cellular process (GO:0048523),509,BulkFormer_93M,0.607646,0.048354,3
+negative regulation of cellular process (GO:0048523),509,BulkFormer_50M,0.600410,0.049707,4
+negative regulation of cellular process (GO:0048523),509,BulkFormer_127M,0.589613,0.045766,5
+negative regulation of cellular process (GO:0048523),483,BRIDGE,0.572918,0.047323,6
+negative regulation of cellular process (GO:0048523),510,Geneformer,0.568976,0.045975,7
+negative regulation of cellular process (GO:0048523),509,scGPT,0.565491,0.039383,8
+negative regulation of cellular process (GO:0048523),510,Txn_Jatin,0.563704,0.045238,9
+negative regulation of nucleic acid-templated transcription (GO:1903507),419,Geneformer,0.707111,0.067683,1
+negative regulation of nucleic acid-templated transcription (GO:1903507),419,scGPT,0.692801,0.062495,2
+negative regulation of nucleic acid-templated transcription (GO:1903507),419,Txn_Jatin,0.689287,0.061668,3
+negative regulation of nucleic acid-templated transcription (GO:1903507),419,BulkFormer_147M,0.684680,0.057180,4
+negative regulation of nucleic acid-templated transcription (GO:1903507),397,BRIDGE,0.679984,0.063836,5
+negative regulation of nucleic acid-templated transcription (GO:1903507),419,BulkFormer_127M,0.651858,0.048171,6
+negative regulation of nucleic acid-templated transcription (GO:1903507),419,BulkFormer_93M,0.647276,0.044812,7
+negative regulation of nucleic acid-templated transcription (GO:1903507),419,BulkFormer_50M,0.638061,0.049865,8
+negative regulation of nucleic acid-templated transcription (GO:1903507),419,BulkFormer_37M,0.615311,0.042175,9
+negative regulation of programmed cell death (GO:0043069),346,BulkFormer_147M,0.701173,0.051419,1
+negative regulation of programmed cell death (GO:0043069),346,BulkFormer_93M,0.673608,0.045958,2
+negative regulation of programmed cell death (GO:0043069),346,BulkFormer_50M,0.661995,0.047145,3
+negative regulation of programmed cell death (GO:0043069),346,BulkFormer_37M,0.661439,0.045476,4
+negative regulation of programmed cell death (GO:0043069),346,Txn_Jatin,0.653750,0.039539,5
+negative regulation of programmed cell death (GO:0043069),346,BulkFormer_127M,0.653079,0.047273,6
+negative regulation of programmed cell death (GO:0043069),329,BRIDGE,0.643555,0.042908,7
+negative regulation of programmed cell death (GO:0043069),346,scGPT,0.603206,0.041440,8
+negative regulation of programmed cell death (GO:0043069),346,Geneformer,0.585899,0.038139,9
+negative regulation of transcription by RNA polymerase II (GO:0000122),538,BRIDGE,0.727230,0.109994,1
+negative regulation of transcription by RNA polymerase II (GO:0000122),556,Geneformer,0.708847,0.101814,2
+negative regulation of transcription by RNA polymerase II (GO:0000122),556,scGPT,0.700265,0.091362,3
+negative regulation of transcription by RNA polymerase II (GO:0000122),556,BulkFormer_147M,0.689114,0.079222,4
+negative regulation of transcription by RNA polymerase II (GO:0000122),556,Txn_Jatin,0.678813,0.084407,5
+negative regulation of transcription by RNA polymerase II (GO:0000122),556,BulkFormer_93M,0.665341,0.067096,6
+negative regulation of transcription by RNA polymerase II (GO:0000122),556,BulkFormer_127M,0.647656,0.071382,7
+negative regulation of transcription by RNA polymerase II (GO:0000122),556,BulkFormer_50M,0.645735,0.070662,8
+negative regulation of transcription by RNA polymerase II (GO:0000122),556,BulkFormer_37M,0.640154,0.065152,9
+"negative regulation of transcription, DNA-templated (GO:0045892)",762,BRIDGE,0.718142,0.143459,1
+"negative regulation of transcription, DNA-templated (GO:0045892)",795,Geneformer,0.717230,0.137222,2
+"negative regulation of transcription, DNA-templated (GO:0045892)",795,scGPT,0.715748,0.126750,3
+"negative regulation of transcription, DNA-templated (GO:0045892)",795,BulkFormer_147M,0.682744,0.109272,4
+"negative regulation of transcription, DNA-templated (GO:0045892)",795,Txn_Jatin,0.680766,0.110375,5
+"negative regulation of transcription, DNA-templated (GO:0045892)",795,BulkFormer_93M,0.651051,0.090823,6
+"negative regulation of transcription, DNA-templated (GO:0045892)",795,BulkFormer_127M,0.642690,0.091969,7
+"negative regulation of transcription, DNA-templated (GO:0045892)",795,BulkFormer_50M,0.635926,0.090176,8
+"negative regulation of transcription, DNA-templated (GO:0045892)",795,BulkFormer_37M,0.623358,0.080907,9
+nervous system development (GO:0007399),415,BulkFormer_147M,0.695245,0.055835,1
+nervous system development (GO:0007399),408,BRIDGE,0.693462,0.071702,2
+nervous system development (GO:0007399),415,BulkFormer_37M,0.686280,0.057239,3
+nervous system development (GO:0007399),415,BulkFormer_127M,0.685396,0.051457,4
+nervous system development (GO:0007399),415,BulkFormer_50M,0.684504,0.055860,5
+nervous system development (GO:0007399),415,BulkFormer_93M,0.684158,0.053782,6
+nervous system development (GO:0007399),415,Txn_Jatin,0.667432,0.057086,7
+nervous system development (GO:0007399),415,scGPT,0.661077,0.054952,8
+nervous system development (GO:0007399),415,Geneformer,0.647210,0.055612,9
+neutrophil activation involved in immune response (GO:0002283),399,scGPT,0.840095,0.188614,1
+neutrophil activation involved in immune response (GO:0002283),399,Geneformer,0.821068,0.197337,2
+neutrophil activation involved in immune response (GO:0002283),399,BulkFormer_147M,0.820309,0.134225,3
+neutrophil activation involved in immune response (GO:0002283),399,BulkFormer_50M,0.814184,0.135997,4
+neutrophil activation involved in immune response (GO:0002283),399,BulkFormer_93M,0.812531,0.127920,5
+neutrophil activation involved in immune response (GO:0002283),399,BulkFormer_37M,0.806803,0.125049,6
+neutrophil activation involved in immune response (GO:0002283),399,BulkFormer_127M,0.803224,0.112447,7
+neutrophil activation involved in immune response (GO:0002283),372,BRIDGE,0.799681,0.143287,8
+neutrophil activation involved in immune response (GO:0002283),399,Txn_Jatin,0.795985,0.147903,9
+neutrophil degranulation (GO:0043312),396,scGPT,0.841702,0.183438,1
+neutrophil degranulation (GO:0043312),396,Geneformer,0.832115,0.209598,2
+neutrophil degranulation (GO:0043312),396,BulkFormer_147M,0.820762,0.131077,3
+neutrophil degranulation (GO:0043312),369,BRIDGE,0.820633,0.161676,4
+neutrophil degranulation (GO:0043312),396,BulkFormer_50M,0.814650,0.134028,5
+neutrophil degranulation (GO:0043312),396,BulkFormer_93M,0.813165,0.126396,6
+neutrophil degranulation (GO:0043312),396,BulkFormer_37M,0.809496,0.128355,7
+neutrophil degranulation (GO:0043312),396,BulkFormer_127M,0.805237,0.114252,8
+neutrophil degranulation (GO:0043312),396,Txn_Jatin,0.792029,0.150219,9
+neutrophil mediated immunity (GO:0002446),403,scGPT,0.827019,0.183250,1
+neutrophil mediated immunity (GO:0002446),403,BulkFormer_147M,0.817533,0.132613,2
+neutrophil mediated immunity (GO:0002446),403,BulkFormer_93M,0.817085,0.128474,3
+neutrophil mediated immunity (GO:0002446),403,BulkFormer_50M,0.815595,0.136080,4
+neutrophil mediated immunity (GO:0002446),403,Geneformer,0.815077,0.198063,5
+neutrophil mediated immunity (GO:0002446),403,BulkFormer_127M,0.808366,0.115551,6
+neutrophil mediated immunity (GO:0002446),403,BulkFormer_37M,0.807817,0.127189,7
+neutrophil mediated immunity (GO:0002446),375,BRIDGE,0.805431,0.146028,8
+neutrophil mediated immunity (GO:0002446),403,Txn_Jatin,0.799935,0.151738,9
+organelle assembly (GO:0070925),378,Geneformer,0.669928,0.046021,1
+organelle assembly (GO:0070925),379,BulkFormer_50M,0.658830,0.041315,2
+organelle assembly (GO:0070925),379,BulkFormer_147M,0.658183,0.044766,3
+organelle assembly (GO:0070925),379,scGPT,0.655369,0.054144,4
+organelle assembly (GO:0070925),379,BulkFormer_127M,0.649033,0.046140,5
+organelle assembly (GO:0070925),379,BulkFormer_93M,0.640892,0.041706,6
+organelle assembly (GO:0070925),379,BulkFormer_37M,0.638392,0.038382,7
+organelle assembly (GO:0070925),365,BRIDGE,0.628808,0.045103,8
+organelle assembly (GO:0070925),379,Txn_Jatin,0.603644,0.037507,9
+organelle organization (GO:0006996),375,BulkFormer_127M,0.650891,0.040484,1
+organelle organization (GO:0006996),375,BulkFormer_50M,0.646133,0.039842,2
+organelle organization (GO:0006996),375,BulkFormer_93M,0.644435,0.041236,3
+organelle organization (GO:0006996),375,BulkFormer_147M,0.641839,0.040450,4
+organelle organization (GO:0006996),375,BulkFormer_37M,0.633546,0.038550,5
+organelle organization (GO:0006996),375,scGPT,0.615928,0.033709,6
+organelle organization (GO:0006996),375,Geneformer,0.608949,0.035314,7
+organelle organization (GO:0006996),375,Txn_Jatin,0.597507,0.035087,8
+organelle organization (GO:0006996),362,BRIDGE,0.595027,0.035485,9
+phosphorylation (GO:0016310),379,BulkFormer_147M,0.694576,0.055499,1
+phosphorylation (GO:0016310),379,BulkFormer_50M,0.682132,0.056164,2
+phosphorylation (GO:0016310),379,BulkFormer_37M,0.672613,0.053905,3
+phosphorylation (GO:0016310),379,BulkFormer_93M,0.663592,0.047253,4
+phosphorylation (GO:0016310),379,BulkFormer_127M,0.661858,0.046353,5
+phosphorylation (GO:0016310),377,BRIDGE,0.654798,0.046470,6
+phosphorylation (GO:0016310),379,Geneformer,0.649412,0.046704,7
+phosphorylation (GO:0016310),379,scGPT,0.646501,0.045848,8
+phosphorylation (GO:0016310),379,Txn_Jatin,0.642916,0.040123,9
+positive regulation of cell population proliferation (GO:0008284),409,BRIDGE,0.667531,0.057301,1
+positive regulation of cell population proliferation (GO:0008284),431,BulkFormer_147M,0.667347,0.053028,2
+positive regulation of cell population proliferation (GO:0008284),431,BulkFormer_127M,0.666236,0.048269,3
+positive regulation of cell population proliferation (GO:0008284),431,BulkFormer_93M,0.652441,0.046042,4
+positive regulation of cell population proliferation (GO:0008284),431,BulkFormer_50M,0.651434,0.048847,5
+positive regulation of cell population proliferation (GO:0008284),431,BulkFormer_37M,0.650207,0.050823,6
+positive regulation of cell population proliferation (GO:0008284),431,scGPT,0.640744,0.051104,7
+positive regulation of cell population proliferation (GO:0008284),431,Txn_Jatin,0.632753,0.052029,8
+positive regulation of cell population proliferation (GO:0008284),431,Geneformer,0.616505,0.049412,9
+positive regulation of cellular process (GO:0048522),567,BulkFormer_93M,0.649695,0.061881,1
+positive regulation of cellular process (GO:0048522),567,BulkFormer_127M,0.647380,0.061614,2
+positive regulation of cellular process (GO:0048522),567,BulkFormer_147M,0.643576,0.060524,3
+positive regulation of cellular process (GO:0048522),567,BulkFormer_50M,0.631026,0.060862,4
+positive regulation of cellular process (GO:0048522),567,Txn_Jatin,0.630139,0.066571,5
+positive regulation of cellular process (GO:0048522),537,BRIDGE,0.626532,0.065682,6
+positive regulation of cellular process (GO:0048522),567,BulkFormer_37M,0.626428,0.060338,7
+positive regulation of cellular process (GO:0048522),567,scGPT,0.598671,0.051139,8
+positive regulation of cellular process (GO:0048522),567,Geneformer,0.582738,0.056356,9
+positive regulation of gene expression (GO:0010628),440,BulkFormer_147M,0.632814,0.046165,1
+positive regulation of gene expression (GO:0010628),440,BulkFormer_37M,0.629917,0.044778,2
+positive regulation of gene expression (GO:0010628),440,scGPT,0.622757,0.043885,3
+positive regulation of gene expression (GO:0010628),440,BulkFormer_50M,0.622255,0.045113,4
+positive regulation of gene expression (GO:0010628),440,BulkFormer_93M,0.618788,0.043222,5
+positive regulation of gene expression (GO:0010628),440,BulkFormer_127M,0.604219,0.040541,6
+positive regulation of gene expression (GO:0010628),414,BRIDGE,0.601936,0.046599,7
+positive regulation of gene expression (GO:0010628),440,Geneformer,0.589523,0.043509,8
+positive regulation of gene expression (GO:0010628),440,Txn_Jatin,0.578839,0.037758,9
+positive regulation of intracellular signal transduction (GO:1902533),496,BulkFormer_50M,0.646764,0.054481,1
+positive regulation of intracellular signal transduction (GO:1902533),496,BulkFormer_147M,0.642497,0.055014,2
+positive regulation of intracellular signal transduction (GO:1902533),496,BulkFormer_37M,0.630354,0.053664,3
+positive regulation of intracellular signal transduction (GO:1902533),496,scGPT,0.630119,0.050324,4
+positive regulation of intracellular signal transduction (GO:1902533),496,BulkFormer_127M,0.629661,0.047490,5
+positive regulation of intracellular signal transduction (GO:1902533),472,BRIDGE,0.625521,0.050736,6
+positive regulation of intracellular signal transduction (GO:1902533),496,BulkFormer_93M,0.618211,0.046682,7
+positive regulation of intracellular signal transduction (GO:1902533),496,Txn_Jatin,0.605487,0.046336,8
+positive regulation of intracellular signal transduction (GO:1902533),496,Geneformer,0.604270,0.053000,9
+positive regulation of macromolecule metabolic process (GO:0010604),350,BulkFormer_147M,0.651428,0.035678,1
+positive regulation of macromolecule metabolic process (GO:0010604),350,BulkFormer_37M,0.625860,0.036049,2
+positive regulation of macromolecule metabolic process (GO:0010604),350,BulkFormer_127M,0.625106,0.033823,3
+positive regulation of macromolecule metabolic process (GO:0010604),330,BRIDGE,0.623534,0.040891,4
+positive regulation of macromolecule metabolic process (GO:0010604),350,scGPT,0.617010,0.032992,5
+positive regulation of macromolecule metabolic process (GO:0010604),350,Txn_Jatin,0.613729,0.033213,6
+positive regulation of macromolecule metabolic process (GO:0010604),350,BulkFormer_50M,0.611900,0.034050,7
+positive regulation of macromolecule metabolic process (GO:0010604),350,BulkFormer_93M,0.606697,0.033003,8
+positive regulation of macromolecule metabolic process (GO:0010604),350,Geneformer,0.591315,0.034204,9
+positive regulation of nucleic acid-templated transcription (GO:1903508),474,Geneformer,0.695229,0.080015,1
+positive regulation of nucleic acid-templated transcription (GO:1903508),474,scGPT,0.682094,0.076897,2
+positive regulation of nucleic acid-templated transcription (GO:1903508),457,BRIDGE,0.678397,0.075897,3
+positive regulation of nucleic acid-templated transcription (GO:1903508),474,BulkFormer_147M,0.669036,0.058011,4
+positive regulation of nucleic acid-templated transcription (GO:1903508),474,BulkFormer_127M,0.648140,0.052753,5
+positive regulation of nucleic acid-templated transcription (GO:1903508),474,BulkFormer_93M,0.647933,0.051582,6
+positive regulation of nucleic acid-templated transcription (GO:1903508),474,Txn_Jatin,0.638687,0.057196,7
+positive regulation of nucleic acid-templated transcription (GO:1903508),474,BulkFormer_37M,0.637449,0.053167,8
+positive regulation of nucleic acid-templated transcription (GO:1903508),474,BulkFormer_50M,0.628791,0.053480,9
+positive regulation of protein phosphorylation (GO:0001934),344,BulkFormer_147M,0.661816,0.039199,1
+positive regulation of protein phosphorylation (GO:0001934),344,BulkFormer_37M,0.650559,0.039720,2
+positive regulation of protein phosphorylation (GO:0001934),330,BRIDGE,0.648301,0.037823,3
+positive regulation of protein phosphorylation (GO:0001934),344,BulkFormer_127M,0.642569,0.034580,4
+positive regulation of protein phosphorylation (GO:0001934),344,BulkFormer_50M,0.640397,0.039696,5
+positive regulation of protein phosphorylation (GO:0001934),344,BulkFormer_93M,0.627968,0.035591,6
+positive regulation of protein phosphorylation (GO:0001934),344,Txn_Jatin,0.618735,0.035928,7
+positive regulation of protein phosphorylation (GO:0001934),344,Geneformer,0.617805,0.038316,8
+positive regulation of protein phosphorylation (GO:0001934),344,scGPT,0.612557,0.033393,9
+positive regulation of transcription by RNA polymerase II (GO:0045944),815,BRIDGE,0.714356,0.156729,1
+positive regulation of transcription by RNA polymerase II (GO:0045944),838,Geneformer,0.707930,0.138682,2
+positive regulation of transcription by RNA polymerase II (GO:0045944),838,scGPT,0.690802,0.138375,3
+positive regulation of transcription by RNA polymerase II (GO:0045944),838,Txn_Jatin,0.681015,0.114413,4
+positive regulation of transcription by RNA polymerase II (GO:0045944),838,BulkFormer_147M,0.679285,0.107335,5
+positive regulation of transcription by RNA polymerase II (GO:0045944),838,BulkFormer_127M,0.643160,0.094147,6
+positive regulation of transcription by RNA polymerase II (GO:0045944),838,BulkFormer_93M,0.636397,0.087286,7
+positive regulation of transcription by RNA polymerase II (GO:0045944),838,BulkFormer_50M,0.634963,0.094280,8
+positive regulation of transcription by RNA polymerase II (GO:0045944),838,BulkFormer_37M,0.625474,0.094138,9
+"positive regulation of transcription, DNA-templated (GO:0045893)",1078,Geneformer,0.713062,0.177167,1
+"positive regulation of transcription, DNA-templated (GO:0045893)",1048,BRIDGE,0.705844,0.186888,2
+"positive regulation of transcription, DNA-templated (GO:0045893)",1078,scGPT,0.693748,0.178123,3
+"positive regulation of transcription, DNA-templated (GO:0045893)",1078,Txn_Jatin,0.679175,0.146072,4
+"positive regulation of transcription, DNA-templated (GO:0045893)",1078,BulkFormer_147M,0.672635,0.131196,5
+"positive regulation of transcription, DNA-templated (GO:0045893)",1078,BulkFormer_127M,0.642646,0.119410,6
+"positive regulation of transcription, DNA-templated (GO:0045893)",1078,BulkFormer_93M,0.629679,0.106805,7
+"positive regulation of transcription, DNA-templated (GO:0045893)",1078,BulkFormer_50M,0.625559,0.116445,8
+"positive regulation of transcription, DNA-templated (GO:0045893)",1078,BulkFormer_37M,0.623422,0.112999,9
+protein modification by small protein conjugation (GO:0032446),354,Geneformer,0.683220,0.049704,1
+protein modification by small protein conjugation (GO:0032446),354,BulkFormer_147M,0.681976,0.047958,2
+protein modification by small protein conjugation (GO:0032446),354,BulkFormer_50M,0.680994,0.044593,3
+protein modification by small protein conjugation (GO:0032446),354,BulkFormer_93M,0.675326,0.044246,4
+protein modification by small protein conjugation (GO:0032446),354,BulkFormer_37M,0.663258,0.039301,5
+protein modification by small protein conjugation (GO:0032446),354,BulkFormer_127M,0.658779,0.046689,6
+protein modification by small protein conjugation (GO:0032446),354,scGPT,0.649445,0.041235,7
+protein modification by small protein conjugation (GO:0032446),344,BRIDGE,0.604357,0.035024,8
+protein modification by small protein conjugation (GO:0032446),354,Txn_Jatin,0.592339,0.036153,9
+protein phosphorylation (GO:0006468),473,BulkFormer_147M,0.689917,0.062614,1
+protein phosphorylation (GO:0006468),473,BulkFormer_50M,0.675017,0.062140,2
+protein phosphorylation (GO:0006468),473,BulkFormer_127M,0.665536,0.053456,3
+protein phosphorylation (GO:0006468),471,BRIDGE,0.661879,0.056066,4
+protein phosphorylation (GO:0006468),473,BulkFormer_37M,0.660197,0.063563,5
+protein phosphorylation (GO:0006468),473,BulkFormer_93M,0.654844,0.053490,6
+protein phosphorylation (GO:0006468),473,Txn_Jatin,0.643892,0.050033,7
+protein phosphorylation (GO:0006468),473,scGPT,0.640221,0.050210,8
+protein phosphorylation (GO:0006468),473,Geneformer,0.633485,0.052344,9
+protein ubiquitination (GO:0016567),467,Geneformer,0.703650,0.069819,1
+protein ubiquitination (GO:0016567),467,BulkFormer_50M,0.694850,0.066850,2
+protein ubiquitination (GO:0016567),467,BulkFormer_93M,0.690473,0.063324,3
+protein ubiquitination (GO:0016567),467,BulkFormer_127M,0.675160,0.063036,4
+protein ubiquitination (GO:0016567),467,BulkFormer_147M,0.674701,0.063116,5
+protein ubiquitination (GO:0016567),467,scGPT,0.672384,0.066268,6
+protein ubiquitination (GO:0016567),467,BulkFormer_37M,0.662609,0.052207,7
+protein ubiquitination (GO:0016567),455,BRIDGE,0.645154,0.051679,8
+protein ubiquitination (GO:0016567),467,Txn_Jatin,0.636255,0.048279,9
+regulation of apoptotic process (GO:0042981),660,BulkFormer_93M,0.656693,0.080411,1
+regulation of apoptotic process (GO:0042981),660,BulkFormer_147M,0.654124,0.080307,2
+regulation of apoptotic process (GO:0042981),660,BulkFormer_127M,0.645960,0.078106,3
+regulation of apoptotic process (GO:0042981),660,BulkFormer_50M,0.644867,0.076638,4
+regulation of apoptotic process (GO:0042981),660,BulkFormer_37M,0.642837,0.080797,5
+regulation of apoptotic process (GO:0042981),660,Txn_Jatin,0.622021,0.064785,6
+regulation of apoptotic process (GO:0042981),628,BRIDGE,0.617356,0.065519,7
+regulation of apoptotic process (GO:0042981),660,Geneformer,0.608757,0.067626,8
+regulation of apoptotic process (GO:0042981),660,scGPT,0.586427,0.060274,9
+regulation of cell migration (GO:0030334),374,BulkFormer_147M,0.721275,0.055815,1
+regulation of cell migration (GO:0030334),374,BulkFormer_50M,0.707958,0.053178,2
+regulation of cell migration (GO:0030334),374,BulkFormer_127M,0.704836,0.050544,3
+regulation of cell migration (GO:0030334),374,BulkFormer_37M,0.703178,0.052472,4
+regulation of cell migration (GO:0030334),374,scGPT,0.686922,0.052900,5
+regulation of cell migration (GO:0030334),358,BRIDGE,0.685886,0.055693,6
+regulation of cell migration (GO:0030334),374,BulkFormer_93M,0.684996,0.050181,7
+regulation of cell migration (GO:0030334),375,Txn_Jatin,0.684450,0.062738,8
+regulation of cell migration (GO:0030334),375,Geneformer,0.626197,0.054466,9
+regulation of cell population proliferation (GO:0042127),690,BulkFormer_147M,0.641685,0.075174,1
+regulation of cell population proliferation (GO:0042127),690,BulkFormer_93M,0.627171,0.069384,2
+regulation of cell population proliferation (GO:0042127),690,BulkFormer_37M,0.624003,0.070019,3
+regulation of cell population proliferation (GO:0042127),657,BRIDGE,0.622296,0.076116,4
+regulation of cell population proliferation (GO:0042127),690,BulkFormer_50M,0.618541,0.067400,5
+regulation of cell population proliferation (GO:0042127),691,Txn_Jatin,0.618337,0.069615,6
+regulation of cell population proliferation (GO:0042127),690,BulkFormer_127M,0.616917,0.065613,7
+regulation of cell population proliferation (GO:0042127),690,scGPT,0.598040,0.068101,8
+regulation of cell population proliferation (GO:0042127),691,Geneformer,0.579124,0.068913,9
+regulation of cellular macromolecule biosynthetic process (GO:2000112),352,Geneformer,0.671172,0.046422,1
+regulation of cellular macromolecule biosynthetic process (GO:2000112),352,scGPT,0.643606,0.037586,2
+regulation of cellular macromolecule biosynthetic process (GO:2000112),352,BulkFormer_147M,0.637387,0.038309,3
+regulation of cellular macromolecule biosynthetic process (GO:2000112),352,Txn_Jatin,0.635940,0.039748,4
+regulation of cellular macromolecule biosynthetic process (GO:2000112),352,BulkFormer_127M,0.635051,0.040250,5
+regulation of cellular macromolecule biosynthetic process (GO:2000112),345,BRIDGE,0.622557,0.038866,6
+regulation of cellular macromolecule biosynthetic process (GO:2000112),352,BulkFormer_93M,0.612331,0.035670,7
+regulation of cellular macromolecule biosynthetic process (GO:2000112),352,BulkFormer_50M,0.607326,0.033469,8
+regulation of cellular macromolecule biosynthetic process (GO:2000112),352,BulkFormer_37M,0.592434,0.032166,9
+regulation of gene expression (GO:0010468),886,Geneformer,0.643132,0.103598,1
+regulation of gene expression (GO:0010468),885,scGPT,0.642004,0.097498,2
+regulation of gene expression (GO:0010468),850,BRIDGE,0.639673,0.104918,3
+regulation of gene expression (GO:0010468),886,BulkFormer_127M,0.627404,0.090562,4
+regulation of gene expression (GO:0010468),886,Txn_Jatin,0.623384,0.091031,5
+regulation of gene expression (GO:0010468),886,BulkFormer_147M,0.619841,0.087890,6
+regulation of gene expression (GO:0010468),886,BulkFormer_93M,0.612564,0.079569,7
+regulation of gene expression (GO:0010468),886,BulkFormer_50M,0.600759,0.084796,8
+regulation of gene expression (GO:0010468),886,BulkFormer_37M,0.591219,0.079191,9
+regulation of intracellular signal transduction (GO:1902531),405,BulkFormer_50M,0.645647,0.043859,1
+regulation of intracellular signal transduction (GO:1902531),405,Geneformer,0.636810,0.044702,2
+regulation of intracellular signal transduction (GO:1902531),405,BulkFormer_93M,0.633414,0.043048,3
+regulation of intracellular signal transduction (GO:1902531),405,scGPT,0.631951,0.041315,4
+regulation of intracellular signal transduction (GO:1902531),405,BulkFormer_147M,0.630853,0.040264,5
+regulation of intracellular signal transduction (GO:1902531),405,BulkFormer_127M,0.629968,0.039508,6
+regulation of intracellular signal transduction (GO:1902531),405,Txn_Jatin,0.623455,0.040122,7
+regulation of intracellular signal transduction (GO:1902531),397,BRIDGE,0.620946,0.044959,8
+regulation of intracellular signal transduction (GO:1902531),405,BulkFormer_37M,0.616224,0.037434,9
+regulation of transcription by RNA polymerase II (GO:0006357),1610,BRIDGE,0.763763,0.350652,1
+regulation of transcription by RNA polymerase II (GO:0006357),1663,Geneformer,0.763362,0.360768,2
+regulation of transcription by RNA polymerase II (GO:0006357),1663,Txn_Jatin,0.730889,0.295067,3
+regulation of transcription by RNA polymerase II (GO:0006357),1663,scGPT,0.727043,0.277504,4
+regulation of transcription by RNA polymerase II (GO:0006357),1661,BulkFormer_147M,0.675038,0.203899,5
+regulation of transcription by RNA polymerase II (GO:0006357),1661,BulkFormer_93M,0.641817,0.177985,6
+regulation of transcription by RNA polymerase II (GO:0006357),1661,BulkFormer_127M,0.640796,0.177692,7
+regulation of transcription by RNA polymerase II (GO:0006357),1661,BulkFormer_50M,0.632155,0.178357,8
+regulation of transcription by RNA polymerase II (GO:0006357),1661,BulkFormer_37M,0.616453,0.166866,9
+"regulation of transcription, DNA-templated (GO:0006355)",1643,Geneformer,0.768457,0.370810,1
+"regulation of transcription, DNA-templated (GO:0006355)",1578,BRIDGE,0.763113,0.335404,2
+"regulation of transcription, DNA-templated (GO:0006355)",1643,scGPT,0.742468,0.301578,3
+"regulation of transcription, DNA-templated (GO:0006355)",1643,Txn_Jatin,0.734114,0.288643,4
+"regulation of transcription, DNA-templated (GO:0006355)",1641,BulkFormer_147M,0.672959,0.203430,5
+"regulation of transcription, DNA-templated (GO:0006355)",1641,BulkFormer_50M,0.643365,0.180500,6
+"regulation of transcription, DNA-templated (GO:0006355)",1641,BulkFormer_127M,0.640670,0.173171,7
+"regulation of transcription, DNA-templated (GO:0006355)",1641,BulkFormer_93M,0.640289,0.175260,8
+"regulation of transcription, DNA-templated (GO:0006355)",1641,BulkFormer_37M,0.619003,0.163884,9
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169),382,BulkFormer_50M,0.669304,0.048085,1
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169),382,BulkFormer_37M,0.662475,0.044736,2
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169),382,BulkFormer_147M,0.655538,0.042503,3
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169),382,scGPT,0.651473,0.046268,4
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169),382,Txn_Jatin,0.648315,0.040757,5
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169),382,Geneformer,0.641752,0.044839,6
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169),382,BulkFormer_127M,0.641687,0.039840,7
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169),382,BulkFormer_93M,0.635722,0.043457,8
+transmembrane receptor protein tyrosine kinase signaling pathway (GO:0007169),371,BRIDGE,0.634936,0.041902,9

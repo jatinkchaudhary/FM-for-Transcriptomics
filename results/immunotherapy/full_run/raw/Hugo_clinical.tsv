@@ -1,0 +1,27 @@
+Index	Sample_id	response_label	RECIST	Timing	cohort	cancer_type	sequencer	ICI	ICI_target	Tissue	Tissue_map	Age	Alive (Y=1, No=0)	Gender	Overall_survival	Anatomical Location	log2_tmb.dan	log2_tmb.wang	Patient ID	Study site	Disease Status	Overall Survival	Vital Status	Previous MAPKi	BRAF	NRAS	NF1	SRA
+Pt1-baseline	Pt1	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	66	0	F	607.0	L post. Thigh, inf., SC	5.72228283673154	5.79230862800998	Pt1	UCLA	M1b	607.0	Dead	N	-	Q61L		SRR3184279
+Pt2-baseline	Pt2	R	PR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Lung	Lung	55	1	M	927.0	Lung	5.84022409410295	5.92954770394671	Pt2	UCLA	M1c	927.0	Alive	N	-	-	Frame_Shift_Ins H31fs, Splice_Site	SRR3184280
+Pt4-baseline	Pt4	R	PR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Adrenal	Other	62	1	M	948.0	Adrenal	6.84127882428827	6.93713130864233	Pt4	UCLA	M1c	948.0	Alive	Y	L331F	-	S2597*	SRR3184281
+Pt5-baseline	Pt5	R	PR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	61	1	M	439.0	L Chestwall, SC	3.2475032537608	3.36949377813941	Pt5	UCLA	M1c	439.0	Alive	N	V600E	-	-	SRR3184282
+Pt6-baseline	Pt6	R	PR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	51	1	M	882.0	L forearm, SC	2.79230862800998	2.88250643698156	Pt6	UCLA	M1c	882.0	Alive	Y	V600E	-	-	SRR3184283
+Pt7-baseline	Pt7	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	55	0	F	662.0	Crown/scalp, SC	5.12697839178892	5.22720583952758	Pt7	UCLA	M1c	662.0	Dead	N		-	-	SRR3184284
+Pt8-baseline	Pt8	R	CR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	69	1	M		R leg, SC			Pt8	UCLA	M1a		Alive	N	V600R	-	-	SRR3184285
+Pt9-baseline	Pt9	R	CR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	68	1	M	1054.0	L forearm, SC	4.02298766053139	4.13043395042514	Pt9	UCLA	M0	1054.0	Alive	N	V600K	-	-	SRR3184286
+Pt10-baseline	Pt10	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	60	1	M	387.0	Neck, SC	2.79230862800998	2.90420150808087	Pt10	UCLA	M1a	387.0	Alive	Y		-	-	SRR3184287
+Pt12-baseline	Pt12	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	59	0	M	327.0	L lower abdomen, SC	1.91492791467393	1.95705339034661	Pt12	UCLA	M1c	327.0	Dead	N	V600E	-	-	SRR3184288
+Pt13-baseline	Pt13	R	CR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	53	1	F	917.0	Lower back, SC	3.79230862800998	3.87153531916055	Pt13	UCLA	M1c	917.0	Alive	N		-	-	SRR3184289
+Pt14-baseline	Pt14	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	27	1	F	54.0	R neck, SC	5.09903185128601	5.20334116687465	Pt14	UCLA	M1c	54.0	Alive	N	V600E	-	R2349C	SRR3184290
+Pt15-baseline	Pt15	R	PR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Lymph-node	Lymph node	70	0	M	980.0	R clavicle, LN	4.48736849514042	4.57282193784894	Pt15	UCLA	M1b	980.0	Dead	Y	-	G13D	Q1255*	SRR3184291
+Pt19-baseline	Pt19	R	PR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	45	1	M	1060.0	Chest, SC	4.23899175390529	4.3399495025254	Pt19	UCLA	M1c	1060.0	Alive	N	-	Q61K	-	SRR3184293
+Pt20-baseline	Pt20	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Clavicle	Other	63	0	F	337.0	L clavicle	4.25174024664727	4.35774857046631	Pt20	UCLA	M1c	337.0	Dead	N	-	Q61R	K615K Splice Site	SRR3184294
+Pt22-baseline	Pt22	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	55	0	M	182.0	Left Flank, SC	2.79811424969118	2.88250643698156	Pt22	UCLA	M1c	182.0	Dead	N	V600E	-	-	SRR3184295
+Pt23-baseline	Pt23	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	63	0	M	103.0	Left Leg, SC	3.12351453648535	3.1645418047454	Pt23	UCLA	M1c	103.0	Dead	Y	V600K	-	-	SRR3184296
+Pt25-baseline	Pt25	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Inguinal	Other	74	0	M	262.0	L Outer Inguinal	2.09550016031575	2.1418930658002	Pt25	UCLA	M1c	262.0	Dead	Y	-	-	-	SRR3184297
+Pt27-baseline	Pt27	R	CR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	R upper arm	SKin	83	1	M	548.0	R upper arm	4.98785943712778	5.09432100615049	Pt27	UCLA	M1c	548.0	Alive	N	-	T50I	-	SRR3184298
+Pt28-baseline	Pt28	R	PR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	82	0	M	439.0	Scalp, SC	4.65349561343664	4.76292482122888	Pt28	UCLA	M1c	439.0	Dead	N	-	-	R1653C	SRR3184300
+Pt29-baseline	Pt29	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Lung	Lung	84	0	M	269.0	Lung	3.06693100811898	3.15099527290746	Pt29	UCLA	M1c	269.0	Dead	Y	-	-	-	SRR3184301
+Pt31-baseline	Pt31	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Colon	Other	47	1	M	704.0	Sigmoid colon	4.00050364638001	4.10957534552748	Pt31	VIC	M1c	704.0	Alive	N	V600E	-	-	SRR3184302
+Pt32-baseline	Pt32	NR	PD	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Adbdominal wall	Skin	47	0	M	171.0	Abdominal wall	2.28105581347183	2.40796792595405	Pt32	VIC	M1c	171.0	Dead	Y	V600E	-	-	SRR3184303
+Pt35-baseline	Pt35	R	PR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Skin	Skin	65	1	F	427.0	Flank	2.75100165385306	2.84373686681698	Pt35	VIC	M1c	427.0	Alive	Y	V600E	-	-	SRR3184304
+Pt37-baseline	Pt37	R	PR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Bowel	Other	70	1	F	364.0	Small bowel	3.71769556723588	3.81825189526226	Pt37	VIC	M1c	364.0	Alive	Y	K483T, D594N	-	-	SRR3184305
+Pt38-baseline	Pt38	R	PR	Pre	Hugo	SKCM	HiSeq2000	Pembrolizumab	PD1	Lymph-node	Lymph node	57	1	F	448.0	Cervical, LN	1.96739533456807	2.09550016031575	Pt38	VIC	M1c	448.0	Alive	Y	-	-	-	SRR3184306

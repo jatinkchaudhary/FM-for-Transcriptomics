@@ -1,0 +1,240 @@
+Index	Sample_id	cohort	cancer_type	ICI	ICI_target	RECIST	response_label	label	Timing	patient_id	Overall_survival	Progression Free Survival (Days)
+1_ipiPD1_PRE	ipiPD1_1_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	PD	NR	0	Pre	1	689.0	15.0
+2_ipiPD1_PRE	ipiPD1_2_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	PD	NR	0	Pre	2	530.0	34.0
+6_ipiPD1_PRE	ipiPD1_6_PRE	Gide	SKCM	Ipilimumab + Nivolumab	CTLA4+PD1	PD	NR	0	Pre	6	108.0	41.0
+7_ipiPD1_PRE	ipiPD1_7_PRE	Gide	SKCM	Ipilimumab + Nivolumab	CTLA4+PD1	PR	R	1	Pre	7	169.0	81.0
+8_ipiPD1_PRE	ipiPD1_8_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	PD	NR	0	Pre	8	637.0	81.0
+10_ipiPD1_PRE	ipiPD1_10_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	PD	NR	0	Pre	10	176.0	81.0
+12_ipiPD1_PRE	ipiPD1_12_PRE	Gide	SKCM	Ipilimumab + Nivolumab	CTLA4+PD1	PD	NR	0	Pre	12	293.0	82.0
+13_ipiPD1_PRE	ipiPD1_13_PRE	Gide	SKCM	Ipilimumab + Nivolumab	CTLA4+PD1	PR	R	1	Pre	13	357.0	108.0
+14_ipiPD1_PRE	ipiPD1_14_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	SD	NR	0	Pre	14	691.0	123.0
+15_ipiPD1_PRE	ipiPD1_15_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	SD	NR	0	Pre	15	660.0	152.0
+17_ipiPD1_PRE	ipiPD1_17_PRE	Gide	SKCM	Ipilimumab + Nivolumab	CTLA4+PD1	PR	R	1	Pre	17	196.0	196.0
+19_ipiPD1_PRE	ipiPD1_19_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	SD	NR	0	Pre	19	635.0	301.0
+20_ipiPD1_PRE	ipiPD1_20_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	SD	NR	0	Pre	20	538.0	386.0
+21_ipiPD1_PRE	ipiPD1_21_PRE	Gide	SKCM	Ipilimumab + Nivolumab	CTLA4+PD1	PR	R	1	Pre	21	410.0	410.0
+23_ipiPD1_PRE	ipiPD1_23_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	PR	R	1	Pre	23	506.0	506.0
+24_ipiPD1_PRE	ipiPD1_24_PRE	Gide	SKCM	Ipilimumab + Nivolumab	CTLA4+PD1	PR	R	1	Pre	24	1203.0	509.0
+25_ipiPD1_PRE	ipiPD1_25_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	SD	NR	0	Pre	25	518.0	518.0
+26_ipiPD1_PRE	ipiPD1_26_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	CR	R	1	Pre	26	544.0	544.0
+27_ipiPD1_PRE	ipiPD1_27_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	CR	R	1	Pre	27	546.0	546.0
+32_ipiPD1_PRE	ipiPD1_32_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	CR	R	1	Pre	32	597.0	597.0
+33_ipiPD1_PRE	ipiPD1_33_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	PR	R	1	Pre	33	609.0	609.0
+34_ipiPD1_PRE	ipiPD1_34_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	CR	R	1	Pre	34	623.0	623.0
+35_ipiPD1_PRE	ipiPD1_35_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	CR	R	1	Pre	35	627.0	627.0
+36_ipiPD1_PRE	ipiPD1_36_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	CR	R	1	Pre	36	637.0	637.0
+37_ipiPD1_PRE	ipiPD1_37_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	PR	R	1	Pre	37	637.0	637.0
+38_ipiPD1_PRE	ipiPD1_38_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	CR	R	1	Pre	38	650.0	650.0
+44_ipiPD1_PRE	ipiPD1_44_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	PR	R	1	Pre	44	695.0	695.0
+45_ipiPD1_PRE	ipiPD1_45_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	CR	R	1	Pre	45	721.0	721.0
+46_ipiPD1_PRE	ipiPD1_46_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	CR	R	1	Pre	46	721.0	721.0
+47_ipiPD1_PRE	ipiPD1_47_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	PR	R	1	Pre	47	732.0	732.0
+49_ipiPD1_PRE	ipiPD1_49_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	CR	R	1	Pre	49	775.0	775.0
+50_ipiPD1_PRE	ipiPD1_50_PRE	Gide	SKCM	Ipilimumab + Pembrolizumab	CTLA4+PD1	PR	R	1	Pre	50	904.0	904.0
+2_PD1_PRE	PD1_2_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	2	65.0	13.0
+3_PD1_PRE	PD1_3_PRE	Gide	SKCM	Nivolumab	PD1	PD	NR	0	Pre	3	59.0	23.0
+4_PD1_PRE	PD1_4_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	4	22.0	23.0
+5_PD1_PRE	PD1_5_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	5	155.0	39.0
+6_PD1_PRE	PD1_6_PRE	Gide	SKCM	Nivolumab	PD1	PD	NR	0	Pre	6	94.0	42.0
+7_PD1_PRE	PD1_7_PRE	Gide	SKCM	Nivolumab	PD1	PD	NR	0	Pre	7	80.0	47.0
+8_PD1_PRE	PD1_8_PRE	Gide	SKCM	Nivolumab	PD1	PD	NR	0	Pre	8	58.0	58.0
+9_PD1_PRE	PD1_9_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	9	99.0	71.0
+10_PD1_PRE	PD1_10_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	10	551.0	76.0
+11_PD1_PRE	PD1_11_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	11	166.0	78.0
+12_PD1_PRE	PD1_12_PRE	Gide	SKCM	Pembrolizumab	PD1	SD	NR	0	Pre	12	199.0	80.0
+13_PD1_PRE	PD1_13_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	13	96.0	82.0
+14_PD1_PRE	PD1_14_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	14	993.0	83.0
+15_PD1_PRE	PD1_15_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	15	300.0	84.0
+16_PD1_PRE	PD1_16_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	16	169.0	84.0
+17_PD1_PRE	PD1_17_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	17	258.0	96.0
+18_PD1_PRE	PD1_18_PRE	Gide	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre	18	228.0	100.0
+19_PD1_PRE	PD1_19_PRE	Gide	SKCM	Pembrolizumab	PD1	SD	NR	0	Pre	19	385.0	125.0
+21_PD1_PRE	PD1_21_PRE	Gide	SKCM	Pembrolizumab	PD1	SD	NR	0	Pre	21	551.0	166.0
+23_PD1_PRE	PD1_23_PRE	Gide	SKCM	Nivolumab	PD1	SD	NR	0	Pre	23	191.0	191.0
+25_PD1_PRE	PD1_25_PRE	Gide	SKCM	Nivolumab	PD1	PR	R	1	Pre	25	897.0	271.0
+27_PD1_PRE	PD1_27_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	27	1067.0	314.0
+29_PD1_PRE	PD1_29_PRE	Gide	SKCM	Pembrolizumab	PD1	SD	NR	0	Pre	29	825.0	335.0
+30_PD1_PRE	PD1_30_PRE	Gide	SKCM	Pembrolizumab	PD1	SD	NR	0	Pre	30	581.0	358.0
+34_PD1_PRE	PD1_34_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	34	878.0	544.0
+35_PD1_PRE	PD1_35_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	35	1091.0	586.0
+36_PD1_PRE	PD1_36_PRE	Gide	SKCM	Nivolumab	PD1	PR	R	1	Pre	36	607.0	590.0
+38_PD1_PRE	PD1_38_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	38	1547.0	755.0
+40_PD1_PRE	PD1_40_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	40	845.0	845.0
+41_PD1_PRE	PD1_41_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	41	886.0	870.0
+42_PD1_PRE	PD1_42_PRE	Gide	SKCM	Pembrolizumab	PD1	CR	R	1	Pre	42	891.0	891.0
+44_PD1_PRE	PD1_44_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	44	1075.0	1075.0
+45_PD1_PRE	PD1_45_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	45	1085.0	1085.0
+46_PD1_PRE	PD1_46_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	46	1098.0	1098.0
+47_PD1_PRE	PD1_47_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	47	1174.0	1174.0
+48_PD1_PRE	PD1_48_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	48	1189.0	1189.0
+49_PD1_PRE	PD1_49_PRE	Gide	SKCM	Nivolumab	PD1	CR	R	1	Pre	49	1328.0	1328.0
+50_PD1_PRE	PD1_50_PRE	Gide	SKCM	Nivolumab	PD1	CR	R	1	Pre	50	1342.0	1342.0
+52_PD1_PRE	PD1_52_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	52	1553.0	1553.0
+53_PD1_PRE	PD1_53_PRE	Gide	SKCM	Pembrolizumab	PD1	CR	R	1	Pre	53	1589.0	1589.0
+54_PD1_PRE	PD1_54_PRE	Gide	SKCM	Pembrolizumab	PD1	PR	R	1	Pre	54	1603.0	1603.0
+Pt1_Pre_AD101148	Pt1_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt1	160.0	
+Pt2_Pre_AD101150	Pt2_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt2	275.0	
+Pt3_Pre_E9024733	Pt3_Pre	Riaz	SKCM	Nivolumab	PD1	PR	R	1	Pre	Pt3	1144.0	
+Pt4_Pre_E9021023	Pt4_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt4	633.0	
+Pt5_Pre_E9021022	Pt5_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt5	222.0	
+Pt8_Pre_AD153354	Pt8_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt8	259.0	
+Pt9_Pre_E9021024	Pt9_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt9	92.0	
+Pt10_Pre_E9047565	Pt10_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt10	256.0	
+Pt11_Pre_AD153352	Pt11_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt11	837.0	
+Pt17_Pre_E9047563	Pt17_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt17	57.0	
+Pt18_Pre_E9024732	Pt18_Pre	Riaz	SKCM	Nivolumab	PD1	PR	R	1	Pre	Pt18	1073.0	
+Pt23_Pre_AD313075	Pt23_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt23	52.0	
+Pt24_Pre_AD436687	Pt24_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt24	149.0	
+Pt26_Pre_AD467789	Pt26_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt26	952.0	
+Pt27_Pre_AD453873	Pt27_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt27	475.0	
+Pt28_Pre_AD297619	Pt28_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt28	740.0	
+Pt29_Pre_AD497504	Pt29_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt29	273.0	
+Pt30_Pre_AD497503	Pt30_Pre	Riaz	SKCM	Nivolumab	PD1	CR	R	1	Pre	Pt30	1053.0	
+Pt31_Pre_AD453872	Pt31_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt31	961.0	
+Pt34_Pre_AD466985	Pt34_Pre	Riaz	SKCM	Nivolumab	PD1	PR	R	1	Pre	Pt34	834.0	
+Pt36_Pre_AD467095	Pt36_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt36	1081.0	
+Pt37_Pre_AD502452	Pt37_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt37	646.0	
+Pt38_Pre_E9200719	Pt38_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt38	167.0	
+Pt39_Pre_AD485899	Pt39_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt39	166.0	
+Pt44_Pre_AD467790	Pt44_Pre	Riaz	SKCM	Nivolumab	PD1	PR	R	1	Pre	Pt44	1093.0	
+Pt46_Pre_AD467096	Pt46_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt46	227.0	
+Pt47_Pre_AD506073	Pt47_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt47	718.0	
+Pt48_Pre_E9047561	Pt48_Pre	Riaz	SKCM	Nivolumab	PD1	CR	R	1	Pre	Pt48	1046.0	
+Pt49_Pre_AD667851	Pt49_Pre	Riaz	SKCM	Nivolumab	PD1	PR	R	1	Pre	Pt49	827.0	
+Pt52_Pre_AD506075	Pt52_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt52	476.0	
+Pt59_Pre_AD823915	Pt59_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt59	708.0	
+Pt62_Pre_AD608303	Pt62_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt62	472.0	
+Pt65_Pre_AD793919	Pt65_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt65	692.0	
+Pt66_Pre_AD667850	Pt66_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt66	542.0	
+Pt67_Pre_AD506074	Pt67_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt67	1032.0	
+Pt72_Pre_AD793922	Pt72_Pre	Riaz	SKCM	Nivolumab	PD1	PR	R	1	Pre	Pt72	770.0	
+Pt76_Pre_AD667852	Pt76_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt76	10.0	
+Pt77_Pre_AD733591	Pt77_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt77	471.0	
+Pt78_Pre_AD467018	Pt78_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt78	78.0	
+Pt79_Pre_AD733587	Pt79_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt79	218.0	
+Pt82_Pre_AD823914	Pt82_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt82	429.0	
+Pt84_Pre_AD486532	Pt84_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt84	151.0	
+Pt85_Pre_AD486329	Pt85_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt85	904.0	
+Pt89_Pre_AE070951	Pt89_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt89	844.0	
+Pt90_Pre_AD467873	Pt90_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt90	174.0	
+Pt92_Pre_AE134060	Pt92_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt92	333.0	
+Pt94_Pre_AD732850	Pt94_Pre	Riaz	SKCM	Nivolumab	PD1	CR	R	1	Pre	Pt94	981.0	
+Pt98_Pre_AD733586	Pt98_Pre	Riaz	SKCM	Nivolumab	PD1	SD	NR	0	Pre	Pt98	747.0	
+Pt101_Pre_AD486328	Pt101_Pre	Riaz	SKCM	Nivolumab	PD1	PR	R	1	Pre	Pt101	834.0	
+Pt103_Pre_AE134058	Pt103_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt103	484.0	
+Pt106_Pre_AD502250	Pt106_Pre	Riaz	SKCM	Nivolumab	PD1	PD	NR	0	Pre	Pt106	91.0	
+Pt1-baseline	Pt1	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		607.0	
+Pt2-baseline	Pt2	Hugo	SKCM	Pembrolizumab	PD1	PR	R	1	Pre		927.0	
+Pt4-baseline	Pt4	Hugo	SKCM	Pembrolizumab	PD1	PR	R	1	Pre		948.0	
+Pt5-baseline	Pt5	Hugo	SKCM	Pembrolizumab	PD1	PR	R	1	Pre		439.0	
+Pt6-baseline	Pt6	Hugo	SKCM	Pembrolizumab	PD1	PR	R	1	Pre		882.0	
+Pt7-baseline	Pt7	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		662.0	
+Pt8-baseline	Pt8	Hugo	SKCM	Pembrolizumab	PD1	CR	R	1	Pre			
+Pt9-baseline	Pt9	Hugo	SKCM	Pembrolizumab	PD1	CR	R	1	Pre		1054.0	
+Pt10-baseline	Pt10	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		387.0	
+Pt12-baseline	Pt12	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		327.0	
+Pt13-baseline	Pt13	Hugo	SKCM	Pembrolizumab	PD1	CR	R	1	Pre		917.0	
+Pt14-baseline	Pt14	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		54.0	
+Pt15-baseline	Pt15	Hugo	SKCM	Pembrolizumab	PD1	PR	R	1	Pre		980.0	
+Pt19-baseline	Pt19	Hugo	SKCM	Pembrolizumab	PD1	PR	R	1	Pre		1060.0	
+Pt20-baseline	Pt20	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		337.0	
+Pt22-baseline	Pt22	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		182.0	
+Pt23-baseline	Pt23	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		103.0	
+Pt25-baseline	Pt25	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		262.0	
+Pt27-baseline	Pt27	Hugo	SKCM	Pembrolizumab	PD1	CR	R	1	Pre		548.0	
+Pt28-baseline	Pt28	Hugo	SKCM	Pembrolizumab	PD1	PR	R	1	Pre		439.0	
+Pt29-baseline	Pt29	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		269.0	
+Pt31-baseline	Pt31	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		704.0	
+Pt32-baseline	Pt32	Hugo	SKCM	Pembrolizumab	PD1	PD	NR	0	Pre		171.0	
+Pt35-baseline	Pt35	Hugo	SKCM	Pembrolizumab	PD1	PR	R	1	Pre		427.0	
+Pt37-baseline	Pt37	Hugo	SKCM	Pembrolizumab	PD1	PR	R	1	Pre		364.0	
+Pt38-baseline	Pt38	Hugo	SKCM	Pembrolizumab	PD1	PR	R	1	Pre		448.0	
+UCC_Rose_RS.03238999	RS-03238999	Rose	BLCA	Durvalumab	PD-L1	PD	NR	0	Pre	BACI153		
+UCC_Rose_RS.03239000	RS-03239000	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI163		
+UCC_Rose_RS.03239001	RS-03239001	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI165_1		
+UCC_Rose_RS.03239002	RS-03239002	Rose	BLCA	Atezolizumab	PD-L1	PR	R	1	Pre	BACI151		
+UCC_Rose_RS.03239003	RS-03239003	Rose	BLCA	Nivolumab	PD1	PD	NR	0	Pre	BACI175		
+UCC_Rose_RS.03239004	RS-03239004	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI139		
+UCC_Rose_RS.03239005	RS-03239005	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI124		
+UCC_Rose_RS.03239006	RS-03239006	Rose	BLCA	Pembrolizumab	PD1	PR	R	1	Pre	BACI113		
+UCC_Rose_RS.03239007	RS-03239007	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI155		
+UCC_Rose_RS.03239008	RS-03239008	Rose	BLCA	Pembrolizumab	PD1	SD	NR	0	Pre	BACI109		
+UCC_Rose_RS.03239009	RS-03239009	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI123		
+UCC_Rose_RS.03239010	RS-03239010	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI182		
+UCC_Rose_RS.03239011	RS-03239011	Rose	BLCA	Atezolizumab	PD-L1	PR	R	1	Pre	BACI172		
+UCC_Rose_RS.03239012	RS-03239012	Rose	BLCA	Atezolizumab	PD-L1	SD	NR	0	Pre	BACI152		
+UCC_Rose_RS.03239013	RS-03239013	Rose	BLCA	Pembrolizumab	PD1	CR	R	1	Pre	BACI208		
+UCC_Rose_RS.03239014	RS-03239014	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI156		
+UCC_Rose_RS.03239015	RS-03239015	Rose	BLCA	Atezolizumab	PD-L1	SD	NR	0	Pre	BACI180		
+UCC_Rose_RS.03239016	RS-03239016	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI185		
+UCC_Rose_RS.03239017	RS-03239017	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI119		
+UCC_Rose_RS.03239018	RS-03239018	Rose	BLCA	Nivolumab	PD1	PD	NR	0	Pre	BACI164		
+UCC_Rose_RS.03239019	RS-03239019	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI211		
+UCC_Rose_RS.03239020	RS-03239020	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI193		
+UCC_Rose_RS.03239021	RS-03239021	Rose	BLCA	Durvalumab	PD-L1	PD	NR	0	Pre	BACI188		
+UCC_Rose_RS.03239022	RS-03239022	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI196		
+UCC_Rose_RS.03239023	RS-03239023	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI161		
+UCC_Rose_RS.03239024	RS-03239024	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI149		
+UCC_Rose_RS.03239025	RS-03239025	Rose	BLCA	Atezolizumab	PD-L1	CR	R	1	Pre	BACI138		
+UCC_Rose_RS.03239026	RS-03239026	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI206		
+UCC_Rose_RS.03239027	RS-03239027	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI162		
+UCC_Rose_RS.03239028	RS-03239028	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI181		
+UCC_Rose_RS.03239029	RS-03239029	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI158		
+UCC_Rose_RS.03239031	RS-03239031	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI195		
+UCC_Rose_RS.03239032	RS-03239032	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI116		
+UCC_Rose_RS.03239033	RS-03239033	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI187		
+UCC_Rose_RS.03239034	RS-03239034	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI122		
+UCC_Rose_RS.03239035	RS-03239035	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI203		
+UCC_Rose_RS.03239036	RS-03239036	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI110		
+UCC_Rose_RS.03239037	RS-03239037	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI210		
+UCC_Rose_RS.03239038	RS-03239038	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI140		
+UCC_Rose_RS.03239039	RS-03239039	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI121		
+UCC_Rose_RS.03239040	RS-03239040	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI194		
+UCC_Rose_RS.03239041	RS-03239041	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI148		
+UCC_Rose_RS.03239042	RS-03239042	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI150		
+UCC_Rose_RS.03239043	RS-03239043	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI135		
+UCC_Rose_RS.03238953	RS-03238953	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI170		
+UCC_Rose_RS.03238954	RS-03238954	Rose	BLCA	Pembrolizumab	PD1	SD	NR	0	Pre	BACI191		
+UCC_Rose_RS.03238955	RS-03238955	Rose	BLCA	Pembrolizumab	PD1	PR	R	1	Pre	BACI192		
+UCC_Rose_RS.03238956	RS-03238956	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI190		
+UCC_Rose_RS.03238957	RS-03238957	Rose	BLCA	Avelumab	PD-L1	PD	NR	0	Pre	BACI160		
+UCC_Rose_RS.03238958	RS-03238958	Rose	BLCA	Pembrolizumab	PD1	CR	R	1	Pre	BACI209		
+UCC_Rose_RS.03238959	RS-03238959	Rose	BLCA	Pembrolizumab	PD1	PR	R	1	Pre	BACI114		
+UCC_Rose_RS.03238960	RS-03238960	Rose	BLCA	Atezolizumab	PD-L1	CR	R	1	Pre	BACI107		
+UCC_Rose_RS.03238961	RS-03238961	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI136		
+UCC_Rose_RS.03238962	RS-03238962	Rose	BLCA	Pembrolizumab	PD1	PR	R	1	Pre	BACI207		
+UCC_Rose_RS.03238963	RS-03238963	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI173		
+UCC_Rose_RS.03238964	RS-03238964	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI165_2		
+UCC_Rose_RS.03238965	RS-03238965	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI189		
+UCC_Rose_RS.03238966	RS-03238966	Rose	BLCA	Atezolizumab	PD-L1	CR	R	1	Pre	BACI112		
+UCC_Rose_RS.03238967	RS-03238967	Rose	BLCA	Atezolizumab	PD-L1	PR	R	1	Pre	BACI111		
+UCC_Rose_RS.03238968	RS-03238968	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI131		
+UCC_Rose_RS.03238969	RS-03238969	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI128		
+UCC_Rose_RS.03238970	RS-03238970	Rose	BLCA	Atezolizumab	PD-L1	CR	R	1	Pre	BACI120		
+UCC_Rose_RS.03238971	RS-03238971	Rose	BLCA	Atezolizumab	PD-L1	CR	R	1	Pre	BACI186		
+UCC_Rose_RS.03238972	RS-03238972	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI154		
+UCC_Rose_RS.03238973	RS-03238973	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI133		
+UCC_Rose_RS.03238974	RS-03238974	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI167		
+UCC_Rose_RS.03238975	RS-03238975	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI204		
+UCC_Rose_RS.03238976	RS-03238976	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI137		
+UCC_Rose_RS.03238977	RS-03238977	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI118		
+UCC_Rose_RS.03238978	RS-03238978	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI184		
+UCC_Rose_RS.03238979	RS-03238979	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI205		
+UCC_Rose_RS.03238980	RS-03238980	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI201		
+UCC_Rose_RS.03238981	RS-03238981	Rose	BLCA	Atezolizumab	PD-L1	PR	R	1	Pre	BACI159		
+UCC_Rose_RS.03238982	RS-03238982	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI144		
+UCC_Rose_RS.03238983	RS-03238983	Rose	BLCA	Nivolumab	PD1	PD	NR	0	Pre	BACI183		
+UCC_Rose_RS.03238984	RS-03238984	Rose	BLCA	Pembrolizumab	PD1	PR	R	1	Pre	BACI157		
+UCC_Rose_RS.03238985	RS-03238985	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI219		
+UCC_Rose_RS.03238986	RS-03238986	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI142		
+UCC_Rose_RS.03238987	RS-03238987	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI169		
+UCC_Rose_RS.03238988	RS-03238988	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI202		
+UCC_Rose_RS.03238989	RS-03238989	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI177		
+UCC_Rose_RS.03238990	RS-03238990	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI197		
+UCC_Rose_RS.03238991	RS-03238991	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI143		
+UCC_Rose_RS.03238992	RS-03238992	Rose	BLCA	Nivolumab	PD1	PD	NR	0	Pre	BACI178		
+UCC_Rose_RS.03238993	RS-03238993	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI117		
+UCC_Rose_RS.03238994	RS-03238994	Rose	BLCA	Atezolizumab	PD-L1	PD	NR	0	Pre	BACI199		
+UCC_Rose_RS.03238995	RS-03238995	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI174		
+UCC_Rose_RS.03238996	RS-03238996	Rose	BLCA	Nivolumab	PD1	PD	NR	0	Pre	BACI126		
+UCC_Rose_RS.03238997	RS-03238997	Rose	BLCA	Pembrolizumab	PD1	PD	NR	0	Pre	BACI212		

@@ -1,0 +1,40 @@
+{
+  "cancer_rf_rows": 44,
+  "gpu_inference_ready": [
+    "BRIDGE",
+    "BulkFormer_127M",
+    "BulkFormer_147M",
+    "BulkFormer_37M",
+    "BulkFormer_50M",
+    "BulkFormer_93M",
+    "Txn_Jatin"
+  ],
+  "imputation_rows": 66,
+  "masked_rf_complete": [
+    "BRIDGE",
+    "BulkFormer_127M",
+    "BulkFormer_147M",
+    "BulkFormer_37M",
+    "BulkFormer_50M",
+    "BulkFormer_93M",
+    "Txn_Jatin"
+  ],
+  "metrics_complete": [
+    "BRIDGE",
+    "BulkFormer_127M",
+    "BulkFormer_147M",
+    "BulkFormer_37M",
+    "BulkFormer_50M",
+    "BulkFormer_93M",
+    "Txn_Jatin"
+  ],
+  "supported_models": [
+    "BRIDGE",
+    "BulkFormer_127M",
+    "BulkFormer_147M",
+    "BulkFormer_37M",
+    "BulkFormer_50M",
+    "BulkFormer_93M",
+    "Txn_Jatin"
+  ]
+}

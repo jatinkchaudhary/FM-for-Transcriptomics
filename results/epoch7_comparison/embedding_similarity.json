@@ -1,0 +1,9 @@
+{
+  "linear_cka": 0.06019320338964462,
+  "procrustes_mean_same_gene_cosine": 0.18568581342697144,
+  "procrustes_median_same_gene_cosine": 0.1826934963464737,
+  "procrustes_cross_covariance_nuclear_norm": 1384258.625,
+  "top10_neighbor_overlap_fraction": 0.023828125,
+  "top10_neighbor_jaccard": 0.013299659227726177,
+  "neighbor_query_count": 256
+}

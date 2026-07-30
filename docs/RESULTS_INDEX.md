@@ -3,6 +3,9 @@
 This page maps each scientific question to its primary measured artifacts.
 Experiment definitions and execution order are documented in
 [`EXPERIMENT_ORDER.md`](EXPERIMENT_ORDER.md).
+For the complete script/output archive, including detailed per-run files, see
+[`BENCHMARK_ARTIFACTS.md`](BENCHMARK_ARTIFACTS.md) and
+[`results/ARTIFACT_INVENTORY.csv`](../results/ARTIFACT_INVENTORY.csv).
 
 ## Model training
 

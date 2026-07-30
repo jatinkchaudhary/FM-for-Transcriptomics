@@ -1,0 +1,16 @@
+{
+  "covered_genes": 15529,
+  "device": "cuda",
+  "dimensions": 1536,
+  "master_gene_source": "/media/volume/TrainingData/txn_jatin_archs4/bridge_osdr_partial_unfreeze/baselines/BRIDGE_OSDR_original_dynamic__gene_benchmark__symbol.npz",
+  "master_gene_source_sha256": "7bc8c2920b0c69db4ea50a52f5c653c00efb23e07f1e9b9853398332ca8c97ec",
+  "max_residues": 1022,
+  "model": "esm3-sm-open-v1",
+  "name": "ESM3",
+  "pooling": "mean final-layer residue embeddings; BOS/EOS excluded",
+  "role": "sequence-only protein-language-model control",
+  "sequence_source": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/inputs/bulkformer_gene_info.csv",
+  "sequence_source_sha256": "fdaa1ee2ac77749c71adda90050da3a2dc5fa6eecc7d89a591129a8f7f39615d",
+  "total_genes": 15916,
+  "truncated_sequences": 2139
+}

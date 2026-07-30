@@ -1,0 +1,23 @@
+{
+  "epoch_column": "epoch",
+  "train_loss_column": "train_recon_loss",
+  "val_loss_column": "val_recon_loss",
+  "n_rows": 10,
+  "columns": [
+    "epoch",
+    "train_recon_loss",
+    "train_total_loss",
+    "val_recon_loss",
+    "gene_prior_loss",
+    "context_prior_loss",
+    "sample_contrastive_loss"
+  ],
+  "final_train_loss": 0.0761440911669026,
+  "best_train_loss": 0.0761440911669026,
+  "final_val_loss": 0.0780588462948799,
+  "best_val_loss": 0.0780588462948799,
+  "best_val_epoch": 10,
+  "epoch_label_note": "loss_history.csv records resumed-segment epochs 1-10; inferred_absolute_epoch maps these to full-run epochs 11-20.",
+  "final_absolute_epoch_inferred": 20,
+  "best_val_absolute_epoch_inferred": 20
+}

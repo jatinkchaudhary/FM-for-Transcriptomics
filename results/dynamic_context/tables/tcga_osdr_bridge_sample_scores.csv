@@ -1,0 +1,5 @@
+dataset,scheme,model,f1_mean,f1_std,auroc_mean,auroc_std,n,n_classes
+TCGA-cancer-type,stratified,BRIDGE,0.956500,0.003000,0.997000,0.000500,3481,5
+TCGA-cancer-type,group,BRIDGE,0.952700,0.008700,0.996400,0.000700,3481,5
+OSDR-spaceflight,stratified,BRIDGE,0.679400,0.017200,0.751100,0.019200,2099,2
+OSDR-spaceflight,group,BRIDGE,0.563200,0.046000,0.588800,0.048200,2099,2

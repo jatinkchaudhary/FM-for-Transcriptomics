@@ -1,0 +1,46 @@
+{
+  "seed": 42,
+  "primary_endpoint": "RECIST-derived binary response: R (CR/PR) vs NR (SD/PD)",
+  "primary_validation": "leave one entire cohort out",
+  "secondary_validation": "single five-fold within-cohort CV for three primary comparators; diagnostic only",
+  "classifier": "class-weighted L2 logistic regression",
+  "C_selection": "nested leave-one-training-cohort-out AUROC over [0.01, 0.1, 1, 10]",
+  "raw_expression_selector": "top 1,000 variance genes fitted only in each training split",
+  "hallmark_sets_common": 50,
+  "hallmark_sets_completed": 50,
+  "common_measured_model_genes": 13523,
+  "patients": 239,
+  "responders": 80,
+  "cohorts": [
+    "Gide",
+    "Riaz",
+    "Hugo",
+    "Rose"
+  ],
+  "features": {
+    "txn_context_mean": [
+      239,
+      512
+    ],
+    "txn_hidden_all": [
+      239,
+      512
+    ],
+    "raw_common_topvar": [
+      239,
+      13523
+    ],
+    "hallmark_common": [
+      239,
+      50
+    ],
+    "txn_completed_topvar": [
+      239,
+      16055
+    ],
+    "txn_completed_hallmark": [
+      239,
+      50
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+cohort,cancer_type,patients,responders,response_rate,nonresponders
+Gide,SKCM,73,40,0.547945205479452,33
+Hugo,SKCM,26,14,0.5384615384615384,12
+Riaz,SKCM,51,10,0.19607843137254902,41
+Rose,BLCA,89,16,0.1797752808988764,73

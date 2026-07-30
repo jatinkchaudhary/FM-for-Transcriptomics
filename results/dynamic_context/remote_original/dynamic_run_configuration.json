@@ -1,0 +1,20 @@
+{
+  "Txn_Jatin": {
+    "checkpoint": "/media/volume/TrainingData/txn_jatin_archs4/checkpoints/Txn_Jatin_A100_b9_full/epoch_00.pt",
+    "embedding_mode": "contextual"
+  },
+  "BRIDGE": {
+    "checkpoint": "/media/volume/TrainingData/txn_jatin_archs4/baselines/BRIDGE_s66qfh36/best_model.pt",
+    "embedding_mode": "contextual"
+  },
+  "other_models": "unchanged static adapters",
+  "context_data": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full",
+  "context_max_samples": 0,
+  "context_batch": 96,
+  "context_amp": "bf16",
+  "context_checkpoint_dir": "/media/volume/TrainingData/txn_jatin_archs4/dynamic_context_checkpoints",
+  "expected_context_samples": 978212,
+  "benchmark_terms": 40,
+  "cv_folds": 5,
+  "paired_in_separate_supplement": true
+}

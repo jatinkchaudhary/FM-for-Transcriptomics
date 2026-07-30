@@ -1,0 +1,11 @@
+project_id,tissue_type,samples
+TCGA-BRCA,Normal,113
+TCGA-BRCA,Tumor,1118
+TCGA-KIRC,Normal,72
+TCGA-KIRC,Tumor,542
+TCGA-LUAD,Normal,59
+TCGA-LUAD,Tumor,542
+TCGA-LUSC,Normal,51
+TCGA-LUSC,Tumor,511
+TCGA-SKCM,Normal,1
+TCGA-SKCM,Tumor,472

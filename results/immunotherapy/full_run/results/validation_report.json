@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "checks": {
+    "clinical_239_unique": true,
+    "clinical_labels_complete": true,
+    "primary_predictions_complete": true,
+    "primary_probabilities_valid": true,
+    "clean_predictions_complete": true,
+    "clean_excludes_hugo": true,
+    "pretraining_overlap_exact": true,
+    "workbook_sheets_complete": true,
+    "figures_valid": true,
+    "json_valid": true,
+    "documents_present": true,
+    "provisional_outputs_flagged": true
+  },
+  "primary_prediction_rows": 1434,
+  "clean_prediction_rows": 1278,
+  "workbook_sheets": [
+    "cohorts",
+    "LOCO_summary",
+    "LOCO_metrics",
+    "LOCO_predictions",
+    "delta_vs_raw",
+    "within_metrics",
+    "nested_tuning",
+    "nuisance_geometry",
+    "Hallmark_meta",
+    "Hallmark_by_cohort",
+    "pretraining_overlap",
+    "clean_LOCO_summary",
+    "clean_delta_vs_raw"
+  ],
+  "figure_dimensions": {
+    "clean_no_pretraining_overlap_auroc.png": [
+      1870,
+      1056
+    ],
+    "cohort_composition.png": [
+      1803,
+      1011
+    ],
+    "cohort_vs_response_geometry.png": [
+      1870,
+      1056
+    ],
+    "hallmark_effect_heterogeneity.png": [
+      1892,
+      1408
+    ],
+    "loco_auroc_heatmap.png": [
+      1936,
+      1011
+    ],
+    "pooled_loco_roc.png": [
+      1408,
+      1210
+    ],
+    "txn_context_pca.png": [
+      1584,
+      1188
+    ],
+    "txn_response_scores_by_cohort.png": [
+      2464,
+      836
+    ],
+    "within_cohort_auroc_heatmap.png": [
+      1936,
+      1011
+    ]
+  }
+}

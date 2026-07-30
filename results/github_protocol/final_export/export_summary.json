@@ -1,0 +1,20 @@
+{
+  "models": [
+    "ESM2_PCA512_prior",
+    "Txn_Jatin",
+    "Txn_Jatin_contextual",
+    "BRIDGE",
+    "scGPT",
+    "Geneformer",
+    "BulkFormer_37M",
+    "BulkFormer_50M",
+    "BulkFormer_93M",
+    "BulkFormer_127M",
+    "BulkFormer_147M"
+  ],
+  "model_results": 319,
+  "benchmark_groups": 29,
+  "complete_groups": 29,
+  "partial_groups": {},
+  "excel_created": true
+}

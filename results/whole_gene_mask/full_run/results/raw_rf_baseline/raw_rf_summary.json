@@ -1,0 +1,39 @@
+{
+  "panels": [
+    {
+      "fold_auroc_mean": 0.9994177923934187,
+      "fold_auroc_std": 0.0008290455212246896,
+      "fold_balanced_accuracy_mean": 0.9830905936108904,
+      "fold_f1_mean": 0.996698060024021,
+      "normal_samples": 110,
+      "oof_auroc": 0.9994906328239661,
+      "panel": "2_cancer",
+      "patients": 1019,
+      "projects": [
+        "TCGA-LUAD",
+        "TCGA-LUSC"
+      ],
+      "samples": 1163,
+      "tumor_samples": 1053
+    },
+    {
+      "fold_auroc_mean": 0.9957443926269021,
+      "fold_auroc_std": 0.00566067108092322,
+      "fold_balanced_accuracy_mean": 0.9637017243461063,
+      "fold_f1_mean": 0.9957732971567929,
+      "normal_samples": 296,
+      "oof_auroc": 0.9953010310153168,
+      "panel": "5_cancer",
+      "patients": 3116,
+      "projects": [
+        "TCGA-BRCA",
+        "TCGA-KIRC",
+        "TCGA-LUAD",
+        "TCGA-LUSC",
+        "TCGA-SKCM"
+      ],
+      "samples": 3481,
+      "tumor_samples": 3185
+    }
+  ]
+}

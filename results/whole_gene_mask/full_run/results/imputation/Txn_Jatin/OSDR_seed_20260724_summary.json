@@ -1,0 +1,19 @@
+{
+  "auc_eligible_genes": 1346,
+  "auprc_macro": 0.8778798211123754,
+  "auroc_macro": 0.8591801697292639,
+  "dataset": "OSDR",
+  "mae": 0.7489855289459229,
+  "mask_seed": 20260724,
+  "masked_genes": 2188,
+  "model": "Txn_Jatin",
+  "mse": 1.28396475315094,
+  "pcc_gene_macro": 0.697670581342801,
+  "pcc_global": 0.8040791847670278,
+  "pcc_sample_macro": 0.7983980590300994,
+  "reason": "",
+  "samples": 2099,
+  "spearman_global": 0.7941276108196704,
+  "status": "complete",
+  "supported": true
+}

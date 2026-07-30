@@ -1,0 +1,72 @@
+{
+  "common_genes_before_esm3": 13408,
+  "esm2_embedding": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full_tpm_v2/esm2_prior_512d.npz",
+  "esm3_embedding": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/individual_go_esm3_20260725/embeddings/ESM3__gene_benchmark__symbol.npz",
+  "esm3_finite_osdr_genes": 13434,
+  "existing_results": "/media/volume/TrainingData/txn_jatin_archs4/bridge_osdr_partial_unfreeze/benchmark/osdr_go_kegg_term_scores.csv",
+  "experiments": {
+    "last1": {
+      "models": [
+        "BRIDGE_OSDR_FT_dynamic",
+        "BRIDGE_OSDR_original_dynamic",
+        "BulkFormer_127M",
+        "BulkFormer_147M",
+        "BulkFormer_37M",
+        "BulkFormer_50M",
+        "BulkFormer_93M",
+        "ESM2_PCA512_prior",
+        "ESM3",
+        "Geneformer",
+        "Txn_Jatin_OSDR_dynamic",
+        "scGPT",
+        "BRIDGE_OSDR_last1_dynamic"
+      ],
+      "partial_model": "BRIDGE_OSDR_last1_dynamic",
+      "rows": 1480,
+      "terms": 40
+    },
+    "last2": {
+      "models": [
+        "BRIDGE_OSDR_FT_dynamic",
+        "BRIDGE_OSDR_original_dynamic",
+        "BulkFormer_127M",
+        "BulkFormer_147M",
+        "BulkFormer_37M",
+        "BulkFormer_50M",
+        "BulkFormer_93M",
+        "ESM2_PCA512_prior",
+        "ESM3",
+        "Geneformer",
+        "Txn_Jatin_OSDR_dynamic",
+        "scGPT",
+        "BRIDGE_OSDR_last2_dynamic"
+      ],
+      "partial_model": "BRIDGE_OSDR_last2_dynamic",
+      "rows": 1480,
+      "terms": 40
+    },
+    "last3": {
+      "models": [
+        "BRIDGE_OSDR_FT_dynamic",
+        "BRIDGE_OSDR_original_dynamic",
+        "BulkFormer_127M",
+        "BulkFormer_147M",
+        "BulkFormer_37M",
+        "BulkFormer_50M",
+        "BulkFormer_93M",
+        "ESM2_PCA512_prior",
+        "ESM3",
+        "Geneformer",
+        "Txn_Jatin_OSDR_dynamic",
+        "scGPT",
+        "BRIDGE_OSDR_last3_dynamic"
+      ],
+      "partial_model": "BRIDGE_OSDR_last3_dynamic",
+      "rows": 1480,
+      "terms": 40
+    }
+  },
+  "genes_removed_for_strict_esm3_comparison": 0,
+  "protocol": "Frozen 40 GO Biological Process terms; 5-fold out-of-fold GPU linear probes; StandardScaler; seed 42; AUROC and AUPRC",
+  "strict_esm3_common_genes": 13408
+}

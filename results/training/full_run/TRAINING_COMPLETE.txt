@@ -1,0 +1,2 @@
+Training validated complete at 2026-07-20T20:30:40Z
+checkpoint=/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/latest.pt

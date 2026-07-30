@@ -1,0 +1,19 @@
+{
+  "auc_eligible_genes": 1581,
+  "auprc_macro": 0.8015752913852469,
+  "auroc_macro": 0.855347198531205,
+  "dataset": "TCGA",
+  "mae": 0.5531639456748962,
+  "mask_seed": 20260723,
+  "masked_genes": 2188,
+  "model": "BulkFormer_50M",
+  "mse": 0.6106100082397461,
+  "pcc_gene_macro": 0.6656449257009506,
+  "pcc_global": 0.871990451025076,
+  "pcc_sample_macro": 0.8698450659274096,
+  "reason": "",
+  "samples": 3481,
+  "spearman_global": 0.8719798674497857,
+  "status": "complete",
+  "supported": true
+}

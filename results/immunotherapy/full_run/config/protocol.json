@@ -1,0 +1,39 @@
+{
+  "study_type": "exploratory frozen-transfer feasibility",
+  "model": {
+    "name": "Txn_Jatin",
+    "checkpoint_epoch": 20,
+    "num_genes": 16055,
+    "hidden_dim": 512,
+    "num_layers": 12,
+    "weights_frozen": true
+  },
+  "cohorts": ["Gide", "Riaz", "Hugo", "Rose"],
+  "patients": 239,
+  "responders": 80,
+  "endpoint": "pretreatment RECIST R (CR/PR) versus NR (SD/PD)",
+  "normalization": "log1p(TPM)",
+  "missing_assay_genes": {
+    "model_input": -10,
+    "meaning": "trained mask token, not biological zero",
+    "raw_comparator": "restricted to 13523 genes measured in every cohort"
+  },
+  "primary_validation": {
+    "design": "nested leave-one-cohort-out",
+    "classifier": "class-weighted L2 logistic regression",
+    "C_candidates": [0.01, 0.1, 1.0, 10.0],
+    "selection": "leave-one-training-cohort-out mean AUROC",
+    "feature_selection": "top 1000 training-split variance genes for expression arms",
+    "primary_summary": "macro held-out-cohort AUROC",
+    "bootstrap_replicates": 1000,
+    "seed": 42
+  },
+  "secondary_analyses": [
+    "single five-fold within-cohort diagnostic",
+    "cohort-versus-response representation geometry",
+    "Hallmark random-effects response association",
+    "exact archive-accession pretraining-overlap audit",
+    "clean LOCO sensitivity excluding Hugo"
+  ],
+  "claim_boundary": "exploratory; not a validated clinical biomarker"
+}

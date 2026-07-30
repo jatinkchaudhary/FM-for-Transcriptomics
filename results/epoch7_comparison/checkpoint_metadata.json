@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Txn_Jatin_epoch7",
+    "checkpoint": "C:\\Users\\jkchau\\Documents\\Claude\\Projects\\Benchmarking\\Txn_Jatin_20epochs\\full_ARCHES4_20epoch_H100_20260624_015238\\comparisons\\epoch7_vs_s66qfh36\\inputs\\Txn_Jatin_epoch7_completed.pt",
+    "checkpoint_sha256": "d3e5cf8861976f47053de3684c85d9b147830901c4838cc3d5dcb6e2d46ecd8b",
+    "epoch": 7,
+    "train_loss": 0.09495920554015183,
+    "val_loss": 0.09516765177249908,
+    "embedding_shape": [
+      16055,
+      512
+    ],
+    "state_tensor_count": 196,
+    "parameter_count": 46049537,
+    "normalization": "counts_to_log1p_tpm",
+    "batch_size": 16,
+    "hidden_dim": 512,
+    "num_layers": 12,
+    "num_heads": 8,
+    "feature_type": "flash",
+    "gene_prior_weight": 0.02,
+    "context_prior_weight": 0.03,
+    "sample_contrastive_weight": 0.01,
+    "embedding_representation": "training_contextual_gene_embedding",
+    "embedding_context_samples": 958212
+  },
+  {
+    "name": "s66qfh36_best",
+    "checkpoint": "C:\\Users\\jkchau\\Documents\\Claude\\Projects\\Benchmarking\\RNA Walter\\flash_osdr_model\\s66qfh36\\best_model.pt",
+    "checkpoint_sha256": "37ff2d98e802e9779e4328c3dade365d6b0ec6152f237a3aa3d83187a675c398",
+    "epoch": 20,
+    "train_loss": 0.1479369596255394,
+    "val_loss": 0.1378040909767151,
+    "embedding_shape": [
+      14567,
+      512
+    ],
+    "state_tensor_count": 196,
+    "parameter_count": 45593857,
+    "normalization": "log1p_tpm",
+    "batch_size": 4,
+    "hidden_dim": 512,
+    "num_layers": 12,
+    "num_heads": 8,
+    "feature_type": "flash",
+    "gene_prior_weight": 0.0,
+    "context_prior_weight": 0.0,
+    "sample_contrastive_weight": 0.0,
+    "embedding_representation": "full_corpus_contextual_cache",
+    "embedding_context_samples": 978212,
+    "embedding_cache": "C:\\Users\\jkchau\\Documents\\Claude\\Projects\\Benchmarking\\Txn_Jatin\\benchmark_dynamic\\embeddings\\BRIDGE__gene_benchmark__symbol.npz",
+    "embedding_cache_sha256": "33dada88d0bb75af4b0503f0d2e65a66475699318b8fd4bde5dcdef5bf69cabc"
+  }
+]

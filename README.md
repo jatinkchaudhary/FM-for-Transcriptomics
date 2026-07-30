@@ -82,6 +82,7 @@ Choose the route matching your goal:
 |---|---|
 | Understand the scientific conclusions | [`docs/RESULTS_INTERPRETATION.md`](docs/RESULTS_INTERPRETATION.md) |
 | Find a particular metric or figure | [`docs/RESULTS_INDEX.md`](docs/RESULTS_INDEX.md) |
+| Audit every benchmark script and output | [`docs/BENCHMARK_ARTIFACTS.md`](docs/BENCHMARK_ARTIFACTS.md) |
 | Follow experiments chronologically | [`docs/EXPERIMENT_ORDER.md`](docs/EXPERIMENT_ORDER.md) |
 | Check which models support imputation | [`docs/MODELS_AND_CAPABILITIES.md`](docs/MODELS_AND_CAPABILITIES.md) |
 | Inspect the interactive application | [`app/frontend/README.md`](app/frontend/README.md) |
@@ -195,6 +196,8 @@ There are three reproducibility levels:
 
 All publication-facing result tables are under [`results/`](results/).
 Checksums are recorded in [`SHA256SUMS.txt`](SHA256SUMS.txt).
+The complete benchmark-code and result inventory is recorded in
+[`results/ARTIFACT_INVENTORY.csv`](results/ARTIFACT_INVENTORY.csv).
 
 ### 2. Rebuild the UI registry
 

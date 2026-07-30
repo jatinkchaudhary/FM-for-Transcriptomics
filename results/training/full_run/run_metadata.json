@@ -1,0 +1,89 @@
+{
+  "model_name": "Txn_Jatin",
+  "run_id": "Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238",
+  "timestamp": "20260707_222451",
+  "run_tag": "norm-counts_to_log1p_tpm_lr-1p00em04_wd-0p010000_mask-0p150000_ree-100p000000",
+  "resume_mode": "run_id",
+  "resume_checkpoint": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/latest.pt",
+  "normalization": "counts_to_log1p_tpm",
+  "normalization_provenance": {
+    "version": 2,
+    "source_dir": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full",
+    "sample_count": 978212,
+    "source_gene_count": 16057,
+    "gene_count": 16055,
+    "dropped_genes": [
+      "GSTT1",
+      "OR8U8"
+    ],
+    "normalization": {
+      "name": "counts_to_log1p_tpm",
+      "formula": "log1p((count/(exon_union_bp/1000))/sum(count/(exon_union_bp/1000))*1e6)",
+      "human_gtf_url": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_49/gencode.v49.annotation.gtf.gz",
+      "mouse_gtf_url": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M38/gencode.vM38.annotation.gtf.gz",
+      "human_gtf_sha256": "d6e6fe0515c95b2a8cd36a853c1989cee9115c736c60237c56ae92b9daaaf7c4",
+      "mouse_gtf_sha256": "031c95dd717202595dd33bd6a7192d89c441ad3ef94271b08643c1de0ca83976",
+      "length_fallback_counts": {
+        "human_length_fallback": 16,
+        "bulkformer_gene_span_fallback": 2
+      }
+    },
+    "orthologs": {
+      "mapping": "MGI one-to-one Mouse/Human homology classes",
+      "path": "/home/exouser/benchmarking_run/Benchmarking/RNA Walter/data/HOM_MouseHumanSequence.rpt"
+    },
+    "prior": {
+      "path": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full_tpm_v2/esm2_prior_512d.npz",
+      "sha256": "6ddcc4d2524b513f5bb8c0860aac4b931fe09a20c3b8970c0eb0e5e8327e16f7",
+      "source_path": "/media/volume/TrainingData/txn_jatin_archs4/priors/esm2_feature_concat.pt",
+      "source_sha256": "4994b7757b52aa9e56264e2cbae7035715972614e080e19e95064df039450a36",
+      "source_gene_info": "/home/exouser/benchmarking_run/Benchmarking/external_models/BulkFormer/data/bulkformer_gene_info.csv",
+      "hidden_dim": 512,
+      "covered_genes": 15666,
+      "total_genes": 16055,
+      "coverage": 0.9757707879165369,
+      "pca_explained_variance": 0.9827021360397339
+    }
+  },
+  "representation_objectives": {
+    "gene_prior_path": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full_tpm_v2/esm2_prior_512d.npz",
+    "gene_prior_init": true,
+    "gene_prior_weight": 0.02,
+    "context_prior_weight": 0.03,
+    "sample_contrastive_weight": 0.01,
+    "contrastive_temperature": 0.1,
+    "accumulate_context_embeddings": true,
+    "contextual_embedding_source": "frozen_end_of_epoch_validation_mean",
+    "training_contextual_embedding_source": "online_full_training_epoch_mean",
+    "benchmark_context_weight": 0.0
+  },
+  "sweep_parameters": {
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "mask_ratio": 0.15,
+    "ree_base": 100.0,
+    "early_stopping": false
+  },
+  "architecture": {
+    "hidden_dim": 512,
+    "ffn_dim": 2048,
+    "num_heads": 8,
+    "num_layers": 12,
+    "include_species_embedding": false,
+    "num_species": 2
+  },
+  "dataset": {
+    "data_dir": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full_tpm_v2",
+    "canonical_genes": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full_tpm_v2/canonical_genes.csv",
+    "train_samples": 958212,
+    "val_samples": 20000,
+    "num_genes": 16055,
+    "train_used_counts": null,
+    "val_used_counts": null,
+    "train_raw_counts": null,
+    "val_raw_counts": null,
+    "balanced_sampling": false,
+    "train_subset": null,
+    "val_subset": 20000
+  }
+}

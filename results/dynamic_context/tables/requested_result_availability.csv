@@ -1,0 +1,7 @@
+Requested result,Data/track,Measured,What exists
+GO term prediction,Frozen gene embeddings,Yes,40 GO-BP terms; not TCGA/OSDR-specific
+KEGG term prediction,Frozen gene embeddings,No,"Hallmark, not KEGG, was used for gene-set matching"
+GO terms within TCGA,TCGA,No,TCGA task was five-class cancer-type prediction
+KEGG terms within TCGA,TCGA,No,No pathway-label benchmark was run
+GO terms within OSDR,OSDR,No,OSDR task was flight-vs-ground prediction
+KEGG terms within OSDR,OSDR,No,No pathway-label benchmark was run

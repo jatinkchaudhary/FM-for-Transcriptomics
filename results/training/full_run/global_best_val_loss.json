@@ -1,0 +1,7 @@
+{
+  "val_loss": 0.07805884629487991,
+  "run_id": "Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238",
+  "epoch": 20,
+  "run_tag": "norm-counts_to_log1p_tpm_lr-1p00em04_wd-0p010000_mask-0p150000_ree-100p000000",
+  "normalization": "counts_to_log1p_tpm"
+}

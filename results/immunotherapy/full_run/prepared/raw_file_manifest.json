@@ -1,0 +1,47 @@
+[
+  {
+    "file": "compass_gide_tpm.tsv",
+    "bytes": 6130849,
+    "sha256": "7c18506350ebff9f121987526399fca86d3d7dce04953136bda7b03bbbefa745"
+  },
+  {
+    "file": "Gide_clinical.tsv",
+    "bytes": 9082,
+    "sha256": "df453d91f5bd6a411cc50517d2d0005174eeddeae69489a2ffd3d2d42615f0a4"
+  },
+  {
+    "file": "GSE176307_Rose_tpm.tsv.gz",
+    "bytes": 10131698,
+    "sha256": "c7ebf750cc6e6ba967bba9a733c47572a53daaaff9fcf041e5ab4641ef615894"
+  },
+  {
+    "file": "GSE78220_Hugo_PatientFPKM.xlsx",
+    "bytes": 7145318,
+    "sha256": "ae3b044f23a0a4cd2859da36726a220856c35216a169c17f93dfc3bd20b04de6"
+  },
+  {
+    "file": "GSE91061_Riaz_fpkm.csv.gz",
+    "bytes": 16354905,
+    "sha256": "987c7637e72ff5ad9c9630b0ee959064713cd8f57348d05003fb85a2f4cc43d5"
+  },
+  {
+    "file": "Homo_sapiens.gene_info.gz",
+    "bytes": 5174497,
+    "sha256": "b1de96c34871a88bfc35c528e44f70a4264f325a6c631ac2b6c2c1ffd8449245"
+  },
+  {
+    "file": "Hugo_clinical.tsv",
+    "bytes": 5124,
+    "sha256": "06a55aa5893b6d6b557adbd928a99815d32a6b710344ddd8559bffef11a1fe90"
+  },
+  {
+    "file": "Riaz_clinical.tsv",
+    "bytes": 7557,
+    "sha256": "ce41c96cedf8b440372935e8989528ba8317f762c89515ecc2a89af92952fc3f"
+  },
+  {
+    "file": "Rose_clinical.tsv",
+    "bytes": 21990,
+    "sha256": "70dd3f978f3af3d6ca7b4df877870efd5e4bd19da37a508d59d99e09aa9163b8"
+  }
+]

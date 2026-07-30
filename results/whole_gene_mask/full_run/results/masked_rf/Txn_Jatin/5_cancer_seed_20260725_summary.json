@@ -1,0 +1,13 @@
+{
+  "fold_auroc_mean": 0.9954527096180078,
+  "fold_auroc_std": 0.00612470373270091,
+  "fold_balanced_accuracy_mean": 0.9686518337922813,
+  "fold_f1_mean": 0.9962405624202916,
+  "mask_seed": 20260725,
+  "model": "Txn_Jatin",
+  "oof_auroc": 0.9955492384063812,
+  "panel": "5_cancer",
+  "patients": 3116,
+  "samples": 3481,
+  "supported": true
+}

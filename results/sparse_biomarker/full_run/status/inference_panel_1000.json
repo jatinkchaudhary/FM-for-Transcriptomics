@@ -1,0 +1,9 @@
+{
+  "batch_size": 4,
+  "elapsed_seconds_this_attempt": 96.7075605392456,
+  "hidden_genes": 13587,
+  "panel_size": 1000,
+  "samples_complete": 3481,
+  "samples_total": 3481,
+  "status": "complete"
+}

@@ -1,0 +1,70 @@
+{
+  "normalization": "log1p(TPM)",
+  "response_definition": "R=CR/PR; NR=SD/PD (COMPASS harmonization)",
+  "gene_info": {
+    "ncbi_gene_info_rows": 193884,
+    "ncbi_gene_info_sha256": "b1de96c34871a88bfc35c528e44f70a4264f325a6c631ac2b6c2c1ffd8449245"
+  },
+  "cohorts": {
+    "Gide": {
+      "source_scale": "TPM",
+      "sample_matching": "clinical Index equals expression Index",
+      "expression_samples_available": 73,
+      "patients_retained": 73,
+      "responders": 40,
+      "nonresponders": 33,
+      "cancer_types": [
+        "SKCM"
+      ],
+      "genes_after_mapping": 15672,
+      "zero_fraction": 0.06351087708993267
+    },
+    "Riaz": {
+      "source_scale": "FPKM converted per sample to TPM",
+      "sample_matching": "clinical Index matched after removing GEO lane suffix",
+      "entrez_rows": 22187,
+      "entrez_rows_mapped": 22066,
+      "entrez_rows_unmapped": 121,
+      "expression_samples_available": 109,
+      "patients_retained": 51,
+      "responders": 10,
+      "nonresponders": 41,
+      "cancer_types": [
+        "SKCM"
+      ],
+      "genes_after_mapping": 22066,
+      "zero_fraction": 0.1935921291384314
+    },
+    "Hugo": {
+      "source_scale": "FPKM converted per sample to TPM",
+      "sample_matching": "patient ID; Pt27A/Pt27B averaged before TPM conversion",
+      "expression_samples_available": 28,
+      "patient_level_samples_available": 27,
+      "technical_replicates_aggregated": 1,
+      "patients_retained": 26,
+      "responders": 14,
+      "nonresponders": 12,
+      "cancer_types": [
+        "SKCM"
+      ],
+      "genes_after_mapping": 25268,
+      "zero_fraction": 0.2484961215766978
+    },
+    "Rose": {
+      "source_scale": "TPM",
+      "sample_matching": "clinical Sample_id equals expression column",
+      "expression_samples_available": 92,
+      "patients_retained": 89,
+      "responders": 16,
+      "nonresponders": 73,
+      "cancer_types": [
+        "BLCA"
+      ],
+      "genes_after_mapping": 58387,
+      "zero_fraction": 0.5325198409758367
+    }
+  },
+  "total_patients": 239,
+  "total_responders": 80,
+  "total_nonresponders": 159
+}

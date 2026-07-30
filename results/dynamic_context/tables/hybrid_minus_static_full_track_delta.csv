@@ -1,0 +1,10 @@
+model,embedding_change,gene-set,paired,single-gene-GO,single-gene-disease,four_track_mean
+Txn_Jatin,static -> dynamic,0.011500,0.011000,0.012800,0.008500,0.010950
+BRIDGE,static -> dynamic,0.011200,0.012700,0.020300,0.018800,0.015750
+scGPT,static control,0.000000,0.000000,0.000000,0.000100,0.000025
+Geneformer,static control,0.000000,-0.000700,0.000000,0.000100,-0.000150
+BulkFormer_37M,static control,0.000000,-0.000100,0.000200,0.000000,0.000025
+BulkFormer_50M,static control,0.000000,-0.001400,0.000200,-0.000300,-0.000375
+BulkFormer_93M,static control,0.000000,-0.002500,0.000200,-0.000600,-0.000725
+BulkFormer_127M,static control,0.000000,-0.004300,-0.000600,-0.001300,-0.001550
+BulkFormer_147M,static control,0.000000,-0.001500,-0.000300,0.000500,-0.000325

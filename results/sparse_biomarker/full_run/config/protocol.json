@@ -1,0 +1,57 @@
+{
+  "benchmark": "txn_jatin_sparse_panel_biomarker_pilot",
+  "claim_boundary": "Exploratory internal TCGA evidence only; not a validated clinical biomarker.",
+  "created_utc": "2026-07-26T03:52:31.229464+00:00",
+  "input_scale": "log1p(TPM)",
+  "local_paths": {
+    "metadata": "C:\\Users\\jkchau\\Documents\\Claude\\Projects\\Benchmarking\\tcga\\tcga_metadata.parquet",
+    "model_genes": "C:\\Users\\jkchau\\Documents\\Claude\\Projects\\Benchmarking\\Txn_Jatin_20epochs\\full_ARCHES4_20epoch_H100_20260624_015238\\benchmarks\\txn_jatin_biomarker_pilot_20260725\\resources\\checkpoint\\canonical_genes.csv",
+    "run_dir": "C:\\Users\\jkchau\\Documents\\Claude\\Projects\\Benchmarking\\Txn_Jatin_20epochs\\full_ARCHES4_20epoch_H100_20260624_015238\\benchmarks\\txn_jatin_biomarker_pilot_20260725",
+    "sample_sheet": "C:\\Users\\jkchau\\Documents\\Claude\\Projects\\Benchmarking\\tcga\\gdc_sample_sheet.2025-11-16.tsv",
+    "tcga": "C:\\Users\\jkchau\\Documents\\Claude\\Projects\\Benchmarking\\tcga\\tcga_tpm_unstranded_matrix.parquet"
+  },
+  "mask_token": -10.0,
+  "model": "Txn_Jatin final 20-epoch frozen checkpoint",
+  "panel_selection": "Rank discovery-only genes by variance*sqrt(TPM>=1 detection); exclude every evaluated Hallmark signature gene.",
+  "panels": {
+    "1000": {
+      "all_signature_genes_hidden": true,
+      "hidden_evaluable_genes": 13587,
+      "hidden_fraction": 0.9314458079111537,
+      "observed_genes": 1000
+    },
+    "2000": {
+      "all_signature_genes_hidden": true,
+      "hidden_evaluable_genes": 12587,
+      "hidden_fraction": 0.8628916158223076,
+      "observed_genes": 2000
+    }
+  },
+  "primary_outputs": [
+    "held-out hidden-gene reconstruction",
+    "held-out Hallmark signature recovery",
+    "patient-grouped phenotype prediction",
+    "tumor-normal hidden-gene effect preservation"
+  ],
+  "remote_paths": {
+    "checkpoint": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/best_model.pt",
+    "metadata": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/tcga/tcga_metadata.parquet",
+    "model_genes": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/checkpoints/Txn_Jatin_full_ARCHES4_20ep_H100_20260624_015238/canonical_genes.csv",
+    "run_dir": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/txn_jatin_biomarker_pilot_20260725",
+    "sample_sheet": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/tcga/gdc_sample_sheet.2025-11-16.tsv",
+    "tcga": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/tcga/tcga_tpm_unstranded_matrix.parquet",
+    "train_flash": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/RNA Walter/flash_osdr_model/train_flash.py"
+  },
+  "seed": 20260725,
+  "shared_gene_count": 14587,
+  "signature_count": 10,
+  "signature_gene_count": 1232,
+  "source_hashes": {
+    "hallmark_gmt_sha256": "4275592957a1587652092bb398cf77216fde5b8daa2aedaa0e016f7d10bbdb81",
+    "metadata_parquet_sha256": "7f1640f062153537b4664b360d555124c57488efba66b1833415148a766e8ac3",
+    "model_genes_sha256": "58cbbb883fe1ba30ffbbbf468a599cf0f7115b41f43c36f7a3ba439a83a3d61e",
+    "sample_sheet_sha256": "82274d707b63241c4687ca2be95686329e36062fbe1744a97d4a7336b775dc5a",
+    "tcga_parquet_sha256": "5212600d0fbc52fa0c5bdd0762e4af28340a03df600f45c5389462ab79556064"
+  },
+  "split": "70/30 deterministic SHA256 case-level discovery/test split"
+}

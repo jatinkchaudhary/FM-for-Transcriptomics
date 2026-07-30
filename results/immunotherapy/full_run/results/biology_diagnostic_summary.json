@@ -1,0 +1,7 @@
+{
+  "cohort_classifier_best_accuracy": 1.0,
+  "cohort_classifier_txn_context_accuracy": 1.0,
+  "meta_pathways_fdr_below_0_05": 3,
+  "minimum_meta_q_value": 0.012988997998329182,
+  "interpretation": "Exploratory only; pathway tests are not independent validation and must not be treated as biomarker discovery."
+}

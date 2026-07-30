@@ -1,0 +1,19 @@
+{
+  "auc_eligible_genes": 1337,
+  "auprc_macro": 0.8543792572139376,
+  "auroc_macro": 0.8358144397963991,
+  "dataset": "OSDR",
+  "mae": 0.9350836873054504,
+  "mask_seed": 20260723,
+  "masked_genes": 2188,
+  "model": "BulkFormer_37M",
+  "mse": 1.6479387283325195,
+  "pcc_gene_macro": 0.644250839382623,
+  "pcc_global": 0.7435079119777259,
+  "pcc_sample_macro": 0.7360838583363074,
+  "reason": "",
+  "samples": 2099,
+  "spearman_global": 0.7333183861215918,
+  "status": "complete",
+  "supported": true
+}

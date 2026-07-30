@@ -1,0 +1,34 @@
+{
+  "metadata_path": "/media/volume/TrainingData/txn_jatin_archs4/train_txn_jatin_full_tpm_v2/metadata.csv",
+  "match_namespace": "exact archive accession among rows labeled human",
+  "total_evaluated_patients": 239,
+  "patients_present": 25,
+  "fraction_present": 0.10460251046025104,
+  "by_cohort": [
+    {
+      "cohort": "Gide",
+      "evaluated_patients": 73,
+      "patients_present": 0,
+      "fraction_present": 0.0
+    },
+    {
+      "cohort": "Hugo",
+      "evaluated_patients": 26,
+      "patients_present": 25,
+      "fraction_present": 0.9615384615384616
+    },
+    {
+      "cohort": "Riaz",
+      "evaluated_patients": 51,
+      "patients_present": 0,
+      "fraction_present": 0.0
+    },
+    {
+      "cohort": "Rose",
+      "evaluated_patients": 89,
+      "patients_present": 0,
+      "fraction_present": 0.0
+    }
+  ],
+  "warning": "This establishes unlabeled sample exposure, not response-label exposure."
+}

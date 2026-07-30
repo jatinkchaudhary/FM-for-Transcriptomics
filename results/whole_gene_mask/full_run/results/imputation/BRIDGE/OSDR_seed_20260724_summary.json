@@ -1,0 +1,19 @@
+{
+  "auc_eligible_genes": 1346,
+  "auprc_macro": 0.9540003519062606,
+  "auroc_macro": 0.9558326853027767,
+  "dataset": "OSDR",
+  "mae": 0.4345662593841553,
+  "mask_seed": 20260724,
+  "masked_genes": 2188,
+  "model": "BRIDGE",
+  "mse": 0.6541659832000732,
+  "pcc_gene_macro": 0.9184304441760353,
+  "pcc_global": 0.9035599438466896,
+  "pcc_sample_macro": 0.9007265265070864,
+  "reason": "",
+  "samples": 2099,
+  "spearman_global": 0.8882113912937033,
+  "status": "complete",
+  "supported": true
+}
