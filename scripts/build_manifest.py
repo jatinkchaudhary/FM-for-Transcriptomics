@@ -26,6 +26,7 @@ def main() -> int:
         if path.is_file()
         and path != OUTPUT
         and ".git" not in path.parts
+        and "external_validation" not in path.parts
         and "__pycache__" not in path.parts
         and path.suffix != ".log"
         and not path.name.endswith("_local.png")

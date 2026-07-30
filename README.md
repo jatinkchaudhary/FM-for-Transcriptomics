@@ -114,6 +114,9 @@ Choose the route matching your goal:
     `d1320026a2a4ee033d49517f91e2d1c2ccc8df1e`.
 12. **External GTEx recovery:** eight decoder-capable models evaluated on the
     same 2,117 masked genes across 12 diverse recount2 GTEx samples.
+13. **Immune edge recovery:** gene-disjoint regulatory and synthetic-lethal
+    association tests comparing final Txn_Jatin with an independent
+    immunotherapy-cohort co-expression baseline.
 
 Exact protocols and primary outputs are linked in
 [`docs/EXPERIMENT_ORDER.md`](docs/EXPERIMENT_ORDER.md).

@@ -1,0 +1,14 @@
+{
+  "cohorts": [
+    "gide",
+    "riaz",
+    "hugo",
+    "rose"
+  ],
+  "samples": 239,
+  "genes": 16055,
+  "role": "independent public immunotherapy-cohort co-expression baseline",
+  "label_usage": "none",
+  "missing_values": 0,
+  "matrix_distribution": "excluded from GitHub; rebuilt from public cohort matrices with build_coexpression_reference.py"
+}

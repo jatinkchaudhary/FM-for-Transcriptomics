@@ -54,6 +54,16 @@ counts.
 - [`results/dynamic_context/dynamic_overall_ranking.csv`](../results/dynamic_context/dynamic_overall_ranking.csv)
 - [`results/dynamic_context/dynamic_story_dashboard.png`](../results/dynamic_context/dynamic_story_dashboard.png)
 
+## Immune regulatory and synthetic-lethal edges
+
+**Question:** Does Txn_Jatin recover cold-gene immune relationships that an
+independent co-expression baseline misses?
+
+- [`results/immune_edge_recovery/REPORT.md`](../results/immune_edge_recovery/REPORT.md)
+- [`results/immune_edge_recovery/summary_metrics.csv`](../results/immune_edge_recovery/summary_metrics.csv)
+- [`results/immune_edge_recovery/paired_bootstrap_vs_coexpression.csv`](../results/immune_edge_recovery/paired_bootstrap_vs_coexpression.csv)
+- [`results/immune_edge_recovery/immune_edge_recovery.png`](../results/immune_edge_recovery/immune_edge_recovery.png)
+
 ## Whole-gene masking
 
 **Question:** Can a model recover a gene hidden across all samples?

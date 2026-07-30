@@ -21,5 +21,6 @@ validation/*_local.png
 .venv/
 venv/
 .pytest_cache/
+external_validation/
 .DS_Store
 Thumbs.db

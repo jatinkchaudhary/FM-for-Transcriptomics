@@ -1,0 +1,23 @@
+{
+  "seed": 42,
+  "github_commit": "d1320026a2a4ee033d49517f91e2d1c2ccc8df1e",
+  "tasks": [
+    "TF regulatory edges",
+    "human synthetic-lethal edges"
+  ],
+  "outer_splits": "repository-provided five-fold gene-disjoint nested CV; test pairs have both endpoints in held-out genes and training pairs use only training genes",
+  "immune_scope": "at least one endpoint in the nine predeclared immunotherapy signatures",
+  "coexpression": "Spearman correlation over 239 independent pretreatment immunotherapy samples; response labels unused",
+  "classifier": "class-weighted linear logistic head; fixed hyperparameters",
+  "epochs": 35,
+  "learning_rate": 0.02,
+  "weight_decay": 0.0001,
+  "bootstrap_replicates": 2000,
+  "recovered_edge_definition": "true immune positive in the Txn_Jatin top score decile within its outer fold but outside the co-expression top score decile",
+  "device": "cuda",
+  "embedding_sha256": "54b0c183d9b41e21446293c4ffeb240d5e1105168c6edf765c43ce1b103e3d3d",
+  "split_sha256": {
+    "tf": "5592117c4fe60a5a7dd693ff661fd1a3772413e1dceb25e0ac68065e1b962a3e",
+    "sl": "1071de281df136b01f7a19ace82167dde44a5e3690cc263bacbb965975019e9d"
+  }
+}
