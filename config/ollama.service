@@ -1,0 +1,17 @@
+[Unit]
+Description=Ollama language head for Txn_Jatin
+After=network-online.target
+
+[Service]
+Type=simple
+Environment=OLLAMA_HOST=127.0.0.1:11434
+Environment=OLLAMA_MODELS=/media/volume/AdditionalHeadroom/ollama/models
+Environment=OLLAMA_KEEP_ALIVE=0
+ExecStart=/media/volume/AdditionalHeadroom/ollama/bin/ollama serve
+Restart=always
+RestartSec=3
+StandardOutput=append:/media/volume/AdditionalHeadroom/ollama/logs/serve.log
+StandardError=append:/media/volume/AdditionalHeadroom/ollama/logs/serve.log
+
+[Install]
+WantedBy=default.target

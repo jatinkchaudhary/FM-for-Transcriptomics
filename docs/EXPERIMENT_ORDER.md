@@ -13,6 +13,7 @@
 | 9 | Sparse biomarker pilot | 1,000/2,000 observed genes, 86-93% hidden | `results/sparse_biomarker/report.md` |
 | 10 | Immunotherapy transfer | Four-cohort nested leave-one-cohort-out evaluation, n=239 | `results/immunotherapy/report.md` |
 | 11 | Official TCGA-scoped individual GO | Pinned GitHub commit; 56 terms; fixed folds; nested-CV/holdout SVC; 12 models; native and 9,568-gene strict scopes | `results/individual_go_tcga/tables/individual_go_term_scores.csv` |
+| 12 | External GTEx whole-gene recovery | 12 diverse recount2 GTEx samples; log1p-CPM; fixed 15% whole-gene mask; strict 2,117-gene decoder intersection | `results/gtex_external/gtex_all_model_summary.csv` |
 
 ## Recalculation hierarchy
 

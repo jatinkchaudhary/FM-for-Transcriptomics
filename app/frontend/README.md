@@ -10,6 +10,8 @@ When served by `app/backend/server.py`, the UI uses the same origin for:
 - model capability metadata through `GET /api/models`
 - measured study results through `GET /api/experiments`
 - downloadable result tables under `/results/`
+- versioned atlas matching and an optional evidence-grounded Ollama summary
+  through `POST /api/atlas`
 
 Use `?api=https://another-host:port` only when the API is hosted separately.
 Use `?api=` to deliberately disable the API and expose the labeled browser
@@ -31,6 +33,12 @@ The Downstream tab separates two evidence types:
 The live retrieval scope is the uploaded cohort. It does not claim to search
 the external BRIDGE ARCHS4 index, which is unavailable in the upstream
 repository and is model-specific.
+
+The Gene Atlas tab is a separate post-imputation stage. It reports nearest
+human/mouse reference profiles, tissue and species evidence, marker-set
+associations, and configured mouse-human orthologs. Similarities and disease
+associations are not calibrated probabilities. Ollama receives only the
+structured evidence returned by the atlas stage.
 
 Plotly.js 6.9.0 is vendored under `vendor/` so the 3D map does not depend on a
 third-party CDN. Its MIT license is included at `vendor/plotly-license/LICENSE.txt`.

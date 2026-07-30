@@ -133,6 +133,24 @@ immunotherapy cohorts?
 These results are exploratory and do not constitute a validated clinical
 response predictor.
 
+## External GTEx whole-gene recovery
+
+**Question:** Do decoder-capable models recover completely hidden genes in an
+independent recount2 GTEx matrix?
+
+- Model summary:
+  [`results/gtex_external/gtex_all_model_summary.csv`](../results/gtex_external/gtex_all_model_summary.csv)
+- Per-sample metrics:
+  [`results/gtex_external/gtex_all_model_sample_metrics.csv`](../results/gtex_external/gtex_all_model_sample_metrics.csv)
+- Comparison figure:
+  [`results/gtex_external/gtex_all_model_comparison.png`](../results/gtex_external/gtex_all_model_comparison.png)
+- Protocol manifest:
+  [`results/gtex_external/manifest.json`](../results/gtex_external/manifest.json)
+
+All decoder-capable models were scored on the identical 2,117-gene masked
+intersection. Embedding-only Txn_Jatin contextual, ESM2, ESM3, Geneformer, and
+scGPT representations remain explicitly unsupported for expression imputation.
+
 ## Interactive registry
 
 The frontend reads [`app/data/results_registry.json`](../app/data/results_registry.json).

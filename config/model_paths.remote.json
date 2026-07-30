@@ -1,5 +1,25 @@
 {
   "device": "cuda",
+  "atlas": {
+    "name": "Txn_Jatin bulk transcriptome atlas: GTEx, TCGA, ARCHS4 human/mouse",
+    "version": "production_v1_20260730",
+    "index": "/media/volume/AdditionalHeadroom/Txn_Jatin_atlas/production_v1/atlas_expression.npz",
+    "metadata": "/media/volume/AdditionalHeadroom/Txn_Jatin_atlas/production_v1/reference_metadata.csv",
+    "gene_annotations": "/media/volume/AdditionalHeadroom/Txn_Jatin_atlas/production_v1/gene_annotations.json",
+    "disease_gene_sets": "/media/volume/AdditionalHeadroom/Txn_Jatin_atlas/production_v1/disease_gene_sets.json",
+    "orthologs": "/media/volume/AdditionalHeadroom/Txn_Jatin_atlas/production_v1/mouse_human_orthologs.csv",
+    "minimum_shared_genes": 100,
+    "top_k": 8,
+    "ollama": {
+      "enabled": true,
+      "url": "http://127.0.0.1:11434/api/generate",
+      "model": "gpt-oss:120b",
+      "timeout_seconds": 600,
+      "max_samples": 16,
+      "num_ctx": 16384,
+      "num_predict": 900
+    }
+  },
   "python_packages": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/python_packages_clean",
   "train_flash": "/media/volume/TrainingData/home_data/benchmarking_run/Benchmarking/RNA Walter/flash_osdr_model/train_flash.py",
   "bulkformer_root": "/media/volume/AdditionalHeadroom/Txn_Jatin_runs/full_ARCHES4_20epoch_H100_20260624_015238/benchmarks/whole_gene_mask_2c5c_20260723_132500/resources/BulkFormer-main",

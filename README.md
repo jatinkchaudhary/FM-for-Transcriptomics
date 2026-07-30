@@ -32,6 +32,8 @@ The study compares static and contextual Txn_Jatin representations against
 BRIDGE, five BulkFormer sizes, ESM2, ESM3, Geneformer, and scGPT. It then tests
 whole-gene recovery, cancer classification, OSDR parameter-efficient
 fine-tuning, sparse-panel behavior, and exploratory immunotherapy transfer.
+The final external recovery test applies a fixed 15% whole-gene mask to 12
+diverse GTEx samples processed independently from ARCHS4.
 
 The central result is task-specific rather than universal: Txn_Jatin improves
 several functional-ranking and TCGA expressed-gene endpoints, while BRIDGE
@@ -83,6 +85,7 @@ Choose the route matching your goal:
 | Follow experiments chronologically | [`docs/EXPERIMENT_ORDER.md`](docs/EXPERIMENT_ORDER.md) |
 | Check which models support imputation | [`docs/MODELS_AND_CAPABILITIES.md`](docs/MODELS_AND_CAPABILITIES.md) |
 | Inspect the interactive application | [`app/frontend/README.md`](app/frontend/README.md) |
+| Configure the gene atlas and Ollama head | [`docs/GENE_ATLAS_PIPELINE.md`](docs/GENE_ATLAS_PIPELINE.md) |
 | Verify repository integrity | [`scripts/validate_bundle.py`](scripts/validate_bundle.py) |
 
 ## Experiment sequence
@@ -107,6 +110,8 @@ Choose the route matching your goal:
     evaluated with the fixed folds, nested-CV SVC, and holdout metrics from
     pinned `ylaboratory/gene-embedding-benchmarks` commit
     `d1320026a2a4ee033d49517f91e2d1c2ccc8df1e`.
+12. **External GTEx recovery:** eight decoder-capable models evaluated on the
+    same 2,117 masked genes across 12 diverse recount2 GTEx samples.
 
 Exact protocols and primary outputs are linked in
 [`docs/EXPERIMENT_ORDER.md`](docs/EXPERIMENT_ORDER.md).
@@ -142,6 +147,11 @@ The service exposes:
 - `GET /api/experiments`
 - `POST /api/impute`
 - `POST /api/downstream`
+- `GET /api/atlas/status`
+- `POST /api/atlas`
+- `GET /api/osdr`
+- `GET /api/osdr/report`
+- `GET /osdr-assets/...`
 - `GET /results/...`
 - `GET /test-data/...`
 
@@ -152,6 +162,13 @@ Imputation requests accept up to 20,010 genes and 512 samples, subject to the
 25 MB HTTP body limit. The runtime processes samples in 32-sample GPU batches
 so larger requests, including the built-in 46-sample ARCHS4 example, keep
 predictable peak inference memory.
+
+The optional atlas stage runs after imputation and requires a local,
+versioned reference index. Build it with `scripts/build_atlas_index.py`, add
+the companion metadata and annotation paths under `atlas` in
+`config/model_paths.remote.json`, then enable Ollama after pulling the pinned
+model named in that configuration. The language head summarizes structured
+evidence; it does not turn marker associations into a diagnosis.
 
 `POST /api/downstream` recomputes the downstream workspace from the submitted
 matrix. Txn_Jatin, Txn_Jatin OSDR LoRA, and BRIDGE use mean contextual sample
@@ -232,6 +249,7 @@ The full workflows use:
 - ARCHS4 expression data for pretraining;
 - processed TCGA and OSDR matrices for masking and transfer;
 - external immunotherapy cohorts for exploratory response analysis;
+- recount2 GTEx expression for external whole-gene recovery;
 - Txn_Jatin, BRIDGE, BulkFormer, ESM2/ESM3, Geneformer, and scGPT artifacts.
 
 These files are not redistributed because of size, licensing, and provenance

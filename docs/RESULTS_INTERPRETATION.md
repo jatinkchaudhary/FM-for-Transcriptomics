@@ -41,6 +41,16 @@ features were heavily cohort-encoded. Concordant interferon pathway effects are
 biologically plausible exploratory observations, not validated response
 biomarkers.
 
+## What external GTEx recovery shows
+
+On 12 diverse recount2 GTEx samples and the strict 2,117-gene decoder
+intersection, Txn_Jatin produced the lowest MSE (0.1326) and highest Pearson
+correlation (0.9787). OSDR LoRA was close (MSE 0.1484; Pearson 0.9779), followed
+by BRIDGE (MSE 0.2377; Pearson 0.9614). The BulkFormer decoders were materially
+weaker under this exact preprocessing and mask. This is evidence of external
+reconstruction transfer, not evidence of clinical validity or a fair embedding
+benchmark for models without a decoder.
+
 ## Publication-safe conclusion
 
 Txn_Jatin is a biologically regularized expression representation with

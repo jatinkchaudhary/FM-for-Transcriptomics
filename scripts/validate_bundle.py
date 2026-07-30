@@ -32,6 +32,8 @@ def main() -> int:
         ROOT / "app" / "backend" / "server.py",
         ROOT / "app" / "frontend" / "index.dc.html",
         ROOT / "results" / "github_protocol" / "all_results_long_numeric.csv",
+        ROOT / "results" / "gtex_external" / "gtex_all_model_summary.csv",
+        ROOT / "results" / "gtex_external" / "manifest.json",
     ]
     missing = [path for path in required if not path.exists()]
     if missing:

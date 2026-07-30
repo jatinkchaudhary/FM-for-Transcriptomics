@@ -1,0 +1,9 @@
+{
+  "samples": 12,
+  "input_genes": 15313,
+  "masked_genes": 2297,
+  "common_masked_genes": 2117,
+  "models_registered": 13,
+  "decoders_completed": 8,
+  "embedding_only_nan": 5
+}

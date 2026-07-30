@@ -44,6 +44,7 @@
     .downstream-task-nav>button{display:inline-block!important;width:auto!important;min-width:max-content;margin:0!important;white-space:nowrap}
     .downstream-content{min-height:640px;padding:14px!important}
     .live-two-column{grid-template-columns:1fr!important}
+    .atlas-viz-three,.atlas-viz-two{grid-template-columns:1fr!important}
     .plotly-3d-host{height:480px!important;min-height:480px!important}
   }
 </style>
@@ -203,11 +204,15 @@ class Component extends DCLogic{
     dataLabel:'No matrix loaded',viewRows:null,rowStart:0,cmpSync:0,apiStatus:'idle',
     modelsMeta:null,registry:null,resultExperiment:'github_protocol',
     downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0,
+    atlasData:null,atlasStatus:'idle',atlasError:null,atlasVizSample:0,
+    osdrData:null,osdrStatus:'idle',osdrError:null,osdrSearch:'',osdrPage:1,
+    osdrSelected:null,osdrReport:null,osdrReportStatus:'idle',
     topK:8,mapMethod:'umap',mapDims:'2d',mapColor:'group'};
   genes=[];samples=[];sampleClass=[];geneModule={};vals=[];miss=[];missCount=0;
 
   componentDidMount(){
     const q=new URLSearchParams(location.search);
+    if(q.get('tab')==='osdr')this.setState({tab:'osdr'});
     this.apiUrl=q.has('api')?(q.get('api')||null):(location.protocol==='http:'||location.protocol==='https:'?location.origin:null);
     this.loadSample();
     if(this.apiUrl)this.loadRemoteMetadata();
@@ -237,9 +242,33 @@ class Component extends DCLogic{
       const health=await healthResponse.json(),models=await modelsResponse.json(),registry=await experimentsResponse.json();
       this.remoteHealth=health;
       this.setState({apiStatus:'live',modelsMeta:models.models,registry});
+      this.loadOsdr(1,'');
     }catch(error){
       this.setState({apiStatus:'offline',jobStatus:'Remote API unavailable: '+error.message});
     }
+  }
+
+  async loadOsdr(page=this.state.osdrPage,search=this.state.osdrSearch){
+    if(!this.apiUrl)return;
+    this.setState({osdrStatus:'loading',osdrError:null});
+    try{
+      const base=this.apiUrl.replace(/\/$/,'');
+      const response=await fetch(base+'/api/osdr?page='+page+'&page_size=50&search='+encodeURIComponent(search));
+      if(!response.ok)throw new Error('OSDR endpoint returned '+response.status);
+      const data=await response.json();
+      this.setState({osdrData:data,osdrStatus:'complete',osdrPage:page,osdrError:null});
+    }catch(error){this.setState({osdrStatus:'error',osdrError:error.message});}
+  }
+
+  async selectOsdrSample(row){
+    this.setState({osdrSelected:row,osdrReport:null,osdrReportStatus:'loading'});
+    try{
+      const base=this.apiUrl.replace(/\/$/,'');
+      const response=await fetch(base+'/api/osdr/report?sample_index='+row.sample_index);
+      if(!response.ok)throw new Error('report endpoint returned '+response.status);
+      const report=await response.json();
+      this.setState({osdrReport:report,osdrReportStatus:report.status});
+    }catch(error){this.setState({osdrReport:{status:'error',message:error.message},osdrReportStatus:'error'});}
   }
 
   currentModelMeta(){
@@ -284,7 +313,8 @@ class Component extends DCLogic{
     this.vals=vals;this.miss=miss;this.imp=null;this.conf=null;this.impMask=null;
     let mc=0,tot=G*S;for(let g=0;g<G;g++)for(let s=0;s<S;s++)if(miss[g][s])mc++;
     this.missCount=mc;
-    this.setState({dataLabel:'sample_ARCHS4.tsv · '+G+' genes × '+S+' samples · '+(100*mc/tot).toFixed(1)+'% missing',hasImputed:false,jobStatus:'Ready · '+G+'×'+S+' loaded',selection:new Set(),pinned:null,rowStart:0,viewRows:null,progress:0,downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0});
+    this._atlasRequestId=(this._atlasRequestId||0)+1;
+    this.setState({dataLabel:'sample_ARCHS4.tsv · '+G+' genes × '+S+' samples · '+(100*mc/tot).toFixed(1)+'% missing',hasImputed:false,jobStatus:'Ready · '+G+'×'+S+' loaded',selection:new Set(),pinned:null,rowStart:0,viewRows:null,progress:0,downstreamData:null,downstreamStatus:'idle',atlasData:null,atlasStatus:'idle',atlasError:null,atlasVizSample:0,querySample:0,inspectorSample:0});
   }
 
   onFile=e=>{const f=e.target.files[0];if(f)this.readFile(f);};
@@ -319,7 +349,8 @@ class Component extends DCLogic{
     this.genes=genes;this.samples=samples;this.sampleClass=samples.map(()=>'—');this.geneModule={};genes.forEach(g=>this.geneModule[g]='bg');
     this.vals=vals;this.miss=miss;this.imp=null;this.impMask=null;this.conf=null;
     let mc=0;for(let g=0;g<G;g++)for(let s=0;s<S;s++)if(miss[g][s])mc++;this.missCount=mc;
-    this.setState({dataLabel:name+' · '+G+'×'+S+' · '+(100*mc/(G*S)).toFixed(1)+'% missing · '+(genesInRows?'genes in rows':'genes in columns (transposed)'),hasImputed:false,jobStatus:'Parsed '+G+'×'+S,selection:new Set(),pinned:null,rowStart:0,viewRows:null,downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0});
+    this._atlasRequestId=(this._atlasRequestId||0)+1;
+    this.setState({dataLabel:name+' · '+G+'×'+S+' · '+(100*mc/(G*S)).toFixed(1)+'% missing · '+(genesInRows?'genes in rows':'genes in columns (transposed)'),hasImputed:false,jobStatus:'Parsed '+G+'×'+S,selection:new Set(),pinned:null,rowStart:0,viewRows:null,downstreamData:null,downstreamStatus:'idle',atlasData:null,atlasStatus:'idle',atlasError:null,atlasVizSample:0,querySample:0,inspectorSample:0});
   }
 
   // ---------- normalization / display ----------
@@ -403,7 +434,8 @@ class Component extends DCLogic{
     let ic=0,cs=0;const cvals=[];for(let gg=0;gg<G;gg++)for(let ss=0;ss<S;ss++)if(mask[gg][ss]){ic++;cvals.push(conf[gg][ss]);cs+=conf[gg][ss];}
     cvals.sort((a,b)=>a-b);const med=cvals[Math.floor(cvals.length/2)]||0;
     this._impSummary={imputed:ic,meanConf:ic?cs/ic:0,medConf:med,source};
-    this.setState({running:false,progress:1,hasImputed:true,tab:'impute',jobStatus:(source==='api'?'Backend imputed ':'Surrogate imputed ')+ic+' values · mean conf '+(ic?(cs/ic).toFixed(2):'0'),downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0});
+    this._atlasRequestId=(this._atlasRequestId||0)+1;
+    this.setState({running:false,progress:1,hasImputed:true,tab:'impute',jobStatus:(source==='api'?'Backend imputed ':'Surrogate imputed ')+ic+' values · mean conf '+(ic?(cs/ic).toFixed(2):'0'),downstreamData:null,downstreamStatus:'idle',atlasData:null,atlasStatus:'idle',atlasError:null,atlasVizSample:0,querySample:0,inspectorSample:0});
   }
   // POST the matrix to the FastAPI checkpoint; response { imputed:[[…]], confidence:[[…]] }
   async imputeViaApi(){
@@ -441,6 +473,24 @@ class Component extends DCLogic{
       if(g<G)setTimeout(step,0);else this.finalizeImpute(imp,mask,conf,'surrogate');
     };
     setTimeout(step,60);
+  }
+
+  async runAtlas(){
+    if(!this.apiUrl||!this.state.hasImputed)return;
+    const requestId=(this._atlasRequestId||0)+1;this._atlasRequestId=requestId;
+    const inputLabel=this.state.dataLabel;
+    this.setState({atlasData:null,atlasStatus:'running',atlasError:null,atlasVizSample:0});
+    const matrix=this.imp.map(row=>row.slice());
+    const missing=this.imp.map(row=>row.map(()=>false));
+    try{
+      const res=await fetch(this.apiUrl.replace(/\/$/,'')+'/api/atlas',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({genes:this.genes,samples:this.samples,matrix,missing,input_scale:'auto'})});
+      const data=await res.json();
+      if(!res.ok)throw new Error(data.message||('HTTP '+res.status));
+      if(requestId!==this._atlasRequestId)return;
+      data.input_file=inputLabel;
+      this.setState({atlasData:data,atlasStatus:'complete',atlasError:null,atlasVizSample:0});
+    }catch(e){if(requestId===this._atlasRequestId)this.setState({atlasData:null,atlasStatus:'error',atlasError:e.message});}
   }
 
   exportCSV(){const G=this.genes.length,S=this.samples.length;const src=this.state.hasImputed?this.imp:this.vals;let out='gene,'+this.samples.join(',')+'\n';for(let g=0;g<G;g++){const row=[this.genes[g]];for(let s=0;s<S;s++){if(!this.state.hasImputed&&this.miss[g][s])row.push('NA');else row.push(src[g][s].toFixed(4));}out+=row.join(',')+'\n';}this.download(out,'imputed_matrix.csv','text/csv');}
@@ -1109,6 +1159,159 @@ class Component extends DCLogic{
     h('svg',{width:38,height:38,viewBox:'0 0 24 24',fill:'none'},h('rect',{x:3,y:3,width:18,height:18,rx:2,stroke:c.border2,strokeWidth:1.5}),h('path',{d:'M3 9h18M9 3v18',stroke:c.border2,strokeWidth:1})),
     h('div',{style:{fontSize:'14px',fontWeight:600,color:c.muted}},title),h('div',{style:{fontSize:'12px',maxWidth:'320px',textAlign:'center'}},sub));}
 
+  renderAtlas(){const h=React.createElement,c=this.colors(),d=this.state.atlasData;
+    if(!this.state.hasImputed)return this.empty(c,'Complete the matrix first','Atlas matching runs only after missing values have been imputed.');
+    if(!this.apiUrl)return this.empty(c,'Atlas backend unavailable','Connect the Studio to the configured backend to use versioned reference evidence.');
+    if(!d)return h('div',{style:{padding:'28px',maxWidth:'900px'}},
+      h('div',{className:'mono',style:{fontSize:'10px',color:c.accent,letterSpacing:'.08em'}},'REFERENCE ATLAS + LANGUAGE HEAD'),
+      h('h2',{style:{fontSize:'20px',letterSpacing:0}},'Trace the completed sample to biological references'),
+      h('p',{style:{fontSize:'12px',lineHeight:1.6,color:c.muted,maxWidth:'700px'}},'Matches use aligned expression profiles from a locally versioned human-mouse atlas. Disease outputs are marker-set associations, not diagnoses or calibrated probabilities.'),
+      h('button',{onClick:()=>this.runAtlas(),disabled:this.state.atlasStatus==='running',style:{padding:'9px 14px',border:'none',borderRadius:'6px',background:c.accent,color:'#fff',fontWeight:600,cursor:'pointer'}},this.state.atlasStatus==='running'?'Matching references...':'Run atlas analysis'),
+      this.state.atlasError?h('div',{style:{marginTop:'14px',padding:'11px',border:'1px solid #e0a455',borderRadius:'6px',color:'#9a3412',fontSize:'11px'}},this.state.atlasError):null);
+    const sampleRows=[];(d.sample_results||[]).forEach(s=>(s.matches||[]).slice(0,5).forEach(m=>sampleRows.push([s.sample,m.rank,m.reference_type==='tumor_cohort'?'Tumor cohort':'Healthy tissue',m.species,m.tissue,m.similarity.toFixed(4),m.reference_id])));
+    const diseaseRows=(d.disease_associations||[]).map(x=>[x.disease,x.overlap_count+'/'+x.set_size,x.score.toFixed(4),x.overlap_genes.slice(0,8).join(', ')]);
+    const mapRows=(d.mouse_to_human_orthologs||[]).map(x=>[x.mouse_symbol,x.human_symbol,x.orthology_type||'',x.source||'']);
+    const language=d.language_head||{};
+    const vizIndex=Math.min(this.state.atlasVizSample||0,Math.max(0,(d.sample_results||[]).length-1));
+    const viz=(d.sample_results||[])[vizIndex]||{matches:[],species_evidence:[],tissue_evidence:[]};
+    const evidenceBars=(rows,labelKey,valueKey,color,maxValue)=>h('div',{style:{display:'grid',gap:'7px'}},
+      ...rows.map(row=>{const value=Number(row[valueKey]||0);return h('div',{title:row[labelKey]+' · '+value.toFixed(4)},
+        h('div',{style:{display:'flex',justifyContent:'space-between',fontSize:'9.5px',marginBottom:'3px'}},
+          h('span',{style:{overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',maxWidth:'75%'}},row[labelKey]),
+          h('span',{className:'mono'},value.toFixed(4))),
+        h('div',{style:{height:'7px',background:c.border,overflow:'hidden'}},
+          h('div',{style:{height:'100%',width:(100*Math.max(0,Math.min(1,value/(maxValue||1))))+'%',background:color}})));}));
+    const refRows=(viz.matches||[]).slice(0,8).map(x=>({label:x.tissue+' · '+x.reference_id,value:x.similarity}));
+    return h('div',{style:{padding:'18px',overflow:'auto',height:'100%',boxSizing:'border-box'}},
+      h('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'start',marginBottom:'14px'}},
+        h('div',null,h('div',{className:'mono',style:{fontSize:'9px',color:c.accent}},(d.atlas.atlas_name||'GENE ATLAS')+' | '+(d.atlas.atlas_version||'')),
+          h('h2',{style:{fontSize:'19px',letterSpacing:0,margin:'5px 0'}},'Atlas evidence report'),
+          h('div',{style:{fontSize:'11px',color:c.muted}},d.input.shared_genes.toLocaleString()+' / '+d.input.genes.toLocaleString()+' input genes matched'),
+          h('div',{className:'mono',style:{fontSize:'9px',color:c.faint,marginTop:'4px'}},d.input_file||this.state.dataLabel)),
+        h('button',{onClick:()=>this.runAtlas(),style:{padding:'7px 11px',border:'1px solid '+c.border2,borderRadius:'6px',background:c.panel,color:c.text,cursor:'pointer'}},'Refresh')),
+      h('div',{style:{display:'grid',gridTemplateColumns:'1.3fr .7fr',gap:'14px'}},
+        h('section',null,h('h3',{style:{fontSize:'13px'}},'Closest reference profiles'),this.table(c,['Sample','Rank','Type','Species','Tissue','Similarity','Reference'],sampleRows,[0,1,0,0,0,1,0])),
+        h('section',{style:{border:'1px solid '+c.border,borderRadius:'8px',padding:'14px'}},h('h3',{style:{fontSize:'13px',marginTop:0}},'Gene evidence'),
+          h('div',{style:{fontSize:'11px',lineHeight:1.65,color:c.muted}},(d.top_expressed_genes||[]).join(', ')))),
+      h('section',{style:{marginTop:'14px',display:'grid',gridTemplateColumns:'repeat(3,minmax(0,1fr))',gap:'1px',background:c.border,border:'1px solid '+c.border}},
+        h('div',{style:{padding:'11px 12px',background:c.panel}},
+          h('div',{className:'mono',style:{fontSize:'8.5px',color:c.faint}},'SPECIES CONCLUSION'),
+          h('div',{style:{fontSize:'12px',fontWeight:600,marginTop:'4px',color:(d.sample_results||[]).every(x=>x.species_call!=='indeterminate')?c.text:'#c2740a'}},
+            (d.sample_results||[]).every(x=>x.species_call!=='indeterminate')?[...new Set((d.sample_results||[]).map(x=>x.species_call))].join(', '):'Indeterminate'),
+          h('div',{style:{fontSize:'9px',color:c.faint,marginTop:'3px'}},'Requires ≥0.10 separation between species weights')),
+        h('div',{style:{padding:'11px 12px',background:c.panel}},
+          h('div',{className:'mono',style:{fontSize:'8.5px',color:c.faint}},'BEST LABELED REFERENCE'),
+          h('div',{style:{fontSize:'12px',fontWeight:600,marginTop:'4px'}},viz.primary_tissue_match?viz.primary_tissue_match.tissue:'Unavailable'),
+          h('div',{style:{fontSize:'9px',color:c.faint,marginTop:'3px'}},'Healthy-tissue atlas only; ARCHS4 and TCGA excluded')),
+        h('div',{style:{padding:'11px 12px',background:c.panel}},
+          h('div',{className:'mono',style:{fontSize:'8.5px',color:c.faint}},'INTERPRETATION'),
+          h('div',{style:{fontSize:'12px',fontWeight:600,marginTop:'4px'}},'Reference similarity'),
+          h('div',{style:{fontSize:'9px',color:c.faint,marginTop:'3px'}},'TCGA labels are not cancer diagnoses'))),
+      h('h3',{style:{fontSize:'13px',marginTop:'20px'}},'Disease-marker associations'),diseaseRows.length?this.table(c,['Association','Overlap','Score','Contributing genes'],diseaseRows,[0,1,1,0]):h('p',{style:{fontSize:'11px',color:c.faint}},'No configured disease gene set overlapped the top-ranked genes.'),
+      mapRows.length?h('div',null,h('h3',{style:{fontSize:'13px',marginTop:'20px'}},'Mouse-to-human ortholog evidence'),this.table(c,['Mouse','Human','Type','Source'],mapRows,[0,0,0,0])):null,
+      h('section',{style:{marginTop:'20px',borderLeft:'3px solid '+c.accent,padding:'13px 15px',background:c.panel}},
+        h('div',{className:'mono',style:{fontSize:'9px',color:c.accent}},'OLLAMA | '+(language.model||'not configured')+' | '+(language.status||'unknown')),
+        h('div',{style:{whiteSpace:'pre-wrap',fontSize:'12px',lineHeight:1.65,marginTop:'8px'}},language.text||language.error||'Language head disabled. Numerical atlas evidence remains available above.'),
+        language.prompt?h('details',{style:{marginTop:'14px',borderTop:'1px solid '+c.border,paddingTop:'10px'}},
+          h('summary',{style:{cursor:'pointer',fontSize:'10.5px',fontWeight:600,color:c.accent}},'Show exact LLM prompt'),
+          h('pre',{style:{whiteSpace:'pre-wrap',overflowWrap:'anywhere',fontSize:'9.5px',lineHeight:1.5,maxHeight:'420px',overflow:'auto',padding:'10px',background:c.bg,border:'1px solid '+c.border}},language.prompt)):null),
+      h('section',{style:{marginTop:'22px',paddingTop:'16px',borderTop:'1px solid '+c.border}},
+        h('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',gap:'12px',marginBottom:'12px'}},
+          h('div',null,
+            h('div',{className:'mono',style:{fontSize:'9px',color:c.accent}},'DYNAMIC INPUT VISUALIZATION'),
+            h('h3',{style:{fontSize:'14px',margin:'4px 0'}},'Atlas evidence for the current file')),
+          h('select',{value:vizIndex,onChange:e=>this.setState({atlasVizSample:+e.target.value}),style:{maxWidth:'360px',padding:'7px 9px',border:'1px solid '+c.border2,background:c.panel,color:c.text,borderRadius:'6px'}},
+            ...(d.sample_results||[]).map((row,index)=>h('option',{value:index},row.sample)))),
+        h('div',{className:'atlas-viz-three',style:{display:'grid',gridTemplateColumns:'repeat(3,minmax(0,1fr))',gap:'10px'}},
+          h('div',{style:{border:'1px solid '+c.border,padding:'12px',background:c.panel}},
+            h('div',{style:{fontSize:'11px',fontWeight:600,marginBottom:'10px'}},'Species evidence'),
+            evidenceBars(viz.species_evidence||[],'label','weight',c.accent,1)),
+          h('div',{style:{border:'1px solid '+c.border,padding:'12px',background:c.panel}},
+            h('div',{style:{fontSize:'11px',fontWeight:600,marginBottom:'10px'}},'Tissue evidence'),
+            evidenceBars(viz.tissue_evidence||[],'label','score','#5669a8',1)),
+          h('div',{style:{border:'1px solid '+c.border,padding:'12px',background:c.panel}},
+            h('div',{style:{fontSize:'11px',fontWeight:600,marginBottom:'10px'}},'Closest references'),
+            evidenceBars(refRows,'label','value','#2c8c6b',1))),
+        h('div',{className:'atlas-viz-two',style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px',marginTop:'10px'}},
+          h('div',{style:{border:'1px solid '+c.border,padding:'12px',background:c.panel}},
+            h('div',{style:{fontSize:'11px',fontWeight:600,marginBottom:'8px'}},'Top genes in this input'),
+            h('div',{style:{display:'flex',flexWrap:'wrap',gap:'5px'}},...(d.top_expressed_genes||[]).slice(0,25).map(g=>h('span',{className:'mono',style:{padding:'4px 6px',fontSize:'9px',border:'1px solid '+c.border,color:c.accent}},g)))),
+          h('div',{style:{border:'1px solid '+c.border,padding:'12px',background:c.panel}},
+            h('div',{style:{fontSize:'11px',fontWeight:600,marginBottom:'8px'}},'Disease-set evidence scores'),
+            evidenceBars((d.disease_associations||[]).slice(0,10).map(x=>({label:x.disease,value:x.score})),'label','value','#ca4b36',Math.max(...(d.disease_associations||[]).slice(0,10).map(x=>x.score),1e-6)))),
+        h('div',{style:{fontSize:'9.5px',color:c.faint,marginTop:'9px'}},'All charts are regenerated from the currently uploaded and imputed matrix. Hover over a bar for its exact label and score.')),
+      h('div',{style:{fontSize:'10.5px',color:c.faint,lineHeight:1.5,marginTop:'16px'}},(d.limitations||[]).join(' ')));
+  }
+
+  renderOsdr(){const h=React.createElement,c=this.colors(),d=this.state.osdrData;
+    if(!this.apiUrl)return this.empty(c,'OSDR backend unavailable','Connect to the remote Studio backend to inspect the complete cohort.');
+    if(!d)return this.empty(c,this.state.osdrStatus==='error'?'OSDR results unavailable':'Loading OSDR cohort',this.state.osdrError||'Reading the complete sample and atlas result tables.');
+    const s=d.summary||{},a=d.atlas_summary||{},r=d.reports||{},p=d.pagination||{};
+    const pct=r.total?100*r.valid/r.total:0;
+    const metric=(label,value,note)=>h('div',{style:{borderTop:'3px solid '+c.accent,padding:'13px 14px',background:c.panel}},
+      h('div',{className:'mono',style:{fontSize:'20px',fontWeight:600,color:c.text}},value),
+      h('div',{style:{fontSize:'11px',fontWeight:600,marginTop:'4px'}},label),
+      h('div',{style:{fontSize:'9.5px',color:c.faint,marginTop:'3px'}},note||''));
+    const images=[
+      ['imputation_performance.png','Masked-gene recovery','Per-sample Pearson distribution and tissue medians'],
+      ['atlas_tissue_assignments.png','Atlas tissue assignments','Best labeled GTEx/TCGA reference per sample'],
+      ['tissue_mapping_matrix.png','Tissue mapping matrix','OSDR metadata versus atlas reference labels'],
+      ['gene_disease_knowledge_graph.png','Gene evidence graph','Exploratory gene-to-disease-set relationships']
+    ];
+    const report=this.state.osdrReport||{};
+    const selected=this.state.osdrSelected;
+    return h('div',{style:{padding:'18px 20px 34px',overflow:'auto',height:'100%',boxSizing:'border-box'}},
+      h('div',{style:{display:'flex',alignItems:'start',justifyContent:'space-between',gap:'16px',marginBottom:'15px'}},
+        h('div',null,
+          h('div',{className:'mono',style:{fontSize:'9px',color:c.accent,letterSpacing:'.08em'}},'OSDR | 70 STUDIES | COMPLETE COHORT'),
+          h('h2',{style:{fontSize:'20px',margin:'5px 0',letterSpacing:0}},'All-sample imputation and biological evidence'),
+          h('div',{style:{fontSize:'11px',color:c.muted}},'Fixed 15% whole-gene mask · selected Txn_Jatin OSDR LoRA checkpoint · versioned human/mouse atlas')),
+        h('button',{onClick:()=>this.loadOsdr(),title:'Refresh live LLM progress',style:{padding:'7px 11px',border:'1px solid '+c.border2,borderRadius:'6px',background:c.panel,color:c.text,cursor:'pointer'}},'↻ Refresh')),
+      h('div',{style:{display:'grid',gridTemplateColumns:'repeat(6,minmax(120px,1fr))',gap:'8px',marginBottom:'18px'}},
+        metric('Samples',Number(s.samples||0).toLocaleString(),'all prepared OSDR samples'),
+        metric('Genes',Number(s.genes||0).toLocaleString(),Number(s.masked_genes||0).toLocaleString()+' masked'),
+        metric('Masked MSE',Number(s.masked_mse).toFixed(4),'log-expression scale'),
+        metric('Median Pearson',Number(s.median_sample_pearson).toFixed(4),'per-sample recovery'),
+        metric('Atlas overlap',Number(a.shared_genes||0).toLocaleString(),'shared genes'),
+        metric('LLM reports',r.valid+' / '+r.total,pct.toFixed(1)+'% validated · '+r.errors+' retry')),
+      h('div',{style:{height:'5px',background:c.border,borderRadius:'3px',overflow:'hidden',marginBottom:'20px'}},
+        h('div',{style:{width:pct+'%',height:'100%',background:c.accent,transition:'width .3s'}})),
+      h('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',gap:'12px',marginBottom:'22px'}},
+        ...images.map(x=>h('figure',{style:{margin:0,border:'1px solid '+c.border,background:c.panel}},
+          h('a',{href:this.apiUrl.replace(/\/$/,'')+'/osdr-assets/'+x[0],target:'_blank',title:'Open full-resolution figure'},
+            h('img',{src:this.apiUrl.replace(/\/$/,'')+'/osdr-assets/'+x[0],alt:x[1],style:{width:'100%',height:'310px',objectFit:'contain',display:'block',background:'#fff'}})),
+          h('figcaption',{style:{padding:'9px 11px',borderTop:'1px solid '+c.border}},
+            h('div',{style:{fontSize:'11px',fontWeight:600}},x[1]),
+            h('div',{style:{fontSize:'9.5px',color:c.faint,marginTop:'2px'}},x[2]))))),
+      h('div',{style:{display:'flex',gap:'8px',alignItems:'center',marginBottom:'10px'}},
+        h('input',{value:this.state.osdrSearch,onChange:e=>this.setState({osdrSearch:e.target.value}),onKeyDown:e=>{if(e.key==='Enter')this.loadOsdr(1,this.state.osdrSearch);},placeholder:'Search sample, study, condition, or tissue',style:{width:'360px',padding:'8px 10px',border:'1px solid '+c.border2,borderRadius:'6px',background:c.panel,color:c.text}}),
+        h('button',{onClick:()=>this.loadOsdr(1,this.state.osdrSearch),style:{padding:'8px 12px',border:'none',borderRadius:'6px',background:c.accent,color:'#fff',cursor:'pointer'}},'Search'),
+        h('span',{style:{fontSize:'10px',color:c.faint}},p.total+' matching samples')),
+      h('div',{className:'live-two-column',style:{display:'grid',gridTemplateColumns:'minmax(0,1.4fr) minmax(340px,.6fr)',gap:'12px',alignItems:'start'}},
+        h('div',{style:{border:'1px solid '+c.border,overflow:'auto'}},
+          h('table',{style:{width:'100%',borderCollapse:'collapse',fontSize:'10.5px'}},
+            h('thead',null,h('tr',null,...['Sample','Study','Condition','OSDR tissue','Atlas tissue','Species','Pearson','MSE'].map(x=>h('th',{style:{textAlign:'left',padding:'8px',borderBottom:'1px solid '+c.border,background:c.panel,position:'sticky',top:0}},x)))),
+            h('tbody',null,...(d.samples||[]).map(row=>h('tr',{onClick:()=>this.selectOsdrSample(row),style:{cursor:'pointer',background:selected&&selected.sample_id===row.sample_id?c.theme==='dark'?'#123033':'#edf7f7':'transparent'}},
+              h('td',{className:'mono',style:{padding:'7px 8px',borderBottom:'1px solid '+c.border}},row.sample_id),
+              h('td',{style:{padding:'7px 8px',borderBottom:'1px solid '+c.border}},row.accession),
+              h('td',{style:{padding:'7px 8px',borderBottom:'1px solid '+c.border}},row.condition),
+              h('td',{style:{padding:'7px 8px',borderBottom:'1px solid '+c.border}},row.tissue),
+              h('td',{style:{padding:'7px 8px',borderBottom:'1px solid '+c.border}},row.predicted_tissue||'—'),
+              h('td',{style:{padding:'7px 8px',borderBottom:'1px solid '+c.border}},row.predicted_species||'—'),
+              h('td',{className:'mono',style:{padding:'7px 8px',borderBottom:'1px solid '+c.border}},Number(row.masked_pearson).toFixed(4)),
+              h('td',{className:'mono',style:{padding:'7px 8px',borderBottom:'1px solid '+c.border}},Number(row.masked_mse).toFixed(4)))))),
+          h('div',{style:{display:'flex',justifyContent:'space-between',padding:'8px',background:c.panel}},
+            h('button',{disabled:p.page<=1,onClick:()=>this.loadOsdr(p.page-1),style:{padding:'5px 9px'}},'←'),
+            h('span',{className:'mono',style:{fontSize:'10px',color:c.muted}},'Page '+p.page+' / '+p.pages),
+            h('button',{disabled:p.page>=p.pages,onClick:()=>this.loadOsdr(p.page+1),style:{padding:'5px 9px'}},'→'))),
+        h('aside',{style:{border:'1px solid '+c.border,borderTop:'3px solid '+c.accent,padding:'13px 14px',background:c.panel,minHeight:'300px'}},
+          h('div',{className:'mono',style:{fontSize:'9px',color:c.accent}},selected?(selected.sample_id+' | '+(report.status||this.state.osdrReportStatus)):'SAMPLE LANGUAGE REPORT'),
+          !selected?h('p',{style:{fontSize:'11px',color:c.faint,lineHeight:1.6}},'Select a sample row to inspect its validated gpt-oss:120b evidence report.'):
+          report.status==='complete'?h('div',{style:{whiteSpace:'pre-wrap',fontSize:'11px',lineHeight:1.6,marginTop:'10px'}},report.text):
+          h('div',{style:{fontSize:'11px',color:report.status==='failed_validation'?'#c2740a':c.faint,marginTop:'12px'}},report.status==='failed_validation'?'The generated narrative failed grounding validation and is queued for retry.':'Report generation is pending. Numerical results are already available.'))),
+      h('div',{style:{marginTop:'14px',padding:'10px 12px',border:'1px solid #e0a455',color:c.theme==='dark'?'#e0a455':'#9a3412',fontSize:'10.5px',lineHeight:1.5}},'Atlas similarities and species weights are evidence scores, not calibrated probabilities. Disease-set edges and language-head hypotheses are exploratory and must not be interpreted as diagnoses.'));
+  }
+
   // ---------- theme colors ----------
   colors(){const dark=this.state.theme==='dark';return{theme:this.state.theme,
     bg:dark?'#0e1114':'#fbfbfa',panel:dark?'#171b20':'#ffffff',text:dark?'#e7ebef':'#14181d',muted:dark?'#9aa4b0':'#5b6673',faint:dark?'#6b7684':'#8a95a3',
@@ -1117,11 +1320,11 @@ class Component extends DCLogic{
 
   renderVals(){
     const c=this.colors();
-    const tabDef=[['input','Input'],['impute','Imputation'],['results','Study Results'],['downstream','Downstream'],['about','About']];
+    const tabDef=[['input','Input'],['impute','Imputation'],['atlas','Gene Atlas'],['osdr','OSDR Cohort'],['results','Study Results'],['downstream','Downstream'],['about','About']];
     const tabStyle=id=>({padding:'0 16px',height:'100%',border:'none',borderBottom:'2px solid '+(this.state.tab===id?c.accent:'transparent'),background:'none',fontSize:'13px',fontWeight:this.state.tab===id?600:500,color:this.state.tab===id?c.text:c.muted,cursor:'pointer',fontFamily:'inherit'});
     const normDef=[['raw','raw'],['log1p','log1p'],['z','z-score','zscore']];
     const normStyle=v=>({flex:1,padding:'6px',border:'none',borderRadius:'5px',fontSize:'11px',cursor:'pointer',fontFamily:'inherit',background:this.state.norm===v?c.accent:'transparent',color:this.state.norm===v?'#fff':c.muted,fontWeight:this.state.norm===v?600:400});
-    const content=this.state.tab==='input'?this.renderInput():this.state.tab==='impute'?this.renderImpute():this.state.tab==='results'?this.renderResults():this.state.tab==='downstream'?this.renderDownstream():this.renderAbout();
+    const content=this.state.tab==='input'?this.renderInput():this.state.tab==='impute'?this.renderImpute():this.state.tab==='atlas'?this.renderAtlas():this.state.tab==='osdr'?this.renderOsdr():this.state.tab==='results'?this.renderResults():this.state.tab==='downstream'?this.renderDownstream():this.renderAbout();
     const fallbackModels=[
       {id:'Txn_Jatin',label:'Txn_Jatin'},{id:'Txn_Jatin_OSDR_LoRA',label:'Txn_Jatin OSDR LoRA'},{id:'Txn_Jatin_contextual',label:'Txn_Jatin contextual'},
       {id:'BRIDGE',label:'BRIDGE'},...['37M','50M','93M','127M','147M'].map(size=>({id:'BulkFormer_'+size,label:'BulkFormer-'+size})),
@@ -1132,7 +1335,7 @@ class Component extends DCLogic{
       bg:c.bg,text:c.text,panel:c.panel,border:c.border,border2:c.border2,accent:c.accent,muted:c.muted,faint:c.faint,colormapCss:c.colormapCss,
       tabs:tabDef.map(([id,label])=>({label,style:tabStyle(id),set:()=>this.setState({tab:id})})),
       models:this.state.modelsMeta||fallbackModels,
-      model:this.state.model,onModel:e=>this.setState({model:e.target.value,hasImputed:false,downstreamData:null,downstreamStatus:'idle',querySample:0,inspectorSample:0}),
+      model:this.state.model,onModel:e=>this.setState({model:e.target.value,hasImputed:false,downstreamData:null,downstreamStatus:'idle',atlasData:null,atlasStatus:'idle',atlasError:null,querySample:0,inspectorSample:0}),
       modelNote:meta?((meta.imputation_supported?'decoder':'embedding-only · imputation NaN')+' · '+meta.genes.toLocaleString()+' genes · dim '+meta.embedding_dim):'loading model metadata',
       norms:normDef.map(d=>({label:d[1],style:normStyle(d[2]||d[0]),set:()=>this.setState({norm:d[2]||d[0]})})),
       clampLo:this.state.clampLo,clampHi:this.state.clampHi,clampLabel:'p'+this.state.clampLo+'–p'+this.state.clampHi,
