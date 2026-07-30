@@ -136,6 +136,20 @@ immunotherapy cohorts?
 These results are exploratory and do not constitute a validated clinical
 response predictor.
 
+### Atlas-augmented immunotherapy follow-up
+
+- Report:
+  [`results/immunotherapy/atlas_augmented/REPORT.md`](../results/immunotherapy/atlas_augmented/REPORT.md)
+- LOCO summary:
+  [`results/immunotherapy/atlas_augmented/atlas_loco_summary.csv`](../results/immunotherapy/atlas_augmented/atlas_loco_summary.csv)
+- Pathway consistency:
+  [`results/immunotherapy/atlas_augmented/atlas_pathway_consistency.csv`](../results/immunotherapy/atlas_augmented/atlas_pathway_consistency.csv)
+- Exact LLM prompt:
+  [`results/immunotherapy/atlas_augmented/llm_prompt.txt`](../results/immunotherapy/atlas_augmented/llm_prompt.txt)
+
+The atlas improved raw-model calibration but did not improve macro
+held-out-cohort AUROC or AUPRC.
+
 ## External GTEx whole-gene recovery
 
 **Question:** Do decoder-capable models recover completely hidden genes in an
