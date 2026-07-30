@@ -1,0 +1,17 @@
+{
+  "cohort": "crossed GTEx and TCGA recount2 matrices",
+  "tissues": [
+    "Breast",
+    "Kidney",
+    "Lung",
+    "Skin"
+  ],
+  "study_definition": [
+    "GTEx",
+    "TCGA"
+  ],
+  "maximum_per_tissue_study": 200,
+  "normalization": "library-size CPM then log1p",
+  "neighbors": 30,
+  "note": "Pinned recount2 matrices were used because they provide a uniform crossed design locally; this is an explicit deviation from the requested recount3 version."
+}

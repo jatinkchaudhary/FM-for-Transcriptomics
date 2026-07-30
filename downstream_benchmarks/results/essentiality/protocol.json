@@ -1,0 +1,32 @@
+{
+  "task": "DepMap 24Q2 common-essential versus pan-neutral gene classification",
+  "release_doi": "10.25452/figshare.plus.25880521.v1",
+  "gene_effect_sha256": "d155149181308f8e16b6a4677cde3e5af1ddef68ada1947486ae8c0bcb231452",
+  "common_essentials_sha256": "64e3aa4b355b8cc6165cce53a6471862b60046296b98adf8b91a50150667bcf8",
+  "label_definition": "positive: CRISPRInferredCommonEssentials; negative: screened gene with median Chronos effect >= -0.2; intermediate genes excluded",
+  "coverage": "strict intersection across every evaluated model",
+  "outer_cv": "5-fold stratified gene-disjoint, shuffle seed 42",
+  "inner_cv": "4-fold stratified; fixed C grid",
+  "C_grid": [
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "bootstrap": {
+    "replicates": 2000,
+    "seed": 42,
+    "paired": true
+  },
+  "label_summary": {
+    "screened_genes": 18443,
+    "common_essential_ids": 2023,
+    "neutral_cutoff": -0.2,
+    "positive_genes": 2023,
+    "neutral_genes": 15005,
+    "ambiguous_excluded": 1415
+  },
+  "strict_intersection_genes": 13342,
+  "strict_intersection_positives": 1666
+}
