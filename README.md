@@ -81,6 +81,7 @@ Choose the route matching your goal:
 | Goal | Start with |
 |---|---|
 | Understand the scientific conclusions | [`docs/RESULTS_INTERPRETATION.md`](docs/RESULTS_INTERPRETATION.md) |
+| Use publication-ready architecture and study diagrams | [`docs/paper_figures/README.md`](docs/paper_figures/README.md) |
 | Find a particular metric or figure | [`docs/RESULTS_INDEX.md`](docs/RESULTS_INDEX.md) |
 | Audit every benchmark script and output | [`docs/BENCHMARK_ARTIFACTS.md`](docs/BENCHMARK_ARTIFACTS.md) |
 | Follow experiments chronologically | [`docs/EXPERIMENT_ORDER.md`](docs/EXPERIMENT_ORDER.md) |

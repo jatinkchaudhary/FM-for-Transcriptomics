@@ -7,6 +7,18 @@ For the complete script/output archive, including detailed per-run files, see
 [`BENCHMARK_ARTIFACTS.md`](BENCHMARK_ARTIFACTS.md) and
 [`results/ARTIFACT_INVENTORY.csv`](../results/ARTIFACT_INVENTORY.csv).
 
+## Paper diagrams
+
+**Question:** Where are the publication-ready architecture, pipeline, and
+benchmark overview figures?
+
+- [`paper_figures/README.md`](paper_figures/README.md)
+- [`paper_figures/figure_01_bridge_architecture.pdf`](paper_figures/figure_01_bridge_architecture.pdf)
+- [`paper_figures/figure_02_txn_jatin_architecture.pdf`](paper_figures/figure_02_txn_jatin_architecture.pdf)
+- [`paper_figures/figure_03_txn_contextual_construction.pdf`](paper_figures/figure_03_txn_contextual_construction.pdf)
+- [`paper_figures/figure_04_experimental_pipeline.pdf`](paper_figures/figure_04_experimental_pipeline.pdf)
+- [`paper_figures/figure_05_benchmark_landscape.pdf`](paper_figures/figure_05_benchmark_landscape.pdf)
+
 ## Model training
 
 **Question:** Did Txn_Jatin optimize stably over 20 ARCHS4 epochs?
