@@ -1,0 +1,19 @@
+{
+  "resource": "ExperimentHub EH6677",
+  "samples": 192,
+  "responders": 25,
+  "external_genes": 31087,
+  "model_genes": 16055,
+  "external_measured_model_genes": 15105,
+  "espresso_finite_genes": 16055,
+  "raw_common_genes": 13523,
+  "espresso_selected_C": 0.01,
+  "espresso_calibration_offset": -0.7470822841174096,
+  "raw_selected_C": 0.01,
+  "raw_calibration_offset": -0.7438620701162144,
+  "feature_selection": "top 1000 development variance genes",
+  "adaptation": "diagonal training-domain CORAL; external statistics unused",
+  "external_labels_used_for_fit": false,
+  "seed": 42,
+  "accession_overlap": "EH6677 exposes internal SAM identifiers, not GEO/archive accessions; exact ARCHS4 accession matching is not identifiable from this distribution."
+}

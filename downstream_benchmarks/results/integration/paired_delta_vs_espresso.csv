@@ -1,0 +1,4 @@
+metric,reference,method,paired_delta,ci_low,ci_high,bootstrap_replicates,seed
+local_batch_mixing,BulkFormer_147M,Txn_Jatin,-0.014422024367109284,-0.020728211576700725,-0.008138311924781795,2000,42
+local_biology_preservation,BulkFormer_147M,Txn_Jatin,0.019696290764251924,0.015011119409177659,0.02436486598622521,2000,42
+local_combined,BulkFormer_147M,Txn_Jatin,0.006048964711707444,0.002289674975167363,0.010015377170009235,2000,42

@@ -18,6 +18,7 @@ every file under `protocols/` and `results/`, its byte size, and SHA-256 digest.
 | Official TCGA individual GO | `protocols/individual_go_tcga/` | `results/individual_go_tcga/` |
 | Sparse biomarker pilot | `protocols/sparse_biomarker/` | `results/sparse_biomarker/full_run/` |
 | Immunotherapy transfer | `protocols/immunotherapy/` | `results/immunotherapy/full_run/` |
+| Immunotherapy provenance audit and locked IMvigor210 test | `protocols/immunotherapy/` | `results/immunotherapy/provenance_not_response/` |
 | External GTEx recovery | `scripts/prepare_gtex_ui_test.py`, `scripts/benchmark_gtex_all_models.py` | `results/gtex_external/` |
 
 The shorter tables directly under each result directory remain the canonical

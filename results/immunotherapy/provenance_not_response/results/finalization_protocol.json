@@ -1,0 +1,11 @@
+{
+  "seed": 42,
+  "bootstrap_replicates": 2000,
+  "bootstrap_strata": [
+    "held_out_cohort",
+    "response_label"
+  ],
+  "parallel_jobs": 20,
+  "overlap_clean_macro": "Gide, Riaz, and Rose; Hugo excluded because only one clean patient remains and AUROC is undefined.",
+  "locked_external_outcomes_read": false
+}

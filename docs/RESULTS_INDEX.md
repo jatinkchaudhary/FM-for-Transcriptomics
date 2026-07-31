@@ -183,6 +183,23 @@ held-out-cohort AUROC or AUPRC.
 - Comparison figure:
   [`results/immunotherapy/multimodel/multimodel_primary_comparison.png`](../results/immunotherapy/multimodel/multimodel_primary_comparison.png)
 
+### Immunotherapy provenance and locked external test
+
+This follow-up separates response signal from cohort provenance and assay
+availability. It includes targeted masked-signature recovery, a provenance
+variance partition, cohort-invariant adaptation screens, and a preregistered
+single-shot IMvigor210 evaluation. The external result is neutral versus raw
+expression; the strongest positive result is Txn_Jatin recovery of 43 masked
+immune-signature genes.
+
+- [`REPORT.md`](../results/immunotherapy/provenance_not_response/REPORT.md)
+- [`README.md`](../results/immunotherapy/provenance_not_response/README.md)
+- [`locked_imvigor210_summary.csv`](../results/immunotherapy/provenance_not_response/results/locked_imvigor210_summary.csv)
+- [`signature_gene_holdout_accuracy.csv`](../results/immunotherapy/provenance_not_response/results/signature_gene_holdout_accuracy.csv)
+- [`pvca_variance_partition.csv`](../results/immunotherapy/provenance_not_response/results/pvca_variance_partition.csv)
+- [`invariance_loco_summary_with_ci.csv`](../results/immunotherapy/provenance_not_response/results/invariance_loco_summary_with_ci.csv)
+- [`provenance_vs_response_variance.png`](../results/immunotherapy/provenance_not_response/results/provenance_vs_response_variance.png)
+
 ## External GTEx whole-gene recovery
 
 **Question:** Do decoder-capable models recover completely hidden genes in an

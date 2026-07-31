@@ -1,0 +1,4 @@
+missing_required=[]
+parsed_json=4
+parsed_csv=25
+status=PASS

@@ -1,0 +1,23 @@
+{
+  "clinical_source": "TCGA-CDR Supplemental Table S1, Liu et al. Cell 2018",
+  "endpoints": ["OS", "PFI"],
+  "cancers": ["BRCA", "KIRC", "LUAD", "LUSC", "SKCM"],
+  "patient_deduplication": "one primary-tumor sample per patient",
+  "model": "CoxnetSurvivalAnalysis",
+  "l1_ratio": 0.5,
+  "alpha_grid": [0.01, 0.0316227766, 0.1, 0.316227766, 1.0, 3.16227766, 10.0],
+  "outer_cv": "5-fold event/cancer-stratified",
+  "inner_cv": "3-fold",
+  "metric": "Harrell C-index on out-of-fold risk",
+  "metric_bootstrap_replicates": 2000,
+  "paired_delta_bootstrap_replicates": 1000,
+  "seed": 42,
+  "leakage": {
+    "tcga_source": "GDC/TCGA patient identifiers",
+    "archs4_source": "GEO/SRA accessions",
+    "exact_accession_overlap": 0,
+    "status": "clean"
+  },
+  "gate": "silhouette > 0 and cancer macro-AUROC >= 0.90",
+  "excluded_adapter": "BRIDGE failed silhouette gate"
+}

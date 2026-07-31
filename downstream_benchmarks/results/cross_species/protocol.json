@@ -1,0 +1,30 @@
+{
+  "human": "GTEx recount2 matrix; maximum 250 samples per tissue, seed 42",
+  "mouse": "GSE132040 Tabula Muris Senis bulk; all matching samples",
+  "tissues": [
+    "Brain",
+    "Heart",
+    "Kidney",
+    "Liver",
+    "Lung",
+    "Muscle",
+    "Pancreas",
+    "Skin",
+    "Small Intestine",
+    "Spleen"
+  ],
+  "orthologs": "MGI HOM_MouseHumanSequence; exactly one human and one mouse gene per class",
+  "normalization": "counts to length-adjusted TPM, then log1p; same human gene lengths",
+  "probe": "multinomial class-weighted logistic; C tuned by human-only 5-fold CV",
+  "mouse_label_use": "evaluation only; no mouse labels used for preprocessing or tuning",
+  "bootstrap": {
+    "replicates": 2000,
+    "seed": 42,
+    "stratified_by_mouse_tissue": true
+  },
+  "leakage_check": {
+    "test_accessions": 947,
+    "exact_overlap_with_archs4_training_metadata": 0,
+    "status": "clean"
+  }
+}
